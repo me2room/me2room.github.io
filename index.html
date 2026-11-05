@@ -309,6 +309,18 @@ details.rules summary::after{content:" ›";opacity:.7}
 details.rules[open] summary::after{content:" ⌄"}
 details.rules .prose{padding-bottom:16px}
 .toast{background:var(--brass);color:#1b1b1b;font-weight:600}
+/* Kompakter Kopf mit 3D-Logo */
+header.hd{padding:12px 16px 12px;box-shadow:0 2px 0 var(--led),0 10px 26px -6px var(--led)}
+.hd-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.logo3d{margin:0;font:700 30px/1 "Zilla Slab",Georgia,serif;letter-spacing:.5px;color:#FFF3F3;
+  text-shadow:0 1px 0 #E5283F,0 2px 0 #C21F33,0 3px 0 #9E1828,0 4px 0 #7A111E,0 6px 10px rgba(0,0,0,.55),0 0 18px rgba(255,45,74,.75),0 0 36px rgba(255,45,74,.45)}
+.hd-me{display:flex;align-items:center;gap:6px;min-width:0}
+.mepill{display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:150px;padding:6px 10px;border-radius:999px;background:rgba(8,8,8,.6);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 70%,transparent);font:600 13px/1 Figtree,sans-serif;color:var(--on-felt)}
+.mepill #mename{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mepill .syncdot{margin:0;flex:0 0 auto}
+.logout{flex:0 0 auto;padding:6px 10px;border-radius:999px;background:transparent;border:1.5px solid var(--host);color:var(--host);font:600 12px/1 Figtree,sans-serif;box-shadow:0 0 10px -2px var(--host),inset 0 0 6px -2px var(--host)}
+header.hd .live{margin-top:10px;padding:4px 10px;font-size:12px}
+header.hd .lv-n{font-size:14px}
 /* Live-Mitgliederzahl */
 .live{position:relative;display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:6px 12px;border-radius:999px;background:rgba(8,8,8,.55);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 60%,transparent);font-size:13px;color:var(--on-felt)}
 .live>b{font-size:11px;letter-spacing:1.5px;color:var(--host)}
@@ -322,12 +334,12 @@ details.rules .prose{padding-bottom:16px}
 </head>
 <body>
 <div class="app">
-  <header>
-    <div class="suit" aria-hidden="true">♠</div>
-    <h1>me2room</h1>
-    <p id="sub">Ein Tisch, ein Turnier, jeden Abend – Goldene Meile, Bad Breisig</p>
+  <header class="hd">
+    <div class="hd-row">
+      <h1 class="logo3d">me2room</h1>
+      <div class="hd-me"><span class="mepill"><i class="syncdot" id="sync" title="Verbunden"></i><span id="mename">–</span></span><button id="logout" class="logout">Abmelden</button></div>
+    </div>
     <div class="live" id="live" aria-live="polite"><span class="lv-dot"></span><b>LIVE</b><span><b class="lv-n" id="lvAll">0</b> Mitglieder</span><span class="lv-sep">·</span><span><b class="lv-n" id="lvReg">0</b> dabei</span></div>
-    <div class="me"><div class="av">–</div><span><span id="mename">Angemeldet</span> · <button id="logout" style="background:none;border:0;color:inherit;text-decoration:underline;padding:0">Abmelden</button><i class="syncdot" id="sync" title="Verbunden"></i></span></div>
   </header>
   <main id="view"></main>
 </div>
@@ -669,8 +681,8 @@ function dealerCheck(v,d){
 
 function viewKalender(){
   const k=S.sel, d=S.days[k], st=status(d), mine=roleOf(d,S.me), full=used(d)>=SEATS, locked=d.result;
-  let h=monthCal(k);
-  h+=`<section class="panel"><div class="ptitle"><h2>${dateLabel(k)}</h2><span class="badge ${st.c}">${st.t}</span></div>${active(d)?countdownHTML(k,d):""}`;
+  let h="";
+  h+=`<section class="panel" id="event"><div class="ptitle"><h2>${dateLabel(k)}</h2><span class="badge ${st.c}">${st.t}</span></div>${active(d)?countdownHTML(k,d):""}`;
   if(active(d)){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
     h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Planer</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
@@ -715,6 +727,7 @@ function viewKalender(){
   h+=tournamentBlock(d,k);
   h+=attendanceBlock(d,k);
   h+=`</section>`;
+  h+=monthCal(k);
   if(ME&&ME.admin){
     h+=remindPanel(k,d);
     h+=`<section class="panel"><h3 style="margin-top:0">Automatisch erledigt</h3><ul class="feed">${S.feed.slice(0,5).map(f=>`<li><time>${f.t}</time><span>${escH(f.x)}</span></li>`).join("")}</ul></section>`;
@@ -877,9 +890,8 @@ function render(){
   v.innerHTML=({kalender:viewKalender,rang:viewRang,meine:viewMeine,profil:viewProfil,community:viewCommunity,regeln:viewRegeln,verwaltung:viewVerwaltung}[S.tab]||viewKalender)();
   document.querySelectorAll("nav.tabs button").forEach(b=>{if(b.dataset.tab===S.tab)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   document.getElementById("admtab").hidden=!ME.admin;
-  document.querySelector(".me .av").textContent=ini(S.me);
   liveCount("lvAll",members.length); liveCount("lvReg",members.filter(x=>x.reg).length);
-  document.getElementById("mename").textContent=`Angemeldet als ${nm(S.me)} (${no(S.me)})`;
+  document.getElementById("mename").textContent=`${no(S.me)} ${nm(S.me)}`;
   const qi=document.getElementById("q");
   if(qi){qi.oninput=e=>{q=e.target.value;const p=qi.selectionStart;render();const n=document.getElementById("q");n.focus();n.setSelectionRange(p,p)}}
   const aq=document.getElementById("admq");
@@ -954,7 +966,7 @@ document.addEventListener("click",e=>{
     toast("Preise gespeichert");render();return;
   }
   if(t.dataset.cal){calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+(+t.dataset.cal),1);render();return}
-  if(t.dataset.day){S.sel=t.dataset.day;{const dd=new Date(t.dataset.day+"T00:00");calMonth=new Date(dd.getFullYear(),dd.getMonth(),1)}openForm=null;if(t.dataset.goto)S.tab="kalender";render();if(t.dataset.goto)window.scrollTo(0,0);return}
+  if(t.dataset.day){S.sel=t.dataset.day;{const dd=new Date(t.dataset.day+"T00:00");calMonth=new Date(dd.getFullYear(),dd.getMonth(),1)}openForm=null;if(t.dataset.goto)S.tab="kalender";render();if(t.dataset.goto)window.scrollTo(0,0);else if(t.classList.contains("cal-d")){const ev=document.getElementById("event");if(ev)ev.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}return}
   const k=t.dataset.k||S.sel,d=S.days[k],a=t.dataset.act;
   if(a==="hostform"){openForm=openForm==="host"?null:"host";pick={mine:null,guest:null};render();return}
   if(a==="guestform"){openForm=openForm==="guest"?null:"guest";render();return}
