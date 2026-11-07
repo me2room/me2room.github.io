@@ -309,6 +309,21 @@ details.rules summary::after{content:" ›";opacity:.7}
 details.rules[open] summary::after{content:" ⌄"}
 details.rules .prose{padding-bottom:16px}
 .toast{background:var(--brass);color:#1b1b1b;font-weight:600}
+/* Sachpreise vor einer edlen Bar-Rückwand */
+section.prizebar{position:relative;overflow:hidden;border:2px solid var(--brass);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 14px 34px -12px rgba(0,0,0,.9),0 0 26px -8px #F2B35E;
+  background:linear-gradient(180deg,rgba(10,8,6,.35),rgba(10,8,6,.15) 40%,rgba(10,8,6,.55)),var(--barbg) center/cover no-repeat,#120D0A}
+section.prizebar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--led);box-shadow:0 0 14px 3px var(--led);pointer-events:none}
+section.prizebar .ptitle h3{color:var(--brass);font:700 21px/1.2 "Zilla Slab",serif;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.barshelf{height:120px}
+section.prizebar{background:linear-gradient(180deg,rgba(10,8,6,.1),rgba(10,8,6,0) 30%,rgba(10,8,6,.45) 75%,rgba(10,8,6,.7)),var(--barbg) center top/cover no-repeat,#120D0A}
+.prizes{display:grid;gap:10px;margin-top:0}
+.prize{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,rgba(14,12,10,.72),rgba(8,7,6,.82));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 55%,transparent),0 6px 18px -8px rgba(0,0,0,.9);backdrop-filter:blur(2px)}
+.prize.p1{box-shadow:inset 0 0 0 1.5px var(--brass),0 0 18px -6px #F2B35E,0 6px 18px -8px rgba(0,0,0,.9)}
+.pz-m{font-size:28px;width:36px;text-align:center;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.pz-t{font:700 17px/1.25 "Zilla Slab",serif;color:var(--ink)}
+.prize .s{font-size:13px;color:var(--muted)}
+section.prizebar .rmeta{position:relative;margin-top:12px;color:var(--on-felt);opacity:.8;text-shadow:0 1px 6px rgba(0,0,0,.9)}
+section.prizebar .form{background:rgba(8,7,6,.82)}
 /* Plätze am Handy sicher antippbar */
 [data-seat],[data-seatx]{cursor:pointer;-webkit-tap-highlight-color:transparent;pointer-events:all}
 .tablewrap svg{touch-action:manipulation}
@@ -746,11 +761,39 @@ const PRIZE_PLACES=3;
 const prizesOf=mon=>{const p=S.prizes[mon]||{};return {s:p.s||["","",""],p:p.p||["","",""]}};
 let rankTab="spieler", rankMon=curMon;
 const escH=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// Bar-Rückwand als Hintergrund: beleuchtete Regale mit Flaschen (wird einmal gezeichnet)
+const BAR_BG=(()=>{
+  const W=420,H=300,cols=["#E0A146","#4F8A4B","#9E2B35","#D9D2C3","#C47A2C","#2E5E7A"];
+  let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice"><defs>`+
+    `<radialGradient id="g" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#F2B35E" stop-opacity=".55"/><stop offset=".55" stop-color="#8A4E1C" stop-opacity=".25"/><stop offset="1" stop-color="#0E0E10" stop-opacity="0"/></radialGradient>`+
+    `<linearGradient id="sh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".0"/><stop offset=".35" stop-color="#fff" stop-opacity=".55"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>`+
+    `<rect width="${W}" height="${H}" fill="#120D0A"/><rect width="${W}" height="${H}" fill="url(#g)"/>`;
+  // Holz-Lamellen links und rechts wie im Raum
+  for(let x=0;x<36;x+=7) s+=`<rect x="${x}" y="0" width="5" height="${H}" fill="#C9A26A" opacity=".18"/><rect x="${W-x-5}" y="0" width="5" height="${H}" fill="#C9A26A" opacity=".18"/>`;
+  const shelves=[96,190,284];
+  let seed=7; const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280};
+  shelves.forEach((y,si)=>{
+    // Flaschen
+    for(let x=46;x<W-50;x+=22+rnd()*8){
+      const tall=48+rnd()*30, w=13+rnd()*6, c=cols[Math.floor(rnd()*cols.length)], neck=tall*.32, nw=w*.32;
+      const bx=x, by=y-tall;
+      s+=`<g opacity=".92"><rect x="${bx}" y="${by+neck}" width="${w}" height="${tall-neck}" rx="${w*.3}" fill="${c}" fill-opacity=".55"/>`+
+         `<path d="M${bx+w/2-nw/2} ${by+4} h${nw} v${neck-6} q${(w-nw)/2} 2 ${(w-nw)/2} 8 h-${w} q0 -6 ${(w-nw)/2} -8 z" fill="${c}" fill-opacity=".6"/>`+
+         `<rect x="${bx+w/2-nw/2-1}" y="${by}" width="${nw+2}" height="5" rx="1" fill="#D9A954"/>`+
+         `<rect x="${bx+2}" y="${by+neck+6}" width="${w*.28}" height="${tall-neck-12}" rx="1.5" fill="url(#sh)"/>`+
+         `<rect x="${bx+1}" y="${by+neck+(tall-neck)*.45}" width="${w-2}" height="${(tall-neck)*.22}" fill="#F4EEDF" fill-opacity=".22"/></g>`;
+    }
+    // Regalboden in Messing mit LED-Licht darunter
+    s+=`<rect x="36" y="${y}" width="${W-72}" height="4" fill="#D9A954"/><rect x="36" y="${y+4}" width="${W-72}" height="10" fill="#F2B35E" opacity=".28"/>`;
+  });
+  s+=`<rect x="0" y="${H-4}" width="${W}" height="4" fill="#FF2D4A"/></svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(s)}")`;
+})();
 function prizeBlock(mon,pl,list){
   const pr=prizesOf(mon)[pl?"p":"s"], past=mon<curMon, admin=ME&&ME.admin;
   const medal=["🥇","🥈","🥉"];
-  let h=`<section class="panel"><div class="ptitle"><h3 style="margin:0">${past?"Gewinner":"Sachpreise"} ${monLabel(mon)}</h3><span class="badge b-plan">${pl?"Planer":"Spieler"}</span></div>`;
-  h+=`<div style="margin-top:8px">${[0,1,2].map(i=>{const w=list[i];return `<div class="row"><div style="font-size:24px;width:32px;text-align:center">${medal[i]}</div><div class="grow"><div style="font-weight:600">${escH(pr[i])||`<span style="color:var(--muted)">Preis folgt</span>`}</div><div class="s">${w!=null?`${past?"Gewonnen von":"Zurzeit vorne:"} ${no(w)} ${nm(w)}`:"Noch niemand"}</div></div></div>`}).join("")}</div>`;
+  let h=`<section class="panel prizebar" style="--barbg:${BAR_BG.replace(/"/g,"&quot;")}"><div class="ptitle"><h3 style="margin:0">${past?"Gewinner":"Sachpreise"} ${monLabel(mon)}</h3><span class="badge b-plan">🍸 Bar</span></div>`;
+  h+=`<div class="barshelf" aria-hidden="true"></div><div class="prizes">${[0,1,2].map(i=>{const w=list[i];return `<div class="prize p${i+1}"><div class="pz-m">${medal[i]}</div><div class="grow"><div class="pz-t">${escH(pr[i])||`<span style="color:var(--muted)">Preis folgt</span>`}</div><div class="s">${w!=null?`${past?"Gewonnen von":"Zurzeit vorne:"} ${no(w)} ${nm(w)}`:"Noch niemand"}</div></div></div>`}).join("")}</div>`;
   if(admin&&!past) h+=`<div class="form"><label>Preise eintragen (nur du siehst dieses Feld)</label>${[0,1,2].map(i=>`<input class="search" id="prz${i}" placeholder="${i+1}. Platz, z. B. Gutschein" value="${escH(pr[i])}" maxlength="60">`).join("")}<button class="btn btn-brass" data-act="savePrizes" data-pl="${pl?1:0}">Preise speichern</button></div>`;
   h+=`<p class="rmeta">Sachpreise, gestiftet vom Verein und von Partnern. Kein Bargeld.${past?"":` Gewinner sind die Plätze 1 bis 3 am Monatsende.`}</p></section>`;
   return h;
