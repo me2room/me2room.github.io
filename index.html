@@ -309,6 +309,9 @@ details.rules summary::after{content:" ›";opacity:.7}
 details.rules[open] summary::after{content:" ⌄"}
 details.rules .prose{padding-bottom:16px}
 .toast{background:var(--brass);color:#1b1b1b;font-weight:600}
+/* Plätze am Handy sicher antippbar */
+[data-seat],[data-seatx]{cursor:pointer;-webkit-tap-highlight-color:transparent;pointer-events:all}
+.tablewrap svg{touch-action:manipulation}
 /* Kompakter Kopf mit 3D-Logo */
 header.hd{padding:12px 16px 12px;box-shadow:0 2px 0 var(--led),0 10px 26px -6px var(--led)}
 .hd-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -442,6 +445,8 @@ function fillDays(){
   const old=new Date(today);old.setDate(old.getDate()-60);const ok=key(old);
   Object.keys(S.days).forEach(k=>{if(k<ok)delete S.days[k]});
   if(!S.days[S.sel])S.sel=key(dates[0]);
+  // beim ersten Öffnen: hat das Turnier heute schon begonnen, gleich den nächsten buchbaren Tag zeigen
+  if(!fillDays.done){fillDays.done=true;const k0=key(dates[0]),d0=S.days[k0];if(S.sel===k0&&d0&&startedDay(k0,d0)&&dates[1]){S.sel=key(dates[1]);calMonth=new Date(dates[1].getFullYear(),dates[1].getMonth(),1)}}
 }
 function applyShared(st){
   st=st||{}; S.days=st.days||{}; S.feed=st.feed||[]; S.points=st.points||{}; S.ppoints=st.ppoints||{}; S.stats=st.stats||{}; S.prizes=st.prizes||{};
@@ -604,7 +609,7 @@ function tableSVG(d){
   const picking=openForm==="host", r0=roleOf(d,S.me), canSeat=!startedDay(S.sel,d)&&(!r0||r0.r==="wait");
   if(openForm==="seat"&&pick.mine!=null) seats[pick.mine]={pick:"h"};
   if(picking){if(pick.mine!=null)seats[pick.mine]={pick:"h"};if(pick.guest!=null)seats[pick.guest]={pick:"g"}}
-  let s=`<svg viewBox="-10 -4 380 250" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}">`;
+  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}">`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-14}" ry="${ry-14}" fill="var(--rim)"/><ellipse cx="${cx}" cy="${cy}" rx="${rx-19}" ry="${ry-19}" fill="none" stroke="var(--ringled)" stroke-width="3" opacity=".9"/>`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-24}" ry="${ry-24}" fill="var(--cloth)"/><rect x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="none" stroke="var(--ringled)" stroke-width="2" opacity=".35"/>`;
   s+=dealerSVG(cx,cy,ry,hasDealer(d)?d.dealer:null);
@@ -615,7 +620,7 @@ function tableSVG(d){
   s+=`<text x="${cx}" y="${cy+32}" text-anchor="middle" font-size="11" fill="var(--on-felt)" opacity=".7">${d.hosts.length}/${HOST_MAX} Planer</text>`;
   pos.forEach(([x,y],i)=>{
     const st=seats[i], free=!st||(st.res&&st.h.release);
-    const tap=(picking||canSeat)&&(!st||st.pick)?` data-seat="${i}" role="button" tabindex="0" aria-label="Platz ${i+1} ${st?"abwählen":"wählen"}" style="cursor:pointer"`:"";
+    const tap=(picking||canSeat)&&(!st||st.pick)?` data-seat="${i}" role="button" tabindex="0" aria-label="Platz ${i+1} ${st?"abwählen":"wählen"}" style="cursor:pointer"`:` data-seatx="${i}" style="cursor:pointer"`;
     if(free) s+=`<g class="seat seat-f"${tap}><circle class="halo" cx="${x}" cy="${y}" r="23" fill="var(--stop)"/><circle class="fcore" cx="${x}" cy="${y}" r="17" fill="var(--stop)"/>${(picking||canSeat)&&!st?`<circle cx="${x}" cy="${y}" r="20.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>`:""}<text x="${x}" y="${y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--stop-ink)">frei</text></g>`;
     else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"Gast")}</g>`}
     else if(st.res) s+=`<g class="seat seat-g" opacity=".8">${chipSVG(x,y,"var(--guest)","var(--guest-ink)","Gast")}</g>`;
@@ -905,6 +910,16 @@ function render(){
 document.addEventListener("keydown",e=>{const sp=e.target.closest&&e.target.closest("[data-seat]");if(sp&&(e.key==="Enter"||e.key===" ")){e.preventDefault();sp.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
 document.addEventListener("click",e=>{
   const sp=e.target.closest("[data-seat]");
+  // gesperrter Platz angetippt: sagen, warum
+  const sx=!sp&&e.target.closest&&e.target.closest("[data-seatx]");
+  if(sx&&S.tab==="kalender"){
+    const d=S.days[S.sel], r0=roleOf(d,S.me);
+    let why="Dieser Platz ist schon besetzt.";
+    if(d.result&&d.result.done) why="Dieser Abend ist schon vorbei.";
+    else if(startedDay(S.sel,d)) why="Das Turnier hat schon begonnen. Trag dich unten auf die Warteliste ein.";
+    else if(r0&&r0.r!=="wait") why="Du hast an diesem Abend schon einen Platz. Erst absagen, dann neu wählen.";
+    toast(why); return;
+  }
   if(sp&&openForm!=="host"){
     const i=+sp.dataset.seat;
     if(openForm==="seat"&&pick.mine===i){openForm=null;pick={mine:null,guest:null}}else{openForm="seat";pick={mine:i,guest:null}}
