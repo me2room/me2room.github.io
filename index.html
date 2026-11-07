@@ -302,7 +302,7 @@ nav.tabs button[aria-current="page"]{color:var(--brass)!important}
 .rank.me{background:rgba(217,169,84,.18)}
 .chip{background:transparent;color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--brass);color:#1b1b1b;border-color:var(--brass)}
-details.rules{padding:0 18px}
+details.rules{padding:0 18px;margin:14px 16px 0;border-radius:20px}
 details.rules summary{cursor:pointer;padding:16px 0;font:700 18px/1.2 "Zilla Slab",serif;color:var(--brass);list-style:none}
 details.rules summary::-webkit-details-marker{display:none}
 details.rules summary::after{content:" ›";opacity:.7}
@@ -842,7 +842,6 @@ function viewProfil(){
   return `<section class="panel"><div class="pf-head"><div class="pf-no">${no(m)}</div><div><h2>${nm(m)}</h2><div class="s">${mem.lead?"Interessent in Probezeit":"Mitglied seit "+mem.since}</div></div></div>
   <div class="pf-stats">${stat(MP(curMon)[m]||0,"Spieler-Punkte")}${stat(pos>=0?pos+1:"–",pos>=0?`Platz Spieler-Rangliste`:"Noch nicht in der Spieler-Rangliste")}${stat(st.nights||0,"Abende dabei")}${stat(st.hosted||0,"Abende als Planer")}</div>
   <p class="rmeta">Rangliste ${quarter}. Die anderen sehen nur deinen Spitznamen und deine Nummer.</p></section>
-  <section class="panel"><h3 style="margin-top:0">Meine Abende</h3>${res||`<p class="empty">Noch nichts reserviert. Unter ▦ Tisch siehst du, wo Plätze frei sind.</p>`}</section>
   <details class="panel rules"><summary>♣ So läuft’s</summary>${viewRegeln().replace(/^<section class="panel prose"><h2[^>]*>.*?<\/h2>/,'<div class="prose">').replace(/<\/section>$/,"</div>")}</details>`;
 }
 
