@@ -960,7 +960,7 @@ function viewKalender(){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
     h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
     h+=`<div class="count"><span><b>${SEATS-used(d)}</b> Plätze frei</span></div>`;
-    if(hasDealer(d)) h+=`<p class="dealerline">Geber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
+    if(hasDealer(d)&&(isGeber(S.me)||(ME&&ME.admin))) h+=`<p class="dealerline">Geber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
     h+=seatSheet(d);
     const wc=`<div class="waitcount" aria-label="${d.wait.length} im Wartebereich"><span>Wartebereich</span><b>${d.wait.length}</b></div>`;
     const smallCancel=mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done);
@@ -999,7 +999,7 @@ function viewKalender(){
   h+=`</section>`;
   h+=tourCard(d,k);
   h+=hostCard(d);
-  if(dreqHTML||showDealerForm||myReq) h+=`<section class="panel dealercard"><div class="hc-head"><h3>🃏 Kartengeber</h3>${hasDealer(d)?`<span class="hc-date">${no(d.dealer)} ${escH(nm(d.dealer))}</span>`:`<span class="hc-date">noch keiner</span>`}</div>${myReq?(d.dealer===S.me?`<div class="hc-info">Du bist an diesem Abend Kartengeber.</div>`:`<div class="hc-info">Du bist nominiert ✓<span class="hc-sub">Der Vorstand entscheidet. Zurückziehen: Geberstuhl nochmal antippen.</span></div>`):""}${dreqHTML?`<p class="tf-l" style="margin:0">Anfragen (nach Zeit)</p>${dreqHTML}`:(admin&&!hasDealer(d)&&open?`<p class="hc-hint" style="margin:0">Noch keine Anfragen. Kartengeber tippen am Tisch auf den Geberstuhl.</p>`:"")}${showDealerForm?dealerForm(d):""}</section>`;
+  if(myReq) h+=`<section class="panel dealercard"><div class="hc-head"><h3>🃏 Kartengeber</h3>${hasDealer(d)?`<span class="hc-date">${no(d.dealer)} ${escH(nm(d.dealer))}</span>`:`<span class="hc-date">noch keiner</span>`}</div>${myReq?(d.dealer===S.me?`<div class="hc-info">Du bist an diesem Abend Kartengeber.</div>`:`<div class="hc-info">Du bist nominiert ✓<span class="hc-sub">Der Vorstand entscheidet. Zurückziehen: Geberstuhl nochmal antippen.</span></div>`):""}${dreqHTML?`<p class="tf-l" style="margin:0">Anfragen (nach Zeit)</p>${dreqHTML}`:(admin&&!hasDealer(d)&&open?`<p class="hc-hint" style="margin:0">Noch keine Anfragen. Kartengeber tippen am Tisch auf den Geberstuhl.</p>`:"")}${showDealerForm?dealerForm(d):""}</section>`;
   h+=monthCal(k);
   if(ME&&ME.admin){
     h+=remindPanel(k,d);
@@ -1135,10 +1135,18 @@ function admStats(){
 }
 // Alle Kartengeber-Anfragen der kommenden Abende, nach Zeit
 function admDealerReqs(){
-  const rows=[];
-  dates.forEach(dt=>{const k=key(dt),d=S.days[k];if(!d||hasDealer(d)||(d.result&&d.result.done))return;dreqSorted(d).forEach((x,i)=>rows.push({k,x,first:i===0}))});
-  return `<section class="panel"><div class="ptitle"><h3 style="margin:0">🃏 Kartengeber-Anfragen</h3><span class="badge b-plan">${rows.length}</span></div>
-  ${rows.length?rows.map(r=>`<div class="sg-row" style="margin-top:8px"><div class="grow"><b>${dateLabel(r.k)}</b><span>${no(r.x.m)} ${escH(nm(r.x.m))} · angefragt am ${whenTxt(r.x.at)}${r.first?" · zuerst":""}</span></div><button class="btn btn-line sg-take" data-day="${r.k}" data-goto="1">Ansehen</button></div>`).join(""):`<p class="empty" style="margin:8px 0 0">Keine offenen Anfragen.</p>`}</section>`;
+  const reqs=[], set=[], open=[];
+  dates.forEach(dt=>{const k=key(dt),d=S.days[k];if(!d||(d.result&&d.result.done))return;open.push(k);
+    if(hasDealer(d)) set.push({k,m:d.dealer}); else dreqSorted(d).forEach((x,i)=>reqs.push({k,x,first:i===0}))});
+  const row=(l,sub,btns)=>`<div class="sg-row" style="margin-top:8px"><div class="grow"><b>${l}</b><span>${sub}</span></div><div style="display:grid;gap:4px">${btns}</div></div>`;
+  return `<section class="panel" id="admgeber"><div class="ptitle"><h3 style="margin:0">🃏 Kartengeber</h3><span class="badge b-plan">${reqs.length} offen</span></div>
+  <p class="tf-l" style="margin:12px 0 0">Anfragen (nach Zeit)</p>
+  ${reqs.length?reqs.map(r=>row(dateLabel(r.k),`${no(r.x.m)} ${escH(nm(r.x.m))} · angefragt am ${whenTxt(r.x.at)}${r.first?" · zuerst":""}`,`<button class="btn btn-host sg-take" data-act="geberOk" data-k="${r.k}" data-m="${r.x.m}">Annehmen</button><button class="btn btn-line sg-take" data-act="geberNo" data-k="${r.k}" data-m="${r.x.m}">Ablehnen</button>`)).join(""):`<p class="empty" style="margin:6px 0 0">Keine offenen Anfragen.</p>`}
+  <p class="tf-l" style="margin:14px 0 0">Eingeteilt</p>
+  ${set.length?set.map(r=>row(dateLabel(r.k),`${no(r.m)} ${escH(nm(r.m))}`,`<button class="btn btn-line sg-take" data-act="clearDealer" data-k="${r.k}">Austragen</button>`)).join(""):`<p class="empty" style="margin:6px 0 0">Noch niemand eingeteilt.</p>`}
+  <p class="tf-l" style="margin:14px 0 6px">Selbst eintragen</p>
+  <div class="tf-2"><label class="tf"><select id="admgday" aria-label="Abend">${open.map(k=>`<option value="${k}">${dateLabel(k)}</option>`).join("")}</select></label><label class="tf"><input id="dealerin" inputmode="numeric" placeholder="Nr. z. B. 901" aria-label="Nummer des Kartengebers" autocomplete="off"></label></div>
+  <button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="admSetDealer">Kartengeber eintragen</button></section>`;
 }
 function viewVerwaltung(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
@@ -1261,8 +1269,8 @@ document.addEventListener("click",e=>{
   const dc=e.target.closest&&e.target.closest("[data-dchair]");
   if(dc&&S.tab==="kalender"&&ME){
     const k=S.sel,d=S.days[k];
-    if(hasDealer(d)){toast(d.dealer===S.me?"Du bist an diesem Abend Kartengeber.":`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`);return}
-    if(!isGeber(S.me)){toast(ME.admin?"Anfragen der Kartengeber siehst du unten im Kasten „Kartengeber“.":"Den Geberstuhl können nur Kartengeber anfragen.");if(ME.admin){const c=document.querySelector(".dealercard");if(c)c.scrollIntoView({behavior:"smooth",block:"start"})}return}
+    if(hasDealer(d)&&!(ME&&ME.admin)){toast(d.dealer===S.me?"Du bist an diesem Abend Kartengeber.":isGeber(S.me)?`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`:`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`);return}
+    if(!isGeber(S.me)){if(ME.admin){S.tab="verwaltung";render();const c=document.getElementById("admgeber");if(c)c.scrollIntoView({block:"start"});return}toast("Hier sitzt der Kartengeber, sobald einer eingeteilt ist.");return}
     if((d.result&&d.result.done)||startedDay(k,d)){toast("Dieser Abend hat schon begonnen.");return}
     const r0=roleOf(d,S.me); if(r0&&r0.r!=="wait"){toast("Du sitzt an diesem Abend schon am Tisch. Erst absagen.");return}
     const q=dreq(d), i=q.findIndex(x=>x.m===S.me);
@@ -1479,6 +1487,15 @@ document.addEventListener("click",e=>{
     render(); return;
   }
 
+  if(a==="admSetDealer"){
+    if(!(ME&&ME.admin)) return;
+    const kk=document.getElementById("admgday").value, dd=S.days[kk]; if(!dd) return;
+    const c=dealerCheck(document.getElementById("dealerin").value.trim(),dd);
+    if(!c.ok){toast(c.msg||"Bitte eine Kartengeber-Nummer eingeben (901–999)");return}
+    dd.wait=dd.wait.filter(x=>x!==c.g); dd.interest=dd.interest.filter(x=>x!==c.g); dd.dealer=c.g; dd.dreq=[];
+    log(`${no(c.g)} ${nm(c.g)} ist Kartengeber am ${dateLabel(kk)} – eingetragen vom Vorstand`);
+    toast(`${dateLabel(kk)}: ${no(c.g)} ${nm(c.g)}`); render(); return;
+  }
   if(a==="clearDealer"){if(!(ME&&ME.admin))return;log(`Geber am ${dateLabel(k)} ausgetragen`);d.dealer=null;toast("Geber ausgetragen");render();return}
   if(a==="newLead"){
     const f=t.dataset.field,inp=document.getElementById(f+"new"),name=inp.value.trim().replace(/\s+/g," ");
@@ -1572,8 +1589,8 @@ function hideLogin(){document.getElementById("login").classList.remove("show")}
 function showLogin(msg){
   document.getElementById("login").classList.add("show");
   L().innerHTML=`<h2>Anmelden</h2><p class="empty">Mit deiner Nummer und deiner PIN.</p>
-  <form class="form" id="lf" autocomplete="off"><input id="lnr" class="search big" inputmode="numeric" maxlength="3" placeholder="Deine Nummer" aria-label="Deine Nummer" required>
-  <input id="lpin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="PIN" aria-label="PIN, 4 Ziffern" required>
+  <form class="form" id="lf" autocomplete="off"><input id="lnr" class="search big" inputmode="numeric" maxlength="3" placeholder="Deine Nummer" aria-label="Deine Nummer" autocomplete="off" name="m2r-nr-x" required>
+  <input id="lpin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="PIN" aria-label="PIN, 4 Ziffern" autocomplete="one-time-code" required>
   <p class="err" id="lerr">${msg||""}</p><button class="btn btn-host" id="lbtn">Anmelden</button></form>`;
   document.getElementById("lnr").focus();
   document.getElementById("lf").onsubmit=async e=>{
