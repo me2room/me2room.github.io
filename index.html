@@ -256,7 +256,14 @@ nav.tabs button[aria-current="page"]{color:var(--felt);font-weight:700}
 .adm-row{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .adm-row .nrb{font:700 18px/1 "Zilla Slab",serif;color:var(--brass);font-variant-numeric:tabular-nums}
 .adm-row .s{font-size:13px;color:var(--muted)}
-.adm-row .btn{padding:8px 10px;font-size:13px}
+.adm-row .btn{padding:7px 12px;font-size:13px}
+.adm-row{grid-template-columns:40px minmax(0,1fr) auto;gap:8px}
+.adm-row .nrb{font-size:16px}
+.adm-info{min-width:0}
+.adm-n{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-info .s{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.adm-row .adm-btns{display:flex;gap:5px;flex-wrap:nowrap}
+.adm-row .adm-btns .btn{padding:6px 9px;font-size:12px;white-space:nowrap}
 .syncdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--host);margin-left:6px;vertical-align:1px}
 .syncdot.off{background:var(--stop)}
 /* Raum als Hintergrund: Eichen-Lamellen, warmes Licht, rote LED-Leiste */
@@ -342,6 +349,10 @@ details.setup .hc-body{padding:0 0 14px}
 .glow-g{color:var(--host)!important;font-weight:700;text-shadow:0 0 8px color-mix(in srgb,var(--host) 80%,transparent),0 0 16px color-mix(in srgb,var(--host) 45%,transparent)}
 .btn-pair{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px}
 .btn-pair .btn{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
+.add-row{display:grid;grid-template-columns:minmax(0,1fr) 72px auto;gap:8px;margin-top:12px}
+.add-row .search{margin:0;min-width:0}
+.add-row .btn{padding:0 14px}
+.linkbtn{margin-top:10px;border:0;background:none;color:var(--brass);font:600 13px Figtree,sans-serif;padding:4px 0;cursor:pointer;text-decoration:underline}
 .lockinfo{border:1px solid color-mix(in srgb,var(--brass) 60%,transparent)}
 .sg-take{padding:8px 12px;font-size:13px;flex:0 0 auto}
 .seatsheet .btn-guest{box-shadow:0 0 18px -3px var(--guest),inset 0 0 0 1px rgba(255,255,255,.15)}
@@ -533,6 +544,7 @@ header.hd .lv-n{font-size:14px}
   <button data-tab="rang"><span>♛</span>Rangliste</button>
   <button data-tab="profil"><span>♦</span>Ich</button>
   <button data-tab="verwaltung" id="admtab" hidden><span>⚙</span>Verwaltung</button>
+  <button data-tab="poker" id="admtab2" hidden><span>♠</span>Poker</button>
 </div></nav>
 <div class="toast" id="toast" role="status"></div>
 
@@ -1112,7 +1124,7 @@ function viewRegeln(){
 let admQ="", admF="alle", HIST=null;
 const isFree=x=>x.admin||x.free!==false;   // ohne Freigabe-Spalte (alter Speicher) gilt jeder als frei
 // Adresse der App (wird automatisch richtig, sobald sie online ist)
-const APP_URL=location.protocol.startsWith("http")?location.origin+location.pathname:"https://work2go-maker.github.io/me2room/";
+const APP_URL=location.protocol.startsWith("http")?location.origin+location.pathname:"https://me2room.github.io/";
 const inviteText=nr=>`Hallo! ♠ Du bist bei me2room dabei – unserem Pokertisch.\n\n1. Öffne: ${APP_URL}\n2. Deine Nummer: ${String(nr).padStart(3,"0")}\n3. Erste PIN: 0000\n\nDann suchst du dir einen Spitznamen und deine eigene PIN aus. Fertig!\n\nTipp: Leg den Link auf deinen Startbildschirm, dann ist es wie eine App.`;
 let QRSVG=null;
 // Übersicht für den Chef: Abende, Spieler, beliebte Tage
@@ -1148,29 +1160,26 @@ function admDealerReqs(){
   <div class="tf-2"><label class="tf"><select id="admgday" aria-label="Abend">${open.map(k=>`<option value="${k}">${dateLabel(k)}</option>`).join("")}</select></label><label class="tf"><input id="dealerin" inputmode="numeric" placeholder="Nr. z. B. 901" aria-label="Nummer des Kartengebers" autocomplete="off"></label></div>
   <button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="admSetDealer">Kartengeber eintragen</button></section>`;
 }
-function viewVerwaltung(){
+function viewPoker(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
   const qq=admQ.trim().toLowerCase().replace("#","");
   const all=ADMIN.filter(x=>admF==="alle"||(admF==="geber"?x.nr>=GEBER_MIN:(admF==="frei")===isFree(x))).filter(x=>!qq||String(x.nr)===qq.replace(/^0+/,"")||(x.real_name||"").toLowerCase().includes(qq)||(x.nickname||"").toLowerCase().includes(qq));
   const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const set=ADMIN.filter(x=>x.pin).length, nfree=ADMIN.filter(isFree).length, list=all.slice(0,30);
-  return `<section class="panel"><div class="ptitle"><h2>Verwaltung</h2><span class="badge b-plan">${ADMIN.length} Nummern</span></div>
-  <p class="empty"><b style="color:var(--ink)">${nfree}</b> freigegeben, davon <b style="color:var(--ink)">${set}</b> schon angemeldet. Nur du siehst hier die echten Namen. Ein neuer Spieler kann sich erst anmelden, wenn du seine Nummer freigibst.</p>
-  <div class="form"><label>Neues Mitglied – echter Name (nur für dich)<input id="admname" class="search" placeholder="z. B. Tom" autocomplete="off"></label>
-  <label>Nummer (leer = nächste freie · Kartengeber: 901–999)<input id="admnr" class="search" inputmode="numeric" placeholder="z. B. 8" autocomplete="off"></label>
-  <button class="btn btn-host" data-act="admAdd">Mitglied anlegen</button>
-  <p class="empty" style="margin:0">Danach schickst du ihm den Link und seine Nummer. Erste Anmeldung immer mit PIN 0000.</p></div>
-  <div class="form"><label>Alle Nummern 001 bis 888</label><p class="empty" style="margin:0">${ADMIN.length>=MAXNR?"Alle 888 Nummern sind angelegt.":`Legt alle fehlenden Nummern bis 888 an (noch ${MAXNR-ADMIN.length}). Jeder heißt erst einmal wie seine Nummer, bis er sich einen Spitznamen gibt. Dauert etwa eine Minute.`}</p>${ADMIN.length>=MAXNR?"":`<button class="btn btn-line" data-act="admFill">Nummern bis 888 auffüllen</button>`}</div></section>
-  ${admStats()}
-  ${admDealerReqs()}
-  <section class="panel"><div class="ptitle"><h3 style="margin:0">Alles auf Anfang</h3></div>
-  <p class="empty">Löscht alle Termine (Gastgeber, Gäste, Kartengeber, Warteliste, Vormerkungen) und alle Punkte, Ranglisten und Abend-Zähler. Mitglieder, PINs, Spitznamen und Sachpreise bleiben. Der alte Stand wird vorher gesichert und kann unten zurückgeholt werden.</p>
-  <div class="actions"><button class="btn btn-stop" data-act="admWipe">Alle Termine und Punkte löschen</button></div></section>
-  <section class="panel"><div class="ptitle"><h3 style="margin:0">Sicherungen</h3><span class="badge b-free">automatisch</span></div>
-  <p class="empty">Vor jeder Änderung am Tisch wird der alte Stand gesichert. Falls etwas schiefgeht, kannst du hier einen früheren Stand zurückholen.</p>
-  ${HIST?(HIST.length?HIST.slice(0,15).map(x=>{const t=new Date(x.at);return `<div class="row"><div class="grow"><div style="font-weight:600">${dateLabel(key(t))}, ${pad(t.getHours())}:${pad(t.getMinutes())} Uhr</div><div class="s">Stand ${x.version}${x.by_nr?` · danach geändert von ${no(x.by_nr-1)}`:""}</div></div><button class="btn btn-line" data-act="admRestore" data-id="${x.id}">Zurückholen</button></div>`}).join(""):`<p class="empty">Noch keine Sicherungen.</p>`):`<button class="btn btn-line" data-act="admHist">Sicherungen anzeigen</button>`}</section>
+  return `<section class="panel"><div class="ptitle"><h2>♠ Spieler</h2><span class="badge b-plan">${ADMIN.length} Nummern</span></div>
+  <div class="add-row"><input id="admname" class="search" placeholder="Name" autocomplete="off" aria-label="Name (nur für dich)"><input id="admnr" class="search" inputmode="numeric" placeholder="Nr." autocomplete="off" aria-label="Nummer"><button class="btn btn-host" data-act="admAdd" aria-label="Anlegen">Anlegen</button></div>
+  ${ADMIN.length<MAXNR?`<button class="linkbtn" data-act="admFill">+ Alle Nummern bis 888 anlegen</button>`:""}</section>
   <section class="panel"><div class="chips" style="margin:0 0 10px">${[["alle","Alle"],["frei","Freigegeben"],["zu","Gesperrt"],["geber","Kartengeber"]].map(([k,l])=>`<button class="chip" data-admf="${k}" aria-pressed="${admF===k}">${l}</button>`).join("")}</div><input class="search" id="admq" placeholder="Suchen: Nummer, Name oder Spitzname" value="${esc(admQ)}" aria-label="Mitglied suchen">
-  <p class="empty" style="margin:8px 0 0">${all.length>30?`${all.length} Treffer, die ersten 30 werden gezeigt. Tipp die Nummer ein, z. B. 245.`:`${all.length} Treffer`}</p><div style="margin-top:8px">${list.map(x=>`<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div style="min-width:0"><div style="font-weight:600;overflow-wrap:anywhere">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")}${x.admin?" · Verwaltung":""}</div><div class="s">${x.nr>=GEBER_MIN?"🃏 Kartengeber · ":""}${isFree(x)?"✅ freigegeben":"🔒 gesperrt"} · ${x.nickname?"Spitzname: "+esc(x.nickname):"noch nicht angemeldet"} · ${x.pin?"eigene PIN":"PIN 0000"}</div></div><div style="display:grid;gap:4px">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}${isFree(x)&&!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}">PIN 0000</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`).join("")}</div></section>`;
+  <p class="empty" style="margin:8px 0 0">${all.length>30?`${all.length} Treffer, die ersten 30 werden gezeigt. Tipp die Nummer ein, z. B. 245.`:`${all.length} Treffer`}</p><div style="margin-top:8px">${list.map(x=>`<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div class="adm-info"><div class="adm-n">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")}${x.admin?" · Admin":""}</div><div class="s">${x.nr>=GEBER_MIN?"🃏 ":""}${isFree(x)?"✅":"🔒"} ${x.nickname?esc(x.nickname):isFree(x)?"frei":"gesperrt"}</div></div><div class="adm-btns">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}${isFree(x)&&!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}" title="PIN auf 0000 zurücksetzen">PIN</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`).join("")}</div></section>
+  ${admDealerReqs()}`;
+}
+function viewVerwaltung(){
+  if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
+  return `<section class="panel"><div class="ptitle"><h2>Verwaltung</h2></div><p class="empty" style="margin:6px 0 0">Spieler, Freigaben und Kartengeber findest du im Reiter <b style="color:var(--ink)">♠ Poker</b>.</p></section>
+  ${admStats()}
+  <section class="panel"><div class="ptitle"><h3 style="margin:0">Alles auf Anfang</h3></div>
+  <p class="empty">Löscht alle Termine (Gastgeber, Gäste, Kartengeber, Warteliste, Vormerkungen) und alle Punkte, Ranglisten und Abend-Zähler. Mitglieder, PINs, Spitznamen und Sachpreise bleiben.</p>
+  <div class="actions"><button class="btn btn-stop" data-act="admWipe">Alle Termine und Punkte löschen</button></div></section>`;
 }
 
 function countdownHTML(k,d){
@@ -1241,10 +1250,10 @@ function boardNext(){
 function render(){
   const v=document.getElementById("view");
   if(!ME) return;
-  if(!["kalender","rang","profil"].concat(ME.admin?["verwaltung"]:[]).includes(S.tab)) S.tab="kalender";
-  v.innerHTML=({kalender:viewKalender,rang:viewRang,profil:viewProfil,regeln:viewRegeln,verwaltung:viewVerwaltung}[S.tab]||viewKalender)();
+  if(!["kalender","rang","profil"].concat(ME.admin?["verwaltung","poker"]:[]).includes(S.tab)) S.tab="kalender";
+  v.innerHTML=({kalender:viewKalender,rang:viewRang,profil:viewProfil,poker:viewPoker,regeln:viewRegeln,verwaltung:viewVerwaltung}[S.tab]||viewKalender)();
   document.querySelectorAll("nav.tabs button").forEach(b=>{if(b.dataset.tab===S.tab)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
-  document.getElementById("admtab").hidden=!ME.admin;
+  document.getElementById("admtab").hidden=!ME.admin; document.getElementById("admtab2").hidden=!ME.admin;
   { const nr=String(S.me+1).padStart(3,"0"), n=nm(S.me);
     document.getElementById("mename").innerHTML=n===nr?`<b>${nr}</b>`:`<small>${nr}</small><b>${escH(n)}</b>`; }
   boardNext();
@@ -1270,7 +1279,7 @@ document.addEventListener("click",e=>{
   if(dc&&S.tab==="kalender"&&ME){
     const k=S.sel,d=S.days[k];
     if(hasDealer(d)&&!(ME&&ME.admin)){toast(d.dealer===S.me?"Du bist an diesem Abend Kartengeber.":isGeber(S.me)?`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`:`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`);return}
-    if(!isGeber(S.me)){if(ME.admin){S.tab="verwaltung";render();const c=document.getElementById("admgeber");if(c)c.scrollIntoView({block:"start"});return}toast("Hier sitzt der Kartengeber, sobald einer eingeteilt ist.");return}
+    if(!isGeber(S.me)){if(ME.admin){S.tab="poker";render();const c=document.getElementById("admgeber");if(c)c.scrollIntoView({block:"start"});return}toast("Hier sitzt der Kartengeber, sobald einer eingeteilt ist.");return}
     if((d.result&&d.result.done)||startedDay(k,d)){toast("Dieser Abend hat schon begonnen.");return}
     const r0=roleOf(d,S.me); if(r0&&r0.r!=="wait"){toast("Du sitzt an diesem Abend schon am Tisch. Erst absagen.");return}
     const q=dreq(d), i=q.findIndex(x=>x.m===S.me);
@@ -1309,10 +1318,10 @@ document.addEventListener("click",e=>{
   if(t.id==="logout"){rpc("m2r_logout",{p_token:TOKEN}).catch(()=>{});setToken(null);ME=null;showLogin();return}
   if(t.dataset.act==="admAdd"){
     const name=document.getElementById("admname").value.trim(), nv=document.getElementById("admnr").value.trim();
-    if(name.length<2){toast("Bitte den echten Namen eintragen");return}
+    if(!name&&!nv){toast("Bitte Name oder Nummer eintragen");return}
     const n=nv?parseInt(nv,10):null; if(nv&&!((n>=1&&n<=MAXNR)||(n>=GEBER_MIN&&n<=GEBER_MAX))){toast("Spieler: 1 bis 888, Kartengeber: 901 bis 999");return}
     t.disabled=true;
-    rpc("m2r_admin_add",{p_token:TOKEN,p_nr:n,p_real:name}).then(r=>{if(!r.ok){toast(r.msg||"Hat nicht geklappt");t.disabled=false;return}toast(`${name} hat die Nummer ${String(r.nr).padStart(3,"0")}`);return pull(true)}).catch(()=>{toast("Keine Verbindung. Bitte nochmal versuchen.");t.disabled=false});
+    rpc("m2r_admin_add",{p_token:TOKEN,p_nr:n,p_real:name}).then(r=>{if(!r.ok){toast(r.msg||"Hat nicht geklappt");t.disabled=false;return}toast(`${name?name+" hat die ":""}Nummer ${String(r.nr).padStart(3,"0")} ist angelegt`);return pull(true)}).catch(()=>{toast("Keine Verbindung. Bitte nochmal versuchen.");t.disabled=false});
     return;
   }
   if(t.dataset.act==="admFill"){
@@ -1339,7 +1348,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.act==="qrClose"){QRSVG=null;render();return}
   if(t.dataset.act==="admWipe"){
     if(!ME||!ME.admin) return;
-    if(!confirm("Wirklich ALLE Termine und ALLE Punkte löschen?\n\nMitglieder und PINs bleiben. Über „Sicherungen“ kannst du es zurückholen.")) return;
+    if(!confirm("Wirklich ALLE Termine und ALLE Punkte löschen?\n\nMitglieder und PINs bleiben.")) return;
     S.days={}; S.feed=[]; S.points={}; S.ppoints={}; S.stats={}; fillDays();
     log("Alles auf Anfang: Termine und Punkte gelöscht"); HIST=null;
     toast("Alle Termine und Punkte sind gelöscht"); render(); return;
