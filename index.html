@@ -77,6 +77,12 @@
 .waitcount{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:12px 16px;border-radius:14px;background:var(--bg);border:1px solid var(--line)}
 .waitcount span{font-weight:600}
 .waitcount b{font:700 30px/1 "Zilla Slab",serif;color:var(--guest);font-variant-numeric:tabular-nums}
+.wc-row{display:flex;align-items:stretch;gap:10px;margin-top:14px}
+.wc-row .waitcount{flex:0 0 72%;margin:0;padding:8px 12px}
+.wc-row .waitcount span{font-size:14px}
+.wc-row .waitcount b{font-size:22px}
+.btn-cancel{flex:1 1 auto;border-radius:12px;border:1.5px solid var(--stop);background:transparent;color:var(--stop);font:700 13px/1 Figtree,sans-serif;padding:0 8px;cursor:pointer}
+.btn-cancel:active{background:color-mix(in srgb,var(--stop) 18%,transparent)}
 .cd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--rim);color:var(--on-felt);box-shadow:inset 0 0 0 1.5px var(--brass)}
 .cd-l{font-size:13px;opacity:.85}
 .cd-v{font:700 26px/1 "Zilla Slab",serif;font-variant-numeric:tabular-nums;color:var(--brass);white-space:nowrap}
@@ -103,7 +109,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 button,select,input{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--brass);outline-offset:2px}
-.app{max-width:560px;margin:0 auto;padding-bottom:88px}
+.app{max-width:560px;margin:0 auto;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))}
 
 header{color:var(--on-felt);padding:22px 20px 20px;position:relative;overflow:hidden;
   background:radial-gradient(120px 90px at 88% 18%,color-mix(in srgb,var(--amber) 55%,transparent),transparent 70%),linear-gradient(180deg,rgba(10,10,10,.55),rgba(10,10,10,.78)),repeating-linear-gradient(90deg,var(--oak) 0 7px,var(--slat) 7px 9px);
@@ -237,6 +243,15 @@ nav.tabs button[aria-current="page"]{color:var(--felt);font-weight:700}
 .login h2{font:700 24px/1.2 "Zilla Slab",serif;margin:0 0 6px}
 .login .form{background:var(--surface);border:1px solid var(--line);padding:18px;gap:12px}
 .login input.big{font:700 28px/1 "Zilla Slab",serif;letter-spacing:6px;text-align:center;padding:14px}
+.login header.lg-hd{padding:34px 16px 26px;text-align:center;box-shadow:0 2px 0 var(--led),0 12px 30px -6px var(--led)}
+.login .neon-big{justify-content:center;font-size:54px;gap:3px}
+.login .neon-big .nchip{width:58px;height:58px;margin:0 5px}
+.login .neon-big .nchip::before{inset:4px;border-width:5px}
+.login .neon-big .nchip span{font-size:32px}
+.lg-suits{display:flex;justify-content:center;gap:18px;margin-top:14px;font-size:18px;color:#FFE9EC;opacity:.75;text-shadow:0 0 6px rgba(255,255,255,.5)}
+.lg-suits .r{color:#FF6F82;text-shadow:0 0 8px #FF2D4A}
+.login h2,.login #loginbody>.empty{text-align:center}
+.login input.big::placeholder{font:600 20px/1.4 Figtree,sans-serif;letter-spacing:1px;color:rgba(244,238,223,.45)}
 .login .err{color:var(--warn);font-weight:600;font-size:14px;margin:0;min-height:20px}
 .adm-row{display:grid;grid-template-columns:52px 1fr auto;gap:10px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
 .adm-row .nrb{font:700 18px/1 "Zilla Slab",serif;color:var(--brass);font-variant-numeric:tabular-nums}
@@ -262,9 +277,9 @@ nav.tabs{bottom:3px}
 .cal-h b{font:700 20px/1 "Zilla Slab",serif;color:var(--brass)}
 .cal-nav{width:36px;height:36px;border-radius:50%;border:1px solid color-mix(in srgb,var(--brass) 60%,transparent);background:transparent;color:var(--on-felt);font-size:20px;line-height:1}
 .cal-nav:disabled{opacity:.25}
-.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-g{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px 4px}
 .cal-wd{text-align:center;font-size:11px;opacity:.7;padding-bottom:2px}
-.cal-d{display:grid;justify-items:center;gap:3px;padding:5px 0 6px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:inherit;min-width:0}
+.cal-d{display:grid;justify-items:center;align-content:center;gap:5px;min-height:56px;padding:6px 0 7px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:inherit;min-width:0}
 .cal-d.off{opacity:.3;border-color:transparent;background:transparent}
 .cal-d{position:relative}
 .cal-mk{position:absolute;top:-5px;right:-4px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--mark);color:#fff;font:700 11px/17px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px rgba(8,8,8,.9)}
@@ -288,6 +303,60 @@ section.panel,details.panel,nav.tabs,.login .form{
 }
 section.panel,details.panel{background:linear-gradient(180deg,rgba(22,22,24,.86),rgba(12,12,14,.9));border:1px solid color-mix(in srgb,var(--brass) 55%,transparent);box-shadow:0 10px 30px -12px rgba(0,0,0,.8)}
 .ptitle h2{color:var(--brass)}
+select{color-scheme:dark}
+select option{background:#1C1B1F;color:#F4EEDF}
+.hostcard{border:1px solid color-mix(in srgb,var(--host) 55%,transparent);box-shadow:0 0 0 1px rgba(0,0,0,.4),0 0 22px -10px var(--host)}
+.hostcard,.hc-body{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}
+.hc-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.hc-head h3{margin:0;font:700 19px/1.2 "Zilla Slab",serif;color:var(--host)}
+.hc-date{font-size:13px;color:var(--muted);white-space:nowrap}
+.hc-seats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hc-chip{display:grid;gap:3px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.18)}
+.hc-chip span{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.hc-chip b{font:700 18px/1 "Zilla Slab",serif;color:var(--ink)}
+.hc-chip.h.on{border-style:solid;border-color:var(--host);background:color-mix(in srgb,var(--host) 14%,transparent);box-shadow:0 0 14px -3px var(--host)}
+.hc-chip.h.on b{color:var(--host)}
+.hc-chip.g.on{border-style:solid;border-color:var(--guest);background:color-mix(in srgb,var(--guest) 16%,transparent);box-shadow:0 0 16px -2px var(--guest)}
+.hc-chip.g.on b{color:var(--guest);text-shadow:0 0 8px color-mix(in srgb,var(--guest) 70%,transparent)}
+.hc-hint{margin:-4px 0 0;font-size:13px;color:var(--muted)}
+.hc-hint:empty{display:none}
+.hc-info{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.05);font-weight:600}
+.tf{display:grid;gap:6px;min-width:0}
+.tf-l{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.tf-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.tf select,.tf input{width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:11px 12px;border-radius:12px;border:1px solid rgba(244,238,223,.18);background:rgba(255,255,255,.07);color:var(--ink);font:600 15px Figtree,sans-serif}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(244,238,223,.14)}
+.seg button{padding:10px 6px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:700 14px Figtree,sans-serif;cursor:pointer;opacity:.7}
+.seg button[aria-pressed="true"]{background:var(--brass);color:#1b1b1b;opacity:1;box-shadow:0 2px 10px -3px var(--brass)}
+details.setup .hc-body{padding:0 0 14px}
+.tcenter{cursor:pointer;outline:none}
+.tcenter:focus-visible{stroke:#8DB6FF;stroke-width:2}
+.hc-sub{display:block;font-size:12px;font-weight:500;color:#8DB6FF;margin-top:3px}
+.tourcard{border-color:color-mix(in srgb,#4D8DFF 60%,transparent);box-shadow:0 0 22px -10px #3B7BFF}
+.tourcard .hc-head h3{color:#8DB6FF}
+.sg-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.05)}
+.sg-row .grow{display:grid;gap:3px;min-width:0}
+.sg-row b{font-size:14px}.sg-row span{font-size:12px;color:var(--muted)}
+.vbar{height:5px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden;margin:2px 0}
+.vbar i{display:block;height:100%;background:linear-gradient(90deg,#3B7BFF,var(--host))}
+.glow-g{color:var(--host)!important;font-weight:700;text-shadow:0 0 8px color-mix(in srgb,var(--host) 80%,transparent),0 0 16px color-mix(in srgb,var(--host) 45%,transparent)}
+.btn-pair{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:8px}
+.btn-pair .btn{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
+.lockinfo{border:1px solid color-mix(in srgb,var(--brass) 60%,transparent)}
+.sg-take{padding:8px 12px;font-size:13px;flex:0 0 auto}
+.seatsheet .btn-guest{box-shadow:0 0 18px -3px var(--guest),inset 0 0 0 1px rgba(255,255,255,.15)}
+.dealercard{display:grid;gap:12px;grid-template-columns:minmax(0,1fr);border:1px solid color-mix(in srgb,var(--brass) 55%,transparent)}
+.dealercard .hc-head h3{color:var(--brass)}
+details.setup{margin:12px 0 0;border:1px solid color-mix(in srgb,var(--brass) 45%,transparent);border-radius:12px;padding:0 12px}
+details.setup summary{cursor:pointer;padding:12px 0;font-weight:700;color:var(--brass);display:flex;justify-content:space-between;gap:8px;list-style:none}
+details.setup summary::-webkit-details-marker{display:none}
+details.setup summary span{font-weight:600;font-size:13px;color:var(--ink);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+details.setup .form{margin:0 0 12px}
+.mk-row{margin:-3px 0 2px}
+.mark3{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 4px 0 0;border:0;border-radius:999px;background:transparent;color:#5C9BFF;font:700 9px/1 Figtree,sans-serif;letter-spacing:.3px;cursor:pointer;
+  box-shadow:none;text-shadow:0 0 6px rgba(120,170,255,.9)}
+.mark3 .m3-i{display:inline-block;font-size:15px;line-height:1;color:#4D8DFF;text-shadow:0 0 6px #3B7BFF,0 0 12px #3B7BFF,0 0 22px #2F6BFF}
+.mark3 .mk-timer{font-variant-numeric:tabular-nums;font-weight:800;color:var(--host);text-shadow:0 0 6px color-mix(in srgb,var(--host) 80%,transparent)}
 nav.tabs{background:rgba(12,12,14,.94);border-top:1px solid color-mix(in srgb,var(--brass) 45%,transparent);backdrop-filter:blur(6px)}
 nav.tabs button{font-size:13px;padding:10px 2px 12px}
 nav.tabs button span{font-size:22px}
@@ -324,6 +393,91 @@ section.prizebar{background:linear-gradient(180deg,rgba(10,8,6,.1),rgba(10,8,6,0
 .prize .s{font-size:13px;color:var(--muted)}
 section.prizebar .rmeta{position:relative;margin-top:12px;color:var(--on-felt);opacity:.8;text-shadow:0 1px 6px rgba(0,0,0,.9)}
 section.prizebar .form{background:rgba(8,7,6,.82)}
+/* ===== Kopf: Neon-Logo, Pokerchip, Casino-Anzeigetafel ===== */
+.neon{margin:0;display:flex;align-items:center;gap:1px;font:700 26px/1 "Zilla Slab",Georgia,serif;letter-spacing:.2px;white-space:nowrap;flex:0 0 auto}
+.hd-row{gap:8px}
+.hd-me{flex:1 1 auto;justify-content:flex-end}
+.mepill{max-width:none;flex:0 1 auto}
+#mename{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.neon .nx{color:#FFE9EC;text-shadow:0 0 2px #fff,0 0 6px #FF4D63,0 0 14px #FF2D4A,0 0 28px #FF2D4A,0 0 46px rgba(255,45,74,.7),0 3px 0 #7A111E;animation:neonOn 1.6s ease-out 1 both,neonHum 6s ease-in-out 1.6s infinite}
+.nchip{position:relative;display:inline-grid;place-items:center;width:30px;height:30px;margin:0 2px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#FF6B7D,#C8102E 55%,#7A0A1C);
+  box-shadow:inset 0 0 0 3px #7A0A1C,inset 0 0 0 5px rgba(255,255,255,.95),inset 0 0 0 9px #C8102E,0 3px 0 #4A0612,0 0 16px rgba(255,45,74,.75);
+  animation:chipSpin 1.2s cubic-bezier(.2,.8,.2,1) .3s 1 both}
+.nchip::before{content:"";position:absolute;inset:2px;border-radius:50%;border:3px dashed rgba(255,255,255,.95);opacity:.9}
+.nchip span{position:relative;font:800 18px/1 "Zilla Slab",serif;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+@keyframes neonOn{0%{opacity:.15}8%{opacity:1}12%{opacity:.3}18%{opacity:1}24%{opacity:.5}30%,100%{opacity:1}}
+@keyframes neonHum{0%,92%,100%{opacity:1}94%{opacity:.82}96%{opacity:1}97%{opacity:.88}}
+@keyframes chipSpin{0%{transform:rotateY(0) scale(.6);opacity:0}60%{opacity:1}100%{transform:rotateY(720deg) scale(1)}}
+/* Spieler-Chip oben rechts */
+.mepill{gap:8px;padding:4px 10px 4px 4px;background:linear-gradient(180deg,rgba(20,16,12,.9),rgba(8,7,6,.9))}
+.mechip{flex:0 0 auto;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;font:800 10.5px/1 Figtree,sans-serif;font-style:normal;color:#1b1b1b;letter-spacing:.2px;
+  background:radial-gradient(circle at 35% 30%,#F6D58E,#D9A954 55%,#8C6A2A);
+  box-shadow:inset 0 0 0 2px #8C6A2A,inset 0 0 0 3.5px rgba(255,255,255,.85),inset 0 0 0 6px #D9A954,0 2px 0 #5A4219,0 0 10px -2px #F2B35E}
+#mename{font:700 14px/1 "Zilla Slab",serif;color:var(--on-felt)}
+.mechipw{position:relative;flex:0 0 auto;display:inline-grid}
+.mechipw .syncdot{position:absolute;right:-2px;bottom:-1px;margin:0;width:9px;height:9px;box-shadow:0 0 0 2px #0A0908}
+.mepill{gap:7px;padding:4px 11px 4px 4px}
+/* Casino-Anzeigetafel */
+.board{position:relative;overflow:hidden;display:flex;align-items:center;gap:10px;margin-top:12px;padding:8px 14px;border-radius:14px;
+  background:linear-gradient(180deg,#141210,#060505);
+  box-shadow:inset 0 0 0 1.5px var(--brass),inset 0 0 0 4px #0A0908,inset 0 0 0 5px color-mix(in srgb,var(--brass) 40%,transparent),0 6px 18px -6px rgba(0,0,0,.9),0 0 22px -8px #F2B35E}
+.board::after{content:"";position:absolute;top:0;bottom:0;width:60px;left:-80px;background:linear-gradient(100deg,transparent,rgba(255,236,200,.18),transparent);animation:boardShine 4.5s ease-in-out 1s infinite;pointer-events:none}
+@keyframes boardShine{0%{left:-80px}45%,100%{left:110%}}
+.bd-live{display:inline-flex;align-items:center;gap:7px;font:800 11px/1 Figtree,sans-serif;letter-spacing:2px;color:var(--host);text-shadow:0 0 8px color-mix(in srgb,var(--host) 70%,transparent)}
+.bd-num{display:inline-grid;place-items:center;min-width:54px;padding:4px 10px;border-radius:8px;background:#000;box-shadow:inset 0 0 0 1px rgba(242,179,94,.35),inset 0 2px 8px rgba(0,0,0,.9)}
+.board .lv-n{font:700 26px/1 "Zilla Slab",serif;font-variant-numeric:tabular-nums;letter-spacing:1px;color:#FFC062;text-shadow:0 0 6px rgba(255,170,60,.9),0 0 16px rgba(255,140,30,.6)}
+.board .lv-n.up{color:#7CFF9A;text-shadow:0 0 6px rgba(80,255,130,.9),0 0 18px rgba(60,230,110,.6)}
+.bd-lbl{font:800 13px/1 Figtree,sans-serif;letter-spacing:2.5px;color:var(--host);text-shadow:0 0 8px color-mix(in srgb,var(--host) 70%,transparent)}
+.bd-suits{margin-left:auto;font-size:13px;letter-spacing:3px;color:var(--brass);opacity:.75}
+@media (prefers-reduced-motion:reduce){.neon .nx,.nchip,.board::after{animation:none}}
+/* Holzleiste mit eingebranntem Namen */
+.plank{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;padding:10px 16px;border-radius:10px;
+  background:
+    repeating-linear-gradient(90deg,rgba(60,30,8,.10) 0 2px,transparent 2px 9px,rgba(255,235,200,.06) 9px 10px,transparent 10px 23px),
+    repeating-linear-gradient(0deg,rgba(90,50,15,.18) 0 1px,transparent 1px 5px),
+    linear-gradient(180deg,#D9B37A,#C49558 45%,#A97A40);
+  box-shadow:inset 0 1px 0 rgba(255,240,210,.55),inset 0 -2px 4px rgba(70,35,8,.45),inset 0 0 0 1px rgba(70,35,8,.5),0 4px 12px -4px rgba(0,0,0,.8)}
+.plank::before,.plank::after{content:"";position:absolute;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#F6D58E,#8C6A2A);box-shadow:0 1px 1px rgba(0,0,0,.6)}
+.plank::before{left:9px}.plank::after{right:9px}
+.burn{font:700 21px/1.1 "Zilla Slab",Georgia,serif;letter-spacing:1.5px;color:#3A1806;
+  text-shadow:0 1px 0 rgba(255,228,185,.55),0 0 1px #1A0902,0 0 5px rgba(90,35,5,.65),0 0 12px rgba(120,50,10,.35);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.hd-row .plank{flex:1 1 auto;min-width:0;margin:0;padding:5px 16px;gap:6px;border-radius:8px}
+.hd-row .plank::before{left:5px}.hd-row .plank::after{right:5px}
+.hd-row .plank::before,.hd-row .plank::after{width:5px;height:5px;margin-top:-2.5px}
+.hd-row .burn{display:flex;flex-direction:column;align-items:center;line-height:1.05;letter-spacing:.5px;min-width:0;max-width:100%}
+.hd-row .burn b{font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+.hd-row .burn small{font-size:10px;letter-spacing:2px;opacity:.85}
+.hd-row .plank .syncdot{position:absolute;right:12px;top:6px;width:6px;height:6px}
+.plank .syncdot{margin:0;flex:0 0 auto;width:8px;height:8px;box-shadow:0 0 0 2px rgba(58,24,6,.6)}
+/* Tafel: nächstes Spiel */
+button.board{width:100%;border:0;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.board .bd-live{font-size:10.5px;letter-spacing:1.6px;white-space:nowrap}
+.board .lv-n{font-size:21px;white-space:nowrap}
+#live.board{display:grid;gap:6px;padding:8px 10px 10px}
+#live .bd-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 4px;min-height:26px}
+#live .bd-tog{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px solid color-mix(in srgb,var(--brass) 60%,transparent);background:rgba(0,0,0,.5);color:#FFC062;font:700 12px/1 Figtree,sans-serif;cursor:pointer}
+#live .bd-tog i{font-style:normal;font-size:14px;transition:transform .25s}
+#live .bd-tog[aria-expanded="true"] i{transform:rotate(180deg)}
+#live .bd-row{display:flex;align-items:center;gap:8px;width:100%;padding:6px 4px;border:0;border-radius:10px;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}
+#live .bd-row:active{background:rgba(255,255,255,.05)}
+#live .bd-num{flex:0 0 auto;min-width:0;padding:4px 7px}
+#live .bd-num .lv-n{font-size:14px;letter-spacing:.3px}
+#live .bd-info{flex:1 1 auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 0;min-width:0}
+#live .bd-st::before{content:"·";margin:0 5px;color:#FFC062}
+#live .bd-info b{white-space:nowrap;font:700 14px/1.15 "Zilla Slab",serif;color:#FFC062;text-shadow:0 0 8px rgba(255,150,40,.5)}
+#live .bd-st{font:700 13px/1.15 Figtree,sans-serif;letter-spacing:.2px;white-space:nowrap}
+#live .bd-st.ok{color:var(--host)}#live .bd-st.mk{color:#7FB2FF}#live .bd-st.wt{color:var(--brass)}
+#live .bd-foot{display:flex;justify-content:flex-end;margin-top:-2px}
+#live .bd-tog{padding:3px 10px;font-size:11px}
+#live .bd-row .bd-live{flex:0 0 auto}
+#live .bd-more{display:grid;gap:2px;border-top:1px dashed color-mix(in srgb,var(--brass) 40%,transparent);padding-top:6px}
+
+@media (prefers-reduced-motion:reduce){#live .bd-tog i{transition:none}}
+.bd-sub{margin-left:auto;display:grid;justify-items:end;gap:3px;text-align:right}
+.bd-sub b{font:700 15px/1 "Zilla Slab",serif;color:#FFC062;text-shadow:0 0 8px rgba(255,150,40,.5)}
+.bd-sub span{font:600 12px/1 Figtree,sans-serif;color:var(--host);letter-spacing:.3px}
 /* Plätze am Handy sicher antippbar */
 [data-seat],[data-seatx]{cursor:pointer;-webkit-tap-highlight-color:transparent;pointer-events:all}
 .tablewrap svg{touch-action:manipulation}
@@ -336,33 +490,42 @@ header.hd{padding:12px 16px 12px;box-shadow:0 2px 0 var(--led),0 10px 26px -6px 
 .mepill{display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:150px;padding:6px 10px;border-radius:999px;background:rgba(8,8,8,.6);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 70%,transparent);font:600 13px/1 Figtree,sans-serif;color:var(--on-felt)}
 .mepill #mename{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mepill .syncdot{margin:0;flex:0 0 auto}
-.logout{flex:0 0 auto;padding:6px 10px;border-radius:999px;background:transparent;border:1.5px solid var(--host);color:var(--host);font:600 12px/1 Figtree,sans-serif;box-shadow:0 0 10px -2px var(--host),inset 0 0 6px -2px var(--host)}
+.logout{flex:0 0 auto;padding:6px 9px;border-radius:999px;background:transparent;border:1.5px solid var(--host);color:var(--host);font:600 12px/1 Figtree,sans-serif;box-shadow:0 0 10px -2px var(--host),inset 0 0 6px -2px var(--host)}
 header.hd .live{margin-top:10px;padding:4px 10px;font-size:12px}
 header.hd .lv-n{font-size:14px}
 /* Live-Mitgliederzahl */
 .live{position:relative;display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:6px 12px;border-radius:999px;background:rgba(8,8,8,.55);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 60%,transparent);font-size:13px;color:var(--on-felt)}
 .live>b{font-size:11px;letter-spacing:1.5px;color:var(--host)}
+.live>b.lv-n{font:700 15px/1 "Zilla Slab",serif;letter-spacing:0;color:var(--brass);margin-left:4px}
+.live>b.lv-n.up{color:var(--host)}
 .lv-dot{width:8px;height:8px;border-radius:50%;background:var(--host);box-shadow:0 0 0 0 var(--host);animation:lvpulse 1.6s ease-out infinite}
 @keyframes lvpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--host) 70%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
 .lv-n{font:700 16px/1 "Zilla Slab",serif;color:var(--brass);font-variant-numeric:tabular-nums}
 .lv-n.up{color:var(--host)}
 .lv-sep{opacity:.5}
 @media (prefers-reduced-motion:reduce){.lv-dot{animation:none}}
+.qrcard{background:#fff;color:#111;border-radius:14px;padding:18px 14px;margin-top:12px;text-align:center}
+.qrcard .qr-t{font:700 30px "Zilla Slab",serif}
+.qrcard .qr-s{font-size:14px;color:#444;margin:2px 0 8px}
+.qrcard .qr-img svg{width:min(70vw,320px);height:auto;display:block;margin:6px auto}
+.qrcard .qr-u{font-size:13px;word-break:break-all;margin:6px 0}
+@media print{body.printqr *{visibility:hidden}body.printqr .qrcard,body.printqr .qrcard *{visibility:visible}body.printqr .qrcard{position:fixed;inset:0;margin:0;border-radius:0;display:flex;flex-direction:column;justify-content:center}body.printqr .qrcard .qr-img svg{width:60%}}
 </style>
 </head>
 <body>
 <div class="app">
   <header class="hd">
     <div class="hd-row">
-      <h1 class="logo3d">me2room</h1>
-      <div class="hd-me"><span class="mepill"><i class="syncdot" id="sync" title="Verbunden"></i><span id="mename">–</span></span><button id="logout" class="logout">Abmelden</button></div>
+      <h1 class="neon" aria-label="me2room"><span class="nx">me</span><span class="nchip" aria-hidden="true"><span>2</span></span><span class="nx">room</span></h1>
+      <div class="plank"><span class="burn" id="mename">–</span><i class="syncdot" id="sync" title="Verbunden"></i></div>
+      <button id="logout" class="logout">Abmelden</button>
     </div>
-    <div class="live" id="live" aria-live="polite"><span class="lv-dot"></span><b>LIVE</b><span><b class="lv-n" id="lvReg">0</b> dabei</span></div>
+    <div class="board" id="live" aria-live="polite"></div>
   </header>
   <main id="view"></main>
 </div>
 <div class="login" id="login"><div class="box">
-  <header><div class="suit" aria-hidden="true">♠</div><h1>me2room</h1><p>Ein Tisch, ein Turnier, jeden Abend</p></header>
+  <header class="lg-hd"><div class="suit" aria-hidden="true">♠</div><h1 class="neon neon-big" aria-label="me2room"><span class="nx">me</span><span class="nchip" aria-hidden="true"><span>2</span></span><span class="nx">room</span></h1><div class="lg-suits" aria-hidden="true"><span>♠</span><span class="r">♥</span><span class="r">♦</span><span>♣</span></div></header>
   <div id="loginbody"></div>
 </div></div>
 <nav class="tabs" aria-label="Bereiche"><div>
@@ -382,10 +545,14 @@ const ERINNERUNG_UM = "16:00";  // Uhrzeit der WhatsApp-Erinnerung am Spieltag
 
 const HOST_MAX=5, SEATS=10, GUESTS_PER_HOST=1, DAYS=14;
 const VARIANTS=["Texas Hold’em","Omaha"];
+const BLINDS=["1er Blind","2er Blind","4er Blind","5er Blind","10er Blind","25er Blind","50er Blind","100er Blind"];   // Start-Blind
+const LEVELS=[10,15,20,30];                                    // Blinds steigen alle … Minuten
+const blindOf=d=>BLINDS[d.blind??1], lvlOf=d=>d.lvl||20;
+const turnierTxt=d=>`${VARIANTS[d.variant]} · ${d.start} Uhr · ${blindOf(d)}`;
 const SUMMER_START=SOMMER_START;
 const STARTS=[...new Set([WINTER_START,SUMMER_START,"18:00","19:00","20:00","21:00"])].sort();
 const PLACE_PTS=[12,9,7,5,4,3,2,2,1,1];          // Turnierplätze 1–10 (Spieler-Rangliste)
-const PLANER_PT=10, GUEST_PT=5;                  // Planer-Rangliste: Abend übernommen, Gast war da
+const PLANER_PT=10, GUEST_PT=5;                  // Gastgeber-Rangliste: Abend übernommen, Gast war da
 const BONUS_MAX=5;                               // Anwesenheit: 1 Punkt je Stunde, höchstens 5
 // Sommerzeit automatisch erkennen: Im Sommer ist die Zeitverschiebung kleiner als im Winter
 const stdOffset=y=>Math.max(new Date(y,0,1).getTimezoneOffset(),new Date(y,6,1).getTimezoneOffset());
@@ -410,14 +577,22 @@ let ME=null, VERSION=0, ADMIN=null;
 // Mitglieder kommen aus dem Speicher. Intern ist m = Nummer - 1.
 let members=[]; const MEM={};
 function setMembers(list){
-  members=list.map(x=>({id:x.nr-1,name:x.nickname||("Neu "+String(x.nr).padStart(3,"0")),since:x.since,lead:x.lead,reg:!!x.nickname}));
+  members=list.map(x=>({id:x.nr-1,name:x.nickname||String(x.nr).padStart(3,"0"),since:x.since,lead:x.lead,reg:!!x.nickname}));
   Object.keys(MEM).forEach(k=>delete MEM[k]); members.forEach(m=>MEM[m.id]=m);
 }
 const nm=m=>MEM[m]?MEM[m].name:"#"+String(m+1).padStart(3,"0");
 const ini=m=>nm(m).split(" ").map(x=>x[0]).join("").slice(0,2).toUpperCase();
 const no=m=>"#"+String(m+1).padStart(3,"0");
-const byNum=n=>(Number.isInteger(n)&&n>=1&&n<=999&&MEM[n-1])?n-1:null;
-const guestField=()=>`<label>Nummer deines Gastes (1–999)<input id="fguest" class="search" inputmode="numeric" placeholder="z. B. 42"></label><p class="empty" id="fguestname" style="margin:0">Leer lassen, wenn du den Gast später einträgst. Neuer Interessent ohne Nummer: 000 eingeben.</p>`;
+const MAXNR=888;                                  // Spieler-Nummern 001 bis 888
+const GEBER_MIN=901, GEBER_MAX=999;               // Kartengeber-Nummern 901 bis 999
+const isGeber=m=>m!=null&&m+1>=GEBER_MIN;
+const byGeber=n=>(Number.isInteger(n)&&n>=GEBER_MIN&&n<=GEBER_MAX&&MEM[n-1])?n-1:null;
+const dreq=d=>{const q=d.dreq||(d.dreq=[]);for(let i=0;i<q.length;i++)if(typeof q[i]==="number")q[i]={m:q[i],at:0};return q};
+const dreqHas=(d,m)=>dreq(d).some(x=>x.m===m);
+const dreqSorted=d=>dreq(d).filter(x=>MEM[x.m]).slice().sort((a,b)=>(a.at||0)-(b.at||0));
+const whenTxt=ts=>{if(!ts)return "früher";const t=new Date(ts);return `${t.getDate()}.${t.getMonth()+1}. um ${pad(t.getHours())}:${pad(t.getMinutes())} Uhr`};
+const byNum=n=>(Number.isInteger(n)&&((n>=1&&n<=MAXNR)||(n>=901&&n<=999))&&MEM[n-1])?n-1:null;
+const guestField=()=>`<label>Nummer deines Gastes (1–888)<input id="fguest" class="search" inputmode="numeric" placeholder="z. B. 42"></label><p class="empty" id="fguestname" style="margin:0">Leer lassen, wenn du den Gast später einträgst. Neuer Interessent ohne Nummer: 000 eingeben.</p>`;
 const pad=n=>String(n).padStart(2,"0");
 const key=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const today=new Date(); today.setHours(0,0,0,0);
@@ -439,7 +614,7 @@ function monthCal(sel){
     const run=u>=6, done=d.result&&d.result.done;
     h+=`<button class="cal-d${run?" run":""}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
   }
-  h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>Planer</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg lg-run"></i>Runde findet statt (ab 6)</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span></p></div>`;
+  h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg lg-run"></i>Runde findet statt (ab 6)</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span></p></div>`;
   return h;
 }
 // Ranglisten laufen pro Monat (Schlüssel "JJJJ-MM")
@@ -533,17 +708,17 @@ function promote(k){
 const st0=m=>S.stats[m]=S.stats[m]||{wins:0,nights:0,hosted:0};
 let AWARD_MON=curMon; // Monat des Abends, für den gerade Punkte vergeben werden
 const addPts=(m,p)=>{const o=S.points[AWARD_MON]||(S.points[AWARD_MON]={});o[m]=(o[m]||0)+p;st0(m)};      // Spieler-Rangliste
-const addPPts=(m,p)=>{const o=S.ppoints[AWARD_MON]||(S.ppoints[AWARD_MON]={});o[m]=(o[m]||0)+p;st0(m)};  // Planer-Rangliste
+const addPPts=(m,p)=>{const o=S.ppoints[AWARD_MON]||(S.ppoints[AWARD_MON]={});o[m]=(o[m]||0)+p;st0(m)};  // Gastgeber-Rangliste
 const att=d=>d.att||(d.att={});
 const isPresent=(d,m)=>!!(d.att&&d.att[m]&&d.att[m].in);
 function award(k){
   // Turnierplätze: nur die ersten 10 bekommen Punkte (Spieler-Rangliste)
   const d=S.days[k], order=d.result.out, n=order.length; AWARD_MON=k.slice(0,7);
   order.forEach((m,i)=>{const place=n-i;if(place<=10)addPts(m,PLACE_PTS[place-1]);S.stats[m].nights++;if(place===1)S.stats[m].wins++});
-  // Planer: 10 Punkte, +5 wenn der eigene Gast wirklich da war (Planer-Rangliste)
+  // Gastgeber: 10 Punkte, +5 wenn der eigene Gast wirklich da war (Gastgeber-Rangliste)
   d.hosts.forEach(h=>{st0(h.m);S.stats[h.m].hosted=(S.stats[h.m].hosted||0)+1});
   d.wait.forEach(m=>{st0(m);S.stats[m].nights++});
-  log(`Turnier beendet – Sieger ${nm(order[n-1])}. Punkte für ${Math.min(n,10)} Spieler und ${d.hosts.length} Planer gutgeschrieben`);
+  log(`Turnier beendet – Sieger ${nm(order[n-1])}. Punkte für ${Math.min(n,10)} Spieler und ${d.hosts.length} Gastgeber gutgeschrieben`);
 }
 // Anwesenheits-Bonus: je volle Stunde 1 Punkt, höchstens 5 (ab 5 Stunden)
 const bonusFor=a=>{if(!a||!a.in)return 0;const h=Math.floor(((a.out||Date.now())-a.in)/3600000);return Math.max(0,Math.min(BONUS_MAX,h))};
@@ -560,11 +735,11 @@ const remindTs=k=>new Date(`${k}T${ERINNERUNG_UM}:00`).getTime();
 function remindText(k,d,m){
   const r=roleOf(d,m), first=nm(m).split(" ")[0];
   let role="";
-  if(r&&r.r==="host") role=`Du bist Planer und sitzt auf Platz ${r.h.seat+1}.`;
+  if(r&&r.r==="host") role=`Du bist Gastgeber und sitzt auf Platz ${r.h.seat+1}.`;
   else if(r&&r.r==="guest") role=`Du sitzt auf Platz ${r.h.gseat+1} (Gast von ${nm(r.h.m)}).`;
   else if(r&&r.r==="player") role=`Du sitzt auf Platz ${r.p.seat+1}.`;
   else if(r&&r.r==="dealer") role=`Du bist heute der Geber.`;
-  const lines=[`Hallo ${first}, heute ist Pokerabend bei Bes2Play ♠`,"",`${VARIANTS[d.variant]} · Start ${d.start} Uhr`,role];
+  const lines=[`Hallo ${first}, heute ist Pokerabend bei Bes2Play ♠`,"",`${VARIANTS[d.variant]} · Start ${d.start} Uhr · ${blindOf(d)}`,role];
   if(hasDealer(d)&&d.dealer!==m) lines.push(`Geber: ${no(d.dealer)} ${nm(d.dealer)}`);
   lines.push("Goldene Meile, Bad Breisig","","Falls du nicht kommen kannst, sag bitte in me2room ab. Dann rückt jemand von der Warteliste nach.");
   return lines.join("\n");
@@ -575,7 +750,7 @@ function remindTick(){
   const r=recips(d);
   if(!d.remind){
     d.remind=r.slice();
-    S.feed.unshift({t:ERINNERUNG_UM,x:`WhatsApp-Erinnerung für heute an ${persons(r.length)} am Tisch verschickt (Planer, Gäste${hasDealer(d)?", Geber":""})`});
+    S.feed.unshift({t:ERINNERUNG_UM,x:`WhatsApp-Erinnerung für heute an ${persons(r.length)} am Tisch verschickt (Gastgeber, Gäste${hasDealer(d)?", Geber":""})`});
     S.feed=S.feed.slice(0,12); return true;
   }
   if(startedDay(k,d)) return false;
@@ -605,6 +780,7 @@ function dealerSVG(cx,cy,ry,dealer){
   s+=`<rect x="${cx-19}" y="${top+11}" width="38" height="12" rx="2" fill="var(--rim)" stroke="var(--ringled)" stroke-width="1" opacity=".85"/>`;
   for(let i=1;i<8;i++) s+=`<line x1="${cx-19+i*4.75}" y1="${top+13}" x2="${cx-19+i*4.75}" y2="${top+21}" stroke="var(--ringled)" stroke-width=".7" opacity=".45"/>`;
   s+=`<line x1="${cx-28}" y1="${top+31}" x2="${cx+28}" y2="${top+31}" stroke="var(--ringled)" stroke-width="1" opacity=".4"/>`;
+  s+=`<g data-dchair="1" class="dchair" role="button" tabindex="0" aria-label="Geberstuhl">`;
   if(dealer!=null){
     s+=`<g><title>Geber ${no(dealer)} ${nm(dealer)}</title><rect x="${cx-17}" y="${top-34}" width="34" height="26" rx="8" fill="var(--slat)" stroke="var(--brass)" stroke-width="2"/>`;
     s+=`<text x="${cx}" y="${top-25}" text-anchor="middle" font-size="6.5" font-weight="700" fill="var(--on-felt)" opacity=".8">Geber</text>`;
@@ -612,7 +788,11 @@ function dealerSVG(cx,cy,ry,dealer){
   }else{
     s+=`<rect x="${cx-17}" y="${top-34}" width="34" height="26" rx="8" fill="var(--slat)" stroke="var(--ringled)" stroke-width="1.5" opacity=".95"/>`;
     s+=`<text x="${cx}" y="${top-17}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--on-felt)">Geber</text>`;
+    const d=S.days[S.sel], nq=d?dreq(d).length:0, mine=d&&dreqHas(d,S.me);
+    if(mine) s+=`<rect x="${cx-19}" y="${top-36}" width="38" height="30" rx="9" fill="none" stroke="#4D8DFF" stroke-width="2"/>`;
+    if(nq) s+=`<circle cx="${cx+17}" cy="${top-34}" r="8" fill="#3B7BFF"/><text x="${cx+17}" y="${top-30.5}" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">${nq}</text>`;
   }
+  s+=`<rect x="${cx-22}" y="${top-40}" width="44" height="36" fill="transparent"/></g>`;
   return s;
 }
 function tableSVG(d){
@@ -624,7 +804,7 @@ function tableSVG(d){
   const picking=openForm==="host", r0=roleOf(d,S.me), canSeat=!startedDay(S.sel,d)&&(!r0||r0.r==="wait");
   if(openForm==="seat"&&pick.mine!=null) seats[pick.mine]={pick:"h"};
   if(picking){if(pick.mine!=null)seats[pick.mine]={pick:"h"};if(pick.guest!=null)seats[pick.guest]={pick:"g"}}
-  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}">`;
+  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}"><defs><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-14}" ry="${ry-14}" fill="var(--rim)"/><ellipse cx="${cx}" cy="${cy}" rx="${rx-19}" ry="${ry-19}" fill="none" stroke="var(--ringled)" stroke-width="3" opacity=".9"/>`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-24}" ry="${ry-24}" fill="var(--cloth)"/><rect x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="none" stroke="var(--ringled)" stroke-width="2" opacity=".35"/>`;
   s+=dealerSVG(cx,cy,ry,hasDealer(d)?d.dealer:null);
@@ -632,12 +812,14 @@ function tableSVG(d){
   for(let i=0;i<SEATS;i++){const a=(-58+i*296/(SEATS-1))*Math.PI/180;s+=`<text class="seatno" x="${(cx+Math.cos(a)*(rx-36)).toFixed(1)}" y="${(cy+Math.sin(a)*(ry-35)+3.5).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ringled)" opacity=".7" aria-hidden="true">${i+1}</text>`}
   s+=`<text x="${cx}" y="${cy-6}" text-anchor="middle" font-family="Zilla Slab,serif" font-weight="700" font-size="30" fill="var(--on-felt)">${used(d)}/${SEATS}</text>`;
   s+=`<text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="12" fill="var(--on-felt)" opacity=".85">${VARIANTS[d.variant]} · ${d.start} Uhr</text>`;
-  s+=`<text x="${cx}" y="${cy+32}" text-anchor="middle" font-size="11" fill="var(--on-felt)" opacity=".7">${d.hosts.length}/${HOST_MAX} Planer</text>`;
+  { const ns=Object.keys(d.sugg||{}).length;
+    s+=`<text x="${cx}" y="${cy+32}" text-anchor="middle" font-size="11" fill="var(--on-felt)" opacity=".8">${blindOf(d)} · <tspan fill="${d.tlock?"#F2B35E":"#8DB6FF"}">${d.tlock?"🔒 steht fest":"✎ "+(ns?ns+" Stimmen":"abstimmen")}</tspan></text>`;
+    s+=`<rect data-tcenter="1" class="tcenter" x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="transparent" role="button" tabindex="0" aria-label="Spiel, Uhrzeit und Blind wählen"/>`; }
   pos.forEach(([x,y],i)=>{
     const st=seats[i], free=!st||(st.res&&st.h.release);
     const tap=(picking||canSeat)&&(!st||st.pick)?` data-seat="${i}" role="button" tabindex="0" aria-label="Platz ${i+1} ${st?"abwählen":"wählen"}" style="cursor:pointer"`:` data-seatx="${i}" style="cursor:pointer"`;
     if(free) s+=`<g class="seat seat-f"${tap}><circle class="halo" cx="${x}" cy="${y}" r="23" fill="var(--stop)"/><circle class="fcore" cx="${x}" cy="${y}" r="17" fill="var(--stop)"/>${(picking||canSeat)&&!st?`<circle cx="${x}" cy="${y}" r="20.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>`:""}<text x="${x}" y="${y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--stop-ink)">frei</text></g>`;
-    else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"Gast")}</g>`}
+    else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}><circle class="pickglow" cx="${x}" cy="${y}" r="24" fill="${hh?"var(--host)":"var(--guest)"}" opacity=".45" filter="url(#pg)"/>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"Gast")}</g>`}
     else if(st.res) s+=`<g class="seat seat-g" opacity=".8">${chipSVG(x,y,"var(--guest)","var(--guest-ink)","Gast")}</g>`;
     else{const hh=st.k==="h",pp=st.k==="p";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
   });
@@ -678,7 +860,7 @@ function tournamentBlock(d,k){
     const n=r.out.length, rows=[...r.out].reverse().map((m,i)=>`<tr><td>${i+1}. ${nm(m)}</td><td>+${i<10?PLACE_PTS[i]:0}</td></tr>`).join("");
     return `<h3>Ergebnis</h3><table class="ptable">${rows}</table>`;
   }
-  if(!canRun) return `<p class="lounge">Nach dem Turnier trägt ein Planer das Ergebnis ein, die Punkte werden automatisch vergeben.</p>`;
+  if(!canRun) return `<p class="lounge">Nach dem Turnier trägt ein Gastgeber das Ergebnis ein, die Punkte werden automatisch vergeben.</p>`;
   if(!r) return `<div class="actions"><button class="btn btn-main" data-act="startT">Turnier starten</button></div>`;
   const left=ps.filter(m=>!r.out.includes(m));
   return `<h3>Turnier läuft – wer ist ausgeschieden?</h3><p class="empty">Tippe die Spieler in der Reihenfolge an, in der sie ausscheiden. Noch ${left.length} im Spiel.</p>
@@ -688,30 +870,103 @@ function tournamentBlock(d,k){
 
 function dealerForm(d){
   const set=hasDealer(d);
-  return `<div class="form"><label>${set?"Anderen Geber eintragen":"Geber eintragen"} – Mitgliedsnummer (1–999)<input id="dealerin" class="search" inputmode="numeric" placeholder="z. B. 7" autocomplete="off"></label><p class="empty" id="dealerinname" style="margin:0">Der Geber sitzt auf dem Geberstuhl und zählt nicht zu den 10 Plätzen.</p><button class="btn btn-brass" data-act="setDealer">Geber eintragen</button>${set?`<button class="btn btn-line" data-act="clearDealer">Geber austragen</button>`:""}</div>`;
+  return `<div class="hc-body"><input id="dealerin" class="search" inputmode="numeric" placeholder="Nummer des Kartengebers, z. B. 901" autocomplete="off" aria-label="Nummer des Kartengebers"><p class="hc-hint" id="dealerinname"></p><button class="btn btn-brass" data-act="setDealer">${set?"Anderen Kartengeber eintragen":"Kartengeber eintragen"}</button>${set?`<button class="btn btn-line" data-act="clearDealer">Kartengeber austragen</button>`:""}</div>`;
 }
 function dealerCheck(v,d){
-  if(v==="") return {ok:false,msg:"Der Geber sitzt auf dem Geberstuhl und zählt nicht zu den 10 Plätzen."};
+  if(v==="") return {ok:false,msg:""};
   if(/^0+$/.test(v)) return {ok:false,msg:"000 geht hier nicht. Der Geber braucht eine feste Mitgliedsnummer."};
-  const g=byNum(+v);
-  if(g==null) return {ok:false,msg:"Keine gültige Mitgliedsnummer"};
+  const g=byGeber(+v);
+  if(g==null) return {ok:false,msg:"Keine gültige Kartengeber-Nummer (901–999)"};
   if(players(d).includes(g)) return {ok:false,msg:`${no(g)} ${nm(g)} sitzt schon als Spieler am Tisch`};
   return {ok:true,g,msg:`${no(g)} ${nm(g)}`};
 }
 
+// Kartengeber-Ansicht: anfragen statt Platz nehmen
+function geberActions(d,k,started){
+  const me=S.me, asked=dreq(d).includes(me);
+  if(d.result&&d.result.done) return d.dealer===me?`<p class="empty" style="margin:0">Hier hast du Karten gegeben. Danke!</p>`:"";
+  if(d.dealer===me) return `<p class="empty" style="color:var(--ink);font-weight:600;margin:0">Du bist an diesem Abend Kartengeber. Start ${d.start} Uhr.</p>${started?"":`<button class="btn btn-stop" data-act="geberCancel">Absagen</button>`}`;
+  if(hasDealer(d)) return `<p class="empty" style="margin:0">Für diesen Abend gibt es schon einen Kartengeber.</p>`;
+  if(started) return `<p class="empty" style="margin:0">Dieser Abend hat schon begonnen.</p>`;
+  if(asked) return `<p class="empty" style="color:var(--ink);font-weight:600;margin:0">Anfrage gesendet ✓ Ein Gastgeber oder der Vorstand sagt dir zu.</p><button class="btn btn-line" data-act="geberReq">Anfrage zurückziehen</button>`;
+  return `<p class="empty" style="margin:0">${active(d)?`Am Tisch sitzen schon ${used(d)} Spieler.`:"Noch keine Spieler eingetragen."}</p><button class="btn btn-brass" data-act="geberReq">Als Kartengeber anfragen</button><p class="empty" style="margin:0">Als Kartengeber nimmst du keinen Platz am Tisch, du sitzt auf dem Geberstuhl.</p>`;
+}
+// Turnier-Felder (Spiel, Beginn, Start-Blind) – modern und kompakt
+function tourFields(px,v,st,bl){
+  return `<input type="hidden" id="${px}var" value="${v}">
+  <div class="tf"><span class="tf-l">Spiel</span><div class="seg">${VARIANTS.map((x,i)=>`<button type="button" data-fv="${i}" data-fvt="${px}" aria-pressed="${i===+v}">${x}</button>`).join("")}</div></div>
+  <div class="tf-2">
+    <label class="tf"><span class="tf-l">Beginn</span><select id="${px}start">${STARTS.map(t=>`<option value="${t}" ${t===st?"selected":""}>${t} Uhr</option>`).join("")}</select></label>
+    <label class="tf"><span class="tf-l">Start-Blind</span><select id="${px}blind">${BLINDS.map((b,i)=>`<option value="${i}" ${i===+bl?"selected":""}>${b}</option>`).join("")}</select></label>
+  </div>`;
+}
+const canDecide=d=>!!(ME&&ME.admin);   // nur der Vorstand legt fest
+const VOTE_WIN=6;   // ab so vielen gleichen Stimmen wird das Spiel automatisch festgelegt
+const sugKey=x=>`${x.v}|${x.st}|${x.bl}`;
+function tourCard(d,k){
+  if(openForm!=="tour") return "";
+  const admin=!!(ME&&ME.admin), dec=canDecide(d), lock=d.tlock, my=(d.sugg||{})[S.me];
+  const cur=my||{v:d.variant,st:d.start,bl:d.blind??1};
+  const groups={}; Object.entries(d.sugg||{}).forEach(([m,x])=>{const kk=sugKey(x);(groups[kk]=groups[kk]||{x,ms:[]}).ms.push(+m)});
+  const list=Object.values(groups).sort((a,b)=>b.ms.length-a.ms.length);
+  const lab=x=>`${VARIANTS[x.v]} · ${x.st} Uhr · ${BLINDS[x.bl]}`;
+  const now=lab({v:d.variant,st:d.start,bl:d.blind??1});
+  let h=`<section class="panel hostcard tourcard" id="tourcard"><div class="hc-head"><h3>♠ Turnier</h3><span class="hc-date glow-g">${dateLabel(k)}</span></div>`;
+  if(lock){
+    h+=`<div class="hc-info lockinfo">🔒 ${now}<span class="hc-sub">${lock.by==="vote"?"Entschieden durch Abstimmung":"Festgelegt vom Vorstand"} – steht fest.</span></div>`;
+    if(admin) h+=`${tourFields("t",d.variant,d.start,d.blind??1)}<button class="btn btn-brass" data-act="tourSet">Ändern und sperren</button><button class="btn btn-line" data-act="tourUnlock">Abstimmung wieder öffnen</button>`;
+    return h+`</section>`;
+  }
+  h+=`<div class="hc-info">${now}</div>`;
+  h+=tourFields("t",cur.v,cur.st,cur.bl);
+  h+=my?`<div class="btn-pair"><button class="btn btn-host" data-act="tourSugg">Vorschlag ändern</button><button class="btn btn-line" data-act="tourUnsugg">Zurückziehen</button></div>`:`<button class="btn btn-host" data-act="tourSugg">Vorschlag abgeben</button>`;
+  if(dec) h+=`<button class="btn btn-brass" data-act="tourSet">Festlegen und sperren</button>`;
+  h+=list.length?`<p class="tf-l" style="margin:4px 0 0">Vorschläge</p>${list.map(g=>{const n=g.ms.length,pct=Math.min(100,Math.round(n/VOTE_WIN*100));return `<div class="sg-row"><div class="grow"><b>${lab(g.x)}</b><div class="vbar"><i style="width:${pct}%"></i></div><span>${n} von ${VOTE_WIN} Stimmen${admin?" · "+g.ms.map(m=>no(m)).join(", "):""}</span></div>${dec?`<button class="btn btn-host sg-take" data-act="tourTake" data-key="${sugKey(g.x)}">Übernehmen</button>`:""}</div>`}).join("")}`:"";
+  return h+`</section>`;
+}
+function hostCard(d){
+  if(openForm!=="host") return "";
+  const first=!active(d);
+  const chip=(l,v,c)=>`<div class="hc-chip ${c}${v?" on":""}"><span>${l}</span><b>${v?"Platz "+v:"–"}</b></div>`;
+  return `<section class="panel hostcard" id="hostcard"><div class="hc-head"><h3>Gastgeber mit Gast</h3><span class="hc-date">${dateLabel(S.sel)}</span></div>
+  <div class="hc-seats">${chip("Gastgeber",pick.mine!=null?pick.mine+1:0,"h")}${chip("Gast",pick.guest!=null?pick.guest+1:0,"g")}</div>
+  ${pick.guest==null?`<p class="hc-hint">Tippe oben am Tisch einen zweiten roten Platz für deinen Gast.</p>`:""}
+  <div class="hc-info">${VARIANTS[d.variant]} · ${d.start} Uhr · ${blindOf(d)}<span class="hc-sub">Abstimmen: Tischmitte antippen</span></div>
+  <label class="tf"><span class="tf-l">Nummer deines Gastes</span><input id="fguest" class="search" inputmode="numeric" placeholder="z. B. 042 – oder leer lassen"></label>
+  <p class="hc-hint" id="fguestname">Neuer Interessent ohne Nummer: 000 eingeben.</p>
+  <button class="btn btn-host" data-act="host">Plätze reservieren</button></section>`;
+}
+// Turnier einstellen: Spiel, Uhrzeit, Blinds (erster Gastgeber oder Vorstand)
+function setupForm(d){
+  return `<details class="setup"><summary>⚙ Turnier einstellen <span>${VARIANTS[d.variant]} · ${d.start} · ${blindOf(d)}</span></summary><div class="hc-body">
+  ${tourFields("s",d.variant,d.start,d.blind??1)}
+  <button class="btn btn-brass" data-act="saveSetup">Speichern</button>
+  <p class="hc-hint">Das sehen alle am Tisch. Bitte nur ändern, wenn alle Bescheid wissen.</p></div></details>`;
+}
+// Vormerken: Restzeit bis zum Spielbeginn
+function mkLeft(t){const ms=t-Date.now();if(ms<=0)return "0:00:00";const s=Math.floor(ms/1000),dd=Math.floor(s/86400),hh=Math.floor(s%86400/3600),mm=Math.floor(s%3600/60),ss=s%60;return (dd?`${dd} ${dd===1?"Tag":"Tage"} `:"")+`${pad(hh)}:${pad(mm)}:${pad(ss)}`}
+setInterval(()=>document.querySelectorAll(".mk-timer").forEach(el=>{el.textContent=mkLeft(+el.dataset.t)}),1000);
+// Vormerken: kleiner blauer Knopf direkt unter dem Datum
+function markBtn(k,d,mine){
+  if(mine||(d.result&&d.result.done)||startedDay(k,d)) return "";
+  const on=d.interest.includes(S.me);
+  return `<div class="mk-row"><button type="button" class="mark3${on?" on":""}" data-act="interest" aria-pressed="${on}" aria-label="${on?"Vorgemerkt – tippen zum Entfernen":"Vormerken – keine feste Zusage"}" title="${on?"Vorgemerkt – tippen zum Entfernen":"Keine feste Zusage – vielleicht kann ich"}"><span class="m3-i" aria-hidden="true">★</span><span class="m3-t">${on?`Vorgemerkt · noch <b class="mk-timer" data-t="${startTs(k,d)}">${mkLeft(startTs(k,d))}</b>`:"Vormerken"}</span></button></div>`;
+}
 function viewKalender(){
   const k=S.sel, d=S.days[k], st=status(d), mine=roleOf(d,S.me), full=used(d)>=SEATS, locked=d.result;
   let h="";
-  h+=`<section class="panel" id="event"><div class="ptitle"><h2>${dateLabel(k)}</h2><span class="badge ${st.c}">${st.t}</span></div>${active(d)?countdownHTML(k,d):""}`;
+  h+=`<section class="panel" id="event"><div class="ptitle"><h2>${dateLabel(k)}</h2><span class="badge ${st.c}">${st.t}</span></div>${markBtn(k,d,mine)}${active(d)?countdownHTML(k,d):""}`;
   if(active(d)){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
-    h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Planer</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
+    h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
     h+=`<div class="count"><span><b>${SEATS-used(d)}</b> Plätze frei</span></div>`;
     if(hasDealer(d)) h+=`<p class="dealerline">Geber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
     h+=seatSheet(d);
-    h+=`<div class="waitcount" aria-label="${d.wait.length} im Wartebereich"><span>Wartebereich</span><b>${d.wait.length}</b></div>`;
+    const wc=`<div class="waitcount" aria-label="${d.wait.length} im Wartebereich"><span>Wartebereich</span><b>${d.wait.length}</b></div>`;
+    const smallCancel=mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done);
+    h+=smallCancel?`<div class="wc-row">${wc}<button class="btn-cancel" data-act="leave">Absagen</button></div>`:wc;
   }else{
-    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Planer</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
+    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
     h+=seatSheet(d);
   }
   h+=`<div class="actions">`;
@@ -720,33 +975,31 @@ function viewKalender(){
   else if(started){
     if(!active(d)) h+=`<p class="empty">An diesem Abend läuft kein Turnier.</p>`;
     else if(mine&&mine.r==="wait"){const p=d.wait.indexOf(S.me)+1;h+=`<div class="waitpos"><span>Du stehst auf der Warteliste</span><b>Platz ${p}</b><span class="s">${p===1?"Du rückst als Nächstes nach.":`Vor dir ${p-1===1?"steht 1 Person":"stehen "+(p-1)+" Personen"}.`}</span></div><button class="btn btn-line" data-act="leave">Von der Warteliste austragen</button>`}
-    else if(mine) h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${mine.r==="host"?"Du bist Planer":mine.r==="dealer"?"Du bist heute Geber":"Du sitzt am Tisch"}.</p>`;
+    else if(mine) h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${mine.r==="host"?"Du bist Gastgeber":mine.r==="dealer"?"Du bist heute Geber":"Du sitzt am Tisch"}.</p>`;
     else h+=`<button class="btn btn-main" data-act="wait">Auf die Warteliste eintragen</button>`;
   }
   else if(mine){
-    const txt=mine.r==="host"?"Du bist Planer":mine.r==="player"?`Du sitzt als Gast auf Platz ${mine.p.seat+1}`:mine.r==="guest"?`Du sitzt am Tisch (Gastplatz von ${nm(mine.h.m)})`:mine.r==="dealer"?"Du bist an diesem Abend Geber":`Du bist im Wartebereich, Platz ${d.wait.indexOf(S.me)+1}`;
-    h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${txt}.</p>`;
-    if(mine.r==="host"&&!mine.h.guests.length&&!mine.h.release) h+=`<div class="form"><label>Gast eintragen – Mitgliedsnummer (1–999)<input id="myguest" class="search" inputmode="numeric" placeholder="z. B. 42"></label><p class="empty" id="myguestname" style="margin:0">Neuer Interessent ohne Nummer: 000 eingeben.</p><button class="btn btn-brass" data-act="addGuest">Gast eintragen</button><button class="btn btn-line" data-act="release">Gastplatz an Warteliste freigeben</button></div>`;
-    h+=`<button class="btn btn-stop" data-act="leave">Absagen</button>`;
+    const txt=mine.r==="host"?"Du bist Gastgeber":mine.r==="player"?`Du sitzt als Gast auf Platz ${mine.p.seat+1}`:mine.r==="guest"?`Du sitzt am Tisch (Gastplatz von ${nm(mine.h.m)})`:mine.r==="dealer"?"Du bist an diesem Abend Geber":`Du bist im Wartebereich, Platz ${d.wait.indexOf(S.me)+1}`;
+    if(mine.r==="wait") h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${txt}.</p>`;
+    if(mine.r==="host"&&!mine.h.guests.length&&!mine.h.release) h+=`<div class="form"><label>Gast eintragen – Mitgliedsnummer (1–888)<input id="myguest" class="search" inputmode="numeric" placeholder="z. B. 42"></label><p class="empty" id="myguestname" style="margin:0">Neuer Interessent ohne Nummer: 000 eingeben.</p><button class="btn btn-brass" data-act="addGuest">Gast eintragen</button><button class="btn btn-line" data-act="release">Gastplatz an Warteliste freigeben</button></div>`;
+    if(mine.r==="wait"||!active(d)) h+=`<button class="btn btn-stop" data-act="leave">${mine.r==="wait"?"Austragen":"Absagen"}</button>`;
   }else{
-    if(openForm!=="seat"&&openForm!=="host") h+=freeSeatList(d).length?`<p class="empty" style="margin:0;color:var(--ink)">Tippe am Tisch auf einen roten Platz, um dich anzumelden.</p>`:`<p class="empty" style="margin:0">Alle Plätze sind belegt.</p>`;
+    if(openForm!=="seat"&&openForm!=="host") h+=freeSeatList(d).length?"":`<p class="empty" style="margin:0">Alle Plätze sind belegt.</p>`;
     if(active(d)&&!freeSeatList(d).length) h+=`<button class="btn btn-main" data-act="wait">Auf die Warteliste eintragen</button>`;
-    if(openForm!=="seat"&&openForm!=="host"){
-      const on=d.interest.includes(S.me), n=d.interest.length;
-      h+=`<button class="mark2${on?" on":""}" data-act="interest" aria-pressed="${on}" title="${on?"Tippen zum Entfernen":"Keine feste Zusage – vielleicht kann ich"}" aria-label="${on?"Vorgemerkt, tippen zum Entfernen":"Vormerken, keine feste Zusage"}. ${n} vorgemerkt"><span class="m2-i">${on?"★":"☆"}</span><span class="m2-t">${on?"Vorgemerkt":"Vormerken"}</span><span class="m2-n">${n}</span></button>`;
-    }
+
   }
   h+=`</div>`;
-  if(mine&&mine.r==="host"&&!(locked&&locked.done)) h+=`<h3>Geber</h3>`+dealerForm(d);
-  if(openForm==="host"){
-    h+=active(d)
-      ?`<div class="form">${pickInfo()}<p class="empty" style="margin:0">Das Turnier steht schon: ${VARIANTS[d.variant]} ab ${d.start} Uhr.</p>${guestField()}<button class="btn btn-host" data-act="host">Plätze reservieren</button></div>`
-      :`<div class="form">${pickInfo()}<label>Variante<select id="fvar">${VARIANTS.map((p,i)=>`<option value="${i}">${p}</option>`).join("")}</select></label><label>Beginn<select id="fstart">${STARTS.map(t=>`<option ${t===defStart(new Date(S.sel+"T12:00"))?"selected":""}>${t}</option>`).join("")}</select></label>${guestField()}<button class="btn btn-host" data-act="host">Plätze reservieren</button></div>`;
-  }
+  const admin=!!(ME&&ME.admin), open=!(locked&&locked.done);
+  const dreqHTML=(admin&&open&&!hasDealer(d)&&dreqSorted(d).length)?dreqSorted(d).map((x,i)=>`<div class="sg-row"><div class="grow"><b>${i===0?"🥇 ":""}${no(x.m)} ${escH(nm(x.m))}</b><span>angefragt am ${whenTxt(x.at)}${i===0?" · zuerst":""}</span></div><div style="display:grid;gap:4px"><button class="btn btn-host sg-take" data-act="geberOk" data-m="${x.m}">Annehmen</button><button class="btn btn-line sg-take" data-act="geberNo" data-m="${x.m}">Ablehnen</button></div></div>`).join(""):"";
+  const showDealerForm=admin&&open;
+  const myReq=isGeber(S.me)&&open&&(dreqHas(d,S.me)||d.dealer===S.me);
   if(openForm==="guest") h+=`<div class="form"><label>Wessen Gastplatz nimmst du?</label><div class="chips">${freeGuestSlots(d).map(x=>`<button class="chip" data-act="guest" data-host="${x.m}">${nm(x.m)}</button>`).join("")}</div></div>`;
   h+=tournamentBlock(d,k);
   h+=attendanceBlock(d,k);
   h+=`</section>`;
+  h+=tourCard(d,k);
+  h+=hostCard(d);
+  if(dreqHTML||showDealerForm||myReq) h+=`<section class="panel dealercard"><div class="hc-head"><h3>🃏 Kartengeber</h3>${hasDealer(d)?`<span class="hc-date">${no(d.dealer)} ${escH(nm(d.dealer))}</span>`:`<span class="hc-date">noch keiner</span>`}</div>${myReq?(d.dealer===S.me?`<div class="hc-info">Du bist an diesem Abend Kartengeber.</div>`:`<div class="hc-info">Du bist nominiert ✓<span class="hc-sub">Der Vorstand entscheidet. Zurückziehen: Geberstuhl nochmal antippen.</span></div>`):""}${dreqHTML?`<p class="tf-l" style="margin:0">Anfragen (nach Zeit)</p>${dreqHTML}`:(admin&&!hasDealer(d)&&open?`<p class="hc-hint" style="margin:0">Noch keine Anfragen. Kartengeber tippen am Tisch auf den Geberstuhl.</p>`:"")}${showDealerForm?dealerForm(d):""}</section>`;
   h+=monthCal(k);
   if(ME&&ME.admin){
     h+=remindPanel(k,d);
@@ -803,7 +1056,7 @@ function viewRang(){
   const prevMon=(()=>{const d=new Date(today.getFullYear(),today.getMonth()-1,1);return `${d.getFullYear()}-${pad(d.getMonth()+1)}`})();
   const quarter=monLabel(mon);
   const myPos=list.indexOf(S.me);
-  const sub=m=>pl?`${S.stats[m]?.hosted||0}× Planer`:`${S.stats[m]?.nights||0} Abende · ${S.stats[m]?.wins||0}× Sieg`;
+  const sub=m=>pl?`${S.stats[m]?.hosted||0}× Gastgeber`:`${S.stats[m]?.nights||0} Abende · ${S.stats[m]?.wins||0}× Sieg`;
   const row=(m,i)=>`<div class="rank ${i<3?"top":""} ${m===S.me?"me":""}"><div class="pos">${i+1}</div><div class="av ${pl?"h":i<3?"h":"g"}">${ini(m)}</div><div><div style="font-weight:600">${no(m)} ${nm(m)}</div><div class="s" style="font-size:13px;color:var(--muted)">${sub(m)}</div></div><div class="pts">${P[m]}</div></div>`;
   let h=`<section class="panel"><div class="ptitle"><h2>Rangliste</h2><span class="badge b-plan">${quarter}</span></div>
   <div class="chips" style="margin:12px 0 6px"><button class="chip" data-rmon="${curMon}" aria-pressed="${mon===curMon}">${monLabel(curMon)}</button><button class="chip" data-rmon="${prevMon}" aria-pressed="${mon===prevMon}">${monLabel(prevMon)}</button></div>`;
@@ -813,18 +1066,9 @@ function viewRang(){
   h+=`<p class="lounge">Die Rangliste startet jeden Monat neu. Die Plätze 1 bis 3 bekommen Sachpreise.</p></section>`;
   h+=prizeBlock(mon,pl,list);
   h+=pl
-    ?`<section class="panel"><h3 style="margin-top:0">So gibt es Planer-Punkte</h3><table class="ptable"><tr><td>Abend als Planer übernommen</td><td>${PLANER_PT}</td></tr><tr><td>Dein Gast war wirklich da</td><td>+${GUEST_PT}</td></tr><tr><td>Anwesenheit: je volle Stunde</td><td>+1</td></tr><tr><td>Anwesenheit: ab 5 Stunden</td><td>+${BONUS_MAX}</td></tr></table></section>`
-    :`<section class="panel"><h3 style="margin-top:0">So gibt es Spieler-Punkte</h3><table class="ptable">${PLACE_PTS.map((p,i)=>`<tr><td>Platz ${i+1}</td><td>${p}</td></tr>`).join("")}<tr><td>Anwesenheit: je volle Stunde</td><td>+1</td></tr><tr><td>Anwesenheit: ab 5 Stunden</td><td>+${BONUS_MAX}</td></tr></table><p class="rmeta">Nur die ersten 10 Plätze bekommen Turnierpunkte. Die Anwesenheit tragen die Planer ein.</p></section>`;
+    ?`<section class="panel"><h3 style="margin-top:0">So gibt es Gastgeber-Punkte</h3><table class="ptable"><tr><td>Abend als Gastgeber übernommen</td><td>${PLANER_PT}</td></tr><tr><td>Dein Gast war wirklich da</td><td>+${GUEST_PT}</td></tr><tr><td>Anwesenheit: je volle Stunde</td><td>+1</td></tr><tr><td>Anwesenheit: ab 5 Stunden</td><td>+${BONUS_MAX}</td></tr></table></section>`
+    :`<section class="panel"><h3 style="margin-top:0">So gibt es Spieler-Punkte</h3><table class="ptable">${PLACE_PTS.map((p,i)=>`<tr><td>Platz ${i+1}</td><td>${p}</td></tr>`).join("")}<tr><td>Anwesenheit: je volle Stunde</td><td>+1</td></tr><tr><td>Anwesenheit: ab 5 Stunden</td><td>+${BONUS_MAX}</td></tr></table><p class="rmeta">Nur die ersten 10 Plätze bekommen Turnierpunkte. Die Anwesenheit tragen die Gastgeber ein.</p></section>`;
   return h;
-}
-
-function viewMeine(){
-  let rows="";
-  dates.forEach(dt=>{const k=key(dt),r=roleOf(S.days[k],S.me);if(r){
-    const t=r.r==="host"?`Planer · ${VARIANTS[S.days[k].variant]} ab ${S.days[k].start}`:r.r==="player"?`Gast · Platz ${r.p.seat+1} · ab ${S.days[k].start}`:r.r==="guest"?`Am Tisch (Gastplatz von ${nm(r.h.m)})`:r.r==="dealer"?`Geber · ab ${S.days[k].start}`:"Wartebereich";
-    rows+=`<div class="row"><div class="grow"><div style="font-weight:600">${dateLabel(k)}</div><div class="s">${t}</div></div><button class="btn btn-line" style="padding:8px 12px" data-day="${k}" data-goto="1">Ansehen</button></div>`;
-  }});
-  return `<section class="panel"><h2 style="font:700 22px 'Zilla Slab',serif;margin:0 0 8px">Meine Abende</h2>${rows||`<p class="empty">Du hast dich noch für keinen Abend eingetragen. Im Kalender siehst du, wo Plätze frei sind.</p>`}</section>`;
 }
 
 function viewProfil(){
@@ -833,38 +1077,29 @@ function viewProfil(){
   dates.forEach(dt=>{
     const k=key(dt), d=S.days[k], r=roleOf(d,m);
     if(!r||(d.result&&d.result.done)) return;
-    const t=r.r==="host"?`Planer · Platz ${r.h.seat+1}`:r.r==="player"?`Gast · Platz ${r.p.seat+1}`:r.r==="guest"?`Gast von ${nm(r.h.m)} · Platz ${r.h.gseat+1}`:r.r==="dealer"?"Geber":"Warteliste";
+    const t=r.r==="host"?`Gastgeber · Platz ${r.h.seat+1}`:r.r==="player"?`Gast · Platz ${r.p.seat+1}`:r.r==="guest"?`Gast von ${nm(r.h.m)} · Platz ${r.h.gseat+1}`:r.r==="dealer"?"Geber":"Warteliste";
     const started=startedDay(k,d);
     const cancel=!started?`<button class="btn btn-stop" data-act="leave" data-k="${k}">Absagen</button>`:r.r==="wait"?`<button class="btn btn-line" data-act="leave" data-k="${k}">Austragen</button>`:"";
     res+=`<div class="row pf-res"><div class="grow"><div style="font-weight:600">${dateLabel(k)}</div><div class="s">${t} · Start ${d.start} Uhr</div></div><div class="btns"><button class="btn btn-line" data-day="${k}" data-goto="1">Ansehen</button>${cancel}</div></div>`;
   });
   const stat=(v,l)=>`<div class="pf-stat"><b>${v}</b><span>${l}</span></div>`;
   return `<section class="panel"><div class="pf-head"><div class="pf-no">${no(m)}</div><div><h2>${nm(m)}</h2><div class="s">${mem.lead?"Interessent in Probezeit":"Mitglied seit "+mem.since}</div></div></div>
-  <div class="pf-stats">${stat(MP(curMon)[m]||0,"Spieler-Punkte")}${stat(pos>=0?pos+1:"–",pos>=0?`Platz Spieler-Rangliste`:"Noch nicht in der Spieler-Rangliste")}${stat(st.nights||0,"Abende dabei")}${stat(st.hosted||0,"Abende als Planer")}</div>
+  <div class="pf-stats">${stat(MP(curMon)[m]||0,"Spieler-Punkte")}${stat(pos>=0?pos+1:"–",pos>=0?`Platz Spieler-Rangliste`:"Noch nicht in der Spieler-Rangliste")}${stat(st.nights||0,"Abende dabei")}${stat(st.hosted||0,"Abende als Gastgeber")}</div>
   <p class="rmeta">Rangliste ${quarter}. Die anderen sehen nur deinen Spitznamen und deine Nummer.</p></section>
   <details class="panel rules"><summary>♣ So läuft’s</summary>${viewRegeln().replace(/^<section class="panel prose"><h2[^>]*>.*?<\/h2>/,'<div class="prose">').replace(/<\/section>$/,"</div>")}</details>`;
-}
-
-let q="";
-function viewCommunity(){
-  const list=members.filter(m=>m.name.toLowerCase().includes(q.toLowerCase())||String(m.id+1)===q.trim().replace("#","").replace(/^0+/,"")).slice(0,40);
-  return `<section class="panel"><div class="ptitle"><h2>Community</h2><span class="badge b-plan">${members.length} Mitglieder</span></div>
-  <p class="empty">Alle sehen nur Spitznamen und Nummern. Wer hinter einer Nummer steckt, weiß nur der Vorstand.</p>
-  <input class="search" id="q" placeholder="Name oder Nummer" value="${q}" aria-label="Mitglied suchen">
-  <div style="margin-top:8px">${list.map(m=>`<div class="row"><div class="av ${(MP(curMon)[m.id]||0)>40?"h":"g"}">${ini(m.id)}</div><div class="grow"><div style="font-weight:600">${no(m.id)} ${escH(m.name)}</div><div class="s">${m.lead?"Interessent in Probezeit":"Mitglied seit "+m.since} · ${MP(curMon)[m.id]||0} Punkte diesen Monat</div></div></div>`).join("")}</div></section>`;
 }
 
 function viewRegeln(){
   return `<section class="panel prose"><h2 style="font:700 22px 'Zilla Slab',serif;margin:0 0 10px">So läuft’s</h2>
   <p>Jeden Abend ein Pokerturnier an einem Tisch mit 10 Plätzen. Jeder Abend ist eine Mitgliedsveranstaltung von Bes2Play.</p>
   <ol>
-    <li>Bis zu 5 Mitglieder übernehmen den Abend als Planer. Der erste legt Variante und Startzeit fest. Im Winter beginnt das Turnier um ${WINTER_START} Uhr, im Sommer um ${SUMMER_START} Uhr.</li>
-    <li>Tippe auf einen freien roten Platz und wähle: als Gast oder als Planer mit Gast.</li>
-    <li>Als Planer reservierst du zwei Plätze am Tisch, die du selbst aussuchst: einen für dich und einen für deinen Gast. Den Gast trägst du mit seiner Mitgliedsnummer (1–999) ein. So sitzen höchstens 10 Personen am Tisch.</li>
-    <li>Ein Planer trägt den Geber mit seiner Mitgliedsnummer ein. Der Geber hat seinen eigenen Stuhl und zählt nicht zu den 10 Plätzen.</li>
-    <li>Alle anderen Mitglieder dürfen trotzdem kommen: Sie sind im Wartebereich, spielen Konsole oder Gesellschaftsspiele und rücken automatisch nach, wenn ein Planer seinen Gastplatz freigibt oder absagt.</li>
-    <li>Nach dem Turnier trägt ein Planer ein, wer wann ausgeschieden ist. Die ersten 10 bekommen sofort Punkte in der Spieler-Rangliste.</li>
-    <li>Die Planer tragen ein, wer kommt und wer geht. Je volle Stunde gibt es 1 Bonuspunkt, ab 5 Stunden ${BONUS_MAX} Punkte.</li>  </ol>
+    <li>Bis zu 5 Mitglieder übernehmen den Abend als Gastgeber. Der erste legt Variante und Startzeit fest. Im Winter beginnt das Turnier um ${WINTER_START} Uhr, im Sommer um ${SUMMER_START} Uhr.</li>
+    <li>Tippe auf einen freien roten Platz und wähle: als Gast oder als Gastgeber mit Gast.</li>
+    <li>Als Gastgeber reservierst du zwei Plätze am Tisch, die du selbst aussuchst: einen für dich und einen für deinen Gast. Den Gast trägst du mit seiner Mitgliedsnummer (1–888) ein. So sitzen höchstens 10 Personen am Tisch.</li>
+    <li>Kartengeber haben eigene Nummern von 901 bis 999. Sie fragen in der App für einen Abend an, ein Gastgeber oder der Vorstand sagt zu. Der Kartengeber hat seinen eigenen Stuhl und zählt nicht zu den 10 Plätzen.</li>
+    <li>Alle anderen Mitglieder dürfen trotzdem kommen: Sie sind im Wartebereich, spielen Konsole oder Gesellschaftsspiele und rücken automatisch nach, wenn ein Gastgeber seinen Gastplatz freigibt oder absagt.</li>
+    <li>Nach dem Turnier trägt ein Gastgeber ein, wer wann ausgeschieden ist. Die ersten 10 bekommen sofort Punkte in der Spieler-Rangliste.</li>
+    <li>Die Gastgeber tragen ein, wer kommt und wer geht. Je volle Stunde gibt es 1 Bonuspunkt, ab 5 Stunden ${BONUS_MAX} Punkte.</li>  </ol>
   <h3>Läuft automatisch</h3>
   <p>WhatsApp-Erinnerung am Spieltag um ${ERINNERUNG_UM} Uhr an alle mit Platz, Nachrücken aus dem Wartebereich, Hinweis an alle Vorgemerkten, sobald jemand einen freien Abend übernimmt, und die Punktevergabe.</p>
   <h3>Beitrag</h3>
@@ -874,27 +1109,60 @@ function viewRegeln(){
 }
 
 /* ---------- Verwaltung (nur Chef) ---------- */
-let admQ="", HIST=null;
+let admQ="", admF="alle", HIST=null;
+const isFree=x=>x.admin||x.free!==false;   // ohne Freigabe-Spalte (alter Speicher) gilt jeder als frei
 // Adresse der App (wird automatisch richtig, sobald sie online ist)
 const APP_URL=location.protocol.startsWith("http")?location.origin+location.pathname:"https://work2go-maker.github.io/me2room/";
 const inviteText=nr=>`Hallo! ♠ Du bist bei me2room dabei – unserem Pokertisch.\n\n1. Öffne: ${APP_URL}\n2. Deine Nummer: ${String(nr).padStart(3,"0")}\n3. Erste PIN: 0000\n\nDann suchst du dir einen Spitznamen und deine eigene PIN aus. Fertig!\n\nTipp: Leg den Link auf deinen Startbildschirm, dann ist es wie eine App.`;
+let QRSVG=null;
+// Übersicht für den Chef: Abende, Spieler, beliebte Tage
+function admStats(){
+  const mon=curMon, played=Object.keys(S.days).filter(k=>k.startsWith(mon)&&S.days[k].result&&S.days[k].result.done);
+  const ppl=played.reduce((a,k)=>a+players(S.days[k]).length,0);
+  const wd=[0,0,0,0,0,0,0]; played.forEach(k=>wd[new Date(k+"T00:00").getDay()]++);
+  const best=Math.max(...wd), bestDay=best?WDL[wd.indexOf(best)]:"–";
+  const booked=dates.filter(dt=>{const d=S.days[key(dt)];return d&&active(d)&&!(d.result&&d.result.done)}).length;
+  const top=Object.keys(S.stats).map(Number).filter(m=>MEM[m]&&(S.stats[m].nights||0)>0).sort((a,b)=>(S.stats[b].nights||0)-(S.stats[a].nights||0)).slice(0,5);
+  const reg=(ADMIN||[]).filter(x=>x.pin).length;
+  const tile=(v,l)=>`<div class="pf-stat"><b>${v}</b><span>${l}</span></div>`;
+  return `<section class="panel"><div class="ptitle"><h3 style="margin:0">Übersicht</h3><span class="badge b-plan">${monLabel(mon)}</span></div>
+  <div class="pf-stats">${tile(played.length,"Abende gespielt")}${tile(played.length?Math.round(ppl/played.length*10)/10:"–","Spieler im Schnitt")}${tile(booked,"Abende mit Buchung")}${tile(reg,"schon angemeldet")}</div>
+  <p class="empty" style="margin:10px 0 4px">Beliebtester Tag: <b style="color:var(--ink)">${bestDay}</b></p>
+  ${top.length?`<p class="empty" style="margin:8px 0 4px">Kommen am häufigsten:</p>${top.map((m,i)=>`<div class="row"><div class="pos" style="min-width:22px">${i+1}.</div><div class="grow"><div style="font-weight:600">${no(m)} ${escH(nm(m))}</div></div><div class="s">${S.stats[m].nights}× da</div></div>`).join("")}`:""}
+  <div id="qrbox">${QRSVG?`<div class="qrcard"><div class="qr-t">me2room ♠</div><div class="qr-s">Scannen und mitspielen</div><div class="qr-img">${QRSVG}</div><div class="qr-u">${escH(APP_URL)}</div><div class="qr-s">Anmelden mit deiner Nummer und deiner PIN</div></div>
+  <div class="actions qr-btns"><button class="btn btn-brass" data-act="qrPrint">Drucken</button><button class="btn btn-line" data-act="qrClose">Schließen</button></div>`:`<div class="actions"><button class="btn btn-brass" data-act="admQR">QR-Code zum Ausdrucken</button></div>
+  <p class="empty" style="margin:6px 0 0">Zum Aufhängen am Tisch: Handy-Kamera drauf, schon ist man in der App.</p>`}</div></section>`;
+}
+// Alle Kartengeber-Anfragen der kommenden Abende, nach Zeit
+function admDealerReqs(){
+  const rows=[];
+  dates.forEach(dt=>{const k=key(dt),d=S.days[k];if(!d||hasDealer(d)||(d.result&&d.result.done))return;dreqSorted(d).forEach((x,i)=>rows.push({k,x,first:i===0}))});
+  return `<section class="panel"><div class="ptitle"><h3 style="margin:0">🃏 Kartengeber-Anfragen</h3><span class="badge b-plan">${rows.length}</span></div>
+  ${rows.length?rows.map(r=>`<div class="sg-row" style="margin-top:8px"><div class="grow"><b>${dateLabel(r.k)}</b><span>${no(r.x.m)} ${escH(nm(r.x.m))} · angefragt am ${whenTxt(r.x.at)}${r.first?" · zuerst":""}</span></div><button class="btn btn-line sg-take" data-day="${r.k}" data-goto="1">Ansehen</button></div>`).join(""):`<p class="empty" style="margin:8px 0 0">Keine offenen Anfragen.</p>`}</section>`;
+}
 function viewVerwaltung(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
   const qq=admQ.trim().toLowerCase().replace("#","");
-  const list=ADMIN.filter(x=>!qq||String(x.nr)===qq.replace(/^0+/,"")||(x.real_name||"").toLowerCase().includes(qq)||(x.nickname||"").toLowerCase().includes(qq));
+  const all=ADMIN.filter(x=>admF==="alle"||(admF==="geber"?x.nr>=GEBER_MIN:(admF==="frei")===isFree(x))).filter(x=>!qq||String(x.nr)===qq.replace(/^0+/,"")||(x.real_name||"").toLowerCase().includes(qq)||(x.nickname||"").toLowerCase().includes(qq));
   const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const set=ADMIN.filter(x=>x.pin).length;
+  const set=ADMIN.filter(x=>x.pin).length, nfree=ADMIN.filter(isFree).length, list=all.slice(0,30);
   return `<section class="panel"><div class="ptitle"><h2>Verwaltung</h2><span class="badge b-plan">${ADMIN.length} Nummern</span></div>
-  <p class="empty">${set} haben sich schon angemeldet. Nur du siehst hier die echten Namen.</p>
+  <p class="empty"><b style="color:var(--ink)">${nfree}</b> freigegeben, davon <b style="color:var(--ink)">${set}</b> schon angemeldet. Nur du siehst hier die echten Namen. Ein neuer Spieler kann sich erst anmelden, wenn du seine Nummer freigibst.</p>
   <div class="form"><label>Neues Mitglied – echter Name (nur für dich)<input id="admname" class="search" placeholder="z. B. Tom" autocomplete="off"></label>
-  <label>Nummer (leer lassen = nächste freie)<input id="admnr" class="search" inputmode="numeric" placeholder="z. B. 8" autocomplete="off"></label>
+  <label>Nummer (leer = nächste freie · Kartengeber: 901–999)<input id="admnr" class="search" inputmode="numeric" placeholder="z. B. 8" autocomplete="off"></label>
   <button class="btn btn-host" data-act="admAdd">Mitglied anlegen</button>
-  <p class="empty" style="margin:0">Danach schickst du ihm den Link und seine Nummer. Erste Anmeldung immer mit PIN 0000.</p></div></section>
+  <p class="empty" style="margin:0">Danach schickst du ihm den Link und seine Nummer. Erste Anmeldung immer mit PIN 0000.</p></div>
+  <div class="form"><label>Alle Nummern 001 bis 888</label><p class="empty" style="margin:0">${ADMIN.length>=MAXNR?"Alle 888 Nummern sind angelegt.":`Legt alle fehlenden Nummern bis 888 an (noch ${MAXNR-ADMIN.length}). Jeder heißt erst einmal wie seine Nummer, bis er sich einen Spitznamen gibt. Dauert etwa eine Minute.`}</p>${ADMIN.length>=MAXNR?"":`<button class="btn btn-line" data-act="admFill">Nummern bis 888 auffüllen</button>`}</div></section>
+  ${admStats()}
+  ${admDealerReqs()}
+  <section class="panel"><div class="ptitle"><h3 style="margin:0">Alles auf Anfang</h3></div>
+  <p class="empty">Löscht alle Termine (Gastgeber, Gäste, Kartengeber, Warteliste, Vormerkungen) und alle Punkte, Ranglisten und Abend-Zähler. Mitglieder, PINs, Spitznamen und Sachpreise bleiben. Der alte Stand wird vorher gesichert und kann unten zurückgeholt werden.</p>
+  <div class="actions"><button class="btn btn-stop" data-act="admWipe">Alle Termine und Punkte löschen</button></div></section>
   <section class="panel"><div class="ptitle"><h3 style="margin:0">Sicherungen</h3><span class="badge b-free">automatisch</span></div>
   <p class="empty">Vor jeder Änderung am Tisch wird der alte Stand gesichert. Falls etwas schiefgeht, kannst du hier einen früheren Stand zurückholen.</p>
   ${HIST?(HIST.length?HIST.slice(0,15).map(x=>{const t=new Date(x.at);return `<div class="row"><div class="grow"><div style="font-weight:600">${dateLabel(key(t))}, ${pad(t.getHours())}:${pad(t.getMinutes())} Uhr</div><div class="s">Stand ${x.version}${x.by_nr?` · danach geändert von ${no(x.by_nr-1)}`:""}</div></div><button class="btn btn-line" data-act="admRestore" data-id="${x.id}">Zurückholen</button></div>`}).join(""):`<p class="empty">Noch keine Sicherungen.</p>`):`<button class="btn btn-line" data-act="admHist">Sicherungen anzeigen</button>`}</section>
-  <section class="panel"><input class="search" id="admq" placeholder="Suchen: Nummer, Name oder Spitzname" value="${esc(admQ)}" aria-label="Mitglied suchen">
-  <div style="margin-top:8px">${list.map(x=>`<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div style="min-width:0"><div style="font-weight:600;overflow-wrap:anywhere">${esc(x.real_name)||"–"}${x.admin?" · Verwaltung":""}</div><div class="s">${x.nickname?"Spitzname: "+esc(x.nickname):"noch nicht angemeldet"} · ${x.pin?"eigene PIN":"PIN 0000"}</div></div><div style="display:grid;gap:4px">${!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}">PIN 0000</button>`:""}</div></div>`).join("")}</div></section>`;
+  <section class="panel"><div class="chips" style="margin:0 0 10px">${[["alle","Alle"],["frei","Freigegeben"],["zu","Gesperrt"],["geber","Kartengeber"]].map(([k,l])=>`<button class="chip" data-admf="${k}" aria-pressed="${admF===k}">${l}</button>`).join("")}</div><input class="search" id="admq" placeholder="Suchen: Nummer, Name oder Spitzname" value="${esc(admQ)}" aria-label="Mitglied suchen">
+  <p class="empty" style="margin:8px 0 0">${all.length>30?`${all.length} Treffer, die ersten 30 werden gezeigt. Tipp die Nummer ein, z. B. 245.`:`${all.length} Treffer`}</p><div style="margin-top:8px">${list.map(x=>`<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div style="min-width:0"><div style="font-weight:600;overflow-wrap:anywhere">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")}${x.admin?" · Verwaltung":""}</div><div class="s">${x.nr>=GEBER_MIN?"🃏 Kartengeber · ":""}${isFree(x)?"✅ freigegeben":"🔒 gesperrt"} · ${x.nickname?"Spitzname: "+esc(x.nickname):"noch nicht angemeldet"} · ${x.pin?"eigene PIN":"PIN 0000"}</div></div><div style="display:grid;gap:4px">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}${isFree(x)&&!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}">PIN 0000</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`).join("")}</div></section>`;
 }
 
 function countdownHTML(k,d){
@@ -915,32 +1183,63 @@ setInterval(()=>{if(ME&&remindTick()){pushNow();const f=document.activeElement;i
 function seatSheet(d){
   if(openForm!=="seat"||pick.mine==null) return "";
   const can1=freeSeatCount(d)>=2&&d.hosts.length<HOST_MAX;
-  return `<div class="form seatsheet"><p class="empty" style="margin:0;color:var(--ink)"><b>Platz ${pick.mine+1}</b> – wie möchtest du dich anmelden?</p>
+  return `<div class="form seatsheet">
   <button class="btn btn-guest" data-act="solo">Gast</button>
-  <button class="btn btn-host" data-act="plusone" ${can1?"":"disabled"}>${can1?"Planer mit Gast":"Planer mit Gast – kein zweiter Platz frei"}</button>
-  <button class="btn btn-line" data-act="closeSeat">Abbrechen</button></div>`;
+  <button class="btn btn-host" data-act="plusone" ${can1?"":"disabled"}>${can1?"Gastgeber mit Gast":"Gastgeber mit Gast – kein zweiter Platz frei"}</button>
+</div>`;
 }
-// zählt eine Zahl sanft hoch, wenn sie sich ändert
-function liveCount(id,to){
-  const el=document.getElementById(id); if(!el) return;
-  const from=+el.dataset.v||0; el.dataset.v=to;
-  if(from===to){el.textContent=to;return}
-  if(!liveCount.started||matchMedia("(prefers-reduced-motion: reduce)").matches){el.textContent=to;liveCount.started=true;return}
-  el.classList.add("up"); const t0=performance.now(), dur=900;
-  const step=t=>{const p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(from+(to-from)*p);if(p<1)requestAnimationFrame(step);else setTimeout(()=>el.classList.remove("up"),1200)};
-  requestAnimationFrame(step);
+// Tafel oben: alle eigenen Termine, der nächste steht immer oben
+let BD_OPEN=false;
+function myGames(m){
+  const out=[];
+  for(const dt of dates){
+    const k=key(dt), d=S.days[k]; if(!d||(d.result&&d.result.done)) continue;
+    const r=roleOf(d,m);
+    if(r){
+      if(r.r==="host") out.push({k,d,seat:`Platz ${r.h.seat+1}`,st:"Reserviert mit Gast",c:"ok"});
+      else if(r.r==="player") out.push({k,d,seat:`Platz ${r.p.seat+1}`,st:"Reserviert",c:"ok"});
+      else if(r.r==="guest") out.push({k,d,seat:`Platz ${r.h.gseat+1}`,st:"Reserviert",c:"ok"});
+      else if(r.r==="dealer") out.push({k,d,seat:"Geberstuhl",st:"Kartengeber",c:"ok"});
+      else if(r.r==="wait") out.push({k,d,seat:"",st:`Warteliste ${d.wait.indexOf(m)+1}`,c:"wt"});
+    }
+    else if(d.interest&&d.interest.includes(m)) out.push({k,d,seat:"",st:"Vorgemerkt ☆",c:"mk"});
+    else if(d.dreq&&dreqHas(d,m)) out.push({k,d,seat:"",st:"Geber angefragt",c:"wt"});
+  }
+  return out;
+}
+function nextGameOf(m){const g=myGames(m).find(x=>x.c==="ok");return g||null}
+function bdDay(k){
+  const dt=new Date(k+"T00:00"), t0=key(dates[0]), t1=dates[1]?key(dates[1]):"";
+  return k===t0?"Heute":k===t1?"Morgen":`${WD[dt.getDay()]} ${dt.getDate()}.${dt.getMonth()+1}.`;
+}
+function bdRow(g,first){
+  const info=[g.d.start,g.seat].filter(Boolean).join(" · ");
+  return `<button type="button" class="bd-row${first?" first":""}" data-day="${g.k}" data-goto="1" aria-label="${dateLabel(g.k)}, ${info}, ${g.st}"><span class="bd-num"><b class="lv-n">${bdDay(g.k)}</b></span><span class="bd-info"><b>${info}</b><span class="bd-st ${g.c}">${g.st}</span></span></button>`;
+}
+function boardNext(){
+  const el=document.getElementById("live"); if(!el) return;
+  const list=myGames(S.me), more=list.length-1;
+  if(more<1) BD_OPEN=false;
+  const dot=`<span class="bd-live" aria-label="${list.length?"Nächstes Spiel":"Meine Spiele"}"><span class="lv-dot"></span></span>`;
+  let html="";
+  if(!list.length) html+=`<button type="button" class="bd-row first" data-tab="kalender">${dot}<span class="bd-num"><b class="lv-n">–</b></span><span class="bd-info"><b>Keine Veranstaltung</b><span class="bd-st wt">Platz wählen ›</span></span></button>`;
+  else{
+    html+=bdRow(list[0],true).replace('<span class="bd-num">',dot+'<span class="bd-num">');
+    if(BD_OPEN) html+=`<div class="bd-more">${list.slice(1).map(g=>bdRow(g,false)).join("")}</div>`;
+    if(more>0) html+=`<div class="bd-foot"><button type="button" class="bd-tog" data-act="bdTog" aria-expanded="${BD_OPEN}" aria-label="${BD_OPEN?"Weitere Spiele ausblenden":"Weitere Spiele zeigen"}"><span>${BD_OPEN?"weniger":`+${more} weitere`}</span><i aria-hidden="true">▾</i></button></div>`;
+  }
+  if(el.innerHTML!==html) el.innerHTML=html;
 }
 function render(){
   const v=document.getElementById("view");
   if(!ME) return;
   if(!["kalender","rang","profil"].concat(ME.admin?["verwaltung"]:[]).includes(S.tab)) S.tab="kalender";
-  v.innerHTML=({kalender:viewKalender,rang:viewRang,meine:viewMeine,profil:viewProfil,community:viewCommunity,regeln:viewRegeln,verwaltung:viewVerwaltung}[S.tab]||viewKalender)();
+  v.innerHTML=({kalender:viewKalender,rang:viewRang,profil:viewProfil,regeln:viewRegeln,verwaltung:viewVerwaltung}[S.tab]||viewKalender)();
   document.querySelectorAll("nav.tabs button").forEach(b=>{if(b.dataset.tab===S.tab)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
   document.getElementById("admtab").hidden=!ME.admin;
-  liveCount("lvAll",members.length); liveCount("lvReg",members.filter(x=>x.reg).length);
-  document.getElementById("mename").textContent=`${no(S.me)} ${nm(S.me)}`;
-  const qi=document.getElementById("q");
-  if(qi){qi.oninput=e=>{q=e.target.value;const p=qi.selectionStart;render();const n=document.getElementById("q");n.focus();n.setSelectionRange(p,p)}}
+  { const nr=String(S.me+1).padStart(3,"0"), n=nm(S.me);
+    document.getElementById("mename").innerHTML=n===nr?`<b>${nr}</b>`:`<small>${nr}</small><b>${escH(n)}</b>`; }
+  boardNext();
   const aq=document.getElementById("admq");
   if(aq){aq.oninput=e=>{admQ=e.target.value;const p=aq.selectionStart;render();const n=document.getElementById("admq");n.focus();n.setSelectionRange(p,p)}}
   ["fguest","myguest"].forEach(id=>{const el=document.getElementById(id);if(!el)return;const out=document.getElementById(id+"name");el.oninput=()=>{const v=el.value.trim(),g=byNum(+v);if(v==="000"){out.innerHTML=`Neuer Interessent: Namen eintragen und senden. Die nächste freie Nummer wird automatisch vergeben.<input id="${id}new" class="search" placeholder="Vor- und Nachname" autocomplete="name" style="margin-top:8px"><button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="newLead" data-field="${id}">Senden</button>`;document.getElementById(id+"new").focus();return}out.textContent=v?(g==null?"Keine gültige Mitgliedsnummer":`${no(g)} ${nm(g)}`):""}});
@@ -949,8 +1248,28 @@ function render(){
   save();tickCD();
 }
 
-document.addEventListener("keydown",e=>{const sp=e.target.closest&&e.target.closest("[data-seat]");if(sp&&(e.key==="Enter"||e.key===" ")){e.preventDefault();sp.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
+document.addEventListener("keydown",e=>{const tcx=e.target.closest&&(e.target.closest("[data-tcenter]")||e.target.closest("[data-dchair]"));if(tcx&&(e.key==="Enter"||e.key===" ")){e.preventDefault();tcx.dispatchEvent(new MouseEvent("click",{bubbles:true}));return}const sp=e.target.closest&&e.target.closest("[data-seat]");if(sp&&(e.key==="Enter"||e.key===" ")){e.preventDefault();sp.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
 document.addEventListener("click",e=>{
+  const tc=e.target.closest&&e.target.closest("[data-tcenter]");
+  if(tc&&S.tab==="kalender"&&ME){
+    const d=S.days[S.sel];
+    if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Das Turnier hat schon begonnen.");return}
+    openForm=openForm==="tour"?null:"tour"; render();
+    if(openForm==="tour"){const c=document.getElementById("tourcard");if(c)c.scrollIntoView({behavior:"smooth",block:"start"})}
+    return;
+  }
+  const dc=e.target.closest&&e.target.closest("[data-dchair]");
+  if(dc&&S.tab==="kalender"&&ME){
+    const k=S.sel,d=S.days[k];
+    if(hasDealer(d)){toast(d.dealer===S.me?"Du bist an diesem Abend Kartengeber.":`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`);return}
+    if(!isGeber(S.me)){toast(ME.admin?"Anfragen der Kartengeber siehst du unten im Kasten „Kartengeber“.":"Den Geberstuhl können nur Kartengeber anfragen.");if(ME.admin){const c=document.querySelector(".dealercard");if(c)c.scrollIntoView({behavior:"smooth",block:"start"})}return}
+    if((d.result&&d.result.done)||startedDay(k,d)){toast("Dieser Abend hat schon begonnen.");return}
+    const r0=roleOf(d,S.me); if(r0&&r0.r!=="wait"){toast("Du sitzt an diesem Abend schon am Tisch. Erst absagen.");return}
+    const q=dreq(d), i=q.findIndex(x=>x.m===S.me);
+    if(i>=0){if(!confirm("Deine Anfrage als Kartengeber zurückziehen?"))return;q.splice(i,1);toast("Anfrage zurückgezogen")}
+    else{q.push({m:S.me,at:Date.now()});log(`${no(S.me)} ${nm(S.me)} möchte am ${dateLabel(k)} Karten geben`);toast("Du bist nominiert – der Vorstand entscheidet")}
+    render();return;
+  }
   const sp=e.target.closest("[data-seat]");
   // gesperrter Platz angetippt: sagen, warum
   const sx=!sp&&e.target.closest&&e.target.closest("[data-seatx]");
@@ -970,20 +1289,59 @@ document.addEventListener("click",e=>{
   if(sp&&openForm==="host"){
     const i=+sp.dataset.seat;
     if(pick.mine===i)pick.mine=null;else if(pick.guest===i)pick.guest=null;else if(pick.mine==null)pick.mine=i;else pick.guest=i;
-    const keep={};["fguest","fvar","fstart"].forEach(id=>{const el=document.getElementById(id);if(el)keep[id]=el.value});
+    const keep={};["fguest","fvar","fstart","fblind"].forEach(id=>{const el=document.getElementById(id);if(el)keep[id]=el.value});
     render();
-    Object.entries(keep).forEach(([id,v])=>{const el=document.getElementById(id);if(el){el.value=v;if(id==="fguest"&&v)el.dispatchEvent(new Event("input"))}});
+    Object.entries(keep).forEach(([id,v])=>{const el=document.getElementById(id);if(el){el.value=v;if(id==="fvar")document.querySelectorAll('[data-fvt="f"]').forEach(b=>b.setAttribute("aria-pressed",b.dataset.fv===v));if(id==="fguest"&&v)el.dispatchEvent(new Event("input"))}});
     return;
   }
   const t=e.target.closest("button"); if(!t||t.disabled) return;
+  if(t.dataset.fv!=null){const hid=document.getElementById(t.dataset.fvt+"var");if(hid)hid.value=t.dataset.fv;t.parentNode.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===t));return}
+  if(t.dataset.act==="bdTog"){BD_OPEN=!BD_OPEN;boardNext();return}
   if(t.dataset.tab){S.tab=t.dataset.tab;openForm=null;render();window.scrollTo(0,0);return}
   if(t.id==="logout"){rpc("m2r_logout",{p_token:TOKEN}).catch(()=>{});setToken(null);ME=null;showLogin();return}
   if(t.dataset.act==="admAdd"){
     const name=document.getElementById("admname").value.trim(), nv=document.getElementById("admnr").value.trim();
     if(name.length<2){toast("Bitte den echten Namen eintragen");return}
-    const n=nv?parseInt(nv,10):null; if(nv&&!(n>=1&&n<=999)){toast("Die Nummer muss zwischen 1 und 999 liegen");return}
+    const n=nv?parseInt(nv,10):null; if(nv&&!((n>=1&&n<=MAXNR)||(n>=GEBER_MIN&&n<=GEBER_MAX))){toast("Spieler: 1 bis 888, Kartengeber: 901 bis 999");return}
     t.disabled=true;
     rpc("m2r_admin_add",{p_token:TOKEN,p_nr:n,p_real:name}).then(r=>{if(!r.ok){toast(r.msg||"Hat nicht geklappt");t.disabled=false;return}toast(`${name} hat die Nummer ${String(r.nr).padStart(3,"0")}`);return pull(true)}).catch(()=>{toast("Keine Verbindung. Bitte nochmal versuchen.");t.disabled=false});
+    return;
+  }
+  if(t.dataset.act==="admFill"){
+    const have=new Set((ADMIN||[]).map(x=>x.nr)), miss=[];for(let n=2;n<=MAXNR;n++)if(!have.has(n))miss.push(n);
+    if(!miss.length){toast("Alle Nummern bis 888 sind schon da");return}
+    if(!confirm(`${miss.length} Nummern anlegen (${String(miss[0]).padStart(3,"0")} bis ${String(miss[miss.length-1]).padStart(3,"0")})? Bitte die App dabei offen lassen.`)) return;
+    t.disabled=true; t.textContent="Wird angelegt …";
+    (async()=>{let ok=0;for(let i=0;i<miss.length;i+=10){const part=miss.slice(i,i+10);
+        const rs=await Promise.all(part.map(n=>rpc("m2r_admin_add",{p_token:TOKEN,p_nr:n,p_real:""}).catch(()=>null)));
+        ok+=rs.filter(r=>r&&r.ok).length; t.textContent=`${ok} von ${miss.length} angelegt …`}
+      toast(ok===miss.length?`Fertig: ${ok} Nummern angelegt`:`${ok} von ${miss.length} angelegt. Einfach nochmal tippen für den Rest.`);await pull(true)})();
+    return;
+  }
+  if(t.dataset.act==="admQR"){
+    const box=document.getElementById("qrbox"); if(!box) return;
+    const draw=()=>{const q=qrcode(0,"M");q.addData(APP_URL);q.make();QRSVG=q.createSvgTag({cellSize:8,margin:2,scalable:true});render();const b=document.getElementById("qrbox");if(b)b.scrollIntoView({block:"center"})};
+    if(window.qrcode){draw();return}
+    t.disabled=true; t.textContent="QR-Code lädt …";
+    const sc=document.createElement("script"); sc.src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js";
+    sc.onload=draw; sc.onerror=()=>{t.disabled=false;t.textContent="QR-Code zum Ausdrucken";toast("QR-Code konnte nicht laden. Internet an?")};
+    document.head.appendChild(sc); return;
+  }
+  if(t.dataset.act==="qrPrint"){document.body.classList.add("printqr");window.print();setTimeout(()=>document.body.classList.remove("printqr"),500);return}
+  if(t.dataset.act==="qrClose"){QRSVG=null;render();return}
+  if(t.dataset.act==="admWipe"){
+    if(!ME||!ME.admin) return;
+    if(!confirm("Wirklich ALLE Termine und ALLE Punkte löschen?\n\nMitglieder und PINs bleiben. Über „Sicherungen“ kannst du es zurückholen.")) return;
+    S.days={}; S.feed=[]; S.points={}; S.ppoints={}; S.stats={}; fillDays();
+    log("Alles auf Anfang: Termine und Punkte gelöscht"); HIST=null;
+    toast("Alle Termine und Punkte sind gelöscht"); render(); return;
+  }
+  if(t.dataset.admf){admF=t.dataset.admf;render();return}
+  if(t.dataset.act==="admFree"){
+    const nr=+t.dataset.nr, on=t.dataset.on==="1", n3=String(nr).padStart(3,"0");
+    if(!on&&!confirm(`Nummer ${n3} sperren? Er wird abgemeldet und kann sich nicht mehr anmelden, bis du ihn wieder freigibst.`)) return;
+    t.disabled=true;
+    rpc("m2r_admin_release",{p_token:TOKEN,p_nr:nr,p_on:on}).then(r=>{if(!r||!r.ok){toast((r&&r.msg)||"Freigabe geht erst, wenn der Speicher-Befehl ausgeführt ist");t.disabled=false;return}toast(on?`${n3} ist freigegeben – jetzt einladen`:`${n3} ist gesperrt`);return pull(true)}).catch(()=>{toast("Freigabe geht erst, wenn der Speicher-Befehl ausgeführt ist");t.disabled=false});
     return;
   }
   if(t.dataset.act==="admInvite"){
@@ -1019,7 +1377,7 @@ document.addEventListener("click",e=>{
     if(!ME||!ME.admin) return;
     const p=S.prizes[curMon]||(S.prizes[curMon]={s:["","",""],p:["","",""]});
     p[t.dataset.pl==="1"?"p":"s"]=[0,1,2].map(i=>(document.getElementById("prz"+i).value||"").trim().slice(0,60));
-    log(`Sachpreise für ${monLabel(curMon)} (${t.dataset.pl==="1"?"Planer":"Spieler"}) eingetragen`);
+    log(`Sachpreise für ${monLabel(curMon)} (${t.dataset.pl==="1"?"Gastgeber":"Spieler"}) eingetragen`);
     toast("Preise gespeichert");render();return;
   }
   if(t.dataset.cal){calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+(+t.dataset.cal),1);render();return}
@@ -1034,13 +1392,13 @@ document.addEventListener("click",e=>{
     const gIn=document.getElementById("fguest"), gv=gIn?gIn.value.trim():"", gn=gv?byNum(+gv):null;
     if(gv&&(gn==null||gn===S.me||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait"))){toast("Diese Nummer ist nicht verfügbar");return}
     const first=!active(d);
-    if(first){d.variant=+document.getElementById("fvar").value;d.start=document.getElementById("fstart").value}
+    
     d.hosts.push({m:S.me,seat:pick.mine,gseat:pick.guest,guests:gn!=null?[gn]:[],release:false});
     pick={mine:null,guest:null};
     if(gn!=null){d.wait=d.wait.filter(x=>x!==gn);log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert – WhatsApp verschickt`)}
     if(first&&d.interest.length) log(`${d.interest.length} Vorgemerkte automatisch benachrichtigt: Am ${dateLabel(k)} läuft ein Turnier`);
     d.interest=d.interest.filter(x=>x!==S.me);
-    log(`${nm(S.me)} ist Planer am ${dateLabel(k)}`);
+    log(`${nm(S.me)} ist Gastgeber am ${dateLabel(k)}`);
     promote(k); openForm=null; toast("Plätze reserviert"); render(); return;
   }
   if(a==="guest"){
@@ -1051,7 +1409,8 @@ document.addEventListener("click",e=>{
   if(a==="interest"){const i=d.interest.indexOf(S.me);i<0?d.interest.push(S.me):d.interest.splice(i,1);toast(i<0?"Vorgemerkt – keine feste Zusage":"Vormerkung entfernt");render();return}
   if(a==="leave"){
     const r=roleOf(d,S.me); if(!r) return;
-    if(r.r==="host"){d.hosts=d.hosts.filter(x=>x!==r.h);d.wait.unshift(...r.h.guests);log(`${nm(S.me)} hat den Planer-Platz abgegeben`)}
+    if(!confirm(r.r==="wait"?`Von der Warteliste am ${dateLabel(k)} austragen?`:`Wirklich für ${dateLabel(k)} absagen?${r.r==="host"?" Dein Gast kommt dann ganz oben auf die Warteliste.":""}`)) return;
+    if(r.r==="host"){d.hosts=d.hosts.filter(x=>x!==r.h);d.wait.unshift(...r.h.guests);log(`${nm(S.me)} hat den Gastgeber-Platz abgegeben`)}
     else if(r.r==="guest"){r.h.guests=r.h.guests.filter(x=>x!==S.me);log(`${nm(S.me)} hat abgesagt`)}
     else if(r.r==="player"){d.players=solo(d).filter(x=>x!==r.p);log(`${nm(S.me)} hat Platz ${r.p.seat+1} freigegeben`)}
     else if(r.r==="dealer"){d.dealer=null;log(`${no(S.me)} ${nm(S.me)} hat als Geber am ${dateLabel(k)} abgesagt`)}
@@ -1061,14 +1420,66 @@ document.addEventListener("click",e=>{
   if(a==="addGuest"){const r=roleOf(d,S.me),v=document.getElementById("myguest").value.trim(),gn=byNum(+v);if(gn==null||gn===S.me||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait")){toast("Diese Nummer ist nicht verfügbar");return}d.wait=d.wait.filter(x=>x!==gn);r.h.guests.push(gn);log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert – WhatsApp verschickt`);toast("Gast eingetragen");render();return}
   if(a==="release"){const r=roleOf(d,S.me);r.h.release=true;log(`${nm(S.me)} gibt den Gastplatz an die Warteliste frei`);promote(k);toast("Gastplatz freigegeben");render();return}
   if(a==="setDealer"){
-    const r=roleOf(d,S.me); if(!r||r.r!=="host"){toast("Den Geber tragen die Planer des Abends ein");return}
+    if(!(ME&&ME.admin)){toast("Den Kartengeber legt der Vorstand fest");return}
     const c=dealerCheck(document.getElementById("dealerin").value.trim(),d);
     if(!c.ok){toast(c.msg);return}
     d.wait=d.wait.filter(x=>x!==c.g); d.interest=d.interest.filter(x=>x!==c.g); d.dealer=c.g;
     log(`${no(c.g)} ${nm(c.g)} ist Geber am ${dateLabel(k)} – eingetragen von ${nm(S.me)}`);
     toast(`Geber: ${no(c.g)} ${nm(c.g)}`); render(); return;
   }
-  if(a==="clearDealer"){const r=roleOf(d,S.me);if(!r||r.r!=="host")return;log(`Geber am ${dateLabel(k)} ausgetragen`);d.dealer=null;toast("Geber ausgetragen");render();return}
+  if(a==="tourSet"||a==="tourSugg"){
+    if(startedDay(k,d)) return;
+    const admin=!!(ME&&ME.admin);
+    if(d.tlock&&!admin){toast("Das Turnier steht schon fest.");return}
+    const x={v:+document.getElementById("tvar").value,st:document.getElementById("tstart").value,bl:+document.getElementById("tblind").value};
+    if(a==="tourSet"){
+      if(!canDecide(d)) return;
+      d.variant=x.v; d.start=x.st; d.blind=x.bl; d.sugg={};
+      if(admin){d.tlock={by:"admin",at:Date.now()};log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt und gesperrt")}
+      else{log(`Turnier am ${dateLabel(k)} von ${nm(S.me)} festgelegt: ${turnierTxt(d)}`);toast("Festgelegt")}
+      openForm=null;
+    } else {
+      (d.sugg||(d.sugg={}))[S.me]=x;
+      const kk=sugKey(x), n=Object.values(d.sugg).filter(y=>sugKey(y)===kk).length;
+      if(n>=VOTE_WIN){d.variant=x.v;d.start=x.st;d.blind=x.bl;d.tlock={by:"vote",at:Date.now()};log(`Abstimmung am ${dateLabel(k)} entschieden (${n} Stimmen): ${turnierTxt(d)}`);toast(`Abstimmung entschieden: ${VARIANTS[x.v]}!`)}
+      else toast(`Stimme gezählt – ${n} von ${VOTE_WIN}`);
+    }
+    render(); return;
+  }
+  if(a==="tourUnsugg"){ if(d.tlock) return; if(d.sugg) delete d.sugg[S.me]; toast("Stimme zurückgezogen"); render(); return; }
+  if(a==="tourUnlock"){ if(!(ME&&ME.admin)) return; d.tlock=null; d.sugg={}; log(`Abstimmung am ${dateLabel(k)} wieder geöffnet`); toast("Abstimmung ist wieder offen"); render(); return; }
+  if(a==="tourTake"){
+    if(!canDecide(d)||startedDay(k,d)||(d.tlock&&!(ME&&ME.admin))) return;
+    const [v,st,bl]=t.dataset.key.split("|"); d.variant=+v; d.start=st; d.blind=+bl; d.sugg={};
+    if(ME&&ME.admin) d.tlock={by:"admin",at:Date.now()};
+    log(`Turnier am ${dateLabel(k)} festgelegt: ${turnierTxt(d)}`); toast(ME&&ME.admin?"Übernommen und gesperrt":"Übernommen"); openForm=null; render(); return;
+  }
+  if(a==="saveSetup"){
+    if(!(((d.hosts[0]&&d.hosts[0].m===S.me)||(ME&&ME.admin))&&!startedDay(k,d))) return;
+    d.variant=+document.getElementById("svar").value; d.start=document.getElementById("sstart").value;
+    d.blind=+document.getElementById("sblind").value;
+    log(`Turnier am ${dateLabel(k)}: ${turnierTxt(d)} – eingestellt von ${nm(S.me)}`);
+    toast("Turnier gespeichert"); render(); return;
+  }
+  if(a==="geberReq"){
+    if(!isGeber(S.me)||startedDay(k,d)||hasDealer(d)) return;
+    const q=dreq(d), i=q.findIndex(x=>x.m===S.me);
+    if(i>=0){q.splice(i,1);toast("Anfrage zurückgezogen")}else{q.push({m:S.me,at:Date.now()});log(`${no(S.me)} ${nm(S.me)} möchte am ${dateLabel(k)} Karten geben`);toast("Anfrage gesendet")}
+    render();return;
+  }
+  if(a==="geberCancel"){if(d.dealer!==S.me||startedDay(k,d))return;d.dealer=null;log(`Kartengeber ${no(S.me)} hat für ${dateLabel(k)} abgesagt`);toast("Abgesagt");render();return}
+  if(a==="geberOk"||a==="geberNo"){
+    if(!(ME&&ME.admin)) return; const m=+t.dataset.m;
+    if(a==="geberOk"){
+      if(hasDealer(d)){toast("Es gibt schon einen Kartengeber");render();return}
+      const r0=roleOf(d,m); if(r0&&r0.r!=="wait"){toast(`${no(m)} sitzt an diesem Abend schon am Tisch`);return}
+      d.wait=d.wait.filter(x=>x!==m); d.interest=d.interest.filter(x=>x!==m);
+      d.dealer=m; d.dreq=[]; log(`${no(m)} ${nm(m)} ist Kartengeber am ${dateLabel(k)} – zugesagt vom Vorstand`); toast(`Kartengeber: ${no(m)} ${nm(m)}`);
+    } else { d.dreq=dreq(d).filter(x=>x.m!==m); toast("Anfrage abgelehnt"); }
+    render(); return;
+  }
+
+  if(a==="clearDealer"){if(!(ME&&ME.admin))return;log(`Geber am ${dateLabel(k)} ausgetragen`);d.dealer=null;toast("Geber ausgetragen");render();return}
   if(a==="newLead"){
     const f=t.dataset.field,inp=document.getElementById(f+"new"),name=inp.value.trim().replace(/\s+/g," ");
     if(name.length<2){toast("Bitte einen Namen eintragen");inp.focus();return}
@@ -1083,7 +1494,7 @@ document.addEventListener("click",e=>{
     return;
   }
   if(a&&a.startsWith("att")||a==="closeEve"){
-    if(!canManage(d)){toast("Das tragen die Planer des Abends ein");return}
+    if(!canManage(d)){toast("Das tragen die Gastgeber des Abends ein");return}
     const A=att(d), m=+t.dataset.m;
     if(a==="attIn"){A[m]={in:Date.now()};log(`${no(m)} ${nm(m)} ist da`);render();return}
     if(a==="attOut"){A[m].out=Date.now();log(`${no(m)} ${nm(m)} ist gegangen – Bonus +${bonusFor(A[m])}`);render();return}
@@ -1143,7 +1554,7 @@ async function pull(force){
     const r=await rpc("m2r_load",{p_token:TOKEN});
     syncDot(true);
     if(!r.ok){if(r.auth){setToken(null);ME=null;showLogin("Bitte melde dich neu an.")}return}
-    if(r.me.setup){showSetup();return}
+    if(r.me.setup){showSetup(r.me.nr);return}
     const changed=!ME||r.version!==VERSION||JSON.stringify(r.members)!==pull.lastM||JSON.stringify(r.admin)!==pull.lastA;
     ME=r.me; S.me=ME.nr-1; ADMIN=r.admin||null; setMembers(r.members); pull.lastM=JSON.stringify(r.members); pull.lastA=JSON.stringify(r.admin);
     if(r.version!==VERSION||!Object.keys(S.days).length){VERSION=r.version;applyShared(r.state)}
@@ -1160,36 +1571,37 @@ const L=()=>document.getElementById("loginbody");
 function hideLogin(){document.getElementById("login").classList.remove("show")}
 function showLogin(msg){
   document.getElementById("login").classList.add("show");
-  L().innerHTML=`<h2>Anmelden</h2><p class="empty">Mit deiner Nummer und deiner PIN. Beim ersten Mal ist die PIN 0000.</p>
-  <form class="form" id="lf" autocomplete="off"><label>Deine Nummer<input id="lnr" class="search big" inputmode="numeric" maxlength="3" placeholder="008" required></label>
-  <label>PIN (4 Ziffern)<input id="lpin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="••••" required></label>
+  L().innerHTML=`<h2>Anmelden</h2><p class="empty">Mit deiner Nummer und deiner PIN.</p>
+  <form class="form" id="lf" autocomplete="off"><input id="lnr" class="search big" inputmode="numeric" maxlength="3" placeholder="Deine Nummer" aria-label="Deine Nummer" required>
+  <input id="lpin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="PIN" aria-label="PIN, 4 Ziffern" required>
   <p class="err" id="lerr">${msg||""}</p><button class="btn btn-host" id="lbtn">Anmelden</button></form>`;
   document.getElementById("lnr").focus();
   document.getElementById("lf").onsubmit=async e=>{
     e.preventDefault();
     const nr=parseInt(document.getElementById("lnr").value,10), pin=document.getElementById("lpin").value.trim(), err=document.getElementById("lerr"), b=document.getElementById("lbtn");
-    if(!(nr>=1&&nr<=999)){err.textContent="Bitte deine Nummer eingeben, z. B. 008.";return}
+    if(!(nr>=1&&nr<=GEBER_MAX)){err.textContent="Bitte deine Nummer eingeben, z. B. 008.";return}
     if(!/^\d{4}$/.test(pin)){err.textContent="Die PIN hat 4 Ziffern.";return}
     b.disabled=true; err.textContent="";
     try{
       const r=await rpc("m2r_login",{p_nr:nr,p_pin:pin});
       if(!r.ok){err.textContent=r.msg;b.disabled=false;return}
       setToken(r.token);
-      if(r.setup) showSetup(); else await pull(true);
+      if(r.setup) showSetup(nr); else await pull(true);
     }catch(x){err.textContent="Keine Verbindung. Bitte nochmal versuchen.";b.disabled=false}
   };
 }
-function showSetup(){
+function showSetup(nr){
+  const nrs=nr?String(nr).padStart(3,"0"):"";
   document.getElementById("login").classList.add("show");
-  L().innerHTML=`<h2>Willkommen!</h2><p class="empty">Das ist deine erste Anmeldung. Such dir einen Spitznamen und eine eigene PIN aus.</p>
-  <form class="form" id="sf" autocomplete="off"><label>Spitzname (den sehen die anderen)<input id="snick" class="search" maxlength="20" placeholder="z. B. Ass-König" required></label>
+  L().innerHTML=`<h2>Willkommen!</h2><p class="empty">Das ist deine erste Anmeldung. Such dir eine eigene PIN aus. Einen Spitznamen kannst du dir geben – oder einfach deine Nummer behalten.</p>
+  <form class="form" id="sf" autocomplete="off"><label>Spitzname (den sehen die anderen)<input id="snick" class="search" maxlength="20" placeholder="z. B. Ass-König" value="${nrs}"></label>
   <label>Neue PIN (4 Ziffern, nicht 0000)<input id="spin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="••••" required></label>
   <label>PIN nochmal<input id="spin2" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="••••" required></label>
   <p class="err" id="serr"></p><button class="btn btn-host" id="sbtn">Speichern und los</button></form>`;
   document.getElementById("snick").focus();
   document.getElementById("sf").onsubmit=async e=>{
     e.preventDefault();
-    const nick=document.getElementById("snick").value.trim(), p1=document.getElementById("spin").value.trim(), p2=document.getElementById("spin2").value.trim(), err=document.getElementById("serr"), b=document.getElementById("sbtn");
+    const nick=(document.getElementById("snick").value.trim()||nrs), p1=document.getElementById("spin").value.trim(), p2=document.getElementById("spin2").value.trim(), err=document.getElementById("serr"), b=document.getElementById("sbtn");
     if(nick.length<2){err.textContent="Der Spitzname braucht mindestens 2 Zeichen.";return}
     if(!/^\d{4}$/.test(p1)||p1==="0000"){err.textContent="Die PIN muss 4 Ziffern haben und darf nicht 0000 sein.";return}
     if(p1!==p2){err.textContent="Die beiden PINs sind nicht gleich.";return}
