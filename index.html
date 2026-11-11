@@ -418,7 +418,12 @@ details.setup .hc-body{padding:0 0 14px}
 .g-add{grid-template-columns:minmax(0,1fr) auto}
 .g-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto auto;gap:8px;align-items:center;padding:8px 0;border-top:1px solid var(--line);margin-top:6px}
 .g-n{font:700 15px "Zilla Slab",serif;color:var(--guest);text-align:center}
+.g-row{grid-template-columns:24px minmax(0,1fr) auto auto!important}
+.g-txt{display:grid;min-width:0}
 .g-row b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gseat-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;margin:12px 16px 0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--guest) 22%,#111);box-shadow:inset 0 0 0 1.5px var(--guest),0 0 16px -4px var(--guest);font-size:14px}
+.gseat-bar span{flex:1}
+.gseat-bar .btn{padding:6px 10px;font-size:13px}
 .g-row small{font-size:12px;color:var(--muted);white-space:nowrap}
 .g-del{padding:5px 10px!important;font-size:13px!important}
 .lockinfo{border:1px solid color-mix(in srgb,var(--brass) 60%,transparent)}
@@ -661,9 +666,11 @@ function setMembers(list){
   Object.keys(MEM).forEach(k=>delete MEM[k]); members.forEach(m=>MEM[m.id]=m);
 }
 const isNewG=m=>typeof m==="number"&&m<0;   // neuer Gast ohne Nummer (0000)
-const nm=m=>isNewG(m)?"Neuer Gast":MEM[m]?MEM[m].name:"#"+String(m+1).padStart(3,"0");
+const isListG=m=>typeof m==="number"&&m<=-5000;
+const gById=m=>(S.guestlist||[]).find(g=>g.id===m);
+const nm=m=>isListG(m)?((gById(m)||{}).n||"Gast"):isNewG(m)?"Neuer Gast":MEM[m]?MEM[m].name:"#"+String(m+1).padStart(3,"0");
 const ini=m=>nm(m).split(" ").map(x=>x[0]).join("").slice(0,2).toUpperCase();
-const no=m=>isNewG(m)?"#0000":"#"+String(m+1).padStart(3,"0");
+const no=m=>isListG(m)?"Gast":isNewG(m)?"#0000":"#"+String(m+1).padStart(3,"0");
 const MAXNR=888;                                  // Spieler-Nummern 001 bis 888
 const GEBER_MIN=901, GEBER_MAX=930, GEBER_SOLL=20;   // Kartengeber-Konten 901 bis 930 (20 gebraucht, höchstens 30)
 const isGeber=m=>m!=null&&m+1>=GEBER_MIN;
@@ -709,6 +716,7 @@ const persons=n=>n===1?"1 Person":`${n} Personen`;
 // S = gemeinsamer Tisch (days, feed, points, stats) + eigene Ansicht (me, tab, sel)
 const SHARED=["days","feed","points","ppoints","stats","prizes","guestlist"];
 const GUEST_MAX=10;
+let GSEAT=null;   // Gast, der gerade einen Platz bekommen soll
 let S={guestlist:[],me:0,days:{},feed:[],tab:"kalender",sel:key(dates[0]),points:{},ppoints:{},stats:{},prizes:{}};
 try{const p=JSON.parse(localStorage.getItem("me2room-view")||"{}");if(p.tab)S.tab=p.tab}catch(e){}
 function fillDays(){
@@ -883,7 +891,7 @@ function tableSVG(d){
   const seats=[], out=d.result?d.result.out:[];
   d.hosts.forEach(h=>{seats[h.seat]={m:h.m,k:"h"};seats[h.gseat]=h.guests[0]!=null?{m:h.guests[0],k:"g"}:{res:true,h}});
   solo(d).forEach(p=>{seats[p.seat]={m:p.m,k:"p"}});
-  const picking=openForm==="host", r0=roleOf(d,S.me), canSeat=!startedDay(S.sel,d)&&(!r0||r0.r==="wait");
+  const picking=openForm==="host", r0=roleOf(d,S.me), canSeat=!startedDay(S.sel,d)&&((!r0||r0.r==="wait")||(GSEAT!=null&&ME&&ME.admin));
   if(openForm==="seat"&&pick.mine!=null) seats[pick.mine]={pick:"h"};
   if(picking){if(pick.mine!=null)seats[pick.mine]={pick:"h"};if(pick.guest!=null)seats[pick.guest]={pick:"g"}}
   let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}"><defs><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>`;
@@ -903,7 +911,7 @@ function tableSVG(d){
     if(free) s+=`<g class="seat seat-f"${tap}><circle class="halo" cx="${x}" cy="${y}" r="23" fill="var(--stop)"/><circle class="fcore" cx="${x}" cy="${y}" r="17" fill="var(--stop)"/>${(picking||canSeat)&&!st?`<circle cx="${x}" cy="${y}" r="20.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>`:""}<text x="${x}" y="${y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--stop-ink)">frei</text></g>`;
     else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}><circle class="pickglow" cx="${x}" cy="${y}" r="24" fill="${hh?"var(--host)":"var(--guest)"}" opacity=".45" filter="url(#pg)"/>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"Gast")}</g>`}
     else if(st.res) s+=`<g class="seat seat-g" opacity=".8">${chipSVG(x,y,"var(--guest)","var(--guest-ink)","Gast")}</g>`;
-    else{const hh=st.k==="h",pp=st.k==="p";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",isNewG(st.m)?"0000":String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
+    else{const hh=st.k==="h",pp=st.k==="p";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",isListG(st.m)?"Gast":isNewG(st.m)?"0000":String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
   });
   return s+"</svg>";
 }
@@ -1037,6 +1045,7 @@ function markBtn(k,d,mine){
 function viewKalender(){
   const k=S.sel, d=S.days[k], st=status(d), mine=roleOf(d,S.me), full=used(d)>=SEATS, locked=d.result;
   let h="";
+  if(GSEAT!=null&&ME&&ME.admin) h+=`<div class="gseat-bar"><span>Platz für <b>${escH(nm(GSEAT))}</b>: Tag wählen, dann freien Platz antippen</span><button class="btn btn-line" data-act="gSeatStop">Abbrechen</button></div>`;
   h+=`<section class="panel" id="event"><div class="ptitle"><h2>${dateLabel(k)}</h2><span class="badge ${st.c}">${st.t}</span></div>${markBtn(k,d,mine)}${active(d)?countdownHTML(k,d):""}`;
   if(active(d)){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
@@ -1244,21 +1253,19 @@ function admDealerReqs(){
   <div class="tf-2"><label class="tf"><select id="admgday" aria-label="Abend">${open.map(k=>`<option value="${k}">${dateLabel(k)}</option>`).join("")}</select></label><label class="tf"><input id="dealerin" inputmode="numeric" placeholder="Nr. z. B. 901" aria-label="Nummer des Kartengebers" autocomplete="off"></label></div>
   <button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="admSetDealer">Kartengeber eintragen</button></section>`;
 }
+const guestSeats=id=>dates.map(dt=>{const k=key(dt),d=S.days[k];if(!d||(d.result&&d.result.done))return null;const p=solo(d).find(p=>p.m===id);return p?{k,seat:p.seat}:null}).filter(Boolean);
 const admRow=x=>{const esc=escH;return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div class="adm-info"><div class="adm-n">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")}${x.admin?" · Admin":""}</div><div class="s">${x.nr>=GEBER_MIN?"🃏 ":""}${isFree(x)?"✅":"🔒"} ${x.nickname?esc(x.nickname):isFree(x)?"frei":"gesperrt"}</div></div><div class="adm-btns">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}${isFree(x)&&!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}" title="PIN auf 0000 zurücksetzen">PIN</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`};
 function viewPoker(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
   const qq=admQ.trim().toLowerCase().replace("#","");
   const all=ADMIN.filter(x=>x.nr<GEBER_MIN).filter(x=>admF==="alle"||(admF==="frei")===isFree(x)).filter(x=>!qq||String(x.nr)===qq.replace(/^0+/,"")||(x.real_name||"").toLowerCase().includes(qq)||(x.nickname||"").toLowerCase().includes(qq));
   const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const set=ADMIN.filter(x=>x.pin).length, nfree=ADMIN.filter(isFree).length, list=all.slice(0,30);
-  return `<section class="panel"><div class="ptitle"><h2>♠ Spieler</h2></div>
-  <div class="add-row"><input id="admname" class="search" placeholder="Name" autocomplete="off" aria-label="Name (nur für dich)"><input id="admnr" class="search" inputmode="numeric" placeholder="Nr." autocomplete="off" aria-label="Nummer"><button class="btn btn-host" data-act="admAdd" aria-label="Anlegen">Anlegen</button></div>
-  ${ADMIN.length<MAXNR?`<button class="linkbtn" data-act="admFill">+ Alle Nummern bis 888 anlegen</button>`:""}</section>
-  <section class="panel"><div class="rk-head"><h3 style="margin:0">Gäste</h3><span class="hc-date">${(S.guestlist||[]).length} von ${GUEST_MAX}</span></div>
+  const SHOWN=100, set=ADMIN.filter(x=>x.pin).length, nfree=ADMIN.filter(isFree).length, list=all.slice(0,SHOWN);
+  return `<section class="panel"><div class="rk-head"><h3 style="margin:0">Gäste</h3><span class="hc-date">${(S.guestlist||[]).length} von ${GUEST_MAX}</span></div>
   ${(S.guestlist||[]).length<GUEST_MAX?`<div class="add-row g-add"><input id="gname" class="search" placeholder="Name des Gastes" maxlength="40" autocomplete="off" aria-label="Name des Gastes"><button class="btn btn-guest" data-act="gAdd">Eintragen</button></div>`:`<p class="hc-hint" style="margin:10px 0 0">Die Gastliste ist voll (${GUEST_MAX}).</p>`}
-  ${(S.guestlist||[]).map((g,i)=>`<div class="g-row"><span class="g-n">${i+1}</span><b>${escH(g.n)}</b><small>${escH(g.d||"")}</small><button class="btn btn-line g-del" data-act="gDel" data-i="${i}" aria-label="${escH(g.n)} austragen">✕</button></div>`).join("")}</section>
+  ${(S.guestlist||[]).map((g,i)=>{if(g.id==null)g.id=-(5000+i);const at=guestSeats(g.id);return `<div class="g-row"><span class="g-n">${i+1}</span><span class="g-txt"><b>${escH(g.n)}</b><small>${at.length?at.map(x=>`${bdDay(x.k)} · Platz ${x.seat+1}`).join(" · "):escH(g.d||"")}</small></span><button class="btn btn-guest g-del" data-act="gSeat" data-i="${i}">Platz</button><button class="btn btn-line g-del" data-act="gDel" data-i="${i}" aria-label="${escH(g.n)} austragen">✕</button></div>`}).join("")}</section>
   <section class="panel"><div class="chips" style="margin:0 0 10px">${[["alle","Alle"],["frei","Freigegeben"],["zu","Gesperrt"]].map(([k,l])=>`<button class="chip" data-admf="${k}" aria-pressed="${admF===k}">${l}</button>`).join("")}</div><input class="search" id="admq" placeholder="Suchen: Nummer, Name oder Spitzname" value="${esc(admQ)}" aria-label="Mitglied suchen">
-  <p class="empty" style="margin:8px 0 0">${all.length>30?`${all.length} Treffer, die ersten 30 werden gezeigt. Tipp die Nummer ein, z. B. 245.`:`${all.length} Treffer`}</p><div style="margin-top:8px">${list.map(admRow).join("")}</div></section>
+  <p class="empty" style="margin:8px 0 0">${all.length>SHOWN?`${all.length} Treffer, die ersten ${SHOWN} werden gezeigt. Tipp die Nummer ein, z. B. 245.`:`${all.length} Spieler`}</p><div style="margin-top:8px">${list.map(admRow).join("")}</div></section>
 `;
 }
 function admGeberAccounts(){
@@ -1385,6 +1392,15 @@ document.addEventListener("click",e=>{
     render();return;
   }
   const sp=e.target.closest("[data-seat]");
+  if(sp&&GSEAT!=null&&ME&&ME.admin&&S.tab==="kalender"){
+    const k=S.sel,d=S.days[k],i=+sp.dataset.seat;
+    if(startedDay(k,d)){toast("Dieser Abend hat schon begonnen");return}
+    if(takenSeats(d).includes(i)){toast("Der Platz ist schon besetzt");return}
+    const g=gById(GSEAT)||{n:"Gast"};
+    solo(d).push({m:GSEAT,seat:i}); d.wait=d.wait.filter(x=>x!==GSEAT);
+    log(`${g.n} (Gast) sitzt am ${dateLabel(k)} auf Platz ${i+1} – eingetragen vom Vorstand`);
+    GSEAT=null; toast(`${g.n}: ${dateLabel(k)}, Platz ${i+1}`); render(); return;
+  }
   // gesperrter Platz angetippt: sagen, warum
   const sx=!sp&&e.target.closest&&e.target.closest("[data-seatx]");
   if(sx&&S.tab==="kalender"){
@@ -1464,8 +1480,13 @@ document.addEventListener("click",e=>{
     if(!ME||!ME.admin) return; const el=document.getElementById("gname"), n=(el.value||"").trim().slice(0,40);
     if(!n){toast("Bitte den Namen des Gastes eintragen");return}
     S.guestlist=S.guestlist||[]; if(S.guestlist.length>=GUEST_MAX){toast(`Höchstens ${GUEST_MAX} Gäste`);return}
-    const t0=new Date(); S.guestlist.push({n,d:`eingetragen ${t0.getDate()}.${t0.getMonth()+1}.`}); toast(`${n} ist eingetragen`); render(); return;
+    const t0=new Date(); S.guestlist.push({id:-(5000+Date.now()%1000000),n,d:`eingetragen ${t0.getDate()}.${t0.getMonth()+1}.`}); toast(`${n} ist eingetragen`); render(); return;
   }
+  if(t.dataset.act==="gSeat"){
+    if(!ME||!ME.admin) return; const g=(S.guestlist||[])[+t.dataset.i]; if(!g) return;
+    GSEAT=g.id; S.tab="kalender"; openForm=null; render(); window.scrollTo(0,0); toast(`Tag im Kalender wählen, dann freien Platz für ${g.n} antippen`); return;
+  }
+  if(t.dataset.act==="gSeatStop"){GSEAT=null;render();return}
   if(t.dataset.act==="gDel"){
     if(!ME||!ME.admin) return; const i=+t.dataset.i, g=(S.guestlist||[])[i]; if(!g) return;
     if(!confirm(`${g.n} von der Gastliste nehmen?`)) return; S.guestlist.splice(i,1); toast("Ausgetragen"); render(); return;
