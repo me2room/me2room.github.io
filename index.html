@@ -622,8 +622,8 @@ details.adm-x[data-sec="spieler"]>summary h3,details.adm-x[data-sec="geber"]>sum
 .adm-x>summary .adm-arr{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2.5px solid var(--brass);font-size:0!important;line-height:0}.adm-x>summary .adm-arr::before{content:"";width:10px;height:10px;border-right:3.5px solid var(--brass);border-bottom:3.5px solid var(--brass);transform:translateY(-3px) rotate(45deg)}
 .sp-sub{margin:12px 0 6px;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
 .m2v{position:relative;margin:14px 16px 0;padding:16px 12px 14px;border-radius:20px;border:1px solid color-mix(in srgb,var(--brass) 55%,transparent);background:radial-gradient(120% 70% at 50% 0%,rgba(255,45,74,.16),transparent 60%),linear-gradient(180deg,rgba(22,22,24,.92),rgba(10,10,12,.95));box-shadow:0 12px 30px -14px rgba(0,0,0,.9);-webkit-tap-highlight-color:transparent;user-select:none;text-align:center}
-.m2v .v-phone{position:relative;width:min(240px,68%);margin:0 auto;padding:7px;border-radius:30px;background:#0a0a0a;box-shadow:0 0 0 1.5px #3a3a3a,0 0 0 3px rgba(201,163,90,.55),0 16px 30px -10px rgba(0,0,0,.9),0 0 30px -6px rgba(255,45,74,.4);cursor:pointer}
-.m2v .v-scr{position:relative;aspect-ratio:462/862;border-radius:23px;overflow:hidden;background:#000}
+.m2v .v-phone{position:relative;width:68%;max-width:240px;margin:0 auto;padding:7px;border-radius:30px;background:#0a0a0a;box-shadow:0 0 0 1.5px #3a3a3a,0 0 0 3px rgba(201,163,90,.55),0 16px 30px -10px rgba(0,0,0,.9),0 0 30px -6px rgba(255,45,74,.4);cursor:pointer}
+.m2v .v-scr{position:relative;height:0;padding-top:186.58%;border-radius:23px;overflow:hidden;background:#000}
 .m2v img{position:absolute;left:0;top:0;width:462px;height:862px;max-width:none;transform-origin:0 0;opacity:0;will-change:transform,opacity;pointer-events:none}
 .m2v .v-dip{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:2}
 .m2v .v-tap{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;opacity:0;z-index:3}
@@ -1536,7 +1536,7 @@ function m2vFrame(now){
   const dt=M2V_LAST?Math.min(100,now-M2V_LAST):0;M2V_LAST=now;M2V_T=(M2V_T+dt/1000)%M2V_TOT;
   let t=M2V_T,i=0;while(t>=M2V[i].d){t-=M2V[i].d;i++}
   const sc=M2V[i];if(M2V_SAID!==i){M2V_SAID=i;m2vPlay(i)}
-  const scr=el.querySelector(".v-scr"),W=scr.clientWidth,H=scr.clientHeight,k=W/462,tx=0,ty=(H-862*k)/2;
+  const scr=el.querySelector(".v-scr"),W=scr.clientWidth||scr.offsetWidth,H=scr.clientHeight||W*862/462,k=W/462,tx=0,ty=(H-862*k)/2;
   const map=(x,y)=>[tx+x*k,ty+y*k];
   let ci=0;while(ci<sc.imgs.length-1&&sc.imgs[ci+1][0]<=t)ci++;
   const cur=sc.imgs[ci][1],prev=ci>0?sc.imgs[ci-1][1]:null,fp=ci>0?Math.min(1,(t-sc.imgs[ci][0])/.4):1;
