@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>me2room – Der Tisch</title>
+<title>me2room</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1484,7 +1484,7 @@ let admQ="", admF="alle", HIST=null;
 const isFree=x=>x.admin||x.free!==false;   // ohne Freigabe-Spalte (alter Speicher) gilt jeder als frei
 // Adresse der App (wird automatisch richtig, sobald sie online ist)
 const APP_URL=location.protocol.startsWith("http")?location.origin+location.pathname:"https://me2room.github.io/";
-const inviteText=nr=>{const x=(ADMIN||[]).find(y=>y.nr===nr);return `me2room ♠
+const inviteText=nr=>{const x=(ADMIN||[]).find(y=>y.nr===nr);return `me2room
 ${APP_URL}?app=1
 
 Login: ${String(nr).padStart(3,"0")}
