@@ -15,7 +15,7 @@
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Zilla+Slab:wght@500;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   /* Raum: warmweiße Wand, Eichen-Lamellen, flaschengrüne Stühle, Messinglampen, rote LED, schwarzer Pokertisch mit weißem LED-Ring */
@@ -83,6 +83,11 @@
 .wc-row .waitcount b{font-size:22px}
 .btn-cancel{flex:1 1 auto;border-radius:12px;border:1.5px solid var(--stop);background:transparent;color:var(--stop);font:700 13px/1 Figtree,sans-serif;padding:0 8px;cursor:pointer}
 .btn-cancel:active{background:color-mix(in srgb,var(--stop) 18%,transparent)}
+.hd-cd{margin:0!important;padding:4px 10px!important;border-radius:999px!important;font-size:13px}
+.hd-cd .cd-v{font:700 14px "Zilla Slab",serif;font-variant-numeric:tabular-nums;color:#FFC062;white-space:nowrap}
+.ev-time{font-size:15px;font-weight:700;color:var(--host);text-shadow:0 0 8px color-mix(in srgb,var(--host) 70%,transparent)}
+#event.warm{box-shadow:inset 0 0 0 1.5px #FF9F1C,0 0 24px -8px #FF9F1C!important}
+#event.go{box-shadow:inset 0 0 0 1.5px #2EE07A,0 0 24px -8px #2EE07A!important}
 .cd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--rim);color:var(--on-felt);box-shadow:inset 0 0 0 1.5px var(--brass)}
 .cd-l{font-size:13px;opacity:.85}
 .cd-v{font:700 26px/1 "Zilla Slab",serif;font-variant-numeric:tabular-nums;color:var(--brass);white-space:nowrap}
@@ -324,6 +329,11 @@ select option{background:#1C1B1F;color:#F4EEDF}
 .hc-chip b{font:700 18px/1 "Zilla Slab",serif;color:var(--ink)}
 .hc-chip.h.on{border-style:solid;border-color:var(--host);background:color-mix(in srgb,var(--host) 14%,transparent);box-shadow:0 0 14px -3px var(--host)}
 .hc-chip.h.on b{color:var(--host)}
+.hc-chip{font:inherit;color:inherit;text-align:left}
+button.hc-chip{cursor:pointer}
+.hc-chip small{font-size:11px;color:var(--muted)}
+.hc-chip.g{border:1.5px solid var(--guest);box-shadow:0 0 10px -4px var(--guest)}
+.hc-chip.h{border:1.5px solid var(--host)}
 .hc-chip.g.on{border-style:solid;border-color:var(--guest);background:color-mix(in srgb,var(--guest) 16%,transparent);box-shadow:0 0 16px -2px var(--guest)}
 .hc-chip.g.on b{color:var(--guest);text-shadow:0 0 8px color-mix(in srgb,var(--guest) 70%,transparent)}
 .hc-hint{margin:-4px 0 0;font-size:13px;color:var(--muted)}
@@ -426,6 +436,113 @@ details.setup .hc-body{padding:0 0 14px}
 .gseat-bar .btn{padding:6px 10px;font-size:13px}
 .g-row small{font-size:12px;color:var(--muted);white-space:nowrap}
 .g-del{padding:5px 10px!important;font-size:13px!important}
+.wc-row.solo{justify-content:flex-end}
+.wc-row.solo .btn-cancel{flex:0 0 auto;padding:8px 16px}
+.m3-n{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;margin:0 2px;border-radius:999px;background:#2F6BFF;color:#fff;font:800 12px/1 Figtree,sans-serif;box-shadow:0 0 10px #3B7BFF;vertical-align:1px}
+.cdbar{display:flex;align-items:center;gap:10px;padding:10px 14px!important}
+.cdbar .cd-lbl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.cdbar .hd-cd{flex:1;justify-content:flex-start}
+.offbtn{padding:4px 10px;border-radius:999px;border:1.5px solid #8a8f98;background:transparent;color:#c9ccd2;font:700 12px Figtree,sans-serif;cursor:pointer}
+.offstrip{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px!important;opacity:.75}
+.offstrip div{display:grid;gap:2px}.offstrip b{color:var(--brass)}.offstrip span{font-size:13px;color:var(--muted)}
+.onbtn{padding:8px 18px;border-radius:999px;border:1.5px solid var(--host);background:color-mix(in srgb,var(--host) 18%,transparent);color:var(--host);font:800 14px Figtree,sans-serif;cursor:pointer;box-shadow:0 0 12px -4px var(--host)}
+.offlist{margin:6px 0 0;font-size:12.5px;color:#c9ccd2}
+.cal-d.c-go{background:rgba(20,110,60,.38);border-color:#2EE07A;box-shadow:0 0 0 1px #2EE07A,0 0 12px -2px #2EE07A}
+.cal-d.c-warm{background:rgba(140,80,10,.38);border-color:#FF9F1C;box-shadow:0 0 0 1px #FF9F1C,0 0 12px -2px #FF9F1C}
+.cal-d.sel{background:rgba(255,255,255,.10)!important;border-color:#fff!important;box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 16px -2px #fff!important}
+.cal-d.sel.c-go{background:rgba(20,110,60,.45)!important}.cal-d.sel.c-warm{background:rgba(140,80,10,.45)!important}
+.cal-d.sel .cal-n,.cal-d.sel.today .cal-n{color:#fff!important;text-shadow:0 0 6px #fff,0 0 14px #FFD08A,0 0 26px #FFC062;animation:selGlow 1.8s ease-in-out infinite}
+@keyframes selGlow{0%,100%{text-shadow:0 0 6px #fff,0 0 14px #FFD08A,0 0 26px #FFC062}50%{text-shadow:0 0 3px #fff,0 0 8px #FFD08A}}
+@media (prefers-reduced-motion:reduce){.cal-d.sel .cal-n{animation:none}}
+.cal-d.nope{background:#050505!important;border-color:#111!important;opacity:.45;filter:grayscale(1)}
+.mark3{height:auto!important}
+.mark3 .m3-i{position:relative;font-size:38px!important;line-height:1}
+.m3-in{position:absolute;left:0;right:0;top:52%;transform:translateY(-50%);text-align:center;font:800 13px/1 Figtree,sans-serif;color:#fff;text-shadow:0 0 3px #0a1a4a,0 1px 2px #000}
+@keyframes starGlow{0%,100%{opacity:1;text-shadow:0 0 3px #3B7BFF}50%{opacity:.7;text-shadow:0 0 10px #3B7BFF,0 0 22px #2F6BFF}}
+.mark3:not(.on) .m3-i{animation:starGlow 3s ease-in-out infinite}
+.mark3.on .m3-i{text-shadow:none!important;color:#4D8DFF!important}
+.m3-cnt{font:800 12px/1 Figtree,sans-serif;color:#fff;text-shadow:none;align-self:flex-end;margin-bottom:7px}
+@media (prefers-reduced-motion:reduce){.mark3 .m3-i{animation:none!important}}
+#event .ptitle{align-items:center}
+#event .ptitle .mk-row{margin:0}
+.hd-cancel{padding:6px 12px;font-size:12px;border-radius:999px}
+.cx-sheet{display:grid;gap:8px;margin:10px 0 0;padding:12px;border-radius:12px;background:rgba(0,0,0,.45);box-shadow:inset 0 0 0 1px var(--stop)}
+.cx-sheet b{color:var(--ink)}
+.cx-guest{background:var(--guest);color:#2a1600;font-weight:800;border:2px solid var(--stop);box-shadow:0 0 14px -4px var(--guest)}
+.cx-me{background:var(--host);color:#04210f;font-weight:800;border:2px solid var(--stop)}
+#event .ptitle{flex-wrap:nowrap;gap:8px}
+#event .ptitle h2{white-space:nowrap;font-size:20px;min-width:0}
+#event .ptitle .hd-cancel,#event .ptitle .mk-row{margin-left:auto;flex:0 0 auto}
+.ice-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ice{padding:14px 8px;border-radius:14px;border:1px solid rgba(220,240,255,.55);cursor:pointer;
+  background:linear-gradient(160deg,rgba(235,248,255,.38),rgba(170,210,240,.14) 55%,rgba(255,255,255,.08));
+  color:#EAF6FF;font:800 15px Figtree,sans-serif;text-shadow:0 1px 3px rgba(0,30,60,.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -6px 14px rgba(120,180,230,.25),0 6px 16px -6px rgba(0,0,0,.7);backdrop-filter:blur(6px)}
+.ice:active{transform:translateY(1px)}
+.ice-form{display:grid;gap:8px;margin-top:10px}
+.ge-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:10px}
+.ge-row .search{margin:0;padding:9px 12px;border:1.5px solid var(--guest)!important;box-shadow:0 0 10px -4px var(--guest);color:var(--guest)}
+.ge-row .search::placeholder{color:color-mix(in srgb,var(--guest) 75%,transparent)}
+.ge-row .btn-guest{box-shadow:0 0 14px -3px var(--guest)}
+.ge-row .btn{padding:8px 14px;font-size:14px}
+.g-wait{display:grid;place-items:center;text-align:center}
+.g-wait{background:var(--guest)!important;box-shadow:0 0 18px -3px var(--guest)!important}
+.g-wait b{font:800 13px/1.25 Figtree,sans-serif;color:#2a1600}
+.btn-off{background:rgba(255,255,255,.08);color:rgba(244,238,223,.45);border:1px solid rgba(255,255,255,.12);cursor:not-allowed}
+.hd-row .plank{background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 44'><g fill='%235a3a22' stroke='%23a8743f' stroke-width='1.2'><path d='M14 6 h58 v4 q-29 -8 -58 0z'/><rect x='14' y='10' width='58' height='26' rx='2'/><path d='M88 6 h58 v4 q-29 -8 -58 0z'/><rect x='88' y='10' width='58' height='26' rx='2'/></g><g stroke='%237a5030' stroke-width='1.5'><line x1='24' y1='13' x2='24' y2='33'/><line x1='34' y1='13' x2='34' y2='33'/><line x1='44' y1='13' x2='44' y2='33'/><line x1='54' y1='13' x2='54' y2='33'/><line x1='64' y1='13' x2='64' y2='33'/><line x1='98' y1='13' x2='98' y2='33'/><line x1='108' y1='13' x2='108' y2='33'/><line x1='118' y1='13' x2='118' y2='33'/><line x1='128' y1='13' x2='128' y2='33'/><line x1='138' y1='13' x2='138' y2='33'/></g><g fill='%23120a05' stroke='%23d8b07a' stroke-opacity='.5' stroke-width='.8'><circle cx='30' cy='20' r='2.2'/><circle cx='120' cy='26' r='2'/><circle cx='60' cy='30' r='1.8'/><circle cx='102' cy='16' r='1.6'/></g></svg>") center/100% 100% no-repeat!important;box-shadow:none!important;padding:6px 4px!important;min-height:40px;flex:1 1 auto;margin:0 -4px!important}
+.hd-row .plank::before,.hd-row .plank::after{display:none!important}
+.hd-row .burn{flex-direction:row!important;align-items:baseline;gap:6px;color:#F3D9A4!important;text-shadow:0 1px 0 #3a200c,0 0 8px rgba(255,190,100,.55)!important}
+.hd-row .burn b{font-family:Rye,"Zilla Slab",serif!important;font-weight:400!important;font-size:16px!important;letter-spacing:.5px;max-width:none!important;overflow:visible!important}
+.hd-row .burn small{color:#F3D9A4;opacity:.9;font:400 13px Rye,serif;letter-spacing:.5px}
+.hd-row .plank .syncdot{display:none!important}
+.hd-row{gap:4px!important}
+.hd-row .burn b.me-nr{font-size:24px!important;letter-spacing:3px!important;color:#F6DFAE!important;text-shadow:0 2px 0 #3a200c,0 0 10px rgba(255,190,100,.75),0 0 22px rgba(255,160,60,.35)!important}
+.hd-row .plank{background:radial-gradient(circle at 10% 35%,#0a0603 0 3px,#3a2414 3.5px,rgba(210,170,110,.55) 4.5px,transparent 6px),radial-gradient(circle at 18% 70%,#0a0603 0 3px,#3a2414 3.5px,rgba(210,170,110,.55) 4.5px,transparent 6px),radial-gradient(circle at 84% 30%,#0a0603 0 3px,#3a2414 3.5px,rgba(210,170,110,.55) 4.5px,transparent 6px),radial-gradient(circle at 92% 68%,#0a0603 0 3px,#3a2414 3.5px,rgba(210,170,110,.55) 4.5px,transparent 6px),radial-gradient(circle at 78% 80%,#0a0603 0 3px,#3a2414 3.5px,rgba(210,170,110,.55) 4.5px,transparent 6px)!important;min-height:40px}
+.hd-row .burn b.me-nr{font:700 26px/1 "Zilla Slab",Georgia,serif!important;letter-spacing:4px!important;color:#FFE6C4!important;text-shadow:0 0 2px #fff,0 0 6px #D98A45,0 0 14px #B8622A,0 0 28px #9A4E1E,0 0 46px rgba(154,78,30,.7),0 3px 0 #3A1D0B!important;animation:neonOn 1.6s ease-out 1 both,neonHum 6s ease-in-out 1.6s infinite}
+#live .bd-num.bd-full{box-shadow:inset 0 0 0 1.5px #2EE07A,0 0 12px -2px #2EE07A!important}
+#live .bd-tm{margin-left:4px;color:var(--host);text-shadow:0 0 6px color-mix(in srgb,var(--host) 70%,transparent)}
+.seat-tag{position:relative;display:inline-grid;place-items:center;width:28px;height:28px;padding:0;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#FF6B7D,#C8102E 55%,#7A0A1C);
+  box-shadow:inset 0 0 0 2px #7A0A1C,inset 0 0 0 3px rgba(255,255,255,.95),inset 0 0 0 5px #C8102E,0 2px 0 #4A0612,0 0 12px rgba(255,45,74,.65)}
+.seat-star{display:inline-grid;place-items:center;width:28px;height:28px;font-size:24px;line-height:1;color:#4D8DFF;text-shadow:0 0 6px #3B7BFF,0 0 12px #3B7BFF}
+.mcards{display:inline-flex;margin:0 0 0 6px;vertical-align:bottom;min-width:58px}
+.bd-info{align-self:flex-end;align-items:flex-end!important}
+.bd-info .seat-star{margin-left:6px;align-self:center;text-shadow:0 0 6px #4da3ff,0 0 14px #4da3ff,0 0 24px #2b7bff}
+.mc{display:inline-grid;place-items:center;width:15px;height:21px;margin-left:-4px;border-radius:3px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.6),inset 0 0 0 1px #ccc;line-height:.9;transform:rotate(var(--rt,0deg))}
+.mc:first-child{margin-left:0}
+.mc:nth-child(1){--rt:-8deg}.mc:nth-child(2){--rt:-2deg}.mc:nth-child(3){--rt:4deg}.mc:nth-child(4){--rt:10deg}
+.mc b{font:800 9px/1 Figtree,sans-serif}.mc i{font-style:normal;font-size:9px;line-height:1}
+.mc.r{color:#C8102E}.mc.b{color:#111}
+#live .mc b{color:inherit!important;text-shadow:none!important;font:800 9px/1 Figtree,sans-serif!important}
+#live .bd-info{flex-wrap:nowrap!important}
+#live .bd-num{min-width:122px!important;padding:4px 4px!important}
+#live .bd-num .lv-n{font-size:13px!important;letter-spacing:0!important}
+#live .bd-first .bd-tog{padding:3px 6px!important;gap:3px}
+.seat-tag.g-tag{margin-left:4px;background:radial-gradient(circle at 35% 30%,#FFC46B,#FF9F1C 55%,#B8650A);box-shadow:inset 0 0 0 2px #B8650A,inset 0 0 0 3px rgba(255,255,255,.95),inset 0 0 0 5px #FF9F1C,0 2px 0 #6b3a05,0 0 12px rgba(255,159,28,.65)}
+.seat-tag.g-tag span{color:#2a1600;text-shadow:none}
+.seat-col{display:inline-flex;align-items:center;gap:3px;width:54px;flex:0 0 54px}
+.seat-tag{width:24px!important;height:24px!important}
+.seat-tag span{font-size:12px!important}
+.seat-tag.h-tag{background:radial-gradient(circle at 35% 30%,#7CF0A6,#1FA85A 55%,#0E6B36)!important;box-shadow:inset 0 0 0 2px #0E6B36,inset 0 0 0 3px rgba(255,255,255,.95),inset 0 0 0 5px #1FA85A,0 2px 0 #08391d,0 0 12px rgba(46,224,122,.6)!important}
+.seat-tag.h-tag span{color:#04210f;text-shadow:none}
+.seat-tag.p-tag,.seat-tag.g-tag{background:radial-gradient(circle at 35% 30%,#FFC46B,#FF9F1C 55%,#B8650A)!important;box-shadow:inset 0 0 0 2px #B8650A,inset 0 0 0 3px rgba(255,255,255,.95),inset 0 0 0 5px #FF9F1C,0 2px 0 #6b3a05,0 0 12px rgba(255,159,28,.65)!important}
+.seat-tag.p-tag span{color:#2a1600;text-shadow:none}
+.seat-tag.g-tag{margin-left:0!important}
+.seat-star{width:24px!important;height:24px!important;font-size:21px!important}
+.seat-tag::before{content:"";position:absolute;inset:2px;border-radius:50%;border:2px dashed rgba(255,255,255,.9)}
+.seat-tag span{position:relative;font:800 14px/1 "Zilla Slab",serif;letter-spacing:-.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+#live .bd-num{min-width:156px!important;text-align:center}
+#live .bd-info>b{font-size:16px!important}
+#live .bd-first{display:flex;align-items:center;gap:6px}
+#live .bd-first .bd-row{flex:1;min-width:0}
+#live .bd-first .bd-tog{flex:0 0 auto;padding:4px 8px}
+#live .bd-more .bd-row{border-bottom:1px dashed color-mix(in srgb,var(--brass) 35%,transparent);border-radius:0}
+#live .bd-more .bd-row:last-child{border-bottom:0}
+#live .bd-welcome{justify-content:center}
+.bd-wel{font:700 20px/1.2 "Zilla Slab",Georgia,serif;letter-spacing:.2px;color:#FFE9EC;text-align:center;text-shadow:0 0 2px #fff,0 0 6px #FF4D63,0 0 14px #FF2D4A,0 0 28px #FF2D4A,0 0 46px rgba(255,45,74,.7),0 3px 0 #7A111E;animation:neonOn 1.6s ease-out 1 both,neonHum 6s ease-in-out 1.6s infinite}
+.bd-wel span{color:var(--host);text-shadow:0 0 8px color-mix(in srgb,var(--host) 60%,transparent)}
+.offbar{opacity:.85}
+.offbar .off-day{flex:1;font:700 18px "Zilla Slab",serif;color:var(--muted)}
 .lockinfo{border:1px solid color-mix(in srgb,var(--brass) 60%,transparent)}
 .sg-take{padding:8px 12px;font-size:13px;flex:0 0 auto}
 .seatsheet .btn-guest{box-shadow:0 0 18px -3px var(--guest),inset 0 0 0 1px rgba(255,255,255,.15)}
@@ -437,9 +554,9 @@ details.setup summary::-webkit-details-marker{display:none}
 details.setup summary span{font-weight:600;font-size:13px;color:var(--ink);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 details.setup .form{margin:0 0 12px}
 .mk-row{margin:-3px 0 2px}
-.mark3{display:inline-flex;align-items:center;gap:5px;height:20px;padding:0 4px 0 0;border:0;border-radius:999px;background:transparent;color:#5C9BFF;font:700 9px/1 Figtree,sans-serif;letter-spacing:.3px;cursor:pointer;
+.mark3{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 4px 0 0;border:0;border-radius:999px;background:transparent;color:#5C9BFF;font:700 13px/1 Figtree,sans-serif;letter-spacing:.3px;cursor:pointer;
   box-shadow:none;text-shadow:0 0 6px rgba(120,170,255,.9)}
-.mark3 .m3-i{display:inline-block;font-size:15px;line-height:1;color:#4D8DFF;text-shadow:0 0 6px #3B7BFF,0 0 12px #3B7BFF,0 0 22px #2F6BFF}
+.mark3 .m3-i{display:inline-block;font-size:21px;line-height:1;color:#4D8DFF;text-shadow:0 0 6px #3B7BFF,0 0 12px #3B7BFF,0 0 22px #2F6BFF}
 .mark3 .mk-timer{font-variant-numeric:tabular-nums;font-weight:800;color:var(--host);text-shadow:0 0 6px color-mix(in srgb,var(--host) 80%,transparent)}
 nav.tabs{background:rgba(12,12,14,.94);border-top:1px solid color-mix(in srgb,var(--brass) 45%,transparent);backdrop-filter:blur(6px)}
 nav.tabs button{font-size:13px;padding:10px 2px 12px}
@@ -539,18 +656,18 @@ section.prizebar .form{background:rgba(8,7,6,.82)}
 button.board{width:100%;border:0;color:inherit;text-align:left;cursor:pointer;font:inherit}
 .board .bd-live{font-size:10.5px;letter-spacing:1.6px;white-space:nowrap}
 .board .lv-n{font-size:21px;white-space:nowrap}
-#live.board{display:grid;gap:6px;padding:8px 10px 10px}
+#live.board{display:grid;gap:4px;padding:6px 10px 6px}
 #live .bd-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 4px;min-height:26px}
 #live .bd-tog{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px solid color-mix(in srgb,var(--brass) 60%,transparent);background:rgba(0,0,0,.5);color:#FFC062;font:700 12px/1 Figtree,sans-serif;cursor:pointer}
 #live .bd-tog i{font-style:normal;font-size:14px;transition:transform .25s}
 #live .bd-tog[aria-expanded="true"] i{transform:rotate(180deg)}
-#live .bd-row{display:flex;align-items:center;gap:8px;width:100%;padding:6px 4px;border:0;border-radius:10px;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}
+#live .bd-row{display:flex;align-items:center;gap:5px;width:100%;padding:6px 4px;border:0;border-radius:10px;background:transparent;color:inherit;text-align:left;font:inherit;cursor:pointer}
 #live .bd-row:active{background:rgba(255,255,255,.05)}
 #live .bd-num{flex:0 0 auto;min-width:0;padding:4px 7px}
 #live .bd-num .lv-n{font-size:14px;letter-spacing:.3px}
 #live .bd-info{flex:1 1 auto;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 0;min-width:0}
-#live .bd-st::before{content:"·";margin:0 5px;color:#FFC062}
-#live .bd-info b{white-space:nowrap;font:700 14px/1.15 "Zilla Slab",serif;color:#FFC062;text-shadow:0 0 8px rgba(255,150,40,.5)}
+#live .bd-st{margin-left:8px}
+#live .bd-info b{white-space:nowrap;font:700 14px/1.15 "Zilla Slab",serif;color:var(--host);text-shadow:0 0 8px rgba(255,150,40,.5)}
 #live .bd-st{font:700 13px/1.15 Figtree,sans-serif;letter-spacing:.2px;white-space:nowrap}
 #live .bd-st.ok{color:var(--host)}#live .bd-st.mk{color:#7FB2FF}#live .bd-st.wt{color:var(--brass)}
 #live .bd-foot{display:flex;justify-content:flex-end;margin-top:-2px}
@@ -566,7 +683,7 @@ button.board{width:100%;border:0;color:inherit;text-align:left;cursor:pointer;fo
 [data-seat],[data-seatx]{cursor:pointer;-webkit-tap-highlight-color:transparent;pointer-events:all}
 .tablewrap svg{touch-action:manipulation}
 /* Kompakter Kopf mit 3D-Logo */
-header.hd{padding:12px 16px 12px;box-shadow:0 2px 0 var(--led),0 10px 26px -6px var(--led)}
+header.hd{position:sticky;top:0;z-index:15;background:var(--slat);background-image:var(--room);background-attachment:fixed;padding:12px 16px 12px;box-shadow:0 2px 0 var(--led),0 10px 26px -6px var(--led)}
 .hd-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .logo3d{margin:0;font:700 30px/1 "Zilla Slab",Georgia,serif;letter-spacing:.5px;color:#FFF3F3;
   text-shadow:0 1px 0 #E5283F,0 2px 0 #C21F33,0 3px 0 #9E1828,0 4px 0 #7A111E,0 6px 10px rgba(0,0,0,.55),0 0 18px rgba(255,45,74,.75),0 0 36px rgba(255,45,74,.45)}
@@ -574,6 +691,20 @@ header.hd{padding:12px 16px 12px;box-shadow:0 2px 0 var(--led),0 10px 26px -6px 
 .mepill{display:inline-flex;align-items:center;gap:6px;min-width:0;max-width:150px;padding:6px 10px;border-radius:999px;background:rgba(8,8,8,.6);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--brass) 70%,transparent);font:600 13px/1 Figtree,sans-serif;color:var(--on-felt)}
 .mepill #mename{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .mepill .syncdot{margin:0;flex:0 0 auto}
+#live{position:relative}
+#live .bd-welcome{justify-content:flex-start!important;text-align:left!important;padding-right:86px!important}
+#live .bd-wel{text-align:left!important;font-size:19px!important}
+#live.has-rows .bd-first{padding-right:74px;box-sizing:border-box;max-width:100%}#live .bd-num{min-width:122px!important;padding:4px 6px!important}#live .bd-row{gap:4px!important}#live .bd-tog{padding:3px 5px!important;gap:2px!important}#live .mcards{min-width:50px!important;margin-left:4px!important}#live.has-rows .bd-first>.bd-row{min-width:0}
+#live.chat-on{padding-top:36px!important;max-height:none!important;overflow:visible!important}
+.onl.on{color:#E6FFEF!important;text-shadow:0 0 2px #fff,0 0 6px #2EE07A,0 0 14px #1FA85A,0 0 28px rgba(46,224,122,.7),0 3px 0 #0E6B36!important}
+.onl{position:absolute;top:9px;right:12px;z-index:3;display:flex;align-items:center;gap:6px;padding:2px 2px;border:0;background:transparent;cursor:pointer;font:700 15px/1.2 "Zilla Slab",Georgia,serif;letter-spacing:.2px;color:#E6FFEF;text-shadow:0 0 2px #fff,0 0 6px #2EE07A,0 0 14px #1FA85A,0 0 28px rgba(46,224,122,.7),0 3px 0 #0E6B36}
+@keyframes chatBlink{0%,100%{background:#2EE07A;box-shadow:0 0 6px #2EE07A}50%{background:#FF2D4A;box-shadow:0 0 8px #FF2D4A}}
+.onl.new i{background:#FF2D4A;box-shadow:0 0 8px #FF2D4A}
+.onl{gap:4px!important}
+#onlN{font:700 18px/1 "Zilla Slab",Georgia,serif;font-variant-numeric:lining-nums;color:#1E9E50;text-shadow:0 0 2px #7CF0A6,0 0 8px #0E6B36,0 0 16px rgba(14,107,54,.8),0 3px 0 #053d1d}
+.onl .onl-t{font:700 20px/1 "Zilla Slab",Georgia,serif;letter-spacing:.2px;margin-right:0;color:#1E9E50;text-shadow:0 0 2px #7CF0A6,0 0 8px #0E6B36,0 0 16px rgba(14,107,54,.8),0 3px 0 #053d1d}
+.onl i{width:8px;height:8px;border-radius:50%;background:#2EE07A;box-shadow:0 0 6px #2EE07A}
+.hd .board{max-height:42vh;overflow-y:auto}
 .logout{flex:0 0 auto;padding:6px 9px;border-radius:999px;background:transparent;border:1.5px solid var(--host);color:var(--host);font:600 12px/1 Figtree,sans-serif;box-shadow:0 0 10px -2px var(--host),inset 0 0 6px -2px var(--host)}
 header.hd .live{margin-top:10px;padding:4px 10px;font-size:12px}
 header.hd .lv-n{font-size:14px}
@@ -583,11 +714,16 @@ header.hd .lv-n{font-size:14px}
 .live>b.lv-n{font:700 15px/1 "Zilla Slab",serif;letter-spacing:0;color:var(--brass);margin-left:4px}
 .live>b.lv-n.up{color:var(--host)}
 .lv-dot{width:8px;height:8px;border-radius:50%;background:var(--host);box-shadow:0 0 0 0 var(--host);animation:lvpulse 1.6s ease-out infinite}
-@keyframes lvpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--host) 70%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
+@keyframes lvpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--pc,var(--host)) 70%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
 .lv-n{font:700 16px/1 "Zilla Slab",serif;color:var(--brass);font-variant-numeric:tabular-nums}
 .lv-n.up{color:var(--host)}
 .lv-sep{opacity:.5}
 @media (prefers-reduced-motion:reduce){.lv-dot{animation:none}}
+.lv-dot.lv-r{background:#E8E8F0;--pc:#E8E8F0}
+.lv-dot.lv-o{background:var(--guest);--pc:var(--guest)}
+.lv-dot.lv-g{background:var(--host);--pc:var(--host)}
+.bd-chip{width:20px!important;height:20px!important;margin:0!important;animation:none!important}
+.bd-chip span{font-size:11px!important}
 .qrcard{background:#fff;color:#111;border-radius:14px;padding:18px 14px;margin-top:12px;text-align:center}
 .qrcard .qr-t{font:700 30px "Zilla Slab",serif}
 .qrcard .qr-s{font-size:14px;color:#444;margin:2px 0 8px}
@@ -616,7 +752,7 @@ header.hd .lv-n{font-size:14px}
   <button data-tab="kalender" aria-current="page"><span>▦</span>Tisch</button>
   <button data-tab="rang"><span>♛</span>Rangliste</button>
   <button data-tab="profil"><span>♦</span>Ich</button>
-  <button data-tab="verwaltung" id="admtab" hidden><span>⚙</span>Verwaltung</button>
+  <button data-tab="verwaltung" id="admtab" hidden><span>⚙</span>Admin</button>
   <button data-tab="poker" id="admtab2" hidden><span>♠</span>Poker</button>
 </div></nav>
 <div class="toast" id="toast" role="status"></div>
@@ -638,7 +774,7 @@ const SUMMER_START=SOMMER_START;
 const STARTS=[...new Set([WINTER_START,SUMMER_START,"18:00","19:00","20:00","21:00"])].sort();
 const PLACE_PTS=[12,9,7,5,4,3,2,2,1,1];          // Turnierplätze 1–10 (Spieler-Rangliste)
 const PLANER_PT=10, GUEST_PT=5;                  // Gastgeber-Rangliste: Abend übernommen, Gast war da
-const BONUS_MAX=5;                               // Anwesenheit: 1 Punkt je Stunde, höchstens 5
+const BONUS_MAX=1;                               // Anwesenheit: 1 Punkt fürs Dabeisein
 // Sommerzeit automatisch erkennen: Im Sommer ist die Zeitverschiebung kleiner als im Winter
 const stdOffset=y=>Math.max(new Date(y,0,1).getTimezoneOffset(),new Date(y,6,1).getTimezoneOffset());
 const isWinter=d=>d.getTimezoneOffset()>=stdOffset(d.getFullYear());
@@ -675,8 +811,11 @@ const MAXNR=888;                                  // Spieler-Nummern 001 bis 888
 const GEBER_MIN=901, GEBER_MAX=930, GEBER_SOLL=20;   // Kartengeber-Konten 901 bis 930 (20 gebraucht, höchstens 30)
 const isGeber=m=>m!=null&&m+1>=GEBER_MIN;
 const byGeber=n=>(Number.isInteger(n)&&n>=GEBER_MIN&&n<=GEBER_MAX&&MEM[n-1])?n-1:null;
+const isOff=(d,m)=>!!(d&&d.off&&d.off.includes(m));
 const dreq=d=>{const q=d.dreq||(d.dreq=[]);for(let i=0;i<q.length;i++)if(typeof q[i]==="number")q[i]={m:q[i],at:0};return q};
 const dreqHas=(d,m)=>dreq(d).some(x=>x.m===m);
+const dinv=d=>d.dinv||(d.dinv=[]);
+const dinvHas=(d,m)=>!!(d&&d.dinv&&d.dinv.some(x=>x.m===m));
 const dreqSorted=d=>dreq(d).filter(x=>MEM[x.m]).slice().sort((a,b)=>(a.at||0)-(b.at||0));
 const whenTxt=ts=>{if(!ts)return "früher";const t=new Date(ts);return `${t.getDate()}.${t.getMonth()+1}. um ${pad(t.getHours())}:${pad(t.getMinutes())} Uhr`};
 const byNum=n=>(Number.isInteger(n)&&((n>=1&&n<=MAXNR)||(n>=901&&n<=999))&&MEM[n-1])?n-1:null;
@@ -700,7 +839,7 @@ function monthCal(sel){
     const ps=d.hosts.length, gs=takenSeats(d).length-ps, u=used(d);
     let dots="";for(let i=0;i<SEATS;i++)dots+=`<i class="${i<ps?"h":i<ps+gs?"g":""}"></i>`;
     const run=u>=6, done=d.result&&d.result.done;
-    h+=`<button class="cal-d${run?" run":""}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
+    h+=`<button class="cal-d${run?" run":""}${isOff(d,S.me)?" nope":""}${u>=7?" c-go":u>=3?" c-warm":""}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
   }
   h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span></p></div>`;
   return h;
@@ -780,6 +919,7 @@ function roleOf(d,m){
 function now(){const d=new Date();return `${pad(d.getHours())}:${pad(d.getMinutes())}`}
 function log(x){S.feed.unshift({t:now(),x});S.feed=S.feed.slice(0,12)}
 function toast(x){const t=document.getElementById("toast");t.textContent=x;t.classList.add("show");clearTimeout(t._);t._=setTimeout(()=>t.classList.remove("show"),2600)}
+const shortDay=k=>{const d=new Date(k+"T00:00");return `${WD[d.getDay()].toUpperCase()} ${pad(d.getDate())}.${pad(d.getMonth()+1)}.`};
 function dateLabel(k){const d=new Date(k+"T00:00");return `${WDL[d.getDay()]}, ${d.getDate()}. ${MON[d.getMonth()]}`}
 
 function promote(k){
@@ -787,12 +927,12 @@ function promote(k){
   while(d.wait.length&&used(d)<SEATS){
     const slot=d.hosts.find(h=>h.release&&h.guests.length<GUESTS_PER_HOST); if(!slot) break;
     const m=d.wait.shift(); slot.guests.push(m);
-    log(`${nm(m)} ist automatisch von der Warteliste an den Tisch nachgerückt – WhatsApp verschickt`);
+    log(`${nm(m)} ist automatisch von der Warteliste an den Tisch nachgerückt`);
   }
   while(d.wait.length&&!startedDay(k,d)){
     const f=freeSeatList(d); if(!f.length) break;
     const m=d.wait.shift(); solo(d).push({m,seat:f[0]});
-    log(`${nm(m)} ist automatisch von der Warteliste auf Platz ${f[0]+1} nachgerückt – WhatsApp verschickt`);
+    log(`${nm(m)} ist automatisch von der Warteliste auf Platz ${f[0]+1} nachgerückt`);
   }
 }
 const st0=m=>S.stats[m]=S.stats[m]||{wins:0,nights:0,hosted:0};
@@ -810,8 +950,8 @@ function award(k){
   d.wait.forEach(m=>{st0(m);S.stats[m].nights++});
   log(`Turnier beendet – Sieger ${nm(order[n-1])}. Punkte für ${Math.min(n,10)} Spieler und ${d.hosts.length} Gastgeber gutgeschrieben`);
 }
-// Anwesenheits-Bonus: je volle Stunde 1 Punkt, höchstens 5 (ab 5 Stunden)
-const bonusFor=a=>{if(!a||!a.in)return 0;const h=Math.floor(((a.out||Date.now())-a.in)/3600000);return Math.max(0,Math.min(BONUS_MAX,h))};
+// Anwesenheits-Bonus: 1 Punkt fürs Dabeisein
+const bonusFor=a=>(a&&a.in)?BONUS_MAX:0;
 function closeEvening(k){
   const d=S.days[k], A=att(d), now=Date.now(); let cnt=0; AWARD_MON=k.slice(0,7);
   Object.keys(A).forEach(x=>{const m=+x,a=A[x];if(!a.in)return;if(!a.out)a.out=now;const b=bonusFor(a);a.bonus=b;if(b>0){addPts(m,b);cnt++}});
@@ -835,6 +975,7 @@ function remindText(k,d,m){
   return lines.join("\n");
 }
 function remindTick(){
+  return false; // keine WhatsApp-Erinnerung mehr
   const k=key(dates[0]), d=S.days[k];
   if(!d||!active(d)||Date.now()<remindTs(k)) return false;
   const r=recips(d);
@@ -848,6 +989,7 @@ function remindTick(){
   d.remind.push(...n); n.forEach(m=>log(`WhatsApp-Erinnerung an ${no(m)} ${nm(m)} nachgeschickt`)); return true;
 }
 function remindPanel(k,d){
+  return ""; // keine WhatsApp-Erinnerung mehr
   if(!active(d)||(d.result&&d.result.done)) return "";
   const r=recips(d), isToday=k===key(dates[0]), sent=isToday&&!!d.remind;
   const who=r.includes(S.me)?S.me:r[0];
@@ -872,9 +1014,9 @@ function dealerSVG(cx,cy,ry,dealer){
   s+=`<line x1="${cx-28}" y1="${top+31}" x2="${cx+28}" y2="${top+31}" stroke="var(--ringled)" stroke-width="1" opacity=".4"/>`;
   s+=`<g data-dchair="1" class="dchair" role="button" tabindex="0" aria-label="Geberstuhl">`;
   if(dealer!=null){
-    s+=`<g><title>Geber ${no(dealer)} ${nm(dealer)}</title><rect x="${cx-17}" y="${top-34}" width="34" height="26" rx="8" fill="var(--slat)" stroke="var(--brass)" stroke-width="2"/>`;
-    s+=`<text x="${cx}" y="${top-25}" text-anchor="middle" font-size="6.5" font-weight="700" fill="var(--on-felt)" opacity=".8">Geber</text>`;
-    s+=`<text x="${cx}" y="${top-13}" text-anchor="middle" font-size="11" font-weight="800" fill="var(--brass)">${String(dealer+1).padStart(3,"0")}</text></g>`;
+    s+=`<g><title>Geber ${no(dealer)} ${nm(dealer)}</title><rect x="${cx-17}" y="${top-34}" width="34" height="26" rx="8" fill="url(#rust)" stroke="#B9824F" stroke-width="2"/>`;
+    s+=`<text x="${cx}" y="${top-25}" text-anchor="middle" font-size="6.5" font-weight="700" fill="#E9D3B4" opacity=".85">Geber</text>`;
+    s+=`<text x="${cx}" y="${top-13}" text-anchor="middle" font-size="11" font-weight="800" fill="#F6E2C2" style="text-shadow:0 1px 1px #2a160a">${String(dealer+1).padStart(3,"0")}</text></g>`;
   }else{
     s+=`<rect x="${cx-17}" y="${top-34}" width="34" height="26" rx="8" fill="var(--slat)" stroke="var(--ringled)" stroke-width="1.5" opacity=".95"/>`;
     s+=`<text x="${cx}" y="${top-17}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--on-felt)">Geber</text>`;
@@ -889,21 +1031,21 @@ function tableSVG(d){
   const cx=180,cy=120,rx=150,ry=88,pos=[];
   for(let i=0;i<SEATS;i++){const a=(-58+i*296/(SEATS-1))*Math.PI/180;pos.push([cx+Math.cos(a)*(rx+8),cy+Math.sin(a)*(ry+8)])}
   const seats=[], out=d.result?d.result.out:[];
-  d.hosts.forEach(h=>{seats[h.seat]={m:h.m,k:"h"};seats[h.gseat]=h.guests[0]!=null?{m:h.guests[0],k:"g"}:{res:true,h}});
+  d.hosts.forEach(h=>{seats[h.seat]={m:h.m,k:"h"};seats[h.gseat]=h.guests[0]!=null?{m:h.guests[0],k:"g",h}:{res:true,h}});
   solo(d).forEach(p=>{seats[p.seat]={m:p.m,k:"p"}});
   const picking=openForm==="host", r0=roleOf(d,S.me), canSeat=!startedDay(S.sel,d)&&((!r0||r0.r==="wait")||(GSEAT!=null&&ME&&ME.admin));
   if(openForm==="seat"&&pick.mine!=null) seats[pick.mine]={pick:"h"};
   if(picking){if(pick.mine!=null)seats[pick.mine]={pick:"h"};if(pick.guest!=null)seats[pick.guest]={pick:"g"}}
-  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}"><defs><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>`;
-  s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-14}" ry="${ry-14}" fill="var(--rim)"/><ellipse cx="${cx}" cy="${cy}" rx="${rx-19}" ry="${ry-19}" fill="none" stroke="var(--ringled)" stroke-width="3" opacity=".9"/>`;
+  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}"><defs><linearGradient id="rust" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A5A36"/><stop offset=".45" stop-color="#6B4027"/><stop offset=".75" stop-color="#7A5A48"/><stop offset="1" stop-color="#4A2E1C"/></linearGradient><filter id="gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>`;
+  s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-14}" ry="${ry-14}" fill="var(--rim)"/><ellipse cx="${cx}" cy="${cy}" rx="${rx-19}" ry="${ry-19}" fill="none" stroke="${used(d)>=7?"#2EE07A":used(d)>=3?"#FF9F1C":"var(--ringled)"}" stroke-width="3" opacity=".95"${used(d)>=3?' filter="url(#gl)"':""}/>`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-24}" ry="${ry-24}" fill="var(--cloth)"/><rect x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="none" stroke="var(--ringled)" stroke-width="2" opacity=".35"/>`;
   s+=dealerSVG(cx,cy,ry,hasDealer(d)?d.dealer:null);
   // feste Platznummern 1–10 dezent am Tischrand (der Geberstuhl hat keine)
   for(let i=0;i<SEATS;i++){const a=(-58+i*296/(SEATS-1))*Math.PI/180;s+=`<text class="seatno" x="${(cx+Math.cos(a)*(rx-36)).toFixed(1)}" y="${(cy+Math.sin(a)*(ry-35)+3.5).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ringled)" opacity=".7" aria-hidden="true">${i+1}</text>`}
-  s+=`<text x="${cx}" y="${cy-6}" text-anchor="middle" font-family="Zilla Slab,serif" font-weight="700" font-size="30" fill="var(--on-felt)">${used(d)}/${SEATS}</text>`;
-  s+=`<text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="12" fill="var(--on-felt)" opacity=".85">${VARIANTS[d.variant]} · ${d.start} Uhr</text>`;
+  {const u=used(d),col=u>=7?"#2EE07A":u>=3?"#FF9F1C":"var(--on-felt)",gf=u>=3?' filter="url(#gl)"':"",T=(y,fs,t)=>`<text x="${cx}" y="${y}" text-anchor="middle" font-family="Zilla Slab,serif" font-weight="700" font-size="${fs}" fill="${col}"${gf}>${t}</text>`;
+  s+=u<7?T(cy-8,18,(u===6?"noch einer":`noch ${7-u}`)):T(cy-17,18,"Start")+T(cy+2,18,u);}
+  s+=svgCards(cx,cy+8,d.variant);
   { const ns=Object.keys(d.sugg||{}).length;
-    s+=`<text x="${cx}" y="${cy+32}" text-anchor="middle" font-size="11" fill="var(--on-felt)" opacity=".8">${blindOf(d)} · <tspan fill="${d.tlock?"#F2B35E":"#8DB6FF"}">${d.tlock?"🔒 steht fest":"✎ "+(ns?ns+" Stimmen":"abstimmen")}</tspan></text>`;
     s+=`<rect data-tcenter="1" class="tcenter" x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="transparent" role="button" tabindex="0" aria-label="Spiel, Uhrzeit und Blind wählen"/>`; }
   pos.forEach(([x,y],i)=>{
     const st=seats[i], free=!st||(st.res&&st.h.release);
@@ -911,7 +1053,7 @@ function tableSVG(d){
     if(free) s+=`<g class="seat seat-f"${tap}><circle class="halo" cx="${x}" cy="${y}" r="23" fill="var(--stop)"/><circle class="fcore" cx="${x}" cy="${y}" r="17" fill="var(--stop)"/>${(picking||canSeat)&&!st?`<circle cx="${x}" cy="${y}" r="20.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>`:""}<text x="${x}" y="${y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--stop-ink)">frei</text></g>`;
     else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}><circle class="pickglow" cx="${x}" cy="${y}" r="24" fill="${hh?"var(--host)":"var(--guest)"}" opacity=".45" filter="url(#pg)"/>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"Gast")}</g>`}
     else if(st.res) s+=`<g class="seat seat-g" opacity=".8">${chipSVG(x,y,"var(--guest)","var(--guest-ink)","Gast")}</g>`;
-    else{const hh=st.k==="h",pp=st.k==="p";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",isListG(st.m)?"Gast":isNewG(st.m)?"0000":String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
+    else{const hh=st.k==="h",pp=st.k==="p",ge=st.k==="g"&&st.h&&(st.h.m===S.me||(ME&&ME.admin))&&!startedDay(S.sel,d);s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${ge?` data-gedit="${i}" data-hm="${st.h.m}" role="button" style="cursor:pointer"`:""}${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",isListG(st.m)?"Gast":isNewG(st.m)?"0000":String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
   });
   return s+"</svg>";
 }
@@ -937,7 +1079,7 @@ function attendanceBlock(d,k){
   const row=m=>{const a=A[m]||{};const st=a.in?(a.out?`${fmt(a.in)}–${fmt(a.out)} · +${bonusFor(a)}`:`da seit ${fmt(a.in)} · bisher +${bonusFor(a)}`):"noch nicht da";
     const btn=!a.in?`<button class="btn btn-host" data-act="attIn" data-m="${m}">Ist da</button>`:!a.out?`<button class="btn btn-line" data-act="attOut" data-m="${m}">Geht</button>`:`<button class="btn btn-line" data-act="attBack" data-m="${m}">Doch noch da</button>`;
     return `<div class="row"><div class="grow"><div style="font-weight:600">${no(m)} ${nm(m)}</div><div class="s">${st}</div></div>${btn}</div>`};
-  return `<h3>Anwesenheit</h3><p class="empty">Tippe an, wer kommt und wer geht. Je volle Stunde gibt es 1 Bonuspunkt, ab 5 Stunden +${BONUS_MAX}.</p>${ids.map(row).join("")}
+  return `<h3>Anwesenheit</h3><p class="empty">Tippe an, wer kommt und wer geht. Wer da ist, bekommt +1 Punkt – auch im Wartebereich (Super Nintendo, PlayStation, VR-Brille, Gesellschaftsspiele).</p>${ids.map(row).join("")}
   <div class="form"><label>Weitere Person dazunehmen – Mitgliedsnummer<input id="attadd" class="search" inputmode="numeric" placeholder="z. B. 23" autocomplete="off"></label><button class="btn btn-line" data-act="attAdd">Als anwesend eintragen</button></div>
   <div class="actions"><button class="btn btn-brass" data-act="closeEve">Abend abschließen und Bonus vergeben</button></div>`;
 }
@@ -1014,17 +1156,23 @@ function tourCard(d,k){
   h+=list.length?`<p class="tf-l" style="margin:4px 0 0">Vorschläge</p>${list.map(g=>{const n=g.ms.length,pct=Math.min(100,Math.round(n/VOTE_WIN*100));return `<div class="sg-row"><div class="grow"><b>${lab(g.x)}</b><div class="vbar"><i style="width:${pct}%"></i></div><span>${n} von ${VOTE_WIN} Stimmen${admin?" · "+g.ms.map(m=>no(m)).join(", "):""}</span></div>${dec?`<button class="btn btn-host sg-take" data-act="tourTake" data-key="${sugKey(g.x)}">Übernehmen</button>`:""}</div>`}).join("")}`:"";
   return h+`</section>`;
 }
+let CX_OPEN=false, GE_OPEN=null;
+function cancelSheet(d,k,mine){
+  if(!CX_OPEN||!mine||mine.r==="wait") return "";
+  const host=mine.r==="host"&&mine.h.guests.length;
+  return `<div class="cx-sheet"><b>${host?"Für wen möchtest du absagen?":"Wirklich absagen?"}</b>
+  ${host?`<button class="btn cx-guest" data-act="cxGuest">GAST</button><button class="btn cx-me" data-act="cxSelf">ICH</button><button class="btn btn-stop" data-act="cxBoth">GAST + ICH</button>`:`<button class="btn btn-stop" data-act="cxSelf">Ja, absagen</button>`}
+  <button class="btn btn-line" data-act="cxNo">Nein, zurück</button></div>`;
+}
+let GNUM_OPEN=false, GNUM_VAL="";
 function hostCard(d){
   if(openForm!=="host") return "";
-  const first=!active(d);
-  const chip=(l,v,c)=>`<div class="hc-chip ${c}${v?" on":""}"><span>${l}</span><b>${v?"Platz "+v:"–"}</b></div>`;
+  const gp=pick.guest!=null?pick.guest+1:0, gn=GNUM_VAL?byNum(+GNUM_VAL):null;
   return `<section class="panel hostcard" id="hostcard"><div class="hc-head"><h3>Gastgeber mit Gast</h3><span class="hc-date">${dateLabel(S.sel)}</span></div>
-  <div class="hc-seats">${chip("Gastgeber",pick.mine!=null?pick.mine+1:0,"h")}${chip("Gast",pick.guest!=null?pick.guest+1:0,"g")}</div>
-  ${pick.guest==null?`<p class="hc-hint">Tippe oben am Tisch einen zweiten roten Platz für deinen Gast.</p>`:""}
-  <div class="hc-info">${VARIANTS[d.variant]} · ${d.start} Uhr · ${blindOf(d)}<span class="hc-sub">Abstimmen: Tischmitte antippen</span></div>
-  <label class="tf"><span class="tf-l">Nummer deines Gastes</span><input id="fguest" class="search" inputmode="numeric" placeholder="leer = neuer Gast (0000)"></label>
-  <p class="hc-hint" id="fguestname">Ohne Nummer wird der Gast als 0000 eingetragen – zum ersten Mal dabei.</p>
-  <button class="btn btn-host" data-act="host">Plätze reservieren</button></section>`;
+  <div class="hc-seats"><div class="hc-chip h${pick.mine!=null?" on":""}"><span>Gastgeber</span><b>${pick.mine!=null?"Platz "+(pick.mine+1):"–"}</b></div>
+  ${gp?`<button type="button" class="hc-chip g on" data-act="gnumToggle"><span>Gast${gn!=null?" · "+no(gn):""}</span><b>Platz ${gp}</b><small>${gn!=null?escH(nm(gn)):"Nr. eintragen ›"}</small></button>`:`<div class="hc-chip g g-wait"><b>Bitte Gastplatz klicken</b></div>`}</div>
+  ${GNUM_OPEN?`<input id="fguest" class="search" inputmode="numeric" placeholder="Nummer des Gastes" value="${escH(GNUM_VAL)}" aria-label="Nummer des Gastes"><p class="hc-hint" id="fguestname"></p>`:""}
+  ${gp?`<button class="btn btn-host" data-act="host">Plätze reservieren</button>`:`<button class="btn btn-off" disabled>Plätze reservieren</button>`}</section>`;
 }
 // Turnier einstellen: Spiel, Uhrzeit, Blinds (erster Gastgeber oder Vorstand)
 function setupForm(d){
@@ -1040,22 +1188,21 @@ setInterval(()=>document.querySelectorAll(".mk-timer").forEach(el=>{el.textConte
 function markBtn(k,d,mine){
   if(mine||(d.result&&d.result.done)||startedDay(k,d)) return "";
   const on=d.interest.includes(S.me);
-  return `<div class="mk-row"><button type="button" class="mark3${on?" on":""}" data-act="interest" aria-pressed="${on}" aria-label="${on?"Vorgemerkt – tippen zum Entfernen":"Vormerken – keine feste Zusage"}" title="${on?"Vorgemerkt – tippen zum Entfernen":"Keine feste Zusage – vielleicht kann ich"}"><span class="m3-i" aria-hidden="true">★</span><span class="m3-t">${on?`Vorgemerkt · noch <b class="mk-timer" data-t="${startTs(k,d)}">${mkLeft(startTs(k,d))}</b>`:"Vormerken"}</span></button></div>`;
+  return `<div class="mk-row"><button type="button" class="mark3${on?" on":""}" data-act="interest" aria-pressed="${on}" aria-label="${on?"Vorgemerkt – tippen zum Entfernen":"Vormerken – keine feste Zusage"}" title="${on?"Vorgemerkt – tippen zum Entfernen":"Keine feste Zusage – vielleicht kann ich"}"><span class="m3-i" aria-hidden="true">★</span>${on?`<span class="m3-cnt">${d.interest.length}</span>`:`<span class="m3-t">evtl.</span>`}</button></div>`;
 }
 function viewKalender(){
   const k=S.sel, d=S.days[k], st=status(d), mine=roleOf(d,S.me), full=used(d)>=SEATS, locked=d.result;
   let h="";
+  if(isOff(d,S.me)) return h+`<section class="panel cdbar offbar"><span class="cd-lbl">Off</span><b class="off-day">${shortDay(k)}</b><button type="button" class="onbtn" data-act="dayOn">On</button></section>`+monthCal(k);
   if(GSEAT!=null&&ME&&ME.admin) h+=`<div class="gseat-bar"><span>Platz für <b>${escH(nm(GSEAT))}</b>: Tag wählen, dann freien Platz antippen</span><button class="btn btn-line" data-act="gSeatStop">Abbrechen</button></div>`;
-  h+=`<section class="panel" id="event"><div class="ptitle"><h2>${dateLabel(k)}</h2><span class="badge ${st.c}">${st.t}</span></div>${markBtn(k,d,mine)}${active(d)?countdownHTML(k,d):""}`;
+  h+=`<section class="panel${used(d)>=7?" go":used(d)>=3?" warm":""}" id="event"><div class="ptitle"><h2>${shortDay(k)} <span class="ev-time">${d.start}</span></h2>${markBtn(k,d,mine)}${mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done)?`<button type="button" class="btn-cancel hd-cancel" data-act="cxOpen">Absagen</button>`:""}</div>${cancelSheet(d,k,mine)}${ME&&ME.admin&&(d.off||[]).length?`<p class="offlist">Off: ${d.off.map(m=>pName(m)).join(", ")}</p>`:""}`;
   if(active(d)){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
     h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
-    h+=`<div class="count"><span><b>${SEATS-used(d)}</b> Plätze frei</span></div>`;
     if(hasDealer(d)&&(isGeber(S.me)||(ME&&ME.admin))) h+=`<p class="dealerline">Geber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
     h+=seatSheet(d);
     const wc=`<div class="waitcount" aria-label="${d.wait.length} im Wartebereich"><span>Wartebereich</span><b>${d.wait.length}</b></div>`;
     const smallCancel=mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done);
-    h+=smallCancel?`<div class="wc-row">${wc}<button class="btn-cancel" data-act="leave">Absagen</button></div>`:wc;
   }else{
     h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
     h+=seatSheet(d);
@@ -1072,7 +1219,7 @@ function viewKalender(){
   else if(mine){
     const txt=mine.r==="host"?"Du bist Gastgeber":mine.r==="player"?`Du sitzt als Gast auf Platz ${mine.p.seat+1}`:mine.r==="guest"?`Du sitzt am Tisch (Gastplatz von ${nm(mine.h.m)})`:mine.r==="dealer"?"Du bist an diesem Abend Geber":`Du bist im Wartebereich, Platz ${d.wait.indexOf(S.me)+1}`;
     if(mine.r==="wait") h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${txt}.</p>`;
-    if(mine.r==="host"&&(!mine.h.guests.length||isNewG(mine.h.guests[0]))&&!mine.h.release) h+=`<div class="form"><label>${mine.h.guests.length?"Dein Gast ist 0000 – Nummer nachtragen":"Gast eintragen – Mitgliedsnummer (1–888)"}<input id="myguest" class="search" inputmode="numeric" placeholder="z. B. 42"></label><p class="empty" id="myguestname" style="margin:0">Sobald dein Gast eine Nummer hat, trag sie hier ein.</p><button class="btn btn-brass" data-act="addGuest">Gast eintragen</button><button class="btn btn-line" data-act="release">Gastplatz an Warteliste freigeben</button></div>`;
+    if(GE_OPEN&&GE_OPEN.k===k) h+=`<div class="ge-row"><input id="myguest" class="search" inputmode="numeric" placeholder="Gast Nr." aria-label="Gast Nummer"><button class="btn btn-guest" data-act="addGuest" data-hm="${GE_OPEN.hm}">Speichern</button></div><p class="hc-hint" id="myguestname" style="margin:4px 0 0"></p>`;
     if(mine.r==="wait"||!active(d)) h+=`<button class="btn btn-stop" data-act="leave">${mine.r==="wait"?"Austragen":"Absagen"}</button>`;
   }else{
     if(openForm!=="seat"&&openForm!=="host") h+=freeSeatList(d).length?"":`<p class="empty" style="margin:0">Alle Plätze sind belegt.</p>`;
@@ -1090,7 +1237,9 @@ function viewKalender(){
   h+=`</section>`;
   h+=tourCard(d,k);
   h+=hostCard(d);
+  if(open&&!hasDealer(d)&&dinvHas(d,S.me)) h+=`<section class="panel dealercard"><div class="hc-head"><h3>🃏 Anfrage vom Vorstand</h3><span class="hc-date">${dateLabel(k)}</span></div><div class="hc-info">Möchtest du an diesem Abend Karten geben?</div><div class="btn-pair" style="margin-top:10px"><button class="btn btn-host" data-act="geberInvYes" data-k="${k}">Zusagen</button><button class="btn btn-line" data-act="geberInvNo" data-k="${k}">Absagen</button></div></section>`;
   if(myReq) h+=`<section class="panel dealercard"><div class="hc-head"><h3>🃏 Kartengeber</h3>${hasDealer(d)?`<span class="hc-date">${no(d.dealer)} ${escH(nm(d.dealer))}</span>`:`<span class="hc-date">noch keiner</span>`}</div>${myReq?(d.dealer===S.me?`<div class="hc-info">Du bist an diesem Abend Kartengeber.</div>`:`<div class="hc-info">Du bist nominiert ✓<span class="hc-sub">Der Vorstand entscheidet. Zurückziehen: Geberstuhl nochmal antippen.</span></div>`):""}${dreqHTML?`<p class="tf-l" style="margin:0">Anfragen (nach Zeit)</p>${dreqHTML}`:(admin&&!hasDealer(d)&&open?`<p class="hc-hint" style="margin:0">Noch keine Anfragen. Kartengeber tippen am Tisch auf den Geberstuhl.</p>`:"")}${showDealerForm?dealerForm(d):""}</section>`;
+  h+=`<section class="panel cdbar"><span class="cd-lbl">Start in</span><span class="cd hd-cd" id="cd" data-t="${startTs(k,d)}" data-done="${d.result&&d.result.done?1:0}" role="timer"><span class="cd-v" id="cdv">–</span></span><button type="button" class="offbtn" data-act="dayOff" title="An diesem Tag kann ich nicht">Off</button></section>`;
   h+=monthCal(k);
 
   return h;
@@ -1158,19 +1307,25 @@ function prizeBlock(mon,pl,list){
   return h;
 }
 const PRZ_IDEAS=["z. B. Pokerkoffer 500 Clay-Chips im Alukoffer","z. B. Restaurant-Gutschein 50 €","z. B. Premium-Whisky 12 Jahre","z. B. Profi-Pokerkarten Plastik (2 Decks)","z. B. Kino für 2 inkl. Snacks","z. B. Dealer-Button Metall mit Gravur","z. B. Card Guard aus Metall","z. B. Pokerbuch Profi-Strategie","z. B. Elektrischer Kartenmischer","z. B. Poker-Kappe mit Logo"];
+function scoreCard(){
+  const m=S.me, list=rankList(), pos=list.indexOf(m), pts=MP(curMon)[m]||0;
+  return `<section class="pcard" aria-label="Deine Punkte: ${pts}, ${pos>=0?"Platz "+(pos+1):"noch kein Platz"} in der Rangliste">
+  <div class="pc-left"><span class="pc-mon">${quarter}</span><div class="pc-pts"><b>${pts}</b><span>Punkte</span></div></div>
+  <div class="pc-chip"><div class="pc-coin"><b>${pos>=0?pos+1:"–"}</b></div><span>Platz</span></div></section>`;
+}
 function viewRang(){
   const mon=rankMon, list=rankList(mon), P=MP(mon), admin=!!(ME&&ME.admin);
   const prevMon=(()=>{const d=new Date(today.getFullYear(),today.getMonth()-1,1);return `${d.getFullYear()}-${pad(d.getMonth()+1)}`})();
   const shortM=m=>MON[+m.slice(5,7)-1];
   const pr=prizesOf(mon).s, past=mon<curMon, medal=["🥇","🥈","🥉"], myPos=list.indexOf(S.me);
   const row=(m,i)=>`<div class="rk${i<3?" rk-top rk-"+(i+1):""}${m===S.me?" rk-me":""}"><span class="rk-pos">${i<3?medal[i]:i+1}</span><span class="rk-name"><b>${escH(nm(m))}</b>${pr[i]?`<small class="rk-prz">${przSVG(pr[i],"rk-ico")}${escH(pr[i])}</small>`:nm(m)===String(m+1).padStart(3,"0")?"":`<small>${no(m)}</small>`}</span><span class="rk-pts">${P[m]}</span></div>`;
-  let h=`<section class="panel rkpanel"><div class="rk-head"><h2>Rangliste</h2><div class="seg rk-seg">${[curMon,prevMon].map(x=>`<button type="button" data-rmon="${x}" aria-pressed="${mon===x}">${shortM(x)}</button>`).join("")}</div></div>`;
+  let h=scoreCard()+`<section class="panel rkpanel"><div class="rk-head"><h2>Rangliste</h2><div class="seg rk-seg">${[curMon,prevMon].map(x=>`<button type="button" data-rmon="${x}" aria-pressed="${mon===x}">${shortM(x)}</button>`).join("")}</div></div>`;
   if(myPos>=0) h+=`<div class="rk-mine">Du bist auf <b>Platz ${myPos+1}</b> mit <b>${P[S.me]} Punkten</b></div>`;
   h+=list.length?list.slice(0,10).map(row).join(""):`<p class="empty" style="margin:12px 0 0">Noch keine Punkte im ${monLabel(mon)}.</p>`;
   if(myPos>=10) h+=`<div class="rk-gap">⋯</div>`+row(S.me,myPos);
-  h+=`<p class="rk-foot">${past?`Endstand ${monLabel(mon)}`:`Neue Rangliste jeden Monat · ${(()=>{const n=pr.filter(Boolean).length;return n?`Sachpreise für Platz 1–${pr.reduce((a,x,i)=>x?i+1:a,0)}`:"Sachpreise folgen"})()}`}</p></section>`;
+  h+=`${past?`<p class="rk-foot">Endstand ${monLabel(mon)}</p>`:""}</section>`;
   if(pr.some(Boolean)) h+=`<section class="panel pz-panel"><div class="rk-head"><h3 style="margin:0">🎁 Sachpreise</h3><span class="hc-date">${monLabel(mon)}</span></div><div class="pz-grid">${pr.map((x,i)=>x?`<div class="pz-card${i<3?" pz-top pz-"+(i+1):""}">${przSVG(x,"pz-art")}<span class="pz-place">${i<3?medal[i]:i+1+"."}</span><b>${escH(x)}</b></div>`:"").join("")}</div></section>`;
-  h+=`<details class="panel rules"><summary>♣ So gibt es Punkte</summary><div class="rk-rules">${PLACE_PTS.map((p,i)=>`<span><small>${i+1}.</small><b>${p}</b></span>`).join("")}</div><p class="rk-note">Plus <b>1 Punkt je Stunde</b> Anwesenheit, höchstens <b>+${BONUS_MAX}</b>.</p></details>`;
+  h+=`<details class="panel rules"><summary>♣ So gibt es Punkte</summary><div class="rk-rules">${PLACE_PTS.map((p,i)=>`<span><small>${i+1}.</small><b>${p}</b></span>`).join("")}</div><p class="rk-note">Plus <b>1 Punkt</b> fürs Dabeisein – auch im Wartebereich bei Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspielen.</p></details>`;
   if(admin&&!past) h+=`<details class="panel rules"><summary>🎁 Preise eintragen</summary><div class="hc-body" style="padding:0 0 12px">${pr.map((x,i)=>`<label class="prz-row"><span>${i+1}.</span><input class="search" id="prz${i}" placeholder="${PRZ_IDEAS[i]}" value="${escH(x)}" maxlength="60"></label>`).join("")}<button class="btn btn-brass" data-act="savePrizes" data-pl="0">Preise speichern</button></div></details>`;
   return h;
 }
@@ -1186,26 +1341,22 @@ function viewProfil(){
     const cancel=!started?`<button class="btn btn-stop" data-act="leave" data-k="${k}">Absagen</button>`:r.r==="wait"?`<button class="btn btn-line" data-act="leave" data-k="${k}">Austragen</button>`:"";
     res+=`<div class="row pf-res"><div class="grow"><div style="font-weight:600">${dateLabel(k)}</div><div class="s">${t} · Start ${d.start} Uhr</div></div><div class="btns"><button class="btn btn-line" data-day="${k}" data-goto="1">Ansehen</button>${cancel}</div></div>`;
   });
-  const pts=MP(curMon)[m]||0;
-  return `<section class="pcard" aria-label="Deine Punkte: ${pts}, ${pos>=0?"Platz "+(pos+1):"noch kein Platz"} in der Rangliste">
-  <div class="pc-left"><span class="pc-mon">${quarter}</span><div class="pc-pts"><b>${pts}</b><span>Punkte</span></div></div>
-  <div class="pc-chip"><div class="pc-coin"><b>${pos>=0?pos+1:"–"}</b></div><span>Platz</span></div></section>
-  <details class="panel rules"><summary>♣ So läuft’s</summary>${viewRegeln().replace(/^<section class="panel prose"><h2[^>]*>.*?<\/h2>/,'<div class="prose">').replace(/<\/section>$/,"</div>")}</details>`;
+  return `<details class="panel rules"><summary>♣ So läuft’s</summary>${viewRegeln().replace(/^<section class="panel prose"><h2[^>]*>.*?<\/h2>/,'<div class="prose">').replace(/<\/section>$/,"</div>")}</details>`;
 }
 
 function viewRegeln(){
   return `<section class="panel prose"><h2 style="font:700 22px 'Zilla Slab',serif;margin:0 0 10px">So läuft’s</h2>
   <p>Pokerturniere an einem Tisch mit 10 Plätzen.</p>
   <ol>
-    <li>Bis zu 5 Mitglieder übernehmen den Abend als Gastgeber. Im Winter beginnt das Turnier um ${WINTER_START} Uhr, im Sommer um ${SUMMER_START} Uhr.</li>
+    <li>Am Tisch sitzen die Gastgeber und ihre Gäste.</li>
     <li>Tippe auf einen freien roten Platz und wähle: als Gast oder als Gastgeber mit Gast.</li>
-    <li>Als Gastgeber reservierst du zwei Plätze am Tisch, die du selbst aussuchst: einen für dich und einen für deinen Gast. Den Gast trägst du mit seiner Mitgliedsnummer (1–888) ein. So sitzen höchstens 10 Personen am Tisch.</li>
-    <li>Kartengeber haben eigene Nummern von 901 bis 999. Sie fragen in der App für einen Abend an, ein Gastgeber oder der Vorstand sagt zu. Der Kartengeber hat seinen eigenen Stuhl und zählt nicht zu den 10 Plätzen.</li>
-    <li>Alle anderen Mitglieder dürfen trotzdem kommen: Sie sind im Wartebereich, spielen Konsole oder Gesellschaftsspiele und rücken automatisch nach, wenn ein Gastgeber seinen Gastplatz freigibt oder absagt.</li>
+    <li>Als Gastgeber reservierst du zwei Plätze am Tisch, die du selbst aussuchst: einen für dich und einen für deinen Gast. Den Gast trägst du mit seiner Mitgliedsnummer ein.</li>
+    <li>Karten geben darf jeder, der Freude und Spaß daran hat: Wer Lust hat, meldet sich in der App für einen Abend als Kartengeber, ein Gastgeber oder der Vorstand sagt zu.</li>
+    <li>Alle Mitglieder sind ausnahmslos immer herzlich willkommen, solange die Vereinsregeln eingehalten werden. Wer gerade keinen Platz am Tisch hat, ist im Wartebereich, spielt Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspiele und rückt automatisch nach, wenn ein Gastgeber seinen Gastplatz freigibt oder absagt.</li>
     <li>Nach dem Turnier trägt ein Gastgeber ein, wer wann ausgeschieden ist. Die ersten 10 bekommen sofort Punkte in der Spieler-Rangliste.</li>
-    <li>Die Gastgeber tragen ein, wer kommt und wer geht. Je volle Stunde gibt es 1 Bonuspunkt, ab 5 Stunden ${BONUS_MAX} Punkte.</li>  </ol>
+    <li>Wer da ist, bekommt 1 Punkt – auch wer im Wartebereich Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspiele spielt.</li>  </ol>
   <h3>Läuft automatisch</h3>
-  <p>WhatsApp-Erinnerung am Spieltag um ${ERINNERUNG_UM} Uhr an alle mit Platz, Nachrücken aus dem Wartebereich, Hinweis an alle Vorgemerkten, sobald jemand einen freien Abend übernimmt, und die Punktevergabe.</p>
+  <p>Nachrücken aus dem Wartebereich, Hinweis an alle Vorgemerkten, sobald jemand einen freien Abend übernimmt, und die Punktevergabe.</p>
   <h3>Beitrag</h3>
   <p>Verpflegungspauschale 30 € pro Abend für alle Anwesenden, Essen und Trinken inklusive. Kein Einsatz, keine Geldgewinne – nur Punkte, Wanderpokal und Ehre.</p>
   <h3>Anmeldung</h3>
@@ -1217,25 +1368,31 @@ let admQ="", admF="alle", HIST=null;
 const isFree=x=>x.admin||x.free!==false;   // ohne Freigabe-Spalte (alter Speicher) gilt jeder als frei
 // Adresse der App (wird automatisch richtig, sobald sie online ist)
 const APP_URL=location.protocol.startsWith("http")?location.origin+location.pathname:"https://me2room.github.io/";
-const inviteText=nr=>`Hallo! ♠ Du bist bei me2room dabei – unserem Pokertisch.\n\n1. Öffne: ${APP_URL}\n2. Deine Nummer: ${String(nr).padStart(3,"0")}\n3. Erste PIN: 0000\n\nDann suchst du dir einen Spitznamen und deine eigene PIN aus. Fertig!\n\nTipp: Leg den Link auf deinen Startbildschirm, dann ist es wie eine App.`;
+const inviteText=nr=>`me2room ♠
+
+Login: ${String(nr).padStart(3,"0")}
+PIN: 0000
+
+${APP_URL}?app=1
+
+Bitte einloggen, testen und ein kurzes Feedback geben. Danke!`;
 let QRSVG=null;
 // Übersicht für den Chef: Abende, Spieler, beliebte Tage
+let ADM_OPEN={};
+const admSec=(id,title,badge,body)=>`<section class="panel"><details class="adm-x" data-sec="${id}"${ADM_OPEN[id]?" open":""}><summary><h3>${title}</h3>${badge?`<span class="badge b-plan">${badge}</span>`:""}<span class="adm-arr" aria-hidden="true">⌄</span></summary><div class="adm-b">${body}</div></details></section>`;
+document.addEventListener("toggle",e=>{const el=e.target;if(el&&el.dataset&&el.dataset.sec)ADM_OPEN[el.dataset.sec]=el.open},true);
+(function(){const st=document.createElement("style");st.textContent=`.adm-x>summary{list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer}.adm-x>summary::-webkit-details-marker{display:none}.adm-x>summary h3{margin:0;flex:1}.adm-arr{font-size:22px;line-height:1;color:var(--brass,#c9a35a);transition:transform .2s}.adm-x[open] .adm-arr{transform:rotate(180deg)}.adm-b{margin-top:10px}.g-row{grid-template-columns:24px minmax(0,1fr) auto auto auto!important}.g-row .g-del{padding:6px 8px!important;font-size:12.5px!important;min-width:0!important;flex:0 0 auto}.g-row .g-txt{min-width:0;flex:1 1 auto}.adm-btn{flex:0 0 auto;border:0;border-radius:12px;padding:11px 14px;background:#2f8f55;color:#fff;font:700 14px Figtree,system-ui;cursor:pointer}.adm-ok,.adm-no{border:0;border-radius:10px;padding:8px 11px;font:700 13px Figtree,system-ui;color:#fff;cursor:pointer}.adm-ok{background:#2f8f55}.adm-no{background:#b8323f}.adm-line{display:flex;gap:6px;align-items:center}.adm-in{flex:1 1 0;min-width:0;height:38px;padding:0 8px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--on-felt,#f3e3c3);font:600 15px Figtree,system-ui}.adm-line .adm-sm{margin-top:0;flex:0 0 auto;height:38px}.adm-sm{margin-top:8px;border:1.5px solid var(--brass,#c9a35a);background:transparent;color:var(--brass,#c9a35a);border-radius:10px;padding:7px 16px;font:700 13px Figtree,system-ui;cursor:pointer}.adm-box{margin-top:14px;padding:12px;border:1.5px solid color-mix(in srgb,var(--brass,#c9a35a) 60%,transparent);border-radius:14px}`;document.head.append(st)})();
 function admStats(){
   const mon=curMon, played=Object.keys(S.days).filter(k=>k.startsWith(mon)&&S.days[k].result&&S.days[k].result.done);
-  const ppl=played.reduce((a,k)=>a+players(S.days[k]).length,0);
   const wd=[0,0,0,0,0,0,0]; played.forEach(k=>wd[new Date(k+"T00:00").getDay()]++);
   const best=Math.max(...wd), bestDay=best?WDL[wd.indexOf(best)]:"–";
-  const booked=dates.filter(dt=>{const d=S.days[key(dt)];return d&&active(d)&&!(d.result&&d.result.done)}).length;
   const top=Object.keys(S.stats).map(Number).filter(m=>MEM[m]&&(S.stats[m].nights||0)>0).sort((a,b)=>(S.stats[b].nights||0)-(S.stats[a].nights||0)).slice(0,5);
-  const reg=(ADMIN||[]).filter(x=>x.pin).length;
+  const mem=(ADMIN||[]).filter(x=>x.nr<GEBER_MIN).length;
+  let req=0; dates.forEach(dt=>{const d=S.days[key(dt)];if(d&&!hasDealer(d)&&!(d.result&&d.result.done))req+=dreqSorted(d).length});
   const tile=(v,l)=>`<div class="pf-stat"><b>${v}</b><span>${l}</span></div>`;
-  return `<section class="panel"><div class="ptitle"><h3 style="margin:0">Übersicht</h3><span class="badge b-plan">${monLabel(mon)}</span></div>
-  <div class="pf-stats">${tile(played.length,"Abende gespielt")}${tile(played.length?Math.round(ppl/played.length*10)/10:"–","Spieler im Schnitt")}${tile(booked,"Abende mit Buchung")}${tile(reg,"schon angemeldet")}</div>
+  return admSec("stats","Übersicht",monLabel(mon),`<div class="pf-stats">${tile(mem,"Mitglieder")}${tile(req,"Offene Anfragen")}</div>
   <p class="empty" style="margin:10px 0 4px">Beliebtester Tag: <b style="color:var(--ink)">${bestDay}</b></p>
-  ${top.length?`<p class="empty" style="margin:8px 0 4px">Kommen am häufigsten:</p>${top.map((m,i)=>`<div class="row"><div class="pos" style="min-width:22px">${i+1}.</div><div class="grow"><div style="font-weight:600">${no(m)} ${escH(nm(m))}</div></div><div class="s">${S.stats[m].nights}× da</div></div>`).join("")}`:""}
-  <div id="qrbox">${QRSVG?`<div class="qrcard"><div class="qr-t">me2room ♠</div><div class="qr-s">Scannen und mitspielen</div><div class="qr-img">${QRSVG}</div><div class="qr-u">${escH(APP_URL)}</div><div class="qr-s">Anmelden mit deiner Nummer und deiner PIN</div></div>
-  <div class="actions qr-btns"><button class="btn btn-brass" data-act="qrPrint">Drucken</button><button class="btn btn-line" data-act="qrClose">Schließen</button></div>`:`<div class="actions"><button class="btn btn-brass" data-act="admQR">QR-Code zum Ausdrucken</button></div>
-  <p class="empty" style="margin:6px 0 0">Zum Aufhängen am Tisch: Handy-Kamera drauf, schon ist man in der App.</p>`}</div></section>`;
+  ${top.length?`<p class="empty" style="margin:8px 0 4px">Kommen am häufigsten:</p>${top.map((m,i)=>`<div class="row"><div class="pos" style="min-width:22px">${i+1}.</div><div class="grow"><div style="font-weight:600">${no(m)} ${escH(nm(m))}</div></div><div class="s">${S.stats[m].nights}× da</div></div>`).join("")}`:""}`);
 }
 // Alle Kartengeber-Anfragen der kommenden Abende, nach Zeit
 const pName=m=>nm(m)===String(m+1).padStart(3,"0")?no(m):`${no(m)} ${escH(nm(m))}`;
@@ -1243,47 +1400,57 @@ function admDealerReqs(){
   const reqs=[], set=[], open=[];
   dates.forEach(dt=>{const k=key(dt),d=S.days[k];if(!d||(d.result&&d.result.done))return;open.push(k);
     if(hasDealer(d)) set.push({k,m:d.dealer}); else dreqSorted(d).forEach((x,i)=>reqs.push({k,x,first:i===0}))});
-  const row=(l,sub,btns)=>`<div class="sg-row" style="margin-top:8px"><div class="grow"><b>${l}</b><span>${sub}</span></div><div style="display:grid;gap:4px">${btns}</div></div>`;
-  return `<section class="panel" id="admgeber"><div class="ptitle"><h3 style="margin:0">🃏 Kartengeber</h3><span class="badge b-plan">${reqs.length} offen</span></div>
+  const row=(l,sub,btns)=>`<div class="sg-row" style="margin-top:8px"><div class="grow"><b>${l}</b><span>${sub}</span></div><div style="display:flex;gap:6px;flex:0 0 auto">${btns}</div></div>`;
+  return admSec("geber","Kartengeber",reqs.length?`${reqs.length} offen`:"",`<div id="admgeber"></div>
   <p class="tf-l" style="margin:12px 0 0">Anfragen (nach Zeit)</p>
-  ${reqs.length?reqs.map(r=>row(dateLabel(r.k),`${pName(r.x.m)} · angefragt am ${whenTxt(r.x.at)}${r.first?" · zuerst":""}`,`<button class="btn btn-host sg-take" data-act="geberOk" data-k="${r.k}" data-m="${r.x.m}">Annehmen</button><button class="btn btn-line sg-take" data-act="geberNo" data-k="${r.k}" data-m="${r.x.m}">Ablehnen</button>`)).join(""):`<p class="empty" style="margin:6px 0 0">Keine offenen Anfragen.</p>`}
+  ${reqs.length?reqs.map(r=>row(bdDay(r.k),`${pName(r.x.m)} · ${whenTxt(r.x.at).replace(" um "," ")}${r.first?" · zuerst":""}`,`<button class="adm-ok" data-act="geberOk" data-k="${r.k}" data-m="${r.x.m}">Annehmen</button><button class="adm-no" data-act="geberNo" data-k="${r.k}" data-m="${r.x.m}">Ablehnen</button>`)).join(""):`<p class="empty" style="margin:6px 0 0">Keine offenen Anfragen.</p>`}
   <p class="tf-l" style="margin:14px 0 0">Eingeteilt</p>
   ${set.length?set.map(r=>row(dateLabel(r.k),`${pName(r.m)}`,`<button class="btn btn-line sg-take" data-act="clearDealer" data-k="${r.k}">Austragen</button>`)).join(""):`<p class="empty" style="margin:6px 0 0">Noch niemand eingeteilt.</p>`}
-  <p class="tf-l" style="margin:14px 0 6px">Selbst eintragen</p>
-  <div class="tf-2"><label class="tf"><select id="admgday" aria-label="Abend">${open.map(k=>`<option value="${k}">${dateLabel(k)}</option>`).join("")}</select></label><label class="tf"><input id="dealerin" inputmode="numeric" placeholder="Nr. z. B. 901" aria-label="Nummer des Kartengebers" autocomplete="off"></label></div>
-  <button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="admSetDealer">Kartengeber eintragen</button></section>`;
+  <div class="adm-box"><p class="tf-l" style="margin:0 0 6px">Eintragen</p>
+  <div class="adm-line"><select id="admgday" class="adm-in" aria-label="Abend">${open.map(k=>`<option value="${k}">${bdDay(k)}</option>`).join("")}</select><input id="dealerin" class="adm-in" inputmode="numeric" placeholder="Nr. 901" aria-label="Nummer des Kartengebers" autocomplete="off"><button class="adm-sm" data-act="admSetDealer">Eintragen</button></div></div>
+  <div class="adm-box"><p class="tf-l" style="margin:0 0 6px">Anfragen</p>
+  ${(()=>{const inv=[];dates.forEach(dt=>{const k=key(dt),d=S.days[k];if(d&&!hasDealer(d)&&!(d.result&&d.result.done))(d.dinv||[]).forEach(x=>inv.push({k,m:x.m}))});
+    const geb=(ADMIN||[]).filter(x=>x.nr>=GEBER_MIN&&x.nr<=GEBER_MAX).sort((a,b)=>a.nr-b.nr);
+    return (inv.length?inv.map(r=>row(dateLabel(r.k),`${pName(r.m)} · wartet auf Antwort`,`<button class="btn btn-line sg-take" data-act="admAskCancel" data-k="${r.k}" data-m="${r.m}">Zurückziehen</button>`)).join(""):"")+
+    `<div class="adm-line"><select id="admaskday" class="adm-in" aria-label="Abend">${open.filter(k=>!hasDealer(S.days[k])).map(k=>`<option value="${k}">${bdDay(k)}</option>`).join("")}</select><select id="admaskm" class="adm-in" aria-label="Kartengeber">${geb.map(x=>`<option value="${x.nr-1}">${String(x.nr).padStart(3,"0")}${x.nickname?" "+escH(x.nickname):x.real_name?" "+escH(x.real_name):""}</option>`).join("")}</select><button class="adm-sm" data-act="admAskDealer">Anfragen</button></div>`})()}
+</div>`);
 }
 const guestSeats=id=>dates.map(dt=>{const k=key(dt),d=S.days[k];if(!d||(d.result&&d.result.done))return null;const p=solo(d).find(p=>p.m===id);return p?{k,seat:p.seat}:null}).filter(Boolean);
 const admRow=x=>{const esc=escH;return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div class="adm-info"><div class="adm-n">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")}${x.admin?" · Admin":""}</div><div class="s">${x.nr>=GEBER_MIN?"🃏 ":""}${isFree(x)?"✅":"🔒"} ${x.nickname?esc(x.nickname):isFree(x)?"frei":"gesperrt"}</div></div><div class="adm-btns">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}${isFree(x)&&!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}" title="PIN auf 0000 zurücksetzen">PIN</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`};
+let G_HOST=null, G_DONE=null, ADM_Q="";
+const freeNrs=()=>(ADMIN||[]).filter(x=>x.nr>1&&x.nr<GEBER_MIN&&!x.pin&&!x.real_name&&!x.nickname).sort((a,b)=>a.nr-b.nr);
+const gHostForm=g=>{const fr=freeNrs();return `<div class="adm-box"><p class="tf-l" style="margin:0 0 6px">${escH(g.n)} wird Gastgeber</p>${fr.length?`<div style="display:flex;gap:10px;align-items:center"><label class="tf" style="flex:1"><select id="ghnr" aria-label="Freie Nummer">${fr.slice(0,200).map(x=>`<option value="${x.nr}">${String(x.nr).padStart(3,"0")}</option>`).join("")}</select></label><button class="adm-btn" data-act="gHostSave">Gastgeber werden</button></div>`:`<p class="empty" style="margin:0">Keine freie Nummer mehr.</p>`}</div>`};
+const admLookup=()=>{const nr=parseInt((ADM_Q||"").replace(/\D/g,""),10);if(!nr)return "";const x=(ADMIN||[]).find(y=>y.nr===nr);return x?admRow(x):`<p class="empty" style="margin:8px 0 0">Diese Nummer gibt es nicht.</p>`};
+document.addEventListener("input",e=>{if(e.target&&e.target.id==="admnr"){ADM_Q=e.target.value;const el=document.getElementById("admres");if(el)el.innerHTML=admLookup()}});
 function viewPoker(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
   const qq=admQ.trim().toLowerCase().replace("#","");
   const all=ADMIN.filter(x=>x.nr<GEBER_MIN).filter(x=>admF==="alle"||(admF==="frei")===isFree(x)).filter(x=>!qq||String(x.nr)===qq.replace(/^0+/,"")||(x.real_name||"").toLowerCase().includes(qq)||(x.nickname||"").toLowerCase().includes(qq));
   const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const SHOWN=100, set=ADMIN.filter(x=>x.pin).length, nfree=ADMIN.filter(isFree).length, list=all.slice(0,SHOWN);
-  return `<section class="panel"><div class="rk-head"><h3 style="margin:0">Gäste</h3><span class="hc-date">${(S.guestlist||[]).length} von ${GUEST_MAX}</span></div>
+  return admSec("gaeste","Gäste",`${(S.guestlist||[]).length} von ${GUEST_MAX}`,`
   ${(S.guestlist||[]).length<GUEST_MAX?`<div class="add-row g-add"><input id="gname" class="search" placeholder="Name des Gastes" maxlength="40" autocomplete="off" aria-label="Name des Gastes"><button class="btn btn-guest" data-act="gAdd">Eintragen</button></div>`:`<p class="hc-hint" style="margin:10px 0 0">Die Gastliste ist voll (${GUEST_MAX}).</p>`}
-  ${(S.guestlist||[]).map((g,i)=>{if(g.id==null)g.id=-(5000+i);const at=guestSeats(g.id);return `<div class="g-row"><span class="g-n">${i+1}</span><span class="g-txt"><b>${escH(g.n)}</b><small>${at.length?at.map(x=>`${bdDay(x.k)} · Platz ${x.seat+1}`).join(" · "):escH(g.d||"")}</small></span><button class="btn btn-guest g-del" data-act="gSeat" data-i="${i}">Platz</button><button class="btn btn-line g-del" data-act="gDel" data-i="${i}" aria-label="${escH(g.n)} austragen">✕</button></div>`}).join("")}</section>
-  <section class="panel"><div class="chips" style="margin:0 0 10px">${[["alle","Alle"],["frei","Freigegeben"],["zu","Gesperrt"]].map(([k,l])=>`<button class="chip" data-admf="${k}" aria-pressed="${admF===k}">${l}</button>`).join("")}</div><input class="search" id="admq" placeholder="Suchen: Nummer, Name oder Spitzname" value="${esc(admQ)}" aria-label="Mitglied suchen">
-  <p class="empty" style="margin:8px 0 0">${all.length>SHOWN?`${all.length} Treffer, die ersten ${SHOWN} werden gezeigt. Tipp die Nummer ein, z. B. 245.`:`${all.length} Spieler`}</p><div style="margin-top:8px">${list.map(admRow).join("")}</div></section>
-`;
+  ${(S.guestlist||[]).map((g,i)=>{if(g.id==null)g.id=-(5000+i);const at=guestSeats(g.id);return `<div class="g-row"><span class="g-n">${i+1}</span><span class="g-txt"><b>${escH(g.n)}</b><small>${at.length?at.map(x=>`${bdDay(x.k)} · Platz ${x.seat+1}`).join(" · "):escH(g.d||"")}</small></span><button class="btn btn-guest g-del" data-act="gSeat" data-i="${i}">Platz</button><button class="btn btn-line g-del" data-act="gHost" data-i="${i}">Gastgeber</button><button class="btn btn-line g-del" data-act="gDel" data-i="${i}" aria-label="${escH(g.n)} austragen">✕</button></div>${G_HOST===i?gHostForm(g):""}`}).join("")}${G_DONE?`<div class="adm-box adm-line" style="justify-content:space-between"><span style="white-space:nowrap"><b>${escH(G_DONE.n)}</b> · Nr. <b>${String(G_DONE.nr).padStart(3,"0")}</b></span><button class="adm-sm" data-act="admInvite" data-nr="${G_DONE.nr}">Per WhatsApp einladen</button></div>`:""}`);
 }
 function admGeberAccounts(){
   const acc=ADMIN.filter(x=>x.nr>=GEBER_MIN&&x.nr<=GEBER_MAX).sort((a,b)=>a.nr-b.nr);
-  return `<section class="panel"><div class="rk-head"><h3 style="margin:0">🃏 Kartengeber-Konten</h3><span class="hc-date">${acc.length} von ${GEBER_MAX-GEBER_MIN+1}</span></div>
-  <div class="btn-pair" style="margin-top:12px">${acc.length<GEBER_SOLL?`<button class="btn btn-brass" data-act="admGeberFill">${GEBER_SOLL} Konten anlegen</button>`:""}${acc.length<GEBER_MAX-GEBER_MIN+1?`<button class="btn btn-line" data-act="admGeberAdd">+1 Konto</button>`:""}</div>
-  <p class="hc-hint" style="margin:8px 0 0">Nummern ${GEBER_MIN}–${GEBER_MAX}. Freigeben, dann Einladen – wie bei den Spielern.</p>
-  <div style="margin-top:6px">${acc.map(admRow).join("")||`<p class="empty" style="margin:8px 0 0">Noch keine Kartengeber-Konten.</p>`}</div></section>`;
+  return admSec("gkonten","Kartengeber-Konten",`${acc.length} von ${GEBER_MAX-GEBER_MIN+1}`,`<div>${acc.map(admRow).join("")||`<p class="empty" style="margin:0">Noch keine Kartengeber-Konten.</p>`}</div>
+  ${acc.length<GEBER_MAX-GEBER_MIN+1?`<div style="text-align:right"><button class="adm-sm" data-act="admGeberAdd">+1 Konto</button></div>`:""}`);
 }
 function viewVerwaltung(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
-  return `<section class="panel"><div class="ptitle"><h2>Verwaltung</h2></div><p class="empty" style="margin:6px 0 0">Spieler und Gäste findest du im Reiter <b style="color:var(--ink)">♠ Poker</b>.</p></section>
+  const admins=(ADMIN||[]).filter(x=>x.admin).sort((a,b)=>a.nr-b.nr);
+  const boss=admSec("admins","Admin","",`<div style="display:flex;gap:12px;align-items:center"><input id="admnr" class="search" style="flex:1;min-width:0;margin:0" inputmode="numeric" placeholder="Nummer, z. B. 23" autocomplete="off" value="${escH(ADM_Q)}">${ME.nr===1?`<button class="adm-btn" data-act="admToggle">Admin werden</button>`:""}</div>
+  <div id="admres">${admLookup()}</div>
+  ${ME.nr===1?`<div style="margin-top:8px">${admins.map(x=>`<div class="sg-row" style="margin-top:6px"><div class="grow"><b>${String(x.nr).padStart(3,"0")} ${escH(x.nickname||x.real_name||"")} · ${x.nr===1?"Chef":"Admin"}</b></div></div>`).join("")}</div>`:""}`);
+  return `${boss}
+  ${viewPoker()}
   ${admDealerReqs()}
   ${admGeberAccounts()}
-  ${admStats()}
   <section class="panel"><div class="ptitle"><h3 style="margin:0">Alles auf Anfang</h3></div>
   <p class="empty">Löscht alle Termine (Gastgeber, Gäste, Kartengeber, Warteliste, Vormerkungen) und alle Punkte, Ranglisten und Abend-Zähler. Mitglieder, PINs, Spitznamen und Sachpreise bleiben.</p>
-  <div class="actions"><button class="btn btn-stop" data-act="admWipe">Alle Termine und Punkte löschen</button></div></section>`;
+  <div class="actions"><button class="btn btn-stop" data-act="admWipe">Alle Termine und Punkte löschen</button></div></section>
+  ${admStats()}`;
 }
 
 function countdownHTML(k,d){
@@ -1303,10 +1470,11 @@ setInterval(tickCD,1000);
 setInterval(()=>{if(ME&&remindTick()){pushNow();const f=document.activeElement;if(!(f&&(f.tagName==="INPUT"||f.tagName==="SELECT")))render()}},5000);
 function seatSheet(d){
   if(openForm!=="seat"||pick.mine==null) return "";
-  const can1=freeSeatCount(d)>=2&&d.hosts.length<HOST_MAX;
+  const brought=solo(d).some(p=>p.by===S.me);
+  const can1=!brought&&freeSeatCount(d)>=2&&d.hosts.length<HOST_MAX;
   return `<div class="form seatsheet">
   <button class="btn btn-guest" data-act="solo">Gast</button>
-  <button class="btn btn-host" data-act="plusone" ${can1?"":"disabled"}>${can1?"Gastgeber mit Gast":"Gastgeber mit Gast – kein zweiter Platz frei"}</button>
+  ${brought?"":freeSeatCount(d)<2?`<button class="btn btn-host" data-act="wait">Gastgeber mit Gast – auf die Warteliste</button>`:`<button class="btn btn-host" data-act="plusone" ${can1?"":"disabled"}>Gastgeber mit Gast</button>`}
 </div>`;
 }
 // Tafel oben: alle eigenen Termine, der nächste steht immer oben
@@ -1317,13 +1485,14 @@ function myGames(m){
     const k=key(dt), d=S.days[k]; if(!d||(d.result&&d.result.done)) continue;
     const r=roleOf(d,m);
     if(r){
-      if(r.r==="host") out.push({k,d,seat:`Platz ${r.h.seat+1}`,st:"Reserviert mit Gast",c:"ok"});
-      else if(r.r==="player") out.push({k,d,seat:`Platz ${r.p.seat+1}`,st:"Reserviert",c:"ok"});
-      else if(r.r==="guest") out.push({k,d,seat:`Platz ${r.h.gseat+1}`,st:"Reserviert",c:"ok"});
+      if(r.r==="host") out.push({k,d,seat:`Platz ${r.h.seat+1}`,gseat:r.h.gseat,st:"",c:"ok"});
+      else if(r.r==="player") out.push({k,d,seat:`Platz ${r.p.seat+1}`,st:"",c:"ok"});
+      else if(r.r==="guest") out.push({k,d,seat:`Platz ${r.h.gseat+1}`,st:"",c:"ok"});
       else if(r.r==="dealer") out.push({k,d,seat:"Geberstuhl",st:"Kartengeber",c:"ok"});
       else if(r.r==="wait") out.push({k,d,seat:"",st:`Warteliste ${d.wait.indexOf(m)+1}`,c:"wt"});
     }
     else if(d.interest&&d.interest.includes(m)) out.push({k,d,seat:"",st:"Vorgemerkt ☆",c:"mk"});
+    else if(dinvHas(d,m)) out.push({k,d,seat:"",st:"Anfrage",c:"wt"});
     else if(d.dreq&&dreqHas(d,m)) out.push({k,d,seat:"",st:"Geber angefragt",c:"wt"});
   }
   return out;
@@ -1333,37 +1502,45 @@ function bdDay(k){
   const dt=new Date(k+"T00:00"), t0=key(dates[0]), t1=dates[1]?key(dates[1]):"";
   return k===t0?"Heute":k===t1?"Morgen":`${WD[dt.getDay()]} ${dt.getDate()}.${dt.getMonth()+1}.`;
 }
+const CARDS=v=>v===1?[["A","♥","#C8102E"],["A","♠","#111"],["8","♥","#C8102E"],["8","♠","#111"]]:[["A","♦","#C8102E"],["A","♣","#111"]];
+function svgCards(cx,y,v){const cs=CARDS(v),w=14,h=20,step=11,x0=cx-((cs.length-1)*step+w)/2,rot=[-10,-3,4,11];
+  return `<g aria-label="${VARIANTS[v]}">`+cs.map(([r,su,c],i)=>{const x=x0+i*step, ro=cs.length===2?(i?6:-6):rot[i];return `<g transform="rotate(${ro} ${x+w/2} ${y+h/2})"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2.5" fill="#fff" stroke="#bbb" stroke-width=".6"/><text x="${x+w/2}" y="${y+9}" text-anchor="middle" font-size="8" font-weight="800" fill="${c}">${r}</text><text x="${x+w/2}" y="${y+17}" text-anchor="middle" font-size="8" fill="${c}">${su}</text></g>`}).join("")+`</g>`;}
+const miniCards=v=>{const cs=v===1?[["A","♥","r"],["A","♠","b"],["8","♥","r"],["8","♠","b"]]:[["A","♦","r"],["A","♣","b"]];
+  return `<span class="mcards" aria-label="${VARIANTS[v]}">${cs.map(([r,su,c])=>`<span class="mc ${c}"><b>${r}</b><i>${su}</i></span>`).join("")}</span>`};
 function bdRow(g,first){
-  const info=[g.d.start,g.seat].filter(Boolean).join(" · ");
-  return `<button type="button" class="bd-row${first?" first":""}" data-day="${g.k}" data-goto="1" aria-label="${dateLabel(g.k)}, ${info}, ${g.st}"><span class="bd-num"><b class="lv-n">${bdDay(g.k)}</b></span><span class="bd-info"><b>${info}</b><span class="bd-st ${g.c}">${g.st}</span></span></button>`;
+  const nr=(g.seat||"").replace("Platz ","");
+  return `<button type="button" class="bd-row${first?" first":""}" data-day="${g.k}" data-goto="1" aria-label="${dateLabel(g.k)}, ${g.d.start} Uhr${nr?", Platz "+nr:""}${g.st?", "+g.st:""}"><span class="bd-num${used(g.d)>=SEATS?" bd-full":""}"><b class="lv-n">${bdDay(g.k)} <span class="bd-tm">${g.d.start} Uhr</span></b></span><span class="bd-info">${miniCards(g.d.variant)}${g.c==="mk"?`<span class="seat-star" aria-label="vorgemerkt">★</span>`:""}${g.st&&g.c!=="mk"?`<span class="bd-st ${g.c}">${g.st}</span>`:""}</span></button>`;
 }
 function boardNext(){
   const el=document.getElementById("live"); if(!el) return;
   const list=myGames(S.me), more=list.length-1;
   if(more<1) BD_OPEN=false;
-  const dot=`<span class="bd-live" aria-label="${list.length?"Nächstes Spiel":"Meine Spiele"}"><span class="lv-dot"></span></span>`;
+  const dotFor=dd=>{const u=used(dd);return u>=SEATS?`<span class="bd-live"><span class="lv-dot" style="visibility:hidden"></span></span>`:`<span class="bd-live"><span class="lv-dot ${u>=7?"lv-g":u>=3?"lv-o":"lv-r"}"></span></span>`};
+  const u=list.length?used(list[0].d):0;
+  const dot=u>=SEATS?`<span class="bd-live" aria-label="Tisch voll"><span class="lv-dot" style="visibility:hidden"></span></span>`:`<span class="bd-live" aria-label="${list.length?"Nächstes Spiel":"Meine Spiele"}"><span class="lv-dot ${u>=7?"lv-g":u>=3?"lv-o":"lv-r"}"></span></span>`;
   let html="";
-  if(!list.length) html+=`<button type="button" class="bd-row first" data-tab="kalender">${dot}<span class="bd-num"><b class="lv-n">–</b></span><span class="bd-info"><b>Keine Veranstaltung</b><span class="bd-st wt">Platz wählen ›</span></span></button>`;
+  if(!list.length) html+=`<button type="button" class="bd-row first bd-welcome" data-tab="kalender"><span class="bd-wel">Such dir einen Platz aus</span></button>`;
   else{
-    html+=bdRow(list[0],true).replace('<span class="bd-num">',dot+'<span class="bd-num">');
-    if(BD_OPEN) html+=`<div class="bd-more">${list.slice(1).map(g=>bdRow(g,false)).join("")}</div>`;
-    if(more>0) html+=`<div class="bd-foot"><button type="button" class="bd-tog" data-act="bdTog" aria-expanded="${BD_OPEN}" aria-label="${BD_OPEN?"Weitere Spiele ausblenden":"Weitere Spiele zeigen"}"><span>${BD_OPEN?"weniger":`+${more} weitere`}</span><i aria-hidden="true">▾</i></button></div>`;
+    const tog=more>0?`<button type="button" class="bd-tog" data-act="bdTog" aria-expanded="${BD_OPEN}" aria-label="${BD_OPEN?"Weitere Spiele ausblenden":"Weitere Spiele zeigen"}"><span>${BD_OPEN?"":`+${more}`}</span><i aria-hidden="true">▾</i></button>`:"";
+    html+=`<div class="bd-first">${bdRow(list[0],true).replace('<span class="bd-num',dot+'<span class="bd-num')}${tog}</div>`;
+    if(BD_OPEN) html+=`<div class="bd-more">${list.slice(1).map(g=>bdRow(g,false).replace('<span class="bd-num',dotFor(g.d)+'<span class="bd-num')).join("")}</div>`;
   }
   if(el.innerHTML!==html) el.innerHTML=html;
 }
 function render(){
   const v=document.getElementById("view");
   if(!ME) return;
-  if(!["kalender","rang","profil"].concat(ME.admin?["verwaltung","poker"]:[]).includes(S.tab)) S.tab="kalender";
+  if(S.tab==="poker") S.tab="verwaltung";
+  if(!["kalender","rang","profil"].concat(ME.admin?["verwaltung"]:[]).includes(S.tab)) S.tab="kalender";
   v.innerHTML=({kalender:viewKalender,rang:viewRang,profil:viewProfil,poker:viewPoker,regeln:viewRegeln,verwaltung:viewVerwaltung}[S.tab]||viewKalender)();
   document.querySelectorAll("nav.tabs button").forEach(b=>{if(b.dataset.tab===S.tab)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
-  document.getElementById("admtab").hidden=!ME.admin; document.getElementById("admtab2").hidden=!ME.admin;
+  document.getElementById("admtab").hidden=!ME.admin; document.getElementById("admtab2").hidden=true;
   { const nr=String(S.me+1).padStart(3,"0"), n=nm(S.me);
-    document.getElementById("mename").innerHTML=n===nr?`<b>${nr}</b>`:`<small>${nr}</small><b>${escH(n)}</b>`; }
+    document.getElementById("mename").innerHTML=`<b class="me-nr">${nr}</b>`; }
   boardNext();
   const aq=document.getElementById("admq");
   if(aq){aq.oninput=e=>{admQ=e.target.value;const p=aq.selectionStart;render();const n=document.getElementById("admq");n.focus();n.setSelectionRange(p,p)}}
-  ["fguest","myguest"].forEach(id=>{const el=document.getElementById(id);if(!el)return;const out=document.getElementById(id+"name");el.oninput=()=>{const v=el.value.trim(),g=byNum(+v);if(v==="000"){out.innerHTML=`Neuer Interessent: Namen eintragen und senden. Die nächste freie Nummer wird automatisch vergeben.<input id="${id}new" class="search" placeholder="Vor- und Nachname" autocomplete="name" style="margin-top:8px"><button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="newLead" data-field="${id}">Senden</button>`;document.getElementById(id+"new").focus();return}out.textContent=v?(g==null?"Keine gültige Mitgliedsnummer":`${no(g)} ${nm(g)}`):""}});
+  ["fguest","myguest"].forEach(id=>{const el=document.getElementById(id);if(!el)return;const out=document.getElementById(id+"name");el.oninput=()=>{if(id==="fguest")GNUM_VAL=el.value.trim();const v=el.value.trim(),g=byNum(+v);if(v==="000"){out.innerHTML=`Neuer Interessent: Namen eintragen und senden. Die nächste freie Nummer wird automatisch vergeben.<input id="${id}new" class="search" placeholder="Vor- und Nachname" autocomplete="name" style="margin-top:8px"><button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="newLead" data-field="${id}">Senden</button>`;document.getElementById(id+"new").focus();return}out.textContent=v?(g==null?"Keine gültige Mitgliedsnummer":`${no(g)} ${nm(g)}`):""}});
   const di=document.getElementById("dealerin");
   if(di){const out=document.getElementById("dealerinname");di.oninput=()=>{const c=dealerCheck(di.value.trim(),S.days[S.sel]);out.textContent=c.msg;out.style.color=c.ok?"var(--ink)":""}}
   save();tickCD();
@@ -1379,6 +1556,8 @@ document.addEventListener("click",e=>{
     if(openForm==="tour"){const c=document.getElementById("tourcard");if(c)c.scrollIntoView({behavior:"smooth",block:"start"})}
     return;
   }
+  const ged=e.target.closest&&e.target.closest("[data-gedit]");
+  if(ged&&S.tab==="kalender"){if(GE_OPEN&&GE_OPEN.k===S.sel&&GE_OPEN.seat===+ged.dataset.gedit){GE_OPEN=null;render();return}GE_OPEN={k:S.sel,seat:+ged.dataset.gedit,hm:+ged.dataset.hm};render();const f=document.getElementById("myguest");if(f){f.scrollIntoView({block:"center"});f.focus()}return}
   const dc=e.target.closest&&e.target.closest("[data-dchair]");
   if(dc&&S.tab==="kalender"&&ME){
     const k=S.sel,d=S.days[k];
@@ -1428,7 +1607,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.fv!=null){const hid=document.getElementById(t.dataset.fvt+"var");if(hid)hid.value=t.dataset.fv;t.parentNode.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===t));return}
   if(t.dataset.act==="bdTog"){BD_OPEN=!BD_OPEN;boardNext();return}
   if(t.dataset.tab){S.tab=t.dataset.tab;openForm=null;render();window.scrollTo(0,0);return}
-  if(t.id==="logout"){rpc("m2r_logout",{p_token:TOKEN}).catch(()=>{});setToken(null);ME=null;showLogin();return}
+  if(t.id==="logout"){rpc("m2r_chat_bye",{p_token:TOKEN}).catch(()=>{});CHAT.open=false;rpc("m2r_logout",{p_token:TOKEN}).catch(()=>{});setToken(null);ME=null;showLogin();return}
   if(t.dataset.act==="admAdd"){
     const name=document.getElementById("admname").value.trim(), nv=document.getElementById("admnr").value.trim();
     if(!name&&!nv){toast("Bitte Name oder Nummer eintragen");return}
@@ -1482,6 +1661,7 @@ document.addEventListener("click",e=>{
     S.guestlist=S.guestlist||[]; if(S.guestlist.length>=GUEST_MAX){toast(`Höchstens ${GUEST_MAX} Gäste`);return}
     const t0=new Date(); S.guestlist.push({id:-(5000+Date.now()%1000000),n,d:`eingetragen ${t0.getDate()}.${t0.getMonth()+1}.`}); toast(`${n} ist eingetragen`); render(); return;
   }
+  if(t.dataset.act==="gnumToggle"){const el=document.getElementById("fguest");if(el)GNUM_VAL=el.value.trim();GNUM_OPEN=!GNUM_OPEN;render();const f=document.getElementById("fguest");if(f)f.focus();return}
   if(t.dataset.act==="gSeat"){
     if(!ME||!ME.admin) return; const g=(S.guestlist||[])[+t.dataset.i]; if(!g) return;
     GSEAT=g.id; S.tab="kalender"; openForm=null; render(); window.scrollTo(0,0); toast(`Tag im Kalender wählen, dann freien Platz für ${g.n} antippen`); return;
@@ -1497,6 +1677,16 @@ document.addEventListener("click",e=>{
     if(!on&&!confirm(`Nummer ${n3} sperren? Er wird abgemeldet und kann sich nicht mehr anmelden, bis du ihn wieder freigibst.`)) return;
     t.disabled=true;
     rpc("m2r_admin_release",{p_token:TOKEN,p_nr:nr,p_on:on}).then(r=>{if(!r||!r.ok){toast((r&&r.msg)||"Freigabe geht erst, wenn der Speicher-Befehl ausgeführt ist");t.disabled=false;return}toast(on?`${n3} ist freigegeben – jetzt einladen`:`${n3} ist gesperrt`);return pull(true)}).catch(()=>{toast("Freigabe geht erst, wenn der Speicher-Befehl ausgeführt ist");t.disabled=false});
+    return;
+  }
+  if(t.dataset.act==="gHost"){if(!(ME&&ME.admin))return;const i=+t.dataset.i;G_HOST=G_HOST===i?null:i;G_DONE=null;render();return}
+  if(t.dataset.act==="gHostSave"){
+    if(!(ME&&ME.admin)||G_HOST==null) return; const i=G_HOST, g=(S.guestlist||[])[i], nr=+document.getElementById("ghnr").value; if(!g||!nr) return;
+    if(guestSeats(g.id).length){toast("Der Gast sitzt noch an einem Tisch – erst den Platz freigeben");return}
+    t.disabled=true;
+    rpc("m2r_admin_rename",{p_token:TOKEN,p_nr:nr,p_real:g.n}).then(r=>{if(!r||!r.ok)throw new Error((r&&r.msg)||"Hat nicht geklappt");return rpc("m2r_admin_release",{p_token:TOKEN,p_nr:nr,p_on:true})})
+      .then(r=>{if(!r||!r.ok)throw new Error((r&&r.msg)||"Freigabe hat nicht geklappt");S.guestlist.splice(i,1);G_HOST=null;G_DONE={n:g.n,nr};log(`${g.n} ist jetzt Mitglied ${String(nr).padStart(3,"0")}`);pushNow();toast(`${g.n} hat die Nummer ${String(nr).padStart(3,"0")}`);return pull(true)})
+      .then(()=>render()).catch(e=>{t.disabled=false;toast(e.message||"Keine Verbindung")});
     return;
   }
   if(t.dataset.act==="admInvite"){
@@ -1544,13 +1734,13 @@ document.addEventListener("click",e=>{
     if(d.hosts.length>=HOST_MAX||used(d)>=SEATS) return;
     if(pick.mine==null||pick.guest==null){toast("Bitte zuerst zwei rote Plätze am Tisch wählen");return}
     if(takenSeats(d).includes(pick.mine)||takenSeats(d).includes(pick.guest)){toast("Einer der Plätze ist schon vergeben");pick={mine:null,guest:null};render();return}
-    const gIn=document.getElementById("fguest"), gv=gIn?gIn.value.trim():"", gn=gv?byNum(+gv):null;
+    const gIn=document.getElementById("fguest"), gv=gIn?gIn.value.trim():GNUM_VAL, gn=gv?byNum(+gv):null;
     if(gv&&(gn==null||gn===S.me||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait"))){toast("Diese Nummer ist nicht verfügbar");return}
     const first=!active(d);
     
     d.hosts.push({m:S.me,seat:pick.mine,gseat:pick.guest,guests:gn!=null?[gn]:[-(S.me+1)],release:false});
-    pick={mine:null,guest:null};
-    if(gn!=null){d.wait=d.wait.filter(x=>x!==gn);log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert – WhatsApp verschickt`)}
+    pick={mine:null,guest:null}; GNUM_OPEN=false; GNUM_VAL="";
+    if(gn!=null){d.wait=d.wait.filter(x=>x!==gn);log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`)}
     if(first&&d.interest.length) log(`${d.interest.length} Vorgemerkte automatisch benachrichtigt: Am ${dateLabel(k)} läuft ein Turnier`);
     d.interest=d.interest.filter(x=>x!==S.me);
     log(`${nm(S.me)} ist Gastgeber am ${dateLabel(k)}`);
@@ -1564,7 +1754,7 @@ document.addEventListener("click",e=>{
   if(a==="interest"){const i=d.interest.indexOf(S.me);i<0?d.interest.push(S.me):d.interest.splice(i,1);toast(i<0?"Vorgemerkt – keine feste Zusage":"Vormerkung entfernt");render();return}
   if(a==="leave"){
     const r=roleOf(d,S.me); if(!r) return;
-    if(!confirm(r.r==="wait"?`Von der Warteliste am ${dateLabel(k)} austragen?`:`Wirklich für ${dateLabel(k)} absagen?${r.r==="host"?" Dein Gast kommt dann ganz oben auf die Warteliste.":""}`)) return;
+    if(r.r!=="wait"&&!confirm(r.r==="wait"?`Von der Warteliste am ${dateLabel(k)} austragen?`:`Wirklich für ${dateLabel(k)} absagen?${r.r==="host"?" Dein Gast kommt dann ganz oben auf die Warteliste.":""}`)) return;
     if(r.r==="host"){d.hosts=d.hosts.filter(x=>x!==r.h);d.wait.unshift(...r.h.guests.filter(x=>!isNewG(x)));log(`${nm(S.me)} hat den Gastgeber-Platz abgegeben`)}
     else if(r.r==="guest"){r.h.guests=r.h.guests.filter(x=>x!==S.me);log(`${nm(S.me)} hat abgesagt`)}
     else if(r.r==="player"){d.players=solo(d).filter(x=>x!==r.p);log(`${nm(S.me)} hat Platz ${r.p.seat+1} freigegeben`)}
@@ -1572,7 +1762,7 @@ document.addEventListener("click",e=>{
     else d.wait=d.wait.filter(x=>x!==S.me);
     promote(k); toast("Abgesagt"); render(); return;
   }
-  if(a==="addGuest"){const r=roleOf(d,S.me),v=document.getElementById("myguest").value.trim(),gn=byNum(+v);if(gn==null||gn===S.me||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait")){toast("Diese Nummer ist nicht verfügbar");return}d.wait=d.wait.filter(x=>x!==gn);r.h.guests=[gn];log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert – WhatsApp verschickt`);toast("Gast eingetragen");render();return}
+  if(a==="addGuest"){if(!(document.getElementById("myguest")||{}).value?.trim()){GE_OPEN=null;render();return}const H=d.hosts.find(x=>x.m===+(t.dataset.hm??S.me)), r={h:H},v=document.getElementById("myguest").value.trim(),gn=byNum(+v);if(gn==null||!H||gn===H.m||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait")){toast("Diese Nummer ist nicht verfügbar");return}d.wait=d.wait.filter(x=>x!==gn);r.h.guests=[gn];GE_OPEN=null;log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`);toast("Gast eingetragen");render();return}
   if(a==="release"){const r=roleOf(d,S.me);r.h.guests=r.h.guests.filter(x=>!isNewG(x));r.h.release=true;log(`${nm(S.me)} gibt den Gastplatz an die Warteliste frei`);promote(k);toast("Gastplatz freigegeben");render();return}
   if(a==="setDealer"){
     if(!(ME&&ME.admin)){toast("Den Kartengeber legt der Vorstand fest");return}
@@ -1601,6 +1791,27 @@ document.addEventListener("click",e=>{
     }
     render(); return;
   }
+  if(a==="geClose"){GE_OPEN=null;render();return}
+  if(a==="cxOpen"){CX_OPEN=!CX_OPEN;render();return}
+  if(a==="cxNo"){CX_OPEN=false;render();return}
+  if(a==="cxSelf"||a==="cxGuest"||a==="cxBoth"){
+    CX_OPEN=false; const r=roleOf(d,S.me); if(!r||startedDay(k,d)){render();return}
+    if(r.r==="host"){
+      const h=r.h, g=h.guests[0];
+      if(a==="cxGuest"){ d.hosts=d.hosts.filter(x=>x!==h); solo(d).push({m:S.me,seat:h.seat}); log(`${nm(S.me)} hat für den Gast abgesagt und spielt als Gast`); toast("Dein Gast ist abgesagt – du bist jetzt Gast"); }
+      else if(a==="cxSelf"){ d.hosts=d.hosts.filter(x=>x!==h); if(g!=null) solo(d).push({m:g,seat:h.gseat,by:S.me}); log(`${nm(S.me)} hat abgesagt, Gast bleibt`); toast("Abgesagt – dein Gast bleibt"); }
+      else { d.hosts=d.hosts.filter(x=>x!==h); log(`${nm(S.me)} und Gast haben abgesagt`); toast("Ihr beide seid abgesagt"); }
+    } else if(r.r==="guest"){ r.h.guests=r.h.guests.filter(x=>x!==S.me); log(`${nm(S.me)} hat abgesagt`); toast("Abgesagt"); }
+    else if(r.r==="player"){ d.players=solo(d).filter(x=>x!==r.p); log(`${nm(S.me)} hat Platz ${r.p.seat+1} freigegeben`); toast("Abgesagt"); }
+    else if(r.r==="dealer"){ d.dealer=null; toast("Abgesagt"); }
+    promote(k); render(); return;
+  }
+  if(a==="dayOff"){
+    const r=roleOf(d,S.me); if(r&&r.r!=="wait"){toast("Du hast an diesem Tag einen Platz. Erst absagen.");return}
+    (d.off||(d.off=[])).includes(S.me)||d.off.push(S.me); d.interest=d.interest.filter(x=>x!==S.me); d.wait=d.wait.filter(x=>x!==S.me);
+    if(d.dreq) d.dreq=dreq(d).filter(x=>x.m!==S.me); toast("Off – dieser Tag ist ausgeblendet"); render(); return;
+  }
+  if(a==="dayOn"){ d.off=(d.off||[]).filter(x=>x!==S.me); toast("On"); render(); return; }
   if(a==="tourUnsugg"){ if(d.tlock) return; if(d.sugg) delete d.sugg[S.me]; toast("Stimme zurückgezogen"); render(); return; }
   if(a==="tourUnlock"){ if(!(ME&&ME.admin)) return; d.tlock=null; d.sugg={}; log(`Abstimmung am ${dateLabel(k)} wieder geöffnet`); toast("Abstimmung ist wieder offen"); render(); return; }
   if(a==="tourTake"){
@@ -1616,6 +1827,35 @@ document.addEventListener("click",e=>{
     log(`Turnier am ${dateLabel(k)}: ${turnierTxt(d)} – eingestellt von ${nm(S.me)}`);
     toast("Turnier gespeichert"); render(); return;
   }
+  if(a==="admAskDealer"){
+    if(!(ME&&ME.admin)) return;
+    const kk=document.getElementById("admaskday").value, dd=S.days[kk], m=+document.getElementById("admaskm").value;
+    if(!dd||isNaN(m)){toast("Bitte Abend und Kartengeber wählen");return}
+    if(hasDealer(dd)){toast("An diesem Abend gibt es schon einen Kartengeber");return}
+    if(dinvHas(dd,m)){toast("Ist schon angefragt");return}
+    dinv(dd).push({m,at:Date.now()}); log(`Vorstand fragt ${no(m)} als Kartengeber für ${dateLabel(kk)} an`); toast(`Anfrage an ${no(m)} geschickt`); render(); return;
+  }
+  if(a==="admAskCancel"){if(!(ME&&ME.admin))return;const m=+t.dataset.m;d.dinv=dinv(d).filter(x=>x.m!==m);toast("Anfrage zurückgezogen");render();return}
+  if(a==="geberInvYes"||a==="geberInvNo"){
+    if(!dinvHas(d,S.me)) return;
+    d.dinv=dinv(d).filter(x=>x.m!==S.me);
+    if(a==="geberInvYes"){
+      if(hasDealer(d)||startedDay(k,d)){toast("Für diesen Abend gibt es schon einen Kartengeber");render();return}
+      const r0=roleOf(d,S.me); if(r0&&r0.r!=="wait"){toast("Du sitzt an diesem Abend schon am Tisch. Erst absagen.");render();return}
+      d.wait=d.wait.filter(x=>x!==S.me); d.interest=d.interest.filter(x=>x!==S.me);
+      d.dealer=S.me; d.dinv=[]; log(`${no(S.me)} ${nm(S.me)} hat zugesagt: Kartengeber am ${dateLabel(k)}`); toast("Zugesagt – du gibst die Karten");
+    } else { log(`${no(S.me)} ${nm(S.me)} hat die Kartengeber-Anfrage für ${dateLabel(k)} abgesagt`); toast("Abgesagt"); }
+    render(); return;
+  }
+  if(a==="admToggle"){
+    if(!(ME&&ME.nr===1)) return;
+    const nr=parseInt((document.getElementById("admnr").value||"").replace(/\D/g,""),10);
+    if(!nr||nr===1){toast(nr===1?"001 bleibt immer Admin":"Bitte eine Nummer eingeben");return}
+    const x=(ADMIN||[]).find(y=>y.nr===nr); if(!x){toast("Diese Nummer gibt es nicht");return}
+    const on=!x.admin;
+    rpc("m2r_admin_set",{p_token:TOKEN,p_nr:nr,p_on:on}).then(r=>{if(!r||!r.ok){toast((r&&r.msg)||"Geht erst, wenn der Supabase-Befehl ausgeführt ist");return}x.admin=on;toast(on?`${String(nr).padStart(3,"0")} ist jetzt Admin`:`${String(nr).padStart(3,"0")} ist kein Admin mehr`);render()}).catch(e=>toast(/404/.test(e&&e.message)?"Der Supabase-Befehl für Admins fehlt noch":"Keine Verbindung"));
+    return;
+  }
   if(a==="geberReq"){
     if(!isGeber(S.me)||startedDay(k,d)||hasDealer(d)) return;
     const q=dreq(d), i=q.findIndex(x=>x.m===S.me);
@@ -1629,7 +1869,7 @@ document.addEventListener("click",e=>{
       if(hasDealer(d)){toast("Es gibt schon einen Kartengeber");render();return}
       const r0=roleOf(d,m); if(r0&&r0.r!=="wait"){toast(`${no(m)} sitzt an diesem Abend schon am Tisch`);return}
       d.wait=d.wait.filter(x=>x!==m); d.interest=d.interest.filter(x=>x!==m);
-      d.dealer=m; d.dreq=[]; log(`${no(m)} ${nm(m)} ist Kartengeber am ${dateLabel(k)} – zugesagt vom Vorstand`); toast(`Kartengeber: ${no(m)} ${nm(m)}`);
+      d.dealer=m; log(`${no(m)} ${nm(m)} ist Kartengeber am ${dateLabel(k)} – zugesagt vom Vorstand`); toast(`Kartengeber: ${no(m)} ${nm(m)}`);
     } else { d.dreq=dreq(d).filter(x=>x.m!==m); toast("Anfrage abgelehnt"); }
     render(); return;
   }
@@ -1639,7 +1879,7 @@ document.addEventListener("click",e=>{
     const kk=document.getElementById("admgday").value, dd=S.days[kk]; if(!dd) return;
     const c=dealerCheck(document.getElementById("dealerin").value.trim(),dd);
     if(!c.ok){toast(c.msg||"Bitte eine Kartengeber-Nummer eingeben (901–999)");return}
-    dd.wait=dd.wait.filter(x=>x!==c.g); dd.interest=dd.interest.filter(x=>x!==c.g); dd.dealer=c.g; dd.dreq=[];
+    dd.wait=dd.wait.filter(x=>x!==c.g); dd.interest=dd.interest.filter(x=>x!==c.g); dd.dealer=c.g;
     log(`${no(c.g)} ${nm(c.g)} ist Kartengeber am ${dateLabel(kk)} – eingetragen vom Vorstand`);
     toast(`${dateLabel(kk)}: ${no(c.g)} ${nm(c.g)}`); render(); return;
   }
@@ -1667,7 +1907,7 @@ document.addEventListener("click",e=>{
     if(a==="closeEve"){if(!confirm("Abend abschließen? Wer noch da ist, wird jetzt ausgetragen, und der Anwesenheits-Bonus wird vergeben."))return;closeEvening(k);toast("Abend abgeschlossen, Bonus vergeben");render();return}
   }
   if(a==="closeSeat"){openForm=null;pick={mine:null,guest:null};render();return}
-  if(a==="plusone"){openForm="host";pick={mine:pick.mine,guest:null};render();return}
+  if(a==="plusone"){if(solo(d).some(p=>p.by===S.me)){toast("Dein Gast ist schon an diesem Abend dabei");return}openForm="host";pick={mine:pick.mine,guest:null};render();return}
   if(a==="solo"){
     const i=pick.mine; if(i==null||takenSeats(d).includes(i)){toast("Der Platz ist nicht mehr frei");openForm=null;render();return}
     const first=!active(d);
@@ -1735,7 +1975,7 @@ const L=()=>document.getElementById("loginbody");
 function hideLogin(){document.getElementById("login").classList.remove("show")}
 function showLogin(msg){
   document.getElementById("login").classList.add("show");
-  L().innerHTML=`<h2>Anmelden</h2><p class="empty">Mit deiner Nummer und deiner PIN.</p>
+  L().innerHTML=`<h2>Anmelden</h2>
   <form class="form" id="lf" autocomplete="off"><input id="lnr" class="search big" inputmode="numeric" maxlength="3" placeholder="Deine Nummer" aria-label="Deine Nummer" autocomplete="off" name="m2r-nr-x" required>
   <input id="lpin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="PIN" aria-label="PIN, 4 Ziffern" autocomplete="one-time-code" required>
   <p class="err" id="lerr">${msg||""}</p><button class="btn btn-host" id="lbtn">Anmelden</button></form>`;
@@ -1778,6 +2018,106 @@ function showSetup(nr){
   };
 }
 if(TOKEN) pull(true).then(()=>{if(!ME&&!document.getElementById("login").classList.contains("show"))showLogin()}); else showLogin();
+
+/* ---------- App auf den Startbildschirm (Android: echter Knopf, iPhone: kurze Anleitung) ---------- */
+let INSTALL_EVT=null;
+const isStandalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+const isIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();INSTALL_EVT=e});
+if("serviceWorker" in navigator&&location.protocol.startsWith("http")) navigator.serviceWorker.register("sw.js").catch(()=>{});
+function installCard(){ if(isStandalone()) return ""; return `<section class="panel inst2"><div class="inst-ic"><img src="apple-touch-icon.png" alt=""><span>me2room</span></div><div class="inst-tx"><h3>me2room als App</h3><p>Liegt danach wie jede andere App auf deinem Handy – ein Tipp, und du bist drin.</p><button class="ins-ok" type="button" onclick="installApp()">Hinzufügen</button></div></section>`; }
+async function installApp(){
+  if(INSTALL_EVT){INSTALL_EVT.prompt();try{await INSTALL_EVT.userChoice}catch(e){}INSTALL_EVT=null;render();return}
+  const ios=isIOS();
+  const steps=ios?[`Unten in Safari auf <b>Teilen</b> tippen <span class="ins-ic">⬆︎</span>`,`Runterscrollen und <b>„Zum Home-Bildschirm“</b> wählen`,`Oben rechts auf <b>„Hinzufügen“</b> tippen`]
+    :[`Oben rechts auf das Menü <span class="ins-ic">⋮</span> tippen`,`<b>„Zum Startbildschirm hinzufügen“</b> oder <b>„App installieren“</b> wählen`,`Mit <b>„Hinzufügen“</b> bestätigen`];
+  let o=document.getElementById("insSheet"); if(o) o.remove();
+  o=document.createElement("div"); o.id="insSheet"; o.className="ins-sheet";
+  o.innerHTML=`<div class="ins-box"><h3>📲 Auf den Startbildschirm</h3>${ios&&!/safari/i.test(navigator.userAgent.replace(/crios|fxios|edgios/ig,"x"))?`<p class="ins-warn">Bitte diesen Link in <b>Safari</b> öffnen.</p>`:""}<ol>${steps.map(x=>`<li>${x}</li>`).join("")}</ol><p class="ins-sub">Danach öffnest du me2room einfach über das Symbol – wie jede andere App.</p><button class="ins-ok" type="button" onclick="this.closest('.ins-sheet').remove()">Verstanden</button></div>`;
+  o.onclick=e=>{if(e.target===o)o.remove()}; document.body.append(o);
+}
+(function(){
+  const st=document.createElement("style");
+  st.textContent=`.ins-sheet{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.6);display:flex;align-items:flex-end;justify-content:center}
+.ins-box{width:100%;max-width:560px;background:#1d140d;color:#f3e3c3;border-top:2px solid #c9a35a;border-radius:18px 18px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px))}
+.ins-box h3{margin:0 0 10px;font:700 19px "Zilla Slab",serif;color:#FFC46B}
+.ins-box ol{margin:0 0 10px;padding-left:22px;font:500 16px/1.6 system-ui}
+.ins-ok{display:block;width:100%;background:#FF9F1C!important;color:#1a0f05!important;border:0!important;padding:12px;border-radius:12px;font:800 16px system-ui}
+.ins-ic{display:inline-block;padding:0 6px;border:1px solid #c9a35a;border-radius:6px;font-weight:800}
+.ins-sub{font:500 13px system-ui;opacity:.75;margin:0 0 12px}
+.inst2{display:flex;gap:16px;align-items:center}
+.inst-ic{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:6px}
+.inst-ic img{width:76px;height:76px;border-radius:18px;box-shadow:0 6px 18px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.inst-ic span{font:600 12px system-ui;color:#f3e3c3}
+.inst-tx{flex:1;min-width:0}
+.inst-tx h3{margin:0 0 4px;font:700 18px "Zilla Slab",serif;color:#FFC46B}
+.inst-tx p{margin:0 0 10px;font:500 14px/1.4 system-ui;color:#f3e3c3;opacity:.85}
+.inst-tx .ins-ok{padding:10px}
+.ins-warn{background:#FF9F1C33;border-radius:8px;padding:6px 10px;font:600 14px system-ui}`;
+  document.head.append(st);
+  if(/[?&]app=1/.test(location.search)&&!isStandalone()) setTimeout(installApp,1500);
+})();
+const _viewProfil=viewProfil; viewProfil=function(){return _viewProfil()+installCard()};
+/* ---------- Live-Chat: Nachrichten löschen sich nach 60 Minuten, Online-Anzeige ---------- */
+const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0};
+(function(){
+  const st=document.createElement("style");
+  st.textContent=`.chat-fab{position:fixed;right:14px;bottom:84px;z-index:20;display:none;align-items:center;gap:6px;padding:9px 13px 9px 11px;border-radius:24px;border:1px solid #c9a35a;background:#1d140d;color:#f3e3c3;font:700 14px system-ui;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+.chat-fab .cf-dot{width:9px;height:9px;border-radius:50%;background:#2EE07A;box-shadow:0 0 8px #2EE07A}
+.chat-box{display:none;flex-direction:column;--on-felt:#f3e3c3;margin:0 -4px}
+#live.chat-on .chat-box{display:flex}
+.chat-box.show,.chat-fab.show{display:flex}
+.chat-hd{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line);color:var(--on-felt);font:700 15px "Zilla Slab",serif}
+.chat-hd small{font:600 12px system-ui;opacity:.75;margin-left:auto}
+.chat-hd button{border:0;background:transparent;color:var(--on-felt);font-size:22px;line-height:1;padding:0 2px 0 8px}
+.chat-list{flex:1;max-height:calc(100vh - 220px);min-height:160px;overflow-y:auto;padding:6px 8px;display:flex;flex-direction:column;gap:4px}
+.chat-empty{margin:auto;text-align:center;opacity:.6;font:600 13px system-ui;color:var(--on-felt)}
+.cm{display:block!important;max-width:86%;align-self:flex-start;background:rgba(255,255,255,.07);border-radius:4px 12px 12px 12px;padding:3px 9px 4px;color:var(--on-felt)}
+.cm.me{align-self:flex-end;background:color-mix(in srgb,#FF9F1C 22%,transparent);border-radius:14px 4px 14px 14px}
+.cm.off{opacity:.45}
+.cm-h{display:flex;align-items:center;gap:4px;font:800 11px system-ui;color:#FFC46B;margin-bottom:0}
+.cm-h i{width:7px;height:7px;border-radius:50%;background:#777}.cm-h i.on{background:#2EE07A;box-shadow:0 0 6px #2EE07A}
+.cm-h time{margin-left:auto;padding-left:10px;font-weight:600;opacity:.6;color:var(--on-felt)}
+.cm-t{font:500 14px/1.3 system-ui;white-space:pre-wrap;word-break:break-word}
+.chat-in{display:flex;gap:6px;padding:4px 6px calc(4px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.chat-in input{flex:1;min-width:0;height:32px;padding:0 12px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--on-felt);font:500 16px system-ui}
+.chat-in button{border:0;border-radius:16px;height:32px;padding:0 12px;background:#FF9F1C;color:#1a0f05;font:800 14px system-ui}
+.chat-note{text-align:center;font:600 10px system-ui;opacity:.5;color:var(--on-felt);padding:2px 0 0;margin:0}`;
+  document.head.append(st);
+  const fab=document.createElement("button"); fab.type="button"; fab.id="onl"; fab.className="onl"; fab.setAttribute("aria-label","Live-Chat"); fab.innerHTML='<i></i><b class="onl-t">CHAT</b><span id="onlN" hidden></span>'; const live=document.getElementById("live");
+  const box=document.createElement("section"); box.className="chat-box"; box.setAttribute("aria-label","Live-Chat");
+  box.innerHTML=`<div class="chat-list" id="chatList"></div><p class="chat-note">Nachrichten löschen sich nach 60 Minuten.</p><form class="chat-in" id="chatForm"><input id="chatTxt" maxlength="300" autocomplete="off" placeholder="Nachricht schreiben …" enterkeyhint="send"><button>Senden</button></form>`;
+  window.chatPlace=function(){ if(CHAT.open){ if(!live.contains(box)){live.innerHTML="";live.append(fab,box)} } else if(!live.contains(fab)) live.prepend(fab);
+    live.classList.toggle("chat-on",CHAT.open); live.classList.toggle("has-rows",!CHAT.open&&!live.querySelector(".bd-welcome")); fab.classList.toggle("on",CHAT.open); fab.hidden=!ME; };
+  const _bn=boardNext; boardNext=function(){ if(CHAT.open){chatPlace();return} _bn.apply(this,arguments); chatPlace(); };
+  fab.onclick=e=>{e.stopPropagation();CHAT.open=!CHAT.open; if(CHAT.open){chatPlace();chatDraw(true);chatSync()} else boardNext()};
+  box.onclick=e=>e.stopPropagation();
+  try{boardNext()}catch(e){}
+  box.querySelector("#chatForm").onsubmit=e=>{e.preventDefault();const i=box.querySelector("#chatTxt"),t=i.value.trim();if(!t)return;i.value="";chatSync(t)};
+  window.chatDraw=function(scroll){
+    fab.hidden=!ME; fab.querySelector("#onlN").textContent=CHAT.online.length||1;
+    if(CHAT.seen==null){try{CHAT.seen=+localStorage.getItem("me2room-chatseen")||0}catch(e){CHAT.seen=0}}
+    const ids=CHAT.msgs.filter(m=>!ME||m.nr!==ME.nr).map(m=>m.id), mx=ids.length?Math.max(...ids):0;
+    if(CHAT.open&&mx>CHAT.seen){CHAT.seen=mx;try{localStorage.setItem("me2room-chatseen",mx)}catch(e){}}
+    fab.classList.toggle("new",!CHAT.open&&mx>CHAT.seen);
+    if(!CHAT.open) return;
+    const on=new Set(CHAT.online), me=ME&&ME.nr, L=box.querySelector("#chatList"), atEnd=L.scrollHeight-L.scrollTop-L.clientHeight<40;
+    const cut=Date.now()-60*60000, ms=CHAT.msgs.filter(m=>new Date(m.at).getTime()>cut);
+    L.innerHTML=CHAT.ok===false?`<p class="chat-empty">Der Chat ist noch nicht eingerichtet.</p>`:ms.length?ms.map(m=>{const o=on.has(m.nr)||m.nr===me,tm=new Date(m.at);return `<div class="cm${m.nr===me?" me":""}${o?"":" off"}"><div class="cm-h"><i class="${o?"on":""}" title="${o?"online":"offline"}"></i>${String(m.nr).padStart(3,"0")}<time>${String(tm.getHours()).padStart(2,"0")}:${String(tm.getMinutes()).padStart(2,"0")}</time></div><div class="cm-t">${escH(m.txt)}</div></div>`}).join(""):`<p class="chat-empty">Noch ist es ruhig hier.<br>Schreib die erste Nachricht!</p>`;
+    if(scroll||atEnd) L.scrollTop=L.scrollHeight;
+  };
+  window.chatSync=async function(txt){
+    if(!TOKEN||!ME||(CHAT.busy&&!txt)) return;
+    CHAT.busy=true;
+    try{const r=await rpc("m2r_chat",{p_token:TOKEN,p_txt:txt||null});
+      if(r&&r.ok){CHAT.ok=true;const skew=Date.now()-new Date(r.now).getTime();CHAT.msgs=(r.msgs||[]).map(m=>({...m,at:new Date(new Date(m.at).getTime()+skew).toISOString()}));CHAT.online=r.online||[]}
+      else if(r&&r.msg) toast(r.msg);
+    }catch(e){if(CHAT.ok===null)CHAT.ok=false}
+    CHAT.busy=false; chatDraw(!!txt);
+  };
+  setInterval(()=>{if(document.visibilityState!=="visible")return;if(!ME){chatDraw();return}const now=Date.now(),gap=CHAT.open?3000:20000;if(now-CHAT.last>=gap){CHAT.last=now;chatSync()}else chatDraw()},1000);
+  document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"){CHAT.last=0}});
+})();
 </script>
 </body>
 </html>
