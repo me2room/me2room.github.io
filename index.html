@@ -267,7 +267,7 @@ nav.tabs button[aria-current="page"]{color:var(--felt);font-weight:700}
 .adm-info{min-width:0}
 .adm-n{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .adm-info .s{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.adm-row .adm-btns{display:flex;gap:5px;flex-wrap:nowrap}
+.adm-row .adm-btns{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
 .adm-row .adm-btns .btn{padding:6px 9px;font-size:12px;white-space:nowrap}
 .syncdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--host);margin-left:6px;vertical-align:1px}
 .syncdot.off{background:var(--stop)}
@@ -1484,14 +1484,20 @@ let admQ="", admF="alle", HIST=null;
 const isFree=x=>x.admin||x.free!==false;   // ohne Freigabe-Spalte (alter Speicher) gilt jeder als frei
 // Adresse der App (wird automatisch richtig, sobald sie online ist)
 const APP_URL=location.protocol.startsWith("http")?location.origin+location.pathname:"https://me2room.github.io/";
-const inviteText=nr=>`me2room ♠
-
-Login: ${String(nr).padStart(3,"0")}
-PIN: 0000
-
+const inviteText=nr=>{const x=(ADMIN||[]).find(y=>y.nr===nr);return `me2room ♠
 ${APP_URL}?app=1
 
-Bitte einloggen, testen und ein kurzes Feedback geben. Danke!`;
+Login: ${String(nr).padStart(3,"0")}
+PIN: ${x&&x.pin?"hast du schon – kennst nur du 🔒":"0000"}
+
+Samstag & Sonntag sind 2 Veranstaltungen in me2room geplant. Einfach einloggen, fertig 😁
+Alles, was du dort siehst, ist der aktuelle Stand, live.
+
+Bitte behaltet eure Zugänge für euch. Bei Fragen ruft gern an oder loggt euch einfach ein, schaut rein und kommt vorbei.
+
+✌🏼 Besim & der Verein
+
+Feedback wäre cool, ich habe mir Mühe gegeben 🙂`};
 let QRSVG=null;
 // Übersicht für den Chef: Abende, Spieler, beliebte Tage
 let ADM_OPEN={}, WIPE_ASK=false;
@@ -1548,7 +1554,7 @@ function admDealerReqs(){
   <p class="tf-l" style="margin:14px 0 4px">Konten</p>${admGeberList()}`);
 }
 const guestSeats=id=>dates.map(dt=>{const k=key(dt),d=S.days[k];if(!d||(d.result&&d.result.done))return null;const p=solo(d).find(p=>p.m===id);return p?{k,seat:p.seat}:null}).filter(Boolean);
-const admRow=(x,lose,badge)=>{const esc=escH;if(lose)return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div class="adm-info"><div class="adm-n" style="white-space:nowrap">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")} · Admin <span class="s" style="display:inline">✅ ${esc(x.nickname||"")}</span></div></div><div class="adm-btns"><button class="adm-lose" data-act="admToggle" data-on="0">Admin lösen</button></div></div>`;return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><button type="button" class="adm-info adm-act" data-act="admActAs" data-nr="${x.nr}" title="Als dieses Konto handeln">${x.real_name||x.admin?`<span class="adm-n">${x.real_name?esc(x.real_name):""}${x.admin?(x.real_name?" · ":"")+"Admin":""}</span> `:""}<span class="s">${x.nr>=GEBER_MIN?"🃏 ":""}${isFree(x)?"✅":"🔒"} ${x.nickname?esc(x.nickname):isFree(x)?"frei":"gesperrt"}</span>${badge||""}</button><div class="adm-btns">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}${!x.pin?`<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>`:""}${x.nr!==(ME&&ME.nr)?`<button class="btn btn-acc" data-act="admActAs" data-nr="${x.nr}">Account Admin</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${lose?`<button class="adm-lose" data-act="admToggle" data-on="0">Admin lösen</button>`:""}${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}" title="PIN auf 0000 zurücksetzen">PIN</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`};
+const admRow=(x,lose,badge)=>{const esc=escH;if(lose)return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div class="adm-info"><div class="adm-n" style="white-space:nowrap">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")} · Admin <span class="s" style="display:inline">✅ ${esc(x.nickname||"")}</span></div></div><div class="adm-btns"><button class="adm-lose" data-act="admToggle" data-on="0">Admin lösen</button></div></div>`;return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><button type="button" class="adm-info adm-act" data-act="admActAs" data-nr="${x.nr}" title="Als dieses Konto handeln">${x.real_name||x.admin?`<span class="adm-n">${x.real_name?esc(x.real_name):""}${x.admin?(x.real_name?" · ":"")+"Admin":""}</span> `:""}<span class="s">${x.nr>=GEBER_MIN?"🃏 ":""}${isFree(x)?"✅":"🔒"} ${x.nickname?esc(x.nickname):isFree(x)?"frei":"gesperrt"}</span>${badge||""}</button><div class="adm-btns">${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button>${x.nr!==(ME&&ME.nr)?`<button class="btn btn-acc" data-act="admActAs" data-nr="${x.nr}">Account Admin</button>`:""}<button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${lose?`<button class="adm-lose" data-act="admToggle" data-on="0">Admin lösen</button>`:""}${x.pin&&!x.admin?`<button class="btn btn-line" data-act="admReset" data-nr="${x.nr}" title="PIN auf 0000 zurücksetzen">PIN</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}</div></div>`};
 let G_HOST=null, G_DONE=null, ADM_Q="";
 const freeNrs=()=>(ADMIN||[]).filter(x=>x.nr>1&&x.nr<GEBER_MIN&&!x.pin&&!x.real_name&&!x.nickname).sort((a,b)=>a.nr-b.nr);
 const gHostForm=g=>{const fr=freeNrs();return `<div class="adm-box"><p class="tf-l" style="margin:0 0 6px">${escH(g.n)} wird Gastgeber</p>${fr.length?`<div style="display:flex;gap:10px;align-items:center"><label class="tf" style="flex:1"><select id="ghnr" aria-label="Freie Nummer">${fr.slice(0,200).map(x=>`<option value="${x.nr}">${String(x.nr).padStart(3,"0")}</option>`).join("")}</select></label><button class="adm-btn" data-act="gHostSave">Gastgeber werden</button></div>`:`<p class="empty" style="margin:0">Keine freie Nummer mehr.</p>`}</div>`};
