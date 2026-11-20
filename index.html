@@ -749,6 +749,7 @@ header.hd .lv-n{font-size:14px}
 .saloon.go .sl-door.l{animation:none;transform:rotateY(82deg);transition:transform .45s ease-out}.saloon.go .sl-door.r{animation:none;transform:rotateY(-82deg);transition:transform .45s ease-out}
 .sl-sign{position:absolute;left:50%;top:1px;transform:translateX(-50%);color:#FFE9EC;font:700 13px/1 "Zilla Slab",Georgia,serif;letter-spacing:.3px;text-shadow:0 0 2px #fff,0 0 6px #FF4D63,0 0 12px #FF2D4A,0 0 22px #FF2D4A,0 2px 0 #7A111E}
 @media (prefers-reduced-motion:reduce){.sl-door{animation:none!important}}
+.chipBlink{animation:chipB 1.6s ease-in-out infinite}@keyframes chipB{0%,100%{opacity:1}50%{opacity:.35}}.flipT{transform-box:fill-box;transform-origin:center;animation:flipA .55s ease-in-out}@keyframes flipA{0%{transform:scaleY(1)}45%{transform:scaleY(.05)}55%{transform:scaleY(.05)}100%{transform:scaleY(1)}}
 @media print{body.printqr *{visibility:hidden}body.printqr .qrcard,body.printqr .qrcard *{visibility:visible}body.printqr .qrcard{position:fixed;inset:0;margin:0;border-radius:0;display:flex;flex-direction:column;justify-content:center}body.printqr .qrcard .qr-img svg{width:60%}}
 </style>
 </head>
@@ -1026,13 +1027,16 @@ function remindPanel(k,d){
 }
 
 function starPath(x,y,R,r){let p="";for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rad=i%2?r:R;p+=(i?"L":"M")+(x+Math.cos(a)*rad).toFixed(1)+" "+(y+Math.sin(a)*rad).toFixed(1)}return p+"Z"}
-function dealerSVG(cx,cy,ry,dealer){
+function dealerSVG(cx,cy,ry,dealer,u){
   // Kartengeber-Platz wie am echten Tisch: Aussparung im Polster, Chip-Tray, Geberstuhl
   const top=cy-(ry-14);
   let s=`<path d="M${cx-36} ${top+2} Q${cx} ${top+16} ${cx+36} ${top+2} L${cx+36} ${top+24} L${cx-36} ${top+24} Z" fill="var(--cloth)"/>`;
   s+=`<path d="M${cx-36} ${top+2} Q${cx} ${top+16} ${cx+36} ${top+2}" fill="none" stroke="var(--rim)" stroke-width="3"/>`;
   s+=`<rect x="${cx-19}" y="${top+11}" width="38" height="12" rx="2" fill="var(--rim)" stroke="var(--ringled)" stroke-width="1" opacity=".85"/>`;
-  for(let i=1;i<8;i++) s+=`<line x1="${cx-19+i*4.75}" y1="${top+13}" x2="${cx-19+i*4.75}" y2="${top+21}" stroke="var(--ringled)" stroke-width=".7" opacity=".45"/>`;
+  { const sw=36/7, full=(u||0)>=7;
+    for(let i=0;i<7;i++){const x=cx-18+i*sw, on=i<(u||0);
+      s+=on?`<g class="${full?"":"chipBlink"}" style="animation-delay:${(i*.12).toFixed(2)}s"><rect x="${(x+.5).toFixed(2)}" y="${top+12.5}" width="${(sw-1).toFixed(2)}" height="9" rx="1" fill="${full?"#2EE07A":"#FF9F1C"}"/><rect x="${(x+.5).toFixed(2)}" y="${top+14.3}" width="${(sw-1).toFixed(2)}" height="1.1" fill="#fff" opacity=".85"/><rect x="${(x+.5).toFixed(2)}" y="${top+18.6}" width="${(sw-1).toFixed(2)}" height="1.1" fill="#fff" opacity=".85"/></g>`
+            :`<rect x="${(x+.5).toFixed(2)}" y="${top+12.5}" width="${(sw-1).toFixed(2)}" height="9" rx="1" fill="#050505" stroke="var(--ringled)" stroke-width=".35" opacity=".5"/>`}}
   s+=`<line x1="${cx-28}" y1="${top+31}" x2="${cx+28}" y2="${top+31}" stroke="var(--ringled)" stroke-width="1" opacity=".4"/>`;
   s+=`<g data-dchair="1" class="dchair" role="button" tabindex="0" aria-label="Geberstuhl">`;
   if(dealer!=null){
@@ -1058,17 +1062,17 @@ function tableSVG(d){
   const picking=openForm==="host", r0=roleOf(d,S.me), canSeat=!startedDay(S.sel,d)&&((!r0||r0.r==="wait")||(GSEAT!=null&&ME&&ME.admin));
   if(openForm==="seat"&&pick.mine!=null) seats[pick.mine]={pick:"h"};
   if(picking){if(pick.mine!=null)seats[pick.mine]={pick:"h"};if(pick.guest!=null)seats[pick.guest]={pick:"g"}}
-  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}"><defs><linearGradient id="rust" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A5A36"/><stop offset=".45" stop-color="#6B4027"/><stop offset=".75" stop-color="#7A5A48"/><stop offset="1" stop-color="#4A2E1C"/></linearGradient><filter id="gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>`;
+  let s=`<svg viewBox="-10 -4 380 250" onclick="" role="img" aria-label="Tisch mit ${used(d)} von ${SEATS} Plätzen belegt${hasDealer(d)?", Geber "+no(d.dealer):""}"><defs><linearGradient id="rust" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8A5A36"/><stop offset=".45" stop-color="#6B4027"/><stop offset=".75" stop-color="#7A5A48"/><stop offset="1" stop-color="#4A2E1C"/></linearGradient><filter id="gl" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="pg" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter><linearGradient id="plankG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5232"/><stop offset=".5" stop-color="#5a3a22"/><stop offset="1" stop-color="#3f2716"/></linearGradient><filter id="burn" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1" stdDeviation=".3" flood-color="#3a200c"/><feDropShadow dx="0" dy="0" stdDeviation="1.6" flood-color="#FFBE64" flood-opacity=".55"/></filter><linearGradient id="flipG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset=".5" stop-color="#1a1a1a"/><stop offset=".5" stop-color="#121212"/><stop offset="1" stop-color="#202020"/></linearGradient></defs>`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-14}" ry="${ry-14}" fill="var(--rim)"/><ellipse cx="${cx}" cy="${cy}" rx="${rx-19}" ry="${ry-19}" fill="none" stroke="${used(d)>=7?"#2EE07A":used(d)>=3?"#FF9F1C":"var(--ringled)"}" stroke-width="3" opacity=".95"${used(d)>=3?' filter="url(#gl)"':""}/>`;
   s+=`<ellipse cx="${cx}" cy="${cy}" rx="${rx-24}" ry="${ry-24}" fill="var(--cloth)"/><rect x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="none" stroke="var(--ringled)" stroke-width="2" opacity=".35"/>`;
-  s+=dealerSVG(cx,cy,ry,hasDealer(d)?d.dealer:null);
+  s+=dealerSVG(cx,cy,ry,hasDealer(d)?d.dealer:null,used(d));
   // feste Platznummern 1–10 dezent am Tischrand (der Geberstuhl hat keine)
   for(let i=0;i<SEATS;i++){const a=(-58+i*296/(SEATS-1))*Math.PI/180;s+=`<text class="seatno" x="${(cx+Math.cos(a)*(rx-36)).toFixed(1)}" y="${(cy+Math.sin(a)*(ry-35)+3.5).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--ringled)" opacity=".7" aria-hidden="true">${i+1}</text>`}
-  {const u=used(d),col=u>=7?"#2EE07A":u>=3?"#FF9F1C":"var(--on-felt)",gf=u>=3?' filter="url(#gl)"':"",T=(y,fs,t)=>`<text x="${cx}" y="${y}" text-anchor="middle" font-family="Zilla Slab,serif" font-weight="700" font-size="${fs}" fill="${col}"${gf}>${t}</text>`;
-  s+=u<7?T(cy-8,18,(u===6?"noch einer":`noch ${7-u}`)):T(cy-17,18,"Start")+T(cy+2,18,u);}
-  s+=svgCards(cx,cy+8,d.variant);
+  {const u=used(d), miss=Math.max(0,7-u), k0=S.sel, fl=(LAST_FLIP[k0]!=null&&LAST_FLIP[k0]!==u)?" flipT":""; LAST_FLIP[k0]=u;
+   }
   { const ns=Object.keys(d.sugg||{}).length;
     s+=`<rect data-tcenter="1" class="tcenter" x="${cx-84}" y="${cy-38}" width="168" height="76" rx="38" fill="transparent" role="button" tabindex="0" aria-label="Spiel, Uhrzeit und Blind wählen"/>`; }
+  s+=voteSVG(d,cx,cy);
   pos.forEach(([x,y],i)=>{
     const st=seats[i], free=!st||(st.res&&st.h.release);
     const tap=(picking||canSeat)&&(!st||st.pick)?` data-seat="${i}" role="button" tabindex="0" aria-label="Platz ${i+1} ${st?"abwählen":"wählen"}" style="cursor:pointer"`:` data-seatx="${i}" style="cursor:pointer"`;
@@ -1553,6 +1557,29 @@ function bdDay(k){
   return k===t0?"Heute":k===t1?"Morgen":`${WD[dt.getDay()]} ${dt.getDate()}.${dt.getMonth()+1}.`;
 }
 const CARDS=v=>v===1?[["A","♥","#C8102E"],["A","♠","#111"],["8","♥","#C8102E"],["8","♠","#111"]]:[["A","♦","#C8102E"],["A","♣","#111"]];
+let LAST_FLIP={};
+const myVote=(d,m)=>{const V=d.votes||{};if(V[m])return V[m];const h=(d.hosts||[]).find(x=>(x.guests||[]).includes(m));if(h)return V[h.m]||"b";return players(d).includes(m)?"b":null};
+const voteCount=d=>{const V=d.votes||{}, seat=players(d), extra=[];
+  (d.hosts||[]).forEach(h=>{if(h.gseat!=null&&!(h.guests||[]).length)extra.push(V[h.m]||"b")});   // reservierter Gastplatz zaehlt wie der Gastgeber
+  const add=(arr,vs)=>{let h=0,o=0;vs.forEach(v=>{if(v==="h"||v==="b")h++;if(v==="o"||v==="b")o++});return {h,o,n:vs.length}};
+  const sv=seat.map(m=>myVote(d,m)).concat(extra), ev=Object.keys(V).map(Number).filter(m=>!seat.includes(m)).map(m=>V[m]);
+  const t=add(0,sv), a=add(0,sv.concat(ev));
+  return {h:a.h,o:a.o,n:a.n,hs:t.h,os:t.o,ns:t.n}};
+function voteSVG(d,cx,cy){
+  const {h,o,n,hs,os,ns}=voteCount(d), dec=!!d.tlock, my=myVote(d,S.me), hx=cx-51, ox=cx+39, y=cy-11;
+  const frame=(x,v,side)=>{const cw=v===1?47:25, win=dec&&d.variant===v, col=win?"#2EE07A":"#4D8DFF";
+    let f=(!dec||win)?`<rect x="${x-cw/2-6}" y="${y-5}" width="${cw+12}" height="31" rx="7" fill="none" stroke="${col}" stroke-width="${win?2.2:1.6}" filter="url(#gl)">${dec?"":`<animate attributeName="opacity" values="1;.25;1" dur="1.8s" repeatCount="indefinite"/>`}</rect>`:"";
+    const pa=n?Math.round((side==="h"?h:o)/n*100):0, ps=ns?Math.round((side==="h"?hs:os)/ns*100):0;
+    if(ns) f+=`<text x="${x}" y="${y+33}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#2EE07A">${ps} %</text>`;
+    if(n) f+=`<text x="${x}" y="${y-8}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#4D8DFF">${pa} %</text>`;
+    const mine=my===side||(my==="b"&&(d.votes||{})[S.me]==="b"); if(mine) f+=`<circle cx="${x+cw/2+5}" cy="${y-4}" r="5" fill="#4D8DFF" stroke="#fff" stroke-width="1"/><text x="${x+cw/2+5}" y="${y-1.5}" text-anchor="middle" font-size="7" font-weight="800" fill="#fff">✓</text>`;
+    return `<g data-vote="${side}" style="cursor:pointer" role="button" aria-label="${side==="h"?"Für Hold'em stimmen":"Für Omaha stimmen"}"><rect x="${x-cw/2-7}" y="${y-8}" width="${cw+14}" height="36" fill="transparent"/>${f}${svgCards(x,y-1,v)}</g>`};
+  const x1=hx+19, x2=ox-30, mx=(x1+x2)/2, by=y+10, half=(x2-x1)/2, tot=n, ns0=ns, px=mx+(tot?(o-h)/tot:0)*half;
+  let bar=`<g opacity="${dec?.35:1}"><rect x="${x1}" y="${by-2}" width="${x2-x1}" height="4" rx="2" fill="rgba(255,255,255,.12)"/>`;
+  if(px!==mx) bar+=`<rect x="${Math.min(mx,px)}" y="${by-2}" width="${Math.abs(px-mx)}" height="4" rx="2" fill="#4D8DFF" filter="url(#gl)"/>`;
+  bar+=`<circle cx="${px.toFixed(1)}" cy="${by}" r="3.4" fill="${tot?"#4D8DFF":"#fff"}" stroke="#1a0f05" stroke-width="1" filter="url(#gl)"/><g><circle cx="${mx}" cy="${by-11}" r="6.5" fill="#0b0b0b" stroke="#4D8DFF" stroke-width="1"/><text x="${mx}" y="${by-8.2}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#fff">${tot}</text></g><line x1="${mx}" y1="${by-4.5}" x2="${mx}" y2="${by+4.5}" stroke="rgba(255,255,255,.55)" stroke-width="1"/><g><circle cx="${mx}" cy="${by+11}" r="6.5" fill="#0b0b0b" stroke="#2EE07A" stroke-width="1"/><text x="${mx}" y="${by+13.8}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#fff">${ns}</text></g></g>`;
+  return bar+frame(hx,0,"h")+frame(ox,1,"o");
+}
 function svgCards(cx,y,v){const cs=CARDS(v),w=14,h=20,step=11,x0=cx-((cs.length-1)*step+w)/2,rot=[-10,-3,4,11];
   return `<g aria-label="${VARIANTS[v]}">`+cs.map(([r,su,c],i)=>{const x=x0+i*step, ro=cs.length===2?(i?6:-6):rot[i];return `<g transform="rotate(${ro} ${x+w/2} ${y+h/2})"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2.5" fill="#fff" stroke="#bbb" stroke-width=".6"/><text x="${x+w/2}" y="${y+9}" text-anchor="middle" font-size="8" font-weight="800" fill="${c}">${r}</text><text x="${x+w/2}" y="${y+17}" text-anchor="middle" font-size="8" fill="${c}">${su}</text></g>`}).join("")+`</g>`;}
 const miniCards=v=>{const cs=v===1?[["A","♥","r"],["A","♠","b"],["8","♥","r"],["8","♠","b"]]:[["A","♦","r"],["A","♣","b"]];
@@ -1598,6 +1625,18 @@ function render(){
 
 document.addEventListener("keydown",e=>{const tcx=e.target.closest&&(e.target.closest("[data-tcenter]")||e.target.closest("[data-dchair]"));if(tcx&&(e.key==="Enter"||e.key===" ")){e.preventDefault();tcx.dispatchEvent(new MouseEvent("click",{bubbles:true}));return}const sp=e.target.closest&&e.target.closest("[data-seat]");if(sp&&(e.key==="Enter"||e.key===" ")){e.preventDefault();sp.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
 document.addEventListener("click",e=>{
+  const vt=e.target.closest&&e.target.closest("[data-vote]");
+  if(vt&&S.tab==="kalender"&&ME){
+    const d=S.days[S.sel], side=vt.dataset.vote;
+    if(d.tlock){toast(`Das Spiel steht fest: ${VARIANTS[d.variant]}`);return}
+    if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Das Turnier hat schon begonnen.");return}
+    const V=d.votes||(d.votes={}), cur=V[S.me];
+    if(cur===side){V[S.me]="b";toast("Dir ist beides recht");}
+    else{V[S.me]=side;toast(side==="h"?"Du möchtest Hold'em spielen":"Du möchtest Omaha spielen");}
+    const seated=players(d).includes(S.me), inter=d.interest||(d.interest=[]);
+    if(!seated&&!inter.includes(S.me)){inter.push(S.me);toast("Abgestimmt – du stehst jetzt auf „evtl.“");}
+    pushNow();render();return;
+  }
   const tc=e.target.closest&&e.target.closest("[data-tcenter]");
   if(tc&&S.tab==="kalender"&&ME){
     const d=S.days[S.sel];
@@ -1822,6 +1861,7 @@ document.addEventListener("click",e=>{
     else if(r.r==="player"){d.players=solo(d).filter(x=>x!==r.p);log(`${nm(S.me)} hat Platz ${r.p.seat+1} freigegeben`)}
     else if(r.r==="dealer"){d.dealer=null;log(`${no(S.me)} ${nm(S.me)} hat als Geber am ${dateLabel(k)} abgesagt`)}
     else d.wait=d.wait.filter(x=>x!==S.me);
+    if(d.votes) delete d.votes[S.me];
     promote(k); toast("Abgesagt"); render(); return;
   }
   if(a==="addGuest"){if(!(document.getElementById("myguest")||{}).value?.trim()){GE_OPEN=null;render();return}const H=d.hosts.find(x=>x.m===+(t.dataset.hm??S.me)), r={h:H},v=document.getElementById("myguest").value.trim(),gn=byNum(+v);if(gn==null||!H||gn===H.m||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait")){toast("Diese Nummer ist nicht verfügbar");return}d.wait=d.wait.filter(x=>x!==gn);r.h.guests=[gn];GE_OPEN=null;log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`);toast("Gast eingetragen");render();return}
@@ -1858,6 +1898,7 @@ document.addEventListener("click",e=>{
   if(a==="cxNo"){CX_OPEN=false;render();return}
   if(a==="cxSelf"||a==="cxGuest"||a==="cxBoth"){
     CX_OPEN=false; const r=roleOf(d,S.me); if(!r||startedDay(k,d)){render();return}
+    if(d.votes) delete d.votes[S.me];
     if(r.r==="host"){
       const h=r.h, g=h.guests[0];
       if(a==="cxGuest"){ d.hosts=d.hosts.filter(x=>x!==h); solo(d).push({m:S.me,seat:h.seat}); log(`${nm(S.me)} hat für den Gast abgesagt und spielt als Gast`); toast("Dein Gast ist abgesagt – du bist jetzt Gast"); }
