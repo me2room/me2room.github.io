@@ -750,6 +750,23 @@ header.hd .lv-n{font-size:14px}
 .sl-sign{position:absolute;left:50%;top:1px;transform:translateX(-50%);color:#FFE9EC;font:700 13px/1 "Zilla Slab",Georgia,serif;letter-spacing:.3px;text-shadow:0 0 2px #fff,0 0 6px #FF4D63,0 0 12px #FF2D4A,0 0 22px #FF2D4A,0 2px 0 #7A111E}
 @media (prefers-reduced-motion:reduce){.sl-door{animation:none!important}}
 .chipBlink{animation:chipB 1.6s ease-in-out infinite}@keyframes chipB{0%,100%{opacity:1}50%{opacity:.35}}.flipT{transform-box:fill-box;transform-origin:center;animation:flipA .55s ease-in-out}@keyframes flipA{0%{transform:scaleY(1)}45%{transform:scaleY(.05)}55%{transform:scaleY(.05)}100%{transform:scaleY(1)}}
+.oneup{display:inline-block;margin-left:4px;padding:1px 7px 2px;border-radius:7px;background:#fff;color:#1FA85A;font:900 17px/1 "Arial Black",Figtree,sans-serif;letter-spacing:.5px;-webkit-text-stroke:.6px #0E6B36;box-shadow:0 2px 0 #0E6B36,0 0 10px rgba(255,255,255,.6);animation:oneUp 1.4s ease-in-out infinite}@keyframes oneUp{0%,100%{transform:translateY(0) scale(1)}40%{transform:translateY(-3px) scale(1.12)}60%{transform:translateY(-1px) scale(1.05)}}@media (prefers-reduced-motion:reduce){.oneup{animation:none}}
+.seatsheet{display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important}.seatsheet .btn{margin:0!important;min-height:52px;border:3px dashed rgba(255,255,255,.95)!important;border-radius:16px!important;outline:2px solid rgba(0,0,0,.35);outline-offset:-6px;font-size:17px}
+.hd-row>.plank{order:1}.hd-row>.neon{order:2}.hd-row>.chatbtn{order:3}
+.act-day{padding:8px 0;border-top:1px solid var(--line)}.act-day:first-child{border-top:0}.act-h{font:700 15px "Zilla Slab",serif;color:#FFC46B;margin-bottom:4px}.act-h small{font:600 12px Figtree,sans-serif;color:var(--muted);margin-left:6px}.act-l{display:flex;gap:8px;font:500 13px/1.4 Figtree,sans-serif}.act-l span{flex:0 0 96px;color:var(--muted)}.act-l b{font-weight:600;color:var(--on-felt,#f3e3c3)}
+.wtab{width:100%;border-collapse:separate;border-spacing:0;margin:0 0 14px;border:2px solid #6b4027;border-radius:10px;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(255,255,255,.015) 0 3px,rgba(0,0,0,.05) 3px 6px),#1c120b;box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.wtab caption{caption-side:top;text-align:left;padding:7px 10px;background:linear-gradient(#8a5a34,#5a3a22);border:2px solid #6b4027;border-bottom:0;border-radius:10px 10px 0 0;font:400 15px "Rye","Zilla Slab",serif;color:#F3D9A4;text-shadow:0 1px 0 #2a1405,0 0 6px rgba(255,190,100,.4)}
+.wtab caption small{font:700 12px Figtree,sans-serif;color:#FFE9C2;margin-left:6px;opacity:.85}
+.wtab th,.wtab td{padding:6px 8px;border-top:1px solid rgba(201,163,90,.25);vertical-align:middle;text-align:left}
+.wtab tr:first-child th,.wtab tr:first-child td{border-top:0}
+.wtab th{width:118px;white-space:nowrap;font:700 12px Figtree,sans-serif;color:#C9A35A;border-right:1px solid rgba(201,163,90,.3);background:rgba(0,0,0,.25)}
+.wtab th span{margin-left:6px}.wtab td{font:600 13px/1.35 Figtree,sans-serif;color:#F3E3C3}
+.wt-chip{display:inline-block;width:13px;height:13px;border-radius:50%;background:var(--c);border:2px dashed #fff;vertical-align:-2px;box-sizing:border-box}
+.wt-p1{font:900 10px "Arial Black",sans-serif;color:#2BD94F;margin-left:2px}
+.wt-star{font-style:normal;color:#4D8DFF;text-shadow:0 0 6px #3B7BFF}.wt-wait{font-style:normal}
+.wt-geber{font:700 9px Figtree,sans-serif;font-style:normal;padding:1px 4px;border:1px solid #F3E3C3;border-radius:4px;color:#F3E3C3;background:#111}
+.wt-cards{font:800 9px Figtree,sans-serif;font-style:normal;padding:1px 4px;border-radius:3px;background:#fff;color:#c00}
+.wt-vg{display:grid;gap:4px}.tk{width:100%;border-collapse:collapse;margin-top:2px}.tk th,.tk td{padding:4px 8px;text-align:center}.tk th{font:900 13px Figtree,sans-serif;color:#fff;border-bottom:2px solid #c9a35a;white-space:nowrap}.tk td:first-child,.tk th:first-child{text-align:left;border-right:2px solid #c9a35a;font:700 13px Figtree,sans-serif;color:#F3E3C3}.tk-c{display:inline-block;min-width:18px;margin-right:5px;padding:0 5px;border-radius:999px;border:1.5px solid var(--c);font:800 11px Figtree,sans-serif;font-style:normal;color:#fff}.wtab .tk td.tk-b{color:#4D8DFF;font:800 14px Figtree,sans-serif}.wtab .tk td.tk-g{color:#2EE07A;font:800 14px Figtree,sans-serif}.wt-vl{font:700 12px Figtree,sans-serif;color:#C9A35A}.wtab td.wt-n{width:26px;text-align:center;font:800 14px Figtree,sans-serif;color:#FFC46B;border-right:1px solid rgba(201,163,90,.3);padding:6px 4px}.wtab th{width:auto}.wt-req{margin:2px 0;padding:4px 8px;border-radius:8px;border:1.5px solid #c9a35a;background:transparent;color:#F3E3C3;font:600 13px Figtree,sans-serif;cursor:pointer}.wt-req.on{border-color:#FF9F1C;color:#FFC46B}.wt-req.ok{border-color:#2EE07A;color:#bff5d2;background:rgba(46,224,122,.12);box-shadow:0 0 6px rgba(46,224,122,.35)}.wt-b{color:#4D8DFF}.wt-g{color:#2EE07A}.wt-b b,.wt-g b{display:inline-block;min-width:20px;padding:0 5px;margin-right:4px;border-radius:999px;border:1.5px solid currentColor;text-align:center;color:#fff}
 @media print{body.printqr *{visibility:hidden}body.printqr .qrcard,body.printqr .qrcard *{visibility:visible}body.printqr .qrcard{position:fixed;inset:0;margin:0;border-radius:0;display:flex;flex-direction:column;justify-content:center}body.printqr .qrcard .qr-img svg{width:60%}}
 </style>
 </head>
@@ -863,7 +880,7 @@ function monthCal(sel){
     const my=(myr||(d.interest||[]).includes(S.me))?(u>=7?" my my-h":u>=3?" my my-g":" my my-w"):"";
     h+=`<button class="cal-d${my}${run?" run":""}${isOff(d,S.me)?" nope":""}${u>=7?" c-go":u>=3?" c-warm":""}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
   }
-  h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span><span><i class="lg lg-my"></i>dein Abend</span></p></div>`;
+  h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span><span><i class="lg lg-my"></i>dein Abend</span></p></div>`;
   return h;
 }
 // Ranglisten laufen pro Monat (Schlüssel "JJJJ-MM")
@@ -1217,6 +1234,41 @@ function markBtn(k,d,mine){
   return `<div class="mk-row"><button type="button" class="mark3${on?" on":""}" data-act="interest" aria-pressed="${on}" aria-label="${on?"Vorgemerkt – tippen zum Entfernen":"Vormerken – keine feste Zusage"}" title="${on?"Vorgemerkt – tippen zum Entfernen":"Keine feste Zusage – vielleicht kann ich"}"><span class="m3-i" aria-hidden="true">★</span>${on?`<span class="m3-cnt">${d.interest.length}</span>`:`<span class="m3-t">evtl.</span>`}</button></div>`;
 }
 function actBar(){return ACT_AS&&ME&&ME.admin?`<section class="panel actas"><span>Du handelst als <b>${String(ACT_AS).padStart(3,"0")}</b></span><button class="adm-sm" style="margin:0" data-act="actBack">Zurück zu ${String(ME.nr).padStart(3,"0")}</button></section>`:""}
+let DCH_OPEN=null;
+function adminDealerPanel(d,k){
+  const reqs=dreqSorted(d), inv=(d.dinv||[]);
+  const row=(l,btns)=>`<div class="sg-row" style="margin-top:6px"><div class="grow"><b>${l}</b></div><div style="display:flex;gap:6px">${btns}</div></div>`;
+  return `<section class="panel" id="dchpanel"><div class="ptitle"><h3 style="margin:0">🃏 Kartengeber · ${bdDay(k)}</h3><span class="badge b-plan">${reqs.length} Anfragen</span></div>
+  ${hasDealer(d)?row(`Eingeteilt: ${pName(d.dealer)}`,`<button class="adm-no" data-act="clearDealer" data-k="${k}">Austragen</button>`):`<p class="empty" style="margin:6px 0 0">Noch kein Kartengeber.</p>`}
+  ${reqs.length?`<p class="tf-l" style="margin:12px 0 0">Beworben (nach Zeit)</p>`+reqs.map((x,i)=>row(`${pName(x.m)}${i===0?" · zuerst":""} <small style="opacity:.7">${whenTxt(x.at).replace(" um "," ")}</small>`,hasDealer(d)&&d.dealer===x.m?"":`<button class="adm-ok" data-act="geberOk" data-k="${k}" data-m="${x.m}">Annehmen</button><button class="adm-no" data-act="geberNo" data-k="${k}" data-m="${x.m}">Ablehnen</button>`)).join(""):`<p class="empty" style="margin:8px 0 0">Keine Bewerbungen.</p>`}
+  ${inv.length?`<p class="tf-l" style="margin:12px 0 0">Von dir angefragt</p>`+inv.map(x=>row(`${pName(x.m)} · wartet`,`<button class="adm-sm" style="margin:0" data-act="admAskCancel" data-k="${k}" data-m="${x.m}">Zurückziehen</button>`)).join(""):""}</section>`;
+}
+let ACT_PICK=null;
+function adminActivity(){
+  const nn=m=>{const nr=String(m+1).padStart(3,"0"), n=nm(m);return n===nr?nr:`${nr} ${escH(n)}`};
+  const L=a=>a.map(nn).join(", ");
+  const chip=c=>`<i class="wt-chip" style="--c:${c}"></i>`;
+  let out="";
+  dates.forEach(dt=>{const k=key(dt), d=S.days[k]; if(!d||isClosed(k)||(d.result&&d.result.done)) return;
+    const V=d.votes||{}, vh=[],vo=[]; Object.keys(V).forEach(m=>{if(V[m]==="h")vh.push(+m);else if(V[m]==="o")vo.push(+m)});
+    const hosts=d.hosts||[], solo_=(d.players||[]).map(p=>p.m), inter=d.interest||[], wait=d.wait||[], dq=dreqSorted(d).map(x=>x.m);
+    if(!hosts.length&&!solo_.length&&!inter.length&&!wait.length&&!dq.length&&!hasDealer(d)&&!Object.keys(V).length) return;
+    const c=voteCount(d), pc=(x,n)=>n?Math.round(x/n*100)+"%":"–";
+    const row=(ic,lab,val,n)=>val?`<tr><th>${ic}${lab?`<span>${lab}</span>`:""}</th><td class="wt-n">${n??""}</td><td>${val}</td></tr>`:"";
+    const hostN=hosts.reduce((a,h)=>a+1+((h.guests||[]).length||(h.gseat!=null?1:0)),0);
+    const cand=[...new Set([...(hasDealer(d)?[d.dealer]:[]),...dq])];
+    const reqBtns=cand.map(m=>{const p=ACT_PICK===k+":"+m, ok=hasDealer(d)&&d.dealer===m;return `<button class="wt-req${ok?" ok":p?" on":""}" data-act="actGeber" data-k="${k}" data-m="${m}">${nn(m)}${p&&!ok?" · bestätigen?":""}</button>`}).join(" ");
+    out+=`<table class="wtab"><caption>${bdDay(k)} · ${d.start} Uhr <small>${used(d)} / ${SEATS}</small></caption><tbody>
+      ${row(chip("#2BD94F")+'<b class="wt-p1">+1</b>',"",hosts.map(h=>`${nn(h.m)}${(h.guests||[]).length?" + "+L(h.guests):h.gseat!=null?" + Gast offen":""}`).join(", "),hostN)}
+      ${row(chip("#FF9F1C"),"",L(solo_),solo_.length)}
+      ${row('<i class="wt-star">★</i>',"eventuell",L(inter),inter.length)}
+      ${row('<i class="wt-wait">⏳</i>',"Warteliste",L(wait),wait.length)}
+      ${row('<i class="wt-geber">Geber</i>',"",reqBtns,cand.length)}
+      <tr class="wt-vote"><td colspan="3"><div class="wt-vg"><span class="wt-vl">Abstimmung</span><table class="tk"><tr><th></th><th><i class="tk-c" style="--c:#4D8DFF">${c.n}</i>ALLE</th><th><i class="tk-c" style="--c:#2EE07A">${c.ns}</i>AM TISCH</th></tr><tr><td>Hold'em</td><td class="tk-b">${pc(c.h,c.n)}</td><td class="tk-g">${pc(c.hs,c.ns)}</td></tr><tr><td>Omaha</td><td class="tk-b">${pc(c.o,c.n)}</td><td class="tk-g">${pc(c.os,c.ns)}</td></tr></table></div></td></tr>
+      ${d.tlock?row("✔","Spiel fest",VARIANTS[d.variant]):""}
+    </tbody></table>`});
+  return `<section class="panel act-admin"><details class="adm-x" data-sec="act"${ADM_OPEN.act===false?"":" open"}><summary><h3>Aktivitäten (nur Admin)</h3><span class="adm-arr" aria-hidden="true">⌄</span></summary><div class="adm-b">${out||`<p class="empty" style="margin:0">Noch keine Aktivitäten.</p>`}</div></details></section>`;
+}
 function viewKalender(){
   if(isClosed(S.sel)){const f=dates.find(dt=>!isClosed(key(dt)));if(f)S.sel=key(f)}
   const k=S.sel, d=S.days[k], st=status(d), mine=roleOf(d,S.me), full=used(d)>=SEATS, locked=d.result;
@@ -1226,13 +1278,13 @@ function viewKalender(){
   h+=`<section class="panel${used(d)>=7?" go":used(d)>=3?" warm":""}" id="event"><div class="ptitle"><h2>${shortDay(k)} <span class="ev-time">${d.start}</span></h2>${markBtn(k,d,mine)}${mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done)?`<button type="button" class="btn-cancel hd-cancel" data-act="cxOpen">Absagen</button>`:""}</div>${cancelSheet(d,k,mine)}${ME&&ME.admin&&(d.off||[]).length?`<p class="offlist">Off: ${d.off.map(m=>pName(m)).join(", ")}</p>`:""}`;
   if(active(d)){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
-    h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
+    h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>`;
     if(hasDealer(d)&&(isGeber(S.me)||(ME&&ME.admin))) h+=`<p class="dealerline">Geber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
     h+=seatSheet(d);
     const wc=`<div class="waitcount" aria-label="${d.wait.length} im Wartebereich"><span>Wartebereich</span><b>${d.wait.length}</b></div>`;
     const smallCancel=mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done);
   }else{
-    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>Gastgeber</span><span><i class="lg lg-g"></i>Gast</span><span><i class="lg lg-f"></i>Frei</span></div>`;
+    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>`;
     h+=seatSheet(d);
   }
   h+=`<div class="actions">`;
@@ -1269,6 +1321,8 @@ function viewKalender(){
   if(myReq) h+=`<section class="panel dealercard"><div class="hc-head"><h3>🃏 Kartengeber</h3>${hasDealer(d)?`<span class="hc-date">${no(d.dealer)} ${escH(nm(d.dealer))}</span>`:`<span class="hc-date">noch keiner</span>`}</div>${myReq?(d.dealer===S.me?`<div class="hc-info">Du bist an diesem Abend Kartengeber.</div>`:`<div class="hc-info">Du bist nominiert ✓<span class="hc-sub">Der Vorstand entscheidet. Zurückziehen: Geberstuhl nochmal antippen.</span></div>`):""}${dreqHTML?`<p class="tf-l" style="margin:0">Anfragen (nach Zeit)</p>${dreqHTML}`:(admin&&!hasDealer(d)&&open?`<p class="hc-hint" style="margin:0">Noch keine Anfragen. Kartengeber tippen am Tisch auf den Geberstuhl.</p>`:"")}${showDealerForm?dealerForm(d):""}</section>`;
   h+=`<section class="panel cdbar"><span class="cd-lbl">Start in</span><span class="cd hd-cd" id="cd" data-t="${startTs(k,d)}" data-done="${d.result&&d.result.done?1:0}" role="timer"><span class="cd-v" id="cdv">–</span></span><button type="button" class="offbtn" data-act="dayOff" title="An diesem Tag kann ich nicht">Off</button></section>`;
   h+=monthCal(k);
+  if(ME&&ME.admin) h+=adminActivity();
+  if(ME&&ME.admin&&DCH_OPEN===k) h+=adminDealerPanel(d,k);
 
   return h;
 }
@@ -1527,8 +1581,8 @@ function seatSheet(d){
   const brought=solo(d).some(p=>p.by===S.me);
   const can1=!brought&&freeSeatCount(d)>=2&&d.hosts.length<HOST_MAX;
   return `<div class="form seatsheet">
-  <button class="btn btn-guest" data-act="solo">Gast</button>
-  ${brought?"":freeSeatCount(d)<2?`<button class="btn btn-host" data-act="wait">Gastgeber mit Gast – auf die Warteliste</button>`:`<button class="btn btn-host" data-act="plusone" ${can1?"":"disabled"}>Gastgeber mit Gast</button>`}
+  <button class="btn btn-guest" data-act="solo"><b>ICH</b></button>
+  ${brought?"":freeSeatCount(d)<2?`<button class="btn btn-host" data-act="wait"><b>ICH</b> <span class="oneup">+1</span> – auf die Warteliste</button>`:`<button class="btn btn-host" data-act="plusone" ${can1?"":"disabled"}><b>ICH</b> <span class="oneup">+1</span></button>`}
 </div>`;
 }
 // Tafel oben: alle eigenen Termine, der nächste steht immer oben
@@ -1650,8 +1704,9 @@ document.addEventListener("click",e=>{
   const dc=e.target.closest&&e.target.closest("[data-dchair]");
   if(dc&&S.tab==="kalender"&&ME){
     const k=S.sel,d=S.days[k];
+    if(ME&&ME.admin&&!isGeber(S.me)){DCH_OPEN=DCH_OPEN===k?null:k;render();if(DCH_OPEN){const c=document.getElementById("dchpanel");if(c)c.scrollIntoView({block:"center",behavior:"smooth"})}return}
     if(hasDealer(d)&&!(ME&&ME.admin)){toast(d.dealer===S.me?"Du bist an diesem Abend Kartengeber.":isGeber(S.me)?`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`:`Kartengeber: ${no(d.dealer)} ${nm(d.dealer)}`);return}
-    if(!isGeber(S.me)){if(ME.admin){S.tab="verwaltung";render();const c=document.getElementById("admgeber");if(c)c.scrollIntoView({block:"start"});return}toast("Hier sitzt der Kartengeber, sobald einer eingeteilt ist.");return}
+    if(!isGeber(S.me)){if(ME.admin){DCH_OPEN=DCH_OPEN===k?null:k;render();if(DCH_OPEN){const c=document.getElementById("dchpanel");if(c)c.scrollIntoView({block:"center",behavior:"smooth"})}return}toast("Hier sitzt der Kartengeber, sobald einer eingeteilt ist.");return}
     if((d.result&&d.result.done)||startedDay(k,d)){toast("Dieser Abend hat schon begonnen.");return}
     const r0=roleOf(d,S.me); if(r0&&r0.r!=="wait"){toast("Du sitzt an diesem Abend schon am Tisch. Erst absagen.");return}
     const q=dreq(d), i=q.findIndex(x=>x.m===S.me);
@@ -1790,6 +1845,14 @@ document.addEventListener("click",e=>{
   if(t.dataset.act==="admActAs"){if(!(ME&&ME.admin))return;const nr=+t.dataset.nr;if(!MEM[nr-1]){toast("Dieses Konto gibt es noch nicht");return}ACT_AS=nr===ME.nr?null:nr;S.me=nr-1;S.tab="kalender";openForm=null;render();window.scrollTo(0,0);if(ACT_AS)toast(`Du handelst jetzt als ${String(nr).padStart(3,"0")}`);return}
   if(t.dataset.act==="actBack"){ACT_AS=null;S.me=ME.nr-1;S.tab="verwaltung";openForm=null;render();window.scrollTo(0,0);return}
   if(t.dataset.act==="admPF"){ADM_PF=t.dataset.f;render();return}
+  if(t.dataset.act==="actGeber"){
+    if(!(ME&&ME.admin)) return; const kk=t.dataset.k, m=+t.dataset.m, dd=S.days[kk];
+    if(ACT_PICK!==kk+":"+m){ACT_PICK=kk+":"+m;render();return}
+    ACT_PICK=null; if(!dd) return;
+    if(hasDealer(dd)&&dd.dealer===m){render();return}
+    dd.wait=dd.wait.filter(x=>x!==m); dd.interest=(dd.interest||[]).filter(x=>x!==m); dd.dealer=m;
+    log(`${no(m)} ${nm(m)} ist Kartengeber am ${dateLabel(kk)} – zugesagt vom Vorstand`); toast(`Kartengeber: ${no(m)} ${nm(m)}`); pushNow(); render(); return;
+  }
   if(t.dataset.act==="admInvite"){
     const txt=inviteText(+t.dataset.nr);
     try{navigator.clipboard&&navigator.clipboard.writeText(txt)}catch(e){}
