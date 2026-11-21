@@ -715,6 +715,7 @@ body.chat-full .chat-list{max-height:calc(100vh - 250px)}
 .m2v .v-pause b{width:54px;height:54px;border-radius:50%;background:rgba(0,0,0,.6);border:2px solid #FFC46B;display:grid;place-items:center;color:#FFC46B;font-size:22px;padding-left:4px}
 .m2v .v-snd{position:absolute;right:10px;top:10px;z-index:5;padding:6px 11px;border-radius:999px;border:1.5px solid #FFC46B;background:rgba(0,0,0,.55);color:#FFC46B;font:800 12px Figtree,sans-serif;cursor:pointer;box-shadow:0 0 10px rgba(255,159,26,.4)}
 .m2v .v-snd.on{background:#FF9F1A;color:#1d140d}
+.m2v .v-snd.v-mute{cursor:default;box-shadow:none}
 .vt-live{display:inline-flex;align-items:center;gap:6px;padding:1px 5px;border-radius:7px;border:1.5px dashed #4D8DFF;animation:vtBlink 1.6s ease-in-out infinite;vertical-align:middle}
 .vt-live .vt-s{display:inline-flex;flex-direction:row;align-items:center;gap:1px;opacity:.45;transition:opacity .3s}
 .vt-live .vt-s.on{opacity:1;filter:drop-shadow(0 0 4px rgba(77,141,255,.9))}
@@ -1625,9 +1626,10 @@ function m2vPlay(i){if(!M2V_SND||!M2V_AC||!M2V_BUF||!M2V_BUF[i])return;m2vStop()
 function m2vBuild(){
   const el=document.createElement("div");el.className="m2v";
   const names=[...new Set(M2V.flatMap(x=>x.imgs.map(y=>y[1])))];
-  el.innerHTML=`<button type="button" class="v-snd" aria-label="Ton an oder aus">🔈 Ton an</button><div class="v-phone" role="img" aria-label="Video: So funktioniert me2room"><div class="v-scr">${names.map(n=>`<img data-n="${n}" src="vid/${n}.jpg" alt="" decoding="async">`).join("")}<div class="v-ring"></div><div class="v-box"></div><div class="v-tap"><b></b><i></i></div><div class="v-dip"></div><div class="v-big"></div><div class="v-pause"><b>▶</b></div></div></div><div class="v-bar"><i></i></div>`;
+  el.innerHTML=`<span class="v-snd v-mute" aria-label="Dieses Video hat keinen Ton">🔇 Kein Ton</span><div class="v-phone" role="img" aria-label="Video: So funktioniert me2room"><div class="v-scr">${names.map(n=>`<img data-n="${n}" src="vid/${n}.jpg" alt="" decoding="async">`).join("")}<div class="v-ring"></div><div class="v-box"></div><div class="v-tap"><b></b><i></i></div><div class="v-dip"></div><div class="v-big"></div><div class="v-pause"><b>▶</b></div></div></div><div class="v-bar"><i></i></div>`;
   el.querySelector(".v-phone").addEventListener("click",()=>{M2V_PAUSE=!M2V_PAUSE;el.classList.toggle("paused",M2V_PAUSE);if(M2V_PAUSE){m2vStop();try{M2V_AC&&M2V_AC.suspend()}catch(e){}}else{try{M2V_AC&&M2V_AC.resume()}catch(e){}m2vGo()}});
-  el.querySelector(".v-snd").addEventListener("click",async e=>{e.stopPropagation();const btn=e.currentTarget;M2V_SND=!M2V_SND;btn.classList.toggle("on",M2V_SND);if(!M2V_SND){btn.textContent="🔈 Ton an";m2vStop();return}
+  el.querySelector(".v-snd").addEventListener("click",async e=>{e.stopPropagation();return;   /* Video läuft ohne Ton */
+    const btn=e.currentTarget;M2V_SND=!M2V_SND;btn.classList.toggle("on",M2V_SND);if(!M2V_SND){btn.textContent="🔈 Ton an";m2vStop();return}
     btn.textContent="⏳ lädt …";try{M2V_AC=M2V_AC||new (window.AudioContext||window.webkitAudioContext)();await M2V_AC.resume()}catch(x){}
     await m2vLoad();btn.textContent="🔊 Ton aus";M2V_T=0;M2V_SAID=-1;M2V_PAUSE=false;el.classList.remove("paused");m2vGo()});
   return el;
