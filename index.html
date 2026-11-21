@@ -358,7 +358,7 @@ button.hc-chip{cursor:pointer}
 .tf{display:grid;gap:6px;min-width:0}
 .tf-l{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700}
 .tf-2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
-.tf select,.tf input{width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:11px 12px;border-radius:12px;border:1px solid rgba(244,238,223,.18);background:rgba(255,255,255,.07);color:var(--ink);font:600 15px Figtree,sans-serif}
+.tf select,.tf input{width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:11px 12px;border-radius:12px;border:1px solid rgba(244,238,223,.18);background:rgba(255,255,255,.07);color:var(--ink);font:600 16px Figtree,sans-serif}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(244,238,223,.14)}
 .seg button{padding:10px 6px;border:0;border-radius:10px;background:transparent;color:var(--ink);font:700 14px Figtree,sans-serif;cursor:pointer;opacity:.7}
 .seg button[aria-pressed="true"]{background:var(--brass);color:#1b1b1b;opacity:1;box-shadow:0 2px 10px -3px var(--brass)}
@@ -647,8 +647,14 @@ details.adm-x[data-sec]>summary h3{text-shadow:none!important;color:#f3e3c3!impo
 .ad-seat.free{grid-template-columns:24px minmax(0,1fr) 58px auto}.ad-seat.mv{background:rgba(255,159,26,.12);border-radius:8px}
 .ad-p{font:700 14px "Zilla Slab",serif;color:var(--brass);text-align:center}
 .ad-n{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px}.ad-n small{display:block;color:var(--muted);font-size:11px}.ad-seat.free .ad-n{color:var(--muted);font-style:italic}
-.ad-seat .btn{padding:6px 9px;font-size:12px;margin:0;white-space:nowrap}.ad-in{margin:0!important;padding:6px 8px!important;font-size:13px!important;text-align:center}
+.ad-seat .btn{padding:6px 9px;font-size:12px;margin:0;white-space:nowrap}.ad-in{margin:0!important;padding:6px 4px!important;font-size:16px!important;text-align:center}
 .ad-wl{display:flex;flex-wrap:wrap;gap:5px}.ad-w b{color:var(--guest)}.ad-w{font:inherit;font-size:12px;color:inherit;background:none;cursor:pointer;padding:4px 9px;border:1px solid var(--line);border-radius:999px}
+.need{margin:0 0 8px;text-align:center;font-size:13px;color:var(--muted)}.need b{color:var(--guest)}.need.ok{color:var(--host);font-weight:700}
+.newsbox{border-color:var(--guest)!important}.newsbox .nw-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.newsbox h3{margin:0;font-size:17px}
+.nw-row{display:block;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:10px 0;color:inherit;font:inherit;font-size:14px;line-height:1.35}button.nw-row{cursor:pointer}.nw-row b{color:var(--guest);margin-right:6px;white-space:nowrap}
+.form.seatsheet.mvsheet{display:flex!important;flex-direction:column;gap:8px}.mvsheet p{margin:0 0 2px;text-align:center;font-weight:600}.mvsheet .btn{width:100%;margin:0}
+.me-box h3{margin:0 0 4px;font-size:17px}.pf-res{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.pf-res .grow{flex:1;min-width:0}.pf-res .btns{display:flex;gap:6px}.pf-res .btn{padding:9px 12px;font-size:13px;margin:0;width:auto}
+.me-line{display:flex;align-items:center;justify-content:space-between;gap:10px}.me-nick{display:flex;gap:8px;margin-top:10px}.me-nick input{flex:1;min-width:0;margin:0}.me-nick .btn{width:auto;margin:0}
 .sp-sub{margin:12px 0 6px;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
 .m2v{position:relative;margin:14px 16px 0;padding:16px 12px 14px;border-radius:20px;border:1px solid color-mix(in srgb,var(--brass) 55%,transparent);background:radial-gradient(120% 70% at 50% 0%,rgba(255,45,74,.16),transparent 60%),linear-gradient(180deg,rgba(22,22,24,.92),rgba(10,10,12,.95));box-shadow:0 12px 30px -14px rgba(0,0,0,.9);-webkit-tap-highlight-color:transparent;user-select:none;text-align:center}
 .m2v .v-phone{position:relative;width:68%;max-width:240px;margin:0 auto;padding:7px;border-radius:30px;background:#0a0a0a;box-shadow:0 0 0 1.5px #3a3a3a,0 0 0 3px rgba(201,163,90,.55),0 16px 30px -10px rgba(0,0,0,.9),0 0 30px -6px rgba(255,45,74,.4);cursor:pointer}
@@ -967,7 +973,7 @@ function monthCal(sel){
     if(!d||isClosed(k)){h+=`<span class="cal-d off"><span class="cal-n">${n}</span></span>`;continue}
     const ps=d.hosts.length, gs=takenSeats(d).length-ps, u=used(d);
     let dots="";for(let i=0;i<SEATS;i++)dots+=`<i class="${i<ps?"h":i<ps+gs?"g":""}"></i>`;
-    const run=u>=6, done=d.result&&d.result.done, myr=roleOf(d,S.me);
+    const run=u>=7, done=d.result&&d.result.done, myr=roleOf(d,S.me);
     const my=(myr||(d.interest||[]).includes(S.me))?(u>=7?" my my-h":u>=3?" my my-g":" my my-w"):"";
     h+=`<button class="cal-d${my}${run?" run":""}${isOff(d,S.me)?" nope":""}${u>=7?" c-go":u>=3?" c-warm":""}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
   }
@@ -1018,7 +1024,7 @@ const takenSeats=d=>[...d.hosts.flatMap(h=>[h.seat,h.gseat]),...solo(d).map(p=>p
 const freeSeatList=d=>{const t=takenSeats(d);return [...Array(SEATS).keys()].filter(i=>!t.includes(i))};
 const freeSeatCount=d=>SEATS-takenSeats(d).length;
 const hasDealer=d=>d.dealer!=null&&MEM[d.dealer]!=null;
-const pickInfo=()=>`<p class="empty" style="margin:0;color:var(--ink)"><b>Plätze wählen:</b> Tippe am Tisch auf einen roten Platz für dich, dann auf einen für deinen Gast.</p><p class="empty" style="margin:0">Dein Platz: <b style="color:var(--ink)">${pick.mine!=null?"Platz "+(pick.mine+1):"–"}</b> · Gast: <b style="color:var(--ink)">${pick.guest!=null?"Platz "+(pick.guest+1):"–"}</b></p>`;
+const pickInfo=()=>`<p class="empty" style="margin:0;color:var(--ink)"><b>Plätze wählen:</b> Tippe am Tisch auf einen roten Platz für dich, dann auf einen für dein +1.</p><p class="empty" style="margin:0">Dein Platz: <b style="color:var(--ink)">${pick.mine!=null?"Platz "+(pick.mine+1):"–"}</b> · +1: <b style="color:var(--ink)">${pick.guest!=null?"Platz "+(pick.guest+1):"–"}</b></p>`;
 function chipSVG(x,y,col,tc,label,o={}){
   // edler Platz-Chip: Messingrand, Chip-Einlagen, Messing-Inlay, Pik-Ornament
   const seg=(2*Math.PI*18.5/16).toFixed(2);
@@ -1037,7 +1043,7 @@ function status(d){
   if(d.result&&d.result.done) return {c:"b-table",t:"Turnier beendet"};
   if(!active(d)) return {c:"b-free",t:"Raum frei"};
   if(u>=SEATS) return {c:"b-full",t:"Tisch voll"};
-  if(u>=6) return {c:"b-table",t:"Turnier steht"};
+  if(u>=7) return {c:"b-table",t:"Turnier steht"};
   return {c:"b-plan",t:"Turnier geplant"};
 }
 function roleOf(d,m){
@@ -1049,6 +1055,14 @@ function roleOf(d,m){
 }
 function now(){const d=new Date();return `${pad(d.getHours())}:${pad(d.getMinutes())}`}
 function log(x){S.feed.unshift({t:now(),x});S.feed=S.feed.slice(0,12)}
+// Hinweise "Neu für dich": stehen am Tag, bis das Mitglied sie wegtippt
+function news(d,m,x){if(!d||m==null||m<0||m===S.me)return;(d.news||(d.news=[])).push({m,x,t:Date.now()});if(d.news.length>60)d.news=d.news.slice(-60)}
+function newsAll(d,x){if(!d)return;[...new Set([...players(d),...(d.wait||[])])].forEach(m=>news(d,m,x))}
+function myNews(){const a=[];Object.entries(S.days).forEach(([k,d])=>(d.news||[]).forEach(n=>{if(n.m===S.me)a.push({k,x:n.x,t:n.t})}));return a.sort((p,q)=>q.t-p.t)}
+function newsBox(){const a=myNews();if(!a.length)return "";
+  return `<section class="panel newsbox"><div class="nw-h"><h3>Neu für dich</h3><button class="adm-sm" data-act="newsOk">OK, gelesen</button></div>${a.slice(0,6).map(n=>{const txt=`<b>${shortDay(n.k)}</b>${escH(n.x)}`;return isClosed(n.k)?`<div class="nw-row">${txt}</div>`:`<button type="button" class="nw-row" data-day="${n.k}">${txt}</button>`}).join("")}</section>`}
+let U0=null;
+function runCheck(){if(!U0)return;const b0=U0;U0=null;Object.entries(S.days).forEach(([k,d])=>{const b=b0[k],u=used(d);if(b==null||d.result||isClosed(k))return;if(b<7&&u>=7)newsAll(d,"Der Abend findet statt – 7 sind dabei.");else if(b>=7&&u<7)newsAll(d,"Achtung: Es sind wieder weniger als 7 dabei.")})}
 function toast(x){const t=document.getElementById("toast");t.textContent=x;t.classList.add("show");clearTimeout(t._);t._=setTimeout(()=>t.classList.remove("show"),2600)}
 const shortDay=k=>{const d=new Date(k+"T00:00");return `${WD[d.getDay()].toUpperCase()} ${pad(d.getDate())}.${pad(d.getMonth()+1)}.`};
 function dateLabel(k){const d=new Date(k+"T00:00");return `${WDL[d.getDay()]}, ${d.getDate()}. ${MON[d.getMonth()]}`}
@@ -1057,12 +1071,12 @@ function promote(k){
   const d=S.days[k];
   while(d.wait.length&&used(d)<SEATS){
     const slot=d.hosts.find(h=>h.release&&h.guests.length<GUESTS_PER_HOST); if(!slot) break;
-    const m=d.wait.shift(); slot.guests.push(m);
+    const m=d.wait.shift(); slot.guests.push(m); news(d,m,"Du bist von der Warteliste an den Tisch nachgerückt.");
     log(`${nm(m)} ist automatisch von der Warteliste an den Tisch nachgerückt`);
   }
   while(d.wait.length&&!startedDay(k,d)){
     const f=freeSeatList(d); if(!f.length) break;
-    const m=d.wait.shift(); solo(d).push({m,seat:f[0]});
+    const m=d.wait.shift(); solo(d).push({m,seat:f[0]}); news(d,m,`Du bist von der Warteliste nachgerückt: Platz ${f[0]+1}.`);
     log(`${nm(m)} ist automatisch von der Warteliste auf Platz ${f[0]+1} nachgerückt`);
   }
 }
@@ -1185,9 +1199,9 @@ function tableSVG(d){
     const st=seats[i], free=!st||(st.res&&st.h.release);
     const tap=(picking||canSeat)&&(!st||st.pick)?` data-seat="${i}" role="button" tabindex="0" aria-label="Platz ${i+1} ${st?"abwählen":"wählen"}" style="cursor:pointer"`:` data-seatx="${i}" style="cursor:pointer"`;
     if(free) s+=`<g class="seat seat-f"${tap}><circle class="halo" cx="${x}" cy="${y}" r="23" fill="var(--stop)"/><circle class="fcore" cx="${x}" cy="${y}" r="17" fill="var(--stop)"/>${(picking||canSeat)&&!st?`<circle cx="${x}" cy="${y}" r="20.5" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="3 3"/>`:""}<text x="${x}" y="${y+3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--stop-ink)">frei</text></g>`;
-    else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}><circle class="pickglow" cx="${x}" cy="${y}" r="24" fill="${hh?"var(--host)":"var(--guest)"}" opacity=".45" filter="url(#pg)"/>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"Gast")}</g>`}
-    else if(st.res) s+=`<g class="seat seat-g" opacity=".8">${chipSVG(x,y,"var(--guest)","var(--guest-ink)","Gast")}</g>`;
-    else{const hh=st.k==="h",pp=st.k==="p",ge=st.k==="g"&&st.h&&(st.h.m===S.me||(ME&&ME.admin))&&!startedDay(S.sel,d);s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${ge?` data-gedit="${i}" data-hm="${st.h.m}" role="button" style="cursor:pointer"`:""}${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",isListG(st.m)?"Gast":isNewG(st.m)?"0000":String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
+    else if(st.pick){const hh=st.pick==="h";s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${tap}><circle class="pickglow" cx="${x}" cy="${y}" r="24" fill="${hh?"var(--host)":"var(--guest)"}" opacity=".45" filter="url(#pg)"/>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",hh?"Du":"+1")}</g>`}
+    else if(st.res) s+=`<g class="seat seat-g" opacity=".8" data-seatx="${i}" style="cursor:pointer">${chipSVG(x,y,"var(--guest)","var(--guest-ink)","+1")}</g>`;
+    else{const hh=st.k==="h",pp=st.k==="p",ge=st.k==="g"&&st.h&&(st.h.m===S.me||(ME&&ME.admin))&&!startedDay(S.sel,d);s+=`<g class="seat ${hh?"seat-h":"seat-g"}"${ge?` data-gedit="${i}" data-hm="${st.h.m}" role="button" style="cursor:pointer"`:` data-seatx="${i}" style="cursor:pointer"`}${out.includes(st.m)?` opacity=".35"`:""}>${chipSVG(x,y,hh?"var(--host)":"var(--guest)",hh?"var(--host-ink)":"var(--guest-ink)",isListG(st.m)?"Gast":isNewG(st.m)?"0000":String(st.m+1).padStart(3,"0"),{me:st.m===S.me})}</g>`}
   });
   return s+"</svg>";
 }
@@ -1213,7 +1227,7 @@ function attendanceBlock(d,k){
   const row=m=>{const a=A[m]||{};const st=a.in?(a.out?`${fmt(a.in)}–${fmt(a.out)} · +${bonusFor(a)}`:`da seit ${fmt(a.in)} · bisher +${bonusFor(a)}`):"noch nicht da";
     const btn=!a.in?`<button class="btn btn-host" data-act="attIn" data-m="${m}">Ist da</button>`:!a.out?`<button class="btn btn-line" data-act="attOut" data-m="${m}">Geht</button>`:`<button class="btn btn-line" data-act="attBack" data-m="${m}">Doch noch da</button>`;
     return `<div class="row"><div class="grow"><div style="font-weight:600">${no(m)} ${nm(m)}</div><div class="s">${st}</div></div>${btn}</div>`};
-  return `<h3>Anwesenheit</h3><p class="empty">Tippe an, wer kommt und wer geht. Wer da ist, bekommt +1 Punkt – auch im Wartebereich (Super Nintendo, PlayStation, VR-Brille, Gesellschaftsspiele).</p>${ids.map(row).join("")}
+  return `<h3>Anwesenheit</h3><p class="empty">Tippe an, wer kommt und wer geht. Wer da ist, bekommt 1 Punkt – auch im Wartebereich (Super Nintendo, PlayStation, VR-Brille, Gesellschaftsspiele).</p>${ids.map(row).join("")}
   <div class="form"><label>Weitere Person dazunehmen – Mitgliedsnummer<input id="attadd" class="search" inputmode="numeric" placeholder="z. B. 23" autocomplete="off"></label><button class="btn btn-line" data-act="attAdd">Als anwesend eintragen</button></div>
   <div class="actions"><button class="btn btn-brass" data-act="closeEve">Abend abschließen und Bonus vergeben</button></div>`;
 }
@@ -1226,12 +1240,12 @@ function tournamentBlock(d,k){
     const n=r.out.length, rows=[...r.out].reverse().map((m,i)=>`<tr><td>${i+1}. ${nm(m)}</td><td>+${i<10?PLACE_PTS[i]:0}</td></tr>`).join("");
     return `<h3>Ergebnis</h3><table class="ptable">${rows}</table>`;
   }
-  if(!canRun) return `<p class="lounge">Nach dem Turnier trägt ein Gastgeber das Ergebnis ein, die Punkte werden automatisch vergeben.</p>`;
+  if(!canRun) return `<p class="lounge">Nach dem Turnier wird das Ergebnis eingetragen, die Punkte werden automatisch vergeben.</p>`;
   if(!r) return `<div class="actions"><button class="btn btn-main" data-act="startT">Turnier starten</button></div>`;
   const left=ps.filter(m=>!r.out.includes(m));
   return `<h3>Turnier läuft – wer ist ausgeschieden?</h3><p class="empty">Tippe die Spieler in der Reihenfolge an, in der sie ausscheiden. Noch ${left.length} im Spiel.</p>
   <div class="bust">${ps.map(m=>{const o=r.out.includes(m);return `<button data-act="bust" data-m="${m}" ${o?"disabled":""}><span class="av ${d.hosts.some(h=>h.m===m)?"h":"g"}">${ini(m)}</span><span class="${o?"out":""}">${nm(m)}</span>${o?`<span class="s" style="margin-left:auto">Platz ${ps.length-r.out.indexOf(m)}</span>`:""}</button>`}).join("")}</div>
-  ${r.out.length?`<div class="actions"><button class="btn btn-line" data-act="undoBust">Letzte Eingabe zurück</button></div>`:""}`;
+  ${r.out.length?`<div class="actions"><button class="btn btn-line" data-act="undoBust">Letzte Eingabe zurück</button></div>`:(ME&&ME.admin?`<div class="actions"><button class="btn btn-line" data-act="unstartT">Start zurücknehmen</button></div>`:"")}`;
 }
 
 function dealerForm(d){
@@ -1240,9 +1254,9 @@ function dealerForm(d){
 }
 function dealerCheck(v,d){
   if(v==="") return {ok:false,msg:""};
-  if(/^0+$/.test(v)) return {ok:false,msg:"000 geht hier nicht. Der Geber braucht eine feste Mitgliedsnummer."};
+  if(/^0+$/.test(v)) return {ok:false,msg:"000 geht hier nicht. Der Kartengeber braucht eine feste Nummer."};
   const g=byGeber(+v);
-  if(g==null) return {ok:false,msg:"Keine gültige Kartengeber-Nummer (901–999)"};
+  if(g==null) return {ok:false,msg:"Keine gültige Kartengeber-Nummer (901–930)"};
   if(players(d).includes(g)) return {ok:false,msg:`${no(g)} ${nm(g)} sitzt schon als Spieler am Tisch`};
   return {ok:true,g,msg:`${no(g)} ${nm(g)}`};
 }
@@ -1254,7 +1268,7 @@ function geberActions(d,k,started){
   if(d.dealer===me) return `<p class="empty" style="color:var(--ink);font-weight:600;margin:0">Du bist an diesem Abend Kartengeber. Start ${d.start} Uhr.</p>${started?"":`<button class="btn btn-stop" data-act="geberCancel">Absagen</button>`}`;
   if(hasDealer(d)) return `<p class="empty" style="margin:0">Für diesen Abend gibt es schon einen Kartengeber.</p>`;
   if(started) return `<p class="empty" style="margin:0">Dieser Abend hat schon begonnen.</p>`;
-  if(asked) return `<p class="empty" style="color:var(--ink);font-weight:600;margin:0">Anfrage gesendet ✓ Ein Gastgeber oder der Vorstand sagt dir zu.</p><button class="btn btn-line" data-act="geberReq">Anfrage zurückziehen</button>`;
+  if(asked) return `<p class="empty" style="color:var(--ink);font-weight:600;margin:0">Anfrage gesendet ✓ Der Vorstand sagt dir zu.</p><button class="btn btn-line" data-act="geberReq">Anfrage zurückziehen</button>`;
   return `<p class="empty" style="margin:0">${active(d)?`Am Tisch sitzen schon ${used(d)} Spieler.`:"Noch keine Spieler eingetragen."}</p><button class="btn btn-brass" data-act="geberReq">Als Kartengeber anfragen</button><p class="empty" style="margin:0">Als Kartengeber nimmst du keinen Platz am Tisch, du sitzt auf dem Geberstuhl.</p>`;
 }
 // Turnier-Felder (Spiel, Beginn, Start-Blind) – modern und kompakt
@@ -1295,16 +1309,16 @@ function cancelSheet(d,k,mine){
   if(!CX_OPEN||!mine||mine.r==="wait") return "";
   const host=mine.r==="host"&&mine.h.guests.length;
   return `<div class="cx-sheet"><b>${host?"Für wen möchtest du absagen?":"Wirklich absagen?"}</b>
-  ${host?`<button class="btn cx-guest" data-act="cxGuest">GAST</button><button class="btn cx-me" data-act="cxSelf">ICH</button><button class="btn btn-stop" data-act="cxBoth">GAST + ICH</button>`:`<button class="btn btn-stop" data-act="cxSelf">Ja, absagen</button>`}
+  ${host?`<button class="btn cx-guest" data-act="cxGuest">+1</button><button class="btn cx-me" data-act="cxSelf">ICH</button><button class="btn btn-stop" data-act="cxBoth">ICH +1</button>`:`<button class="btn btn-stop" data-act="cxSelf">Ja, absagen</button>`}
   <button class="btn btn-line" data-act="cxNo">Nein, zurück</button></div>`;
 }
 let GNUM_OPEN=false, GNUM_VAL="";
 function hostCard(d){
   if(openForm!=="host") return "";
   const gp=pick.guest!=null?pick.guest+1:0, gn=GNUM_VAL?byNum(+GNUM_VAL):null;
-  return `<section class="panel hostcard" id="hostcard"><div class="hc-head"><h3>Gastgeber mit Gast</h3><span class="hc-date">${dateLabel(S.sel)}</span></div>
-  <div class="hc-seats"><div class="hc-chip h${pick.mine!=null?" on":""}"><span>Gastgeber</span><b>${pick.mine!=null?"Platz "+(pick.mine+1):"–"}</b></div>
-  ${gp?`<button type="button" class="hc-chip g on" data-act="gnumToggle"><span>Gast${gn!=null?" · "+no(gn):""}</span><b>Platz ${gp}</b><small>${gn!=null?escH(nm(gn)):"Nr. eintragen ›"}</small></button>`:`<div class="hc-chip g g-wait"><b>Bitte Gastplatz klicken</b></div>`}</div>
+  return `<section class="panel hostcard" id="hostcard"><div class="hc-head"><h3>ICH +1</h3><span class="hc-date">${dateLabel(S.sel)}</span></div>
+  <div class="hc-seats"><div class="hc-chip h${pick.mine!=null?" on":""}"><span>ICH</span><b>${pick.mine!=null?"Platz "+(pick.mine+1):"–"}</b></div>
+  ${gp?`<button type="button" class="hc-chip g on" data-act="gnumToggle"><span>+1${gn!=null?" · "+no(gn):""}</span><b>Platz ${gp}</b><small>${gn!=null?escH(nm(gn)):"Nr. eintragen ›"}</small></button>`:`<div class="hc-chip g g-wait"><b>Platz für +1 antippen</b></div>`}</div>
   ${GNUM_OPEN?`<input id="fguest" class="search" inputmode="numeric" placeholder="Nummer des Gastes" value="${escH(GNUM_VAL)}" aria-label="Nummer des Gastes"><p class="hc-hint" id="fguestname"></p>`:""}
   ${gp?`<button class="btn btn-host" data-act="host">Plätze reservieren</button>`:`<button class="btn btn-off" disabled>Plätze reservieren</button>`}</section>`;
 }
@@ -1338,7 +1352,7 @@ let ACT_PICK=null, OV_M=null;
 function ovSheet(){
   if(OV_M==null||!(ME&&ME.admin)) return "";
   const m=OV_M, nr=m+1, x=(ADMIN||[]).find(y=>y.nr===nr), g=myGames(m);
-  const lab=(d)=>{const r=roleOf(d,m);return r?({host:"ICH +1",guest:"Gast",player:"ICH",dealer:"Kartengeber",wait:"Warteliste"}[r.r]||""):(d.interest||[]).includes(m)?"eventuell":""};
+  const lab=(d)=>{const r=roleOf(d,m);return r?({host:"ICH +1",guest:"+1",player:"ICH",dealer:"Kartengeber",wait:"Warteliste"}[r.r]||""):(d.interest||[]).includes(m)?"vorgemerkt":""};
   return `<div class="ov-sheet" data-act="ovClose"><div class="ov-box" onclick="event.stopPropagation()"><div class="ov-h"><b>${String(nr).padStart(3,"0")}${nm(m)!==String(nr).padStart(3,"0")?" "+escH(nm(m)):""} <span class="tf-l" style="margin-left:6px">Angemeldet</span></b><button class="ov-x" data-act="ovClose" aria-label="Schließen">×</button></div>
   ${g.length?g.map(z=>`<button class="ov-g" data-day="${z.k}" data-goto="1">${bdDay(z.k)} · ${z.d.start} Uhr · <b class="${(r=>r==="ICH +1"?"ov-t":r==="ICH"?"ov-d":"")(lab(z.d))}">${lab(z.d)}</b></button>`).join(""):`<p class="empty" style="margin:0">Zurzeit nirgends angemeldet.</p>`}
   ${x?`<div style="margin-top:10px;border-top:1px solid rgba(243,227,195,.35);padding-top:2px">${admRow(x)}</div>`:""}</div></div>`;
@@ -1360,12 +1374,12 @@ function adminActivity(){
     const cand=[...new Set([...(hasDealer(d)?[d.dealer]:[]),...dq])];
     const reqBtns=cand.map(m=>{const p=ACT_PICK===k+":"+m, ok=hasDealer(d)&&d.dealer===m;return `<button class="wt-req${ok?" ok":p?" on":""}" data-act="actGeber" data-k="${k}" data-m="${m}">${nt(m)}${p&&!ok?" · bestätigen?":""}</button>`}).join(" ");
     out+=`<table class="wtab"><caption><div class="wt-cap">${dot}<span class="bd-num${u0>=SEATS?" bd-full":""}"><b class="lv-n">${bdDay(k)} <span class="bd-tm">${d.start} Uhr</span></b></span>${vtBadge(d)}<small>${u0} / ${SEATS}</small></div></caption><tbody>
-      ${row(chip("#2BD94F")+'<b class="wt-p1">+1</b>',"",hosts.map(h=>`${nn(h.m)}${(h.guests||[]).length?" + "+L(h.guests):h.gseat!=null?" + Gast offen":""}`).join(", "),hostN)}
+      ${row(chip("#2BD94F")+'<b class="wt-p1">+1</b>',"",hosts.map(h=>`${nn(h.m)}${(h.guests||[]).length?" + "+L(h.guests):h.gseat!=null?" +1 offen":""}`).join(", "),hostN)}
       ${row(chip("#FF9F1C"),"",L(solo_),solo_.length)}
-      ${row('<i class="wt-star">★</i>',"eventuell",L(inter),inter.length)}
+      ${row('<i class="wt-star">★</i>',"vorgemerkt",L(inter),inter.length)}
       ${row('<i class="wt-wait">⏳</i>',"Warteliste",L(wait),wait.length)}
       ${row('<i class="wt-geber">Geber</i>',"",reqBtns,cand.length)}
-      <tr class="wt-vote"><td colspan="3"><div class="wt-vg"><table class="tk"><tr><th></th><th><i class="tk-c" style="--c:#4D8DFF">${c.n}</i>ALLE</th><th><i class="tk-c" style="--c:#2EE07A">${c.ns}</i>AM TISCH</th></tr><tr><td>Hold'em</td><td class="tk-b">${pc(c.h,c.n)}</td><td class="tk-g">${pc(c.hs,c.ns)}</td></tr><tr><td>Omaha</td><td class="tk-b">${pc(c.o,c.n)}</td><td class="tk-g">${pc(c.os,c.ns)}</td></tr></table></div></td></tr>
+      <tr class="wt-vote"><td colspan="3"><div class="wt-vg"><table class="tk"><tr><th></th><th><i class="tk-c" style="--c:#4D8DFF">${c.n}</i>ALLE</th><th><i class="tk-c" style="--c:#2EE07A">${c.ns}</i>AM TISCH</th></tr><tr><td>Hold’em</td><td class="tk-b">${pc(c.h,c.n)}</td><td class="tk-g">${pc(c.hs,c.ns)}</td></tr><tr><td>Omaha</td><td class="tk-b">${pc(c.o,c.n)}</td><td class="tk-g">${pc(c.os,c.ns)}</td></tr></table></div></td></tr>
       ${d.tlock?row("✔","Spiel fest",VARIANTS[d.variant]):""}
     </tbody></table>`});
   return `<section class="panel act-admin"><details class="adm-x" data-sec="act"${ADM_OPEN.act?" open":""}><summary><h3>Überblick</h3><span class="adm-arr" aria-hidden="true">⌄</span></summary><div class="adm-b">${out||`<p class="empty" style="margin:0">Noch keine Aktivitäten.</p>`}</div></details></section>`;
@@ -1376,17 +1390,17 @@ function viewKalender(){
   let h="";
   if(isOff(d,S.me)) return h+`<section class="panel cdbar offbar"><span class="cd-lbl">Off</span><b class="off-day">${shortDay(k)}</b><button type="button" class="onbtn" data-act="dayOn">On</button></section>`+monthCal(k);
   if(GSEAT!=null&&ME&&ME.admin) h+=`<div class="gseat-bar"><span>Platz für <b>${escH(nm(GSEAT))}</b>: Tag wählen, dann freien Platz antippen</span><button class="btn btn-line" data-act="gSeatStop">Abbrechen</button></div>`;
-  h+=`<section class="panel${used(d)>=7?" go":used(d)>=3?" warm":""}" id="event"><div class="ptitle"><h2>${shortDay(k)} <span class="ev-time">${d.start} Uhr</span></h2>${markBtn(k,d,mine)}${mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done)?`<button type="button" class="btn-cancel hd-cancel" data-act="cxOpen">Absagen</button>`:""}</div>${cancelSheet(d,k,mine)}${ME&&ME.admin&&(d.off||[]).length?`<p class="offlist">Off: ${d.off.map(m=>pName(m)).join(", ")}</p>`:""}`;
+  h+=newsBox()+`<section class="panel${used(d)>=7?" go":used(d)>=3?" warm":""}" id="event"><div class="ptitle"><h2>${shortDay(k)} <span class="ev-time">${d.start} Uhr</span></h2>${markBtn(k,d,mine)}${mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done)?`<button type="button" class="btn-cancel hd-cancel" data-act="cxOpen">Absagen</button>`:""}</div>${cancelSheet(d,k,mine)}${ME&&ME.admin&&(d.off||[]).length?`<p class="offlist">Off: ${d.off.map(m=>pName(m)).join(", ")}</p>`:""}`;
   if(active(d)){
     h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
-    h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>`;
-    if(hasDealer(d)&&(isGeber(S.me)||(ME&&ME.admin))) h+=`<p class="dealerline">Geber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
-    h+=seatSheet(d);
-    const wc=`<div class="waitcount" aria-label="${d.wait.length} im Wartebereich"><span>Wartebereich</span><b>${d.wait.length}</b></div>`;
+    h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>${needLine(d)}`;
+    if(hasDealer(d)&&(isGeber(S.me)||(ME&&ME.admin))) h+=`<p class="dealerline">Kartengeber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
+    h+=seatSheet(d)+moveSheet(d,k);
+    const wc=`<div class="waitcount" aria-label="${d.wait.length} auf der Warteliste"><span>Warteliste</span><b>${d.wait.length}</b></div>`;
     const smallCancel=mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done);
   }else{
-    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>`;
-    h+=seatSheet(d);
+    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>${needLine(d)}`;
+    h+=seatSheet(d)+moveSheet(d,k);
   }
   h+=`<div class="actions">`;
   const started=startedDay(k,d);
@@ -1394,13 +1408,13 @@ function viewKalender(){
   else if(started){
     if(!active(d)) h+=`<p class="empty">An diesem Abend läuft kein Turnier.</p>`;
     else if(mine&&mine.r==="wait"){const p=d.wait.indexOf(S.me)+1;h+=`<div class="waitpos"><span>Du stehst auf der Warteliste</span><b>Platz ${p}</b><span class="s">${p===1?"Du rückst als Nächstes nach.":`Vor dir ${p-1===1?"steht 1 Person":"stehen "+(p-1)+" Personen"}.`}</span></div><button class="btn btn-line" data-act="leave">Von der Warteliste austragen</button>`}
-    else if(mine) h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${mine.r==="host"?"Du bist Gastgeber":mine.r==="dealer"?"Du bist heute Geber":"Du sitzt am Tisch"}.</p>`;
+    else if(mine) h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${mine.r==="host"?"Du sitzt am Tisch (ICH +1)":mine.r==="dealer"?"Du bist heute Kartengeber":"Du sitzt am Tisch"}.</p>`;
     else h+=`<button class="btn btn-main" data-act="wait">Auf die Warteliste eintragen</button>`;
   }
   else if(mine){
-    const txt=mine.r==="host"?"Du bist Gastgeber":mine.r==="player"?`Du sitzt als Gast auf Platz ${mine.p.seat+1}`:mine.r==="guest"?`Du sitzt am Tisch (Gastplatz von ${nm(mine.h.m)})`:mine.r==="dealer"?"Du bist an diesem Abend Geber":`Du bist im Wartebereich, Platz ${d.wait.indexOf(S.me)+1}`;
+    const txt=mine.r==="host"?"Du sitzt am Tisch (ICH +1)":mine.r==="player"?`Du sitzt auf Platz ${mine.p.seat+1}`:mine.r==="guest"?`Du sitzt am Tisch (+1 von ${nm(mine.h.m)})`:mine.r==="dealer"?"Du bist an diesem Abend Kartengeber":`Du stehst auf der Warteliste, Platz ${d.wait.indexOf(S.me)+1}`;
     if(mine.r==="wait") h+=`<p class="empty" style="color:var(--ink);font-weight:600;margin:0">${txt}.</p>`;
-    if(GE_OPEN&&GE_OPEN.k===k) h+=`<div class="ge-row"><input id="myguest" class="search" inputmode="numeric" placeholder="Gast Nr." aria-label="Gast Nummer"><button class="btn btn-guest" data-act="addGuest" data-hm="${GE_OPEN.hm}">Speichern</button></div><p class="hc-hint" id="myguestname" style="margin:4px 0 0"></p>`;
+    if(GE_OPEN&&GE_OPEN.k===k) h+=`<div class="ge-row"><input id="myguest" class="search" inputmode="numeric" placeholder="+1 Nr." aria-label="Nummer von deinem +1"><button class="btn btn-guest" data-act="addGuest" data-hm="${GE_OPEN.hm}">Speichern</button></div><p class="hc-hint" id="myguestname" style="margin:4px 0 0"></p>`;
     if(mine.r==="wait"||!active(d)) h+=`<button class="btn btn-stop" data-act="leave">${mine.r==="wait"?"Austragen":"Absagen"}</button>`;
   }else{
     if(openForm!=="seat"&&openForm!=="host") h+=freeSeatList(d).length?"":`<p class="empty" style="margin:0">Alle Plätze sind belegt.</p>`;
@@ -1412,7 +1426,7 @@ function viewKalender(){
   const dreqHTML=(admin&&open&&!hasDealer(d)&&dreqSorted(d).length)?dreqSorted(d).map((x,i)=>`<div class="sg-row"><div class="grow"><b>${i===0?"🥇 ":""}${no(x.m)} ${escH(nm(x.m))}</b><span>angefragt am ${whenTxt(x.at)}${i===0?" · zuerst":""}</span></div><div style="display:grid;gap:4px"><button class="btn btn-host sg-take" data-act="geberOk" data-m="${x.m}">Annehmen</button><button class="btn btn-line sg-take" data-act="geberNo" data-m="${x.m}">Ablehnen</button></div></div>`).join(""):"";
   const showDealerForm=admin&&open;
   const myReq=isGeber(S.me)&&open&&(dreqHas(d,S.me)||d.dealer===S.me);
-  if(openForm==="guest") h+=`<div class="form"><label>Wessen Gastplatz nimmst du?</label><div class="chips">${freeGuestSlots(d).map(x=>`<button class="chip" data-act="guest" data-host="${x.m}">${nm(x.m)}</button>`).join("")}</div></div>`;
+  if(openForm==="guest") h+=`<div class="form"><label>Wessen +1 bist du?</label><div class="chips">${freeGuestSlots(d).map(x=>`<button class="chip" data-act="guest" data-host="${x.m}">${nm(x.m)}</button>`).join("")}</div></div>`;
   h+=tournamentBlock(d,k);
   h+=attendanceBlock(d,k);
   h+=`</section>`;
@@ -1433,7 +1447,7 @@ const prankList=(mon=curMon)=>{const P=MPP(mon);return Object.keys(P).map(Number
 const PRIZE_PLACES=10;
 const fill10=a=>Array.from({length:PRIZE_PLACES},(_,i)=>(a&&a[i])||"");
 const DEF_PRIZES=["Pokerkoffer 500 Clay-Chips im Alukoffer","Restaurant-Gutschein 50 €","Premium-Whisky 12 Jahre","Profi-Pokerkarten Plastik (2 Decks)","Kino für 2 inkl. Snacks","Dealer-Button Metall mit Gravur","Card Guard aus Metall","Pokerbuch Profi-Strategie","Elektrischer Kartenmischer","Poker-Kappe mit Logo"];
-const prizesOf=mon=>{const p=S.prizes[mon]||{};const has=Array.isArray(p.s)&&p.s.some(Boolean);return {s:has?fill10(p.s):(mon>=curMon?DEF_PRIZES.slice():fill10([])),p:fill10(p.p)}};
+const prizesOf=mon=>{const p=S.prizes[mon]||{};const has=Array.isArray(p.s)&&p.s.some(Boolean);return {s:fill10(has?p.s:[]),p:fill10(p.p)}};
 // eigene kleine Bilder zu den Preisen (selbst gezeichnet)
 const PRZ_ART={
  koffer:`<rect x="8" y="22" width="48" height="32" rx="4" fill="#B9C2CC" stroke="#6E7782" stroke-width="2"/><rect x="24" y="15" width="16" height="9" rx="3" fill="none" stroke="#6E7782" stroke-width="3"/><line x1="8" y1="34" x2="56" y2="34" stroke="#6E7782" stroke-width="2"/>${[14,24,34,44].map((x,i)=>`<circle cx="${x+3}" cy="44" r="6" fill="${["#C8102E","#1F6FE0","#2EA44F","#111"][i]}" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 2"/>`).join("")}`,
@@ -1507,24 +1521,31 @@ function viewRang(){
   h+=list.length?list.slice(0,10).map(row).join(""):`<p class="empty" style="margin:12px 0 0">Noch keine Punkte im ${monLabel(mon)}.</p>`;
   if(myPos>=10) h+=`<div class="rk-gap">⋯</div>`+row(S.me,myPos);
   h+=`${past?`<p class="rk-foot">Endstand ${monLabel(mon)}</p>`:""}</section>`;
-  if(pr.some(Boolean)) h+=`<section class="panel pz-panel"><div class="rk-head"><h3 style="margin:0">🎁 Sachpreise</h3><span class="hc-date">${monLabel(mon)}</span></div><div class="pz-grid">${pr.map((x,i)=>x?`<div class="pz-card${i<3?" pz-top pz-"+(i+1):""}">${przSVG(x,"pz-art")}<span class="pz-place">${i<3?medal[i]:i+1+"."}</span><b>${escH(x)}</b></div>`:"").join("")}</div></section>`;
+  if(pr.some(Boolean)) h+=`<section class="panel pz-panel"><div class="rk-head"><h3 style="margin:0">🎁 Sachprämien</h3><span class="hc-date">${monLabel(mon)}</span></div><div class="pz-grid">${pr.map((x,i)=>x?`<div class="pz-card${i<3?" pz-top pz-"+(i+1):""}">${przSVG(x,"pz-art")}<span class="pz-place">${i<3?medal[i]:i+1+"."}</span><b>${escH(x)}</b></div>`:"").join("")}</div></section>`;
+  else if(!past) h+=`<section class="panel pz-panel"><div class="rk-head"><h3 style="margin:0">🎁 Sachprämien</h3><span class="hc-date">${monLabel(mon)}</span></div><p class="empty" style="margin:10px 0 0">Die Sachprämien für ${monLabel(mon)} trägt der Vorstand noch ein.</p></section>`;
   h+=`<details class="panel rules"><summary>♣ So gibt es Punkte</summary><div class="rk-rules">${PLACE_PTS.map((p,i)=>`<span><small>${i+1}.</small><b>${p}</b></span>`).join("")}</div><p class="rk-note">Plus <b>1 Punkt</b> fürs Dabeisein – auch im Wartebereich bei Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspielen.</p></details>`;
-  if(admin&&!past) h+=`<details class="panel rules"><summary>🎁 Preise eintragen</summary><div class="hc-body" style="padding:0 0 12px">${pr.map((x,i)=>`<label class="prz-row"><span>${i+1}.</span><input class="search" id="prz${i}" placeholder="${PRZ_IDEAS[i]}" value="${escH(x)}" maxlength="60"></label>`).join("")}<button class="btn btn-brass" data-act="savePrizes" data-pl="0">Preise speichern</button></div></details>`;
+  if(admin&&!past) h+=`<details class="panel rules"><summary>🎁 Sachprämien eintragen</summary><div class="hc-body" style="padding:0 0 12px">${pr.map((x,i)=>`<label class="prz-row"><span>${i+1}.</span><input class="search" id="prz${i}" placeholder="${PRZ_IDEAS[i]}" value="${escH(x)}" maxlength="60"></label>`).join("")}<button type="button" class="btn btn-line" data-act="przFill">Beispiele einsetzen</button><button class="btn btn-brass" data-act="savePrizes" data-pl="0">Sachprämien speichern</button></div></details>`;
   return h;
 }
 
+let NICK_OPEN=false;
+function meBox(res,m,mem){
+  const n3=String(m+1).padStart(3,"0"), nick=mem.name&&mem.name!==n3?mem.name:"";
+  return `<section class="panel me-box"><h3>Meine Abende</h3>${res||`<p class="empty" style="margin:6px 0 0">Du hast noch keinen Platz. Tippe unten auf „Tisch“ und such dir einen aus.</p>`}</section>
+  <section class="panel me-box"><div class="me-line"><span><b>${n3}</b>${nick?` · ${escH(nick)}`:""}</span>${ACT_AS?"":`<button class="adm-sm" data-act="nickOpen">${NICK_OPEN?"Schließen":"Spitzname ändern"}</button>`}</div>${NICK_OPEN&&!ACT_AS?`<div class="me-nick"><input id="nicknew" class="search" maxlength="20" placeholder="Neuer Spitzname" value="${escH(nick)}" autocomplete="off"><button class="btn btn-brass" data-act="nickSave">Speichern</button></div>`:""}</section>`;
+}
 function viewProfil(){
   const m=S.me, mem=MEM[m]||{}, st=S.stats[m]||{}, list=rankList(), pos=list.indexOf(m);
   let res="";
   dates.forEach(dt=>{
     const k=key(dt), d=S.days[k], r=roleOf(d,m);
     if(!r||(d.result&&d.result.done)) return;
-    const t=r.r==="host"?`Gastgeber · Platz ${r.h.seat+1}`:r.r==="player"?`Gast · Platz ${r.p.seat+1}`:r.r==="guest"?`Gast von ${nm(r.h.m)} · Platz ${r.h.gseat+1}`:r.r==="dealer"?"Geber":"Warteliste";
+    const t=r.r==="host"?`ICH +1 · Platz ${r.h.seat+1}`:r.r==="player"?`ICH · Platz ${r.p.seat+1}`:r.r==="guest"?`+1 von ${nm(r.h.m)} · Platz ${r.h.gseat+1}`:r.r==="dealer"?"Kartengeber":"Warteliste";
     const started=startedDay(k,d);
     const cancel=!started?`<button class="btn btn-stop" data-act="leave" data-k="${k}">Absagen</button>`:r.r==="wait"?`<button class="btn btn-line" data-act="leave" data-k="${k}">Austragen</button>`:"";
     res+=`<div class="row pf-res"><div class="grow"><div style="font-weight:600">${dateLabel(k)}</div><div class="s">${t} · Start ${d.start} Uhr</div></div><div class="btns"><button class="btn btn-line" data-day="${k}" data-goto="1">Ansehen</button>${cancel}</div></div>`;
   });
-  return `<details class="rules rules-me"><summary>♣ So läuft’s</summary>${viewRegeln().replace(/^<section class="panel prose"><h2[^>]*>.*?<\/h2>/,'<div class="prose">').replace(/<\/section>$/,"</div>")}</details><div id="m2vSlot"></div>`;
+  return meBox(res,m,mem)+`<details class="rules rules-me"><summary>♣ So läuft’s</summary>${viewRegeln().replace(/^<section class="panel prose"><h2[^>]*>.*?<\/h2>/,'<div class="prose">').replace(/<\/section>$/,"</div>")}</details><div id="m2vSlot"></div>`;
 }
 
 
@@ -1592,10 +1613,15 @@ function viewRegeln(){
     <li>Bei <b>ICH +1</b> reservierst du zwei Plätze, die du selbst aussuchst: einen für dich und einen für deinen +1. Deinen +1 trägst du mit seiner Mitgliedsnummer ein.</li>
     <li>Karten geben darf jeder, der Freude und Spaß daran hat: Wer Lust hat, meldet sich in der App für einen Abend als Kartengeber, der Vorstand sagt zu.</li>
     <li>Alle Mitglieder sind ausnahmslos immer herzlich willkommen, solange die Vereinsregeln eingehalten werden. Wer gerade keinen Platz am Tisch hat, ist im Wartebereich, spielt Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspiele und rückt automatisch nach, sobald ein Platz frei wird.</li>
-    <li>Nach dem Turnier wird eingetragen, wer wann ausgeschieden ist. Die ersten 10 bekommen sofort Punkte in der Spieler-Rangliste.</li>
-    <li>Wer da ist, bekommt 1 Punkt – auch wer im Wartebereich Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspiele spielt.</li>  </ol>
-  <h3>Beitrag</h3>
-  <p>Verpflegungspauschale 30 € pro Abend für alle Anwesenden, Essen und Trinken inklusive. Kein Einsatz, keine Geldgewinne – nur Punkte, Wanderpokal und Ehre.</p>
+    <li>Nach dem Turnier wird eingetragen, wer wann ausgeschieden ist. Die ersten 10 bekommen sofort Punkte in der Rangliste.</li>
+    <li>Wer da ist, bekommt 1 Punkt – auch wer im Wartebereich Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspiele spielt.</li>
+    <li>Ein Abend findet statt, sobald 7 Spieler am Tisch sitzen. Das Chipfach in der Tischmitte zeigt, wie viele noch fehlen.</li>
+    <li>Hold’em oder Omaha: Tippe in der Tischmitte auf die Karten und stimm ab. Die Prozente zeigen die Stimmung. Wer nicht abstimmt, zählt für beides.</li>
+    <li>Du kannst doch nicht? Tippe auf „Absagen“, dann wird dein Platz sofort frei.</li>  </ol>
+  <h3>Verpflegung</h3>
+  <p>Verpflegungspauschale 30 € pro Abend für alle Anwesenden, Essen und Trinken inklusive. Kein Einsatz, kein Geldgewinn. Es gibt Punkte und am Monatsende Sachprämien vom Verein.</p>
+  <h3>Chat und Duell</h3>
+  <p>Nachrichten im Chat bleiben 12 Stunden. Im Duell spielst du 1 gegen 1 mit Spielchips – ohne Geld.</p>
   <h3>Anmeldung</h3>
   <p>Du meldest dich mit deiner Nummer und deiner 4-stelligen PIN an. PIN vergessen? Sag dem Vorstand Bescheid, er setzt deine PIN zurück.</p></section>`;
 }
@@ -1611,20 +1637,13 @@ ${APP_URL}?app=1
 Login: ${String(nr).padStart(3,"0")}
 PIN: ${x&&x.pin?"hast du schon – kennst nur du 🔒":"0000"}
 
-Samstag & Sonntag sind 2 Veranstaltungen in me2room geplant. Einfach einloggen, fertig 😁
-Alles, was du dort siehst, ist der aktuelle Stand, live.
-
-Bitte behaltet eure Zugänge für euch. Bei Fragen ruft gern an.
-
-✌🏼 Besim & der Verein
-
-Feedback wäre cool 🙂`};
+Sonntag evtl. Veranstaltung (siehe me2room)`};
 let QRSVG=null;
 // Übersicht für den Chef: Abende, Spieler, beliebte Tage
 let ADM_OPEN={}, WIPE_ASK=false;
 const admSec=(id,title,badge,body)=>`<section class="panel"><details class="adm-x" data-sec="${id}"${ADM_OPEN[id]?" open":""}><summary><h3>${title}</h3>${badge?`<span class="badge b-plan">${badge}</span>`:""}<span class="adm-arr" aria-hidden="true">⌄</span></summary><div class="adm-b">${body}</div></details></section>`;
 document.addEventListener("toggle",e=>{const el=e.target;if(el&&el.dataset&&el.dataset.sec)ADM_OPEN[el.dataset.sec]=el.open},true);
-(function(){const st=document.createElement("style");st.textContent=`.adm-x>summary{list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer}.adm-x>summary::-webkit-details-marker{display:none}.adm-x>summary h3{margin:0;flex:1}.adm-arr{font-size:22px;line-height:1;color:var(--brass,#c9a35a);transition:transform .2s}.adm-x[open] .adm-arr{transform:rotate(180deg)}.adm-b{margin-top:10px}.adm-act{display:flex;align-items:baseline;gap:6px;min-width:0;background:none;border:0;padding:0;color:inherit;text-align:left;font:inherit;cursor:pointer;white-space:nowrap;overflow:hidden}.adm-act .s{overflow:hidden;text-overflow:ellipsis}.adm-row .adm-btns .btn{padding:6px 8px!important;font-size:12px!important;min-height:0!important}.adm-row .adm-btns{gap:4px!important}.actas{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid #FF9F1C!important;color:#FFC46B}.act-n{margin-left:6px;min-width:20px;padding:1px 6px;border-radius:999px;background:#FF9F1C;color:#1a0f05;font:800 12px Figtree,system-ui;text-align:center}.act-list{display:flex;flex-wrap:wrap;gap:4px 10px;margin:-4px 0 6px 48px;font:600 12px Figtree,system-ui;color:#FFC46B}.adm-lose{border:0;border-radius:10px;padding:8px 10px;background:#b8323f;color:#fff;font:700 13px Figtree,system-ui;cursor:pointer}.g-row{grid-template-columns:24px minmax(0,1fr) auto auto auto!important}.g-row .g-del{padding:6px 8px!important;font-size:12.5px!important;min-width:0!important;flex:0 0 auto}.g-row .g-txt{min-width:0;flex:1 1 auto}.adm-btn{flex:0 0 auto;border:0;border-radius:12px;padding:11px 14px;background:#2f8f55;color:#fff;font:700 14px Figtree,system-ui;cursor:pointer}.adm-ok,.adm-no{border:0;border-radius:10px;padding:8px 11px;font:700 13px Figtree,system-ui;color:#fff;cursor:pointer}.adm-ok{background:#2f8f55}.adm-no{background:#b8323f}.adm-line{display:flex;gap:6px;align-items:center}.adm-in{flex:1 1 0;min-width:0;height:38px;padding:0 8px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--on-felt,#f3e3c3);font:600 15px Figtree,system-ui}.adm-line .adm-sm{margin-top:0;flex:0 0 auto;height:38px}.adm-sm{margin-top:8px;border:1.5px solid var(--brass,#c9a35a);background:transparent;color:var(--brass,#c9a35a);border-radius:10px;padding:7px 16px;font:700 13px Figtree,system-ui;cursor:pointer}.adm-box{margin-top:14px;padding:12px;border:1.5px solid color-mix(in srgb,var(--brass,#c9a35a) 60%,transparent);border-radius:14px}`;document.head.append(st)})();
+(function(){const st=document.createElement("style");st.textContent=`.adm-x>summary{list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer}.adm-x>summary::-webkit-details-marker{display:none}.adm-x>summary h3{margin:0;flex:1}.adm-arr{font-size:22px;line-height:1;color:var(--brass,#c9a35a);transition:transform .2s}.adm-x[open] .adm-arr{transform:rotate(180deg)}.adm-b{margin-top:10px}.adm-act{display:flex;align-items:baseline;gap:6px;min-width:0;background:none;border:0;padding:0;color:inherit;text-align:left;font:inherit;cursor:pointer;white-space:nowrap;overflow:hidden}.adm-act .s{overflow:hidden;text-overflow:ellipsis}.adm-row .adm-btns .btn{padding:6px 8px!important;font-size:12px!important;min-height:0!important}.adm-row .adm-btns{gap:4px!important}.actas{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid #FF9F1C!important;color:#FFC46B}.act-n{margin-left:6px;min-width:20px;padding:1px 6px;border-radius:999px;background:#FF9F1C;color:#1a0f05;font:800 12px Figtree,system-ui;text-align:center}.act-list{display:flex;flex-wrap:wrap;gap:4px 10px;margin:-4px 0 6px 48px;font:600 12px Figtree,system-ui;color:#FFC46B}.adm-lose{border:0;border-radius:10px;padding:8px 10px;background:#b8323f;color:#fff;font:700 13px Figtree,system-ui;cursor:pointer}.g-row{grid-template-columns:24px minmax(0,1fr) auto auto auto!important}.g-row .g-del{padding:6px 8px!important;font-size:12.5px!important;min-width:0!important;flex:0 0 auto}.g-row .g-txt{min-width:0;flex:1 1 auto}.adm-btn{flex:0 0 auto;border:0;border-radius:12px;padding:11px 14px;background:#2f8f55;color:#fff;font:700 14px Figtree,system-ui;cursor:pointer}.adm-ok,.adm-no{border:0;border-radius:10px;padding:8px 11px;font:700 13px Figtree,system-ui;color:#fff;cursor:pointer}.adm-ok{background:#2f8f55}.adm-no{background:#b8323f}.adm-line{display:flex;gap:6px;align-items:center}.adm-in{flex:1 1 0;min-width:0;height:38px;padding:0 8px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--on-felt,#f3e3c3);font:600 16px Figtree,system-ui}.adm-line .adm-sm{margin-top:0;flex:0 0 auto;height:38px}.adm-sm{margin-top:8px;border:1.5px solid var(--brass,#c9a35a);background:transparent;color:var(--brass,#c9a35a);border-radius:10px;padding:7px 16px;font:700 13px Figtree,system-ui;cursor:pointer}.adm-box{margin-top:14px;padding:12px;border:1.5px solid color-mix(in srgb,var(--brass,#c9a35a) 60%,transparent);border-radius:14px}`;document.head.append(st)})();
 let ADM_CAL=null;
 function admCal(){
   const m0=new Date(today.getFullYear(),today.getMonth(),1), mx=new Date(today.getFullYear(),today.getMonth()+2,1);
@@ -1644,7 +1663,7 @@ function admCal(){
 // Admin: einen Abend steuern (Spiel, Blinds, Plätze)
 let ADM_DAY=null, ADM_MV=null;
 function seatMap(d){const M=Array(SEATS).fill(null);
-  d.hosts.forEach(h=>{M[h.seat]={m:h.m,t:"ICH +1",h,w:"h"};if(h.gseat!=null)M[h.gseat]={m:h.guests[0],t:"Gast von "+nm(h.m),h,w:"g"}});
+  d.hosts.forEach(h=>{M[h.seat]={m:h.m,t:"ICH +1",h,w:"h"};if(h.gseat!=null)M[h.gseat]={m:h.guests.length?h.guests[0]:-(h.m+1),t:"+1 von "+nm(h.m),h,w:"g"}});
   solo(d).forEach(p=>{M[p.seat]={m:p.m,t:"ICH",p,w:"p"}});return M}
 function admDay(){
   const ks=dates.map(key).filter(k=>S.days[k]&&!isClosed(k)&&!(S.days[k].result&&S.days[k].result.done));
@@ -1704,18 +1723,18 @@ const admRow=(x,lose,badge)=>{const esc=escH;if(lose)return `<div class="adm-row
   return `<div class="ar${op?" open":""}"><span class="ar-c">${unu&&x.nr<GEBER_MIN?"✅":""}</span>${x.nr!==(ME&&ME.nr)?`<button type="button" class="ar-nr nrb-go" data-act="admActAs" data-nr="${x.nr}" title="Als dieses Konto handeln">${N3}</button>`:`<span class="ar-nr">${N3}</span>`}<span class="ar-c">${!isFree(x)?"🔒":x.pin?`<b class="ar-chip${on?" y":""}">2</b>`:unu?"":`<svg class="ar-cl" viewBox="0 0 24 16" aria-hidden="true"><path d="M6 15a5 5 0 0 1-.6-10A6.5 6.5 0 0 1 18 4.6 5.2 5.2 0 0 1 18.5 15z" fill="#2f8cff"/></svg>`}</span><span class="ar-t${unu?" ar-frei":""}">${x.nickname?esc(x.nickname):unu?"frei":"–"}${x.admin?` <small>★</small>`:""}</span><span class="ar-t ar-r">${x.real_name?(ADM_HIDE?"•••••":esc(x.real_name)):""}</span>${badge||""}<button type="button" class="ar-more" data-act="admMore" data-nr="${x.nr}" aria-expanded="${op}" aria-label="Optionen">⋯</button></div>${op?`<div class="ar-btns">${btns}</div>`:""}`};
 let G_HOST=null, G_DONE=null, ADM_Q="", ADM_ROW=0, ADM_HIDE=false;
 const freeNrs=()=>(ADMIN||[]).filter(x=>x.nr>1&&x.nr<GEBER_MIN&&!x.pin&&!x.real_name&&!x.nickname).sort((a,b)=>a.nr-b.nr);
-const gHostForm=g=>{const fr=freeNrs();return `<div class="adm-box"><p class="tf-l" style="margin:0 0 6px">${escH(g.n)} wird Gastgeber</p>${fr.length?`<div style="display:flex;gap:10px;align-items:center"><label class="tf" style="flex:1"><select id="ghnr" aria-label="Freie Nummer">${fr.slice(0,200).map(x=>`<option value="${x.nr}">${String(x.nr).padStart(3,"0")}</option>`).join("")}</select></label><button class="adm-btn" data-act="gHostSave">Gastgeber werden</button></div>`:`<p class="empty" style="margin:0">Keine freie Nummer mehr.</p>`}</div>`};
+const gHostForm=g=>{const fr=freeNrs();return `<div class="adm-box"><p class="tf-l" style="margin:0 0 6px">${escH(g.n)} wird Mitglied</p>${fr.length?`<div style="display:flex;gap:10px;align-items:center"><label class="tf" style="flex:1"><select id="ghnr" aria-label="Freie Nummer">${fr.slice(0,200).map(x=>`<option value="${x.nr}">${String(x.nr).padStart(3,"0")}</option>`).join("")}</select></label><button class="adm-btn" data-act="gHostSave">Nummer geben</button></div>`:`<p class="empty" style="margin:0">Keine freie Nummer mehr.</p>`}</div>`};
 const admLookup=()=>{const nr=parseInt((ADM_Q||"").replace(/\D/g,""),10);if(!nr)return "";const x=(ADMIN||[]).find(y=>y.nr===nr);return x?admRow(x,!!(ME&&ME.nr===1&&x.nr!==1&&x.admin)):`<p class="empty" style="margin:8px 0 0">Diese Nummer gibt es nicht.</p>`};
 document.addEventListener("input",e=>{if(e.target&&e.target.id==="admnr"){ADM_Q=e.target.value;const el=document.getElementById("admres");if(el)el.innerHTML=admLookup()}});
 function viewPoker(){
-  if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
+  if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für den Vorstand.</p></section>`;
   const qq=admQ.trim().toLowerCase().replace("#","");
   const all=ADMIN.filter(x=>x.nr<GEBER_MIN).filter(x=>admF==="alle"||(admF==="frei")===isFree(x)).filter(x=>!qq||String(x.nr)===qq.replace(/^0+/,"")||(x.real_name||"").toLowerCase().includes(qq)||(x.nickname||"").toLowerCase().includes(qq));
   const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const SHOWN=100, set=ADMIN.filter(x=>x.pin).length, nfree=ADMIN.filter(isFree).length, list=all.slice(0,SHOWN);
   return `<p class="tf-l sp-sub">Gäste · ${(S.guestlist||[]).length} von ${GUEST_MAX}</p>
   ${(S.guestlist||[]).length<GUEST_MAX?`<div class="add-row g-add"><input id="gname" class="search" placeholder="Name des Gastes" maxlength="40" autocomplete="off" aria-label="Name des Gastes"><button class="btn btn-guest" data-act="gAdd">Eintragen</button></div>`:`<p class="hc-hint" style="margin:10px 0 0">Die Gastliste ist voll (${GUEST_MAX}).</p>`}
-  ${(S.guestlist||[]).map((g,i)=>{if(g.id==null)g.id=-(5000+i);const at=guestSeats(g.id);return `<div class="g-row"><span class="g-n">${i+1}</span><span class="g-txt"><b>${escH(g.n)}</b><small>${at.length?at.map(x=>`${bdDay(x.k)} · Platz ${x.seat+1}`).join(" · "):escH(g.d||"")}</small></span><button class="btn btn-guest g-del" data-act="gSeat" data-i="${i}">Platz</button><button class="btn btn-line g-del" data-act="gHost" data-i="${i}">Gastgeber</button><button class="btn btn-line g-del" data-act="gDel" data-i="${i}" aria-label="${escH(g.n)} austragen">✕</button></div>${G_HOST===i?gHostForm(g):""}`}).join("")}${G_DONE?`<div class="adm-box adm-line" style="justify-content:space-between"><span style="white-space:nowrap"><b>${escH(G_DONE.n)}</b> · Nr. <b>${String(G_DONE.nr).padStart(3,"0")}</b></span><button class="adm-sm" data-act="admInvite" data-nr="${G_DONE.nr}">Per WhatsApp einladen</button></div>`:""}`;
+  ${(S.guestlist||[]).map((g,i)=>{if(g.id==null)g.id=-(5000+i);const at=guestSeats(g.id);return `<div class="g-row"><span class="g-n">${i+1}</span><span class="g-txt"><b>${escH(g.n)}</b><small>${at.length?at.map(x=>`${bdDay(x.k)} · Platz ${x.seat+1}`).join(" · "):escH(g.d||"")}</small></span><button class="btn btn-guest g-del" data-act="gSeat" data-i="${i}">Platz</button><button class="btn btn-line g-del" data-act="gHost" data-i="${i}">Mitglied</button><button class="btn btn-line g-del" data-act="gDel" data-i="${i}" aria-label="${escH(g.n)} austragen">✕</button></div>${G_HOST===i?gHostForm(g):""}`}).join("")}${G_DONE?`<div class="adm-box adm-line" style="justify-content:space-between"><span style="white-space:nowrap"><b>${escH(G_DONE.n)}</b> · Nr. <b>${String(G_DONE.nr).padStart(3,"0")}</b></span><button class="adm-sm" data-act="admInvite" data-nr="${G_DONE.nr}">Per WhatsApp einladen</button></div>`:""}`;
 }
 function admGeberList(){
   const acc=ADMIN.filter(x=>x.nr>=GEBER_MIN&&x.nr<=GEBER_MAX).sort((a,b)=>a.nr-b.nr);
@@ -1731,22 +1750,22 @@ function admPlayers(){
   const LF={frei:x=>x.nr>1&&unu(x),eingeladen:x=>isFree(x)&&!x.pin&&!unu(x),mitglied:x=>isFree(x)&&!!x.pin,online:x=>isFree(x)&&!!x.pin&&onl(x),gesperrt:x=>!isFree(x)&&!unu(x)};
   const list=ADM_PF==="aktiv"?all.filter(x=>act(x).length):ADM_PF==="offen"?all.filter(open):LF[ADM_PF]?all.filter(LF[ADM_PF]):all;
   const lf=(k,ic,l)=>`<button type="button" class="ar-lf" data-act="admPF" data-f="${k}" aria-pressed="${ADM_PF===k}">${ic} ${l} <em>${all.filter(LF[k]).length}</em></button>`;
-  const chips=[["alle",`Alle ${all.length}`],["aktiv",`Aktiv ${nAct}`],["offen",`Anfrage offen ${nOpen}`]].map(([k,l])=>`<button class="chip" data-act="admPF" data-f="${k}" aria-pressed="${ADM_PF===k}">${l}</button>`).join("");
+  const chips=[["alle",`Alle ${all.length}`],["aktiv",`Aktiv ${nAct}`],["offen",`Eingeladen ${nOpen}`]].map(([k,l])=>`<button class="chip" data-act="admPF" data-f="${k}" aria-pressed="${ADM_PF===k}">${l}</button>`).join("");
   const rows=list.map(x=>{const g=act(x);
     if(ADM_PF!=="aktiv") return admRow(x);
-    return admRow(x,false,`<b class="act-n">${g.length}</b>`)+`<div class="act-list">${g.map(z=>{const r=roleOf(z.d,x.nr-1),lab=r?({host:"Gastgeber",guest:"Gast",player:"Gast",dealer:"Kartengeber",wait:"Warteliste"}[r.r]||""):(z.st||"");return `<span>${bdDay(z.k)} ${z.d.start} Uhr · ${escH(lab)}</span>`}).join("")}</div>`}).join("");
+    return admRow(x,false,`<b class="act-n">${g.length}</b>`)+`<div class="act-list">${g.map(z=>{const r=roleOf(z.d,x.nr-1),lab=r?({host:"ICH +1",guest:"+1",player:"ICH",dealer:"Kartengeber",wait:"Warteliste"}[r.r]||""):(z.st||"");return `<span>${bdDay(z.k)} ${z.d.start} Uhr · ${escH(lab)}</span>`}).join("")}</div>`}).join("");
   return admSec("spieler",`Spieler`,`${all.length}`,`${viewPoker()}<p class="tf-l sp-sub">Spieler</p><div class="chips" style="margin:0 0 6px">${chips}<button class="chip ar-eye" data-act="admHide" aria-pressed="${!ADM_HIDE}"><b class="ar-sw${ADM_HIDE?"":" y"}"><i></i></b>${ADM_HIDE?"OFF":"ON"}</button></div><div class="ar-leg">${lf("frei","✅","frei")}${lf("eingeladen",`<svg class="ar-cl" viewBox="0 0 24 16" aria-hidden="true"><path d="M6 15a5 5 0 0 1-.6-10A6.5 6.5 0 0 1 18 4.6 5.2 5.2 0 0 1 18.5 15z" fill="#2f8cff"/></svg>`,"eingeladen")}${lf("mitglied",`<b class="ar-chip">2</b>`,"Mitglied")}${lf("online",`<b class="ar-chip y">2</b>`,"online")}${lf("gesperrt","🔒","gesperrt")}</div>${rows||`<p class="empty" style="margin:6px 0 0">Niemand.</p>`}`);
 }
 function viewVerwaltung(){
-  if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für die Verwaltung.</p></section>`;
+  if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für den Vorstand.</p></section>`;
   const admins=(ADMIN||[]).filter(x=>x.admin).sort((a,b)=>a.nr-b.nr);
-  const boss=admSec("admins","Admin","",`<div style="display:flex;gap:12px;align-items:center"><input id="admnr" class="search" style="flex:1;min-width:0;margin:0" inputmode="numeric" placeholder="Nummer, z. B. 23" autocomplete="off" value="${escH(ADM_Q)}">${ME.nr===1?`<button class="adm-btn" data-act="admToggle" data-on="1">Admin werden</button>`:""}</div>
+  const boss=admSec("admins","Admin","",`<div style="display:flex;gap:12px;align-items:center"><input id="admnr" class="search" style="flex:1;min-width:0;margin:0" inputmode="numeric" placeholder="Nummer, z. B. 23" autocomplete="off" value="${escH(ADM_Q)}">${ME.nr===1?`<button class="adm-btn" data-act="admToggle" data-on="1">Zum Admin machen</button>`:""}</div>
   <div id="admres">${admLookup()}</div>`);
   return `${admPlayers()}
   ${admDealerReqs()}
   ${admCal()}
   ${boss}
-  <section class="panel"><button class="btn btn-stop" style="width:100%;font-size:18px;padding:14px" data-act="admWipe">${WIPE_ASK?"Wirklich alles löschen? Nochmal tippen":"Werkseinstellungen"}</button></section>`;
+  ${ME.nr===1?`<section class="panel"><button class="btn btn-stop" style="width:100%;font-size:18px;padding:14px" data-act="admWipe">${WIPE_ASK?"Wirklich alles löschen? Nochmal tippen":"Werkseinstellungen"}</button></section>`:""}`;
 }
 
 function countdownHTML(k,d){
@@ -1764,6 +1783,16 @@ function tickCD(){
 }
 setInterval(tickCD,1000);
 setInterval(()=>{if(ME&&remindTick()){pushNow();const f=document.activeElement;if(!(f&&(f.tagName==="INPUT"||f.tagName==="SELECT")))render()}},5000);
+const needLine=d=>{if(d.result)return "";const u=used(d);return `<p class="need${u>=7?" ok":""}">${u>=7?`Findet statt · ${u} am Tisch`:u?`Noch <b>${7-u}</b> bis zum Start · ${u} von 7 da`:"Ab 7 Spielern findet der Abend statt"}</p>`};
+// Platz wechseln: freien Platz antippen, wenn man schon sitzt
+let MOVE_TO=null;
+function moveSheet(d,k){
+  if(!MOVE_TO||MOVE_TO.k!==k) return "";
+  const r=roleOf(d,S.me), i=MOVE_TO.i;
+  if(!r||!["player","host","guest"].includes(r.r)||d.result||startedDay(k,d)||takenSeats(d).includes(i)){MOVE_TO=null;return ""}
+  const plus=r.r==="host"&&r.h.gseat!=null;
+  return `<div class="form seatsheet mvsheet"><p>Auf Platz ${i+1} wechseln?</p><button class="btn btn-guest" data-act="mvMe"><b>ICH</b> wechsle</button>${plus?`<button class="btn btn-host" data-act="mvPlus">Mein <b>+1</b> wechselt</button>`:""}<button class="btn btn-line" data-act="mvNo">Nein, zurück</button></div>`;
+}
 function seatSheet(d){
   if(openForm!=="seat"||pick.mine==null) return "";
   const brought=solo(d).some(p=>p.by===S.me);
@@ -1815,7 +1844,7 @@ function voteSVG(d,cx,cy){
     if(ns) f+=`<text x="${x}" y="${y+33}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#2EE07A">${ps} %</text>`;
     if(n) f+=`<text x="${x}" y="${y-8}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#4D8DFF">${pa} %</text>`;
     const mine=my===side||(my==="b"&&(d.votes||{})[S.me]==="b"); if(mine) f+=`<circle cx="${x+cw/2+5}" cy="${y-4}" r="5" fill="#4D8DFF" stroke="#fff" stroke-width="1"/><text x="${x+cw/2+5}" y="${y-1.5}" text-anchor="middle" font-size="7" font-weight="800" fill="#fff">✓</text>`;
-    return `<g data-vote="${side}" style="cursor:pointer" role="button" aria-label="${side==="h"?"Für Hold'em stimmen":"Für Omaha stimmen"}"><rect x="${x-cw/2-7}" y="${y-8}" width="${cw+14}" height="36" fill="transparent"/>${f}${svgCards(x,y-1,v)}</g>`};
+    return `<g data-vote="${side}" style="cursor:pointer" role="button" aria-label="${side==="h"?"Für Hold’em stimmen":"Für Omaha stimmen"}"><rect x="${x-cw/2-7}" y="${y-8}" width="${cw+14}" height="36" fill="transparent"/>${f}${svgCards(x,y-1,v)}</g>`};
   const x1=hx+19, x2=ox-30, mx=(x1+x2)/2, by=y+10, half=(x2-x1)/2, tot=n, ns0=ns, px=mx+(tot?(o-h)/tot:0)*half;
   let bar=`<g opacity="${dec?.35:1}"><rect x="${x1}" y="${by-2}" width="${x2-x1}" height="4" rx="2" fill="rgba(255,255,255,.12)"/>`;
   if(px!==mx) bar+=`<rect x="${Math.min(mx,px)}" y="${by-2}" width="${Math.abs(px-mx)}" height="4" rx="2" fill="#4D8DFF" filter="url(#gl)"/>`;
@@ -1863,7 +1892,7 @@ function render(){
   boardNext();
   const aq=document.getElementById("admq");
   if(aq){aq.oninput=e=>{admQ=e.target.value;const p=aq.selectionStart;render();const n=document.getElementById("admq");n.focus();n.setSelectionRange(p,p)}}
-  ["fguest","myguest"].forEach(id=>{const el=document.getElementById(id);if(!el)return;const out=document.getElementById(id+"name");el.oninput=()=>{if(id==="fguest")GNUM_VAL=el.value.trim();const v=el.value.trim(),g=byNum(+v);if(v==="000"){out.innerHTML=`Neuer Interessent: Namen eintragen und senden. Die nächste freie Nummer wird automatisch vergeben.<input id="${id}new" class="search" placeholder="Vor- und Nachname" autocomplete="name" style="margin-top:8px"><button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="newLead" data-field="${id}">Senden</button>`;document.getElementById(id+"new").focus();return}out.textContent=v?(g==null?"Keine gültige Mitgliedsnummer":`${no(g)} ${nm(g)}`):""}});
+  ["fguest","myguest"].forEach(id=>{const el=document.getElementById(id);if(!el)return;const out=document.getElementById(id+"name");el.oninput=()=>{if(id==="fguest")GNUM_VAL=el.value.trim();const v=el.value.trim(),g=byNum(+v);if(v==="000"){out.innerHTML=`Neuer Interessent: Namen eintragen und senden. Die nächste freie Nummer wird automatisch vergeben.<input id="${id}new" class="search" placeholder="Vor- und Nachname" autocomplete="name" style="margin-top:8px"><button class="btn btn-brass" style="margin-top:8px;width:100%" data-act="newLead" data-field="${id}">Senden</button>`;document.getElementById(id+"new").focus();return}out.textContent=v?(g==null?"Diese Nummer gibt es nicht":`${no(g)} ${nm(g)}`):""}});
   const di=document.getElementById("dealerin");
   if(di){const out=document.getElementById("dealerinname");di.oninput=()=>{const c=dealerCheck(di.value.trim(),S.days[S.sel]);out.textContent=c.msg;out.style.color=c.ok?"var(--ink)":""}}
   save();tickCD();
@@ -1875,18 +1904,18 @@ document.addEventListener("click",e=>{
   if(vt&&S.tab==="kalender"&&ME){
     const d=S.days[S.sel], side=vt.dataset.vote;
     if(d.tlock){toast(`Das Spiel steht fest: ${VARIANTS[d.variant]}`);return}
-    if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Das Turnier hat schon begonnen.");return}
+    if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Dieser Abend hat schon begonnen.");return}
     const V=d.votes||(d.votes={}), cur=V[S.me];
     if(cur===side){V[S.me]="b";toast("Dir ist beides recht");}
-    else{V[S.me]=side;toast(side==="h"?"Du möchtest Hold'em spielen":"Du möchtest Omaha spielen");}
+    else{V[S.me]=side;toast(side==="h"?"Du möchtest Hold’em spielen":"Du möchtest Omaha spielen");}
     const seated=players(d).includes(S.me), inter=d.interest||(d.interest=[]);
-    if(!seated&&!inter.includes(S.me)){inter.push(S.me);toast("Abgestimmt – du stehst jetzt auf „evtl.“");}
+    if(!seated&&!inter.includes(S.me)){inter.push(S.me);toast("Abgestimmt – du bist jetzt vorgemerkt");}
     pushNow();render();return;
   }
   const tc=e.target.closest&&e.target.closest("[data-tcenter]");
   if(tc&&S.tab==="kalender"&&ME){
     const d=S.days[S.sel];
-    if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Das Turnier hat schon begonnen.");return}
+    if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Dieser Abend hat schon begonnen.");return}
     openForm=openForm==="tour"?null:"tour"; render();
     if(openForm==="tour"){const c=document.getElementById("tourcard");if(c)c.scrollIntoView({behavior:"smooth",block:"start"})}
     return;
@@ -1909,7 +1938,7 @@ document.addEventListener("click",e=>{
   const sp=e.target.closest("[data-seat]");
   if(sp&&GSEAT!=null&&ME&&ME.admin&&S.tab==="kalender"){
     const k=S.sel,d=S.days[k],i=+sp.dataset.seat;
-    if(startedDay(k,d)){toast("Dieser Abend hat schon begonnen");return}
+    if(startedDay(k,d)){toast("Dieser Abend hat schon begonnen.");return}
     if(takenSeats(d).includes(i)){toast("Der Platz ist schon besetzt");return}
     const g=gById(GSEAT)||{n:"Gast"};
     solo(d).push({m:GSEAT,seat:i}); d.wait=d.wait.filter(x=>x!==GSEAT);
@@ -1919,10 +1948,16 @@ document.addEventListener("click",e=>{
   // gesperrter Platz angetippt: sagen, warum
   const sx=!sp&&e.target.closest&&e.target.closest("[data-seatx]");
   if(sx&&S.tab==="kalender"){
-    const d=S.days[S.sel], r0=roleOf(d,S.me);
+    const d=S.days[S.sel], r0=roleOf(d,S.me), si=+sx.dataset.seatx, o=seatMap(d)[si], live=!d.result&&!startedDay(S.sel,d);
+    if(o){
+      const nn=nm(o.m), n3=no(o.m).slice(1), who=isListG(o.m)?nn:isNewG(o.m)?"":(nn===n3?n3:`${n3} ${nn}`);
+      toast(o.m===S.me?`Platz ${si+1}: das bist du.${live?" Zum Wechseln tippe auf einen freien Platz.":""}`:`Platz ${si+1}: ${who}${o.w==="g"?`${who?" · ":""}+1 von ${o.h.m===S.me?"dir":nm(o.h.m)}`:""}`);
+      return;
+    }
+    if(live&&r0&&(r0.r==="player"||r0.r==="host"||r0.r==="guest")){MOVE_TO=MOVE_TO&&MOVE_TO.k===S.sel&&MOVE_TO.i===si?null:{k:S.sel,i:si};openForm=null;render();const ms=document.querySelector(".mvsheet");if(ms&&ms.scrollIntoView)ms.scrollIntoView({block:"nearest",behavior:"smooth"});return}
     let why="Dieser Platz ist schon besetzt.";
     if(d.result&&d.result.done) why="Dieser Abend ist schon vorbei.";
-    else if(startedDay(S.sel,d)) why="Das Turnier hat schon begonnen. Trag dich unten auf die Warteliste ein.";
+    else if(startedDay(S.sel,d)) why="Dieser Abend hat schon begonnen. Trag dich unten auf die Warteliste ein.";
     else if(r0&&r0.r!=="wait") why="Du hast an diesem Abend schon einen Platz. Erst absagen, dann neu wählen.";
     toast(why); return;
   }
@@ -1947,9 +1982,9 @@ document.addEventListener("click",e=>{
   if(t.dataset.act==="admAdd"){
     const name=document.getElementById("admname").value.trim(), nv=document.getElementById("admnr").value.trim();
     if(!name&&!nv){toast("Bitte Name oder Nummer eintragen");return}
-    const n=nv?parseInt(nv,10):null; if(nv&&!((n>=1&&n<=MAXNR)||(n>=GEBER_MIN&&n<=GEBER_MAX))){toast("Spieler: 1 bis 888, Kartengeber: 901 bis 999");return}
+    const n=nv?parseInt(nv,10):null; if(nv&&!((n>=1&&n<=MAXNR)||(n>=GEBER_MIN&&n<=GEBER_MAX))){toast("Spieler: 1 bis 888, Kartengeber: 901 bis 930");return}
     t.disabled=true;
-    rpc("m2r_admin_add",{p_token:TOKEN,p_nr:n,p_real:name}).then(r=>{if(!r.ok){toast(r.msg||"Hat nicht geklappt");t.disabled=false;return}toast(`${name?name+" hat die ":""}Nummer ${String(r.nr).padStart(3,"0")} ist angelegt`);return pull(true)}).catch(()=>{toast("Keine Verbindung. Bitte nochmal versuchen.");t.disabled=false});
+    rpc("m2r_admin_add",{p_token:TOKEN,p_nr:n,p_real:name}).then(r=>{if(!r.ok){toast(r.msg||"Das hat nicht geklappt.");t.disabled=false;return}toast(name?`${name} hat jetzt die Nummer ${String(r.nr).padStart(3,"0")}`:`Nummer ${String(r.nr).padStart(3,"0")} ist angelegt`);return pull(true)}).catch(()=>{toast("Keine Verbindung. Bitte nochmal versuchen.");t.disabled=false});
     return;
   }
   if(t.dataset.act==="admFill"){
@@ -1975,12 +2010,19 @@ document.addEventListener("click",e=>{
   if(t.dataset.act==="qrPrint"){document.body.classList.add("printqr");window.print();setTimeout(()=>document.body.classList.remove("printqr"),500);return}
   if(t.dataset.act==="qrClose"){QRSVG=null;render();return}
   if(t.dataset.act==="admWipe"){
-    if(!ME||!ME.admin) return;
+    if(!ME||!ME.admin||ME.nr!==1) return;
     if(!WIPE_ASK){WIPE_ASK=true;render();setTimeout(()=>{if(WIPE_ASK){WIPE_ASK=false;render()}},6000);return}
-    WIPE_ASK=false;
-    S.days={}; S.feed=[]; S.points={}; S.ppoints={}; S.stats={}; fillDays();
-    log("Alles auf Anfang: Termine und Punkte gelöscht"); HIST=null;
-    toast("Alle Termine und Punkte sind gelöscht"); render(); return;
+    WIPE_ASK=false; render();
+    rpc("m2r_admin_wipe",{p_token:TOKEN}).then(r=>{
+      if(!r||!r.ok){toast((r&&r.msg)||"Das hat nicht geklappt.");return}
+      HIST=null; VERSION=-1; CHAT.msgs=[]; CHAT.pms=[]; CHAT.hu=[]; CHAT.game=null; CHAT.gameId=null;
+      toast("Alles ist gelöscht – wie am ersten Tag"); return pull(true);
+    }).catch(()=>{   // Server-Baustein fehlt noch: wie bisher nur Abende und Punkte
+      S.days={}; S.feed=[]; S.points={}; S.ppoints={}; S.stats={}; fillDays();
+      log("Alles auf Anfang: Termine und Punkte gelöscht"); HIST=null; pushNow();
+      toast("Alle Termine und Punkte sind gelöscht"); render();
+    });
+    return;
   }
   if(t.dataset.act==="admGeberFill"||t.dataset.act==="admGeberAdd"){
     if(!ME||!ME.admin) return;
@@ -2011,7 +2053,7 @@ document.addEventListener("click",e=>{
   if(t.dataset.admf){admF=t.dataset.admf;render();return}
   if(t.dataset.act==="admFree"){
     const nr=+t.dataset.nr, on=t.dataset.on==="1", n3=String(nr).padStart(3,"0");
-    if(!on&&!confirm(`Nummer ${n3} sperren? Er wird abgemeldet und kann sich nicht mehr anmelden, bis du ihn wieder freigibst.`)) return;
+    if(!on&&!confirm(`Nummer ${n3} sperren? Die Nummer wird abgemeldet und kann sich nicht mehr anmelden, bis du sie wieder freigibst.`)) return;
     t.disabled=true;
     rpc("m2r_admin_release",{p_token:TOKEN,p_nr:nr,p_on:on}).then(r=>{if(!r||!r.ok){toast((r&&r.msg)||"Freigabe geht erst, wenn der Speicher-Befehl ausgeführt ist");t.disabled=false;return}toast(on?`${n3} ist freigegeben – jetzt einladen`:`${n3} ist gesperrt`);return pull(true)}).catch(()=>{toast("Freigabe geht erst, wenn der Speicher-Befehl ausgeführt ist");t.disabled=false});
     return;
@@ -2021,7 +2063,7 @@ document.addEventListener("click",e=>{
     if(!(ME&&ME.admin)||G_HOST==null) return; const i=G_HOST, g=(S.guestlist||[])[i], nr=+document.getElementById("ghnr").value; if(!g||!nr) return;
     if(guestSeats(g.id).length){toast("Der Gast sitzt noch an einem Tisch – erst den Platz freigeben");return}
     t.disabled=true;
-    rpc("m2r_admin_rename",{p_token:TOKEN,p_nr:nr,p_real:g.n}).then(r=>{if(!r||!r.ok)throw new Error((r&&r.msg)||"Hat nicht geklappt");return rpc("m2r_admin_release",{p_token:TOKEN,p_nr:nr,p_on:true})})
+    rpc("m2r_admin_rename",{p_token:TOKEN,p_nr:nr,p_real:g.n}).then(r=>{if(!r||!r.ok)throw new Error((r&&r.msg)||"Das hat nicht geklappt.");return rpc("m2r_admin_release",{p_token:TOKEN,p_nr:nr,p_on:true})})
       .then(r=>{if(!r||!r.ok)throw new Error((r&&r.msg)||"Freigabe hat nicht geklappt");S.guestlist.splice(i,1);G_HOST=null;G_DONE={n:g.n,nr};log(`${g.n} ist jetzt Mitglied ${String(nr).padStart(3,"0")}`);pushNow();toast(`${g.n} hat die Nummer ${String(nr).padStart(3,"0")}`);return pull(true)})
       .then(()=>render()).catch(e=>{t.disabled=false;toast(e.message||"Keine Verbindung")});
     return;
@@ -2029,9 +2071,9 @@ document.addEventListener("click",e=>{
   if(t.dataset.act==="admCalNav"){const d=+t.dataset.d;ADM_CAL=new Date(ADM_CAL.getFullYear(),ADM_CAL.getMonth()+d,1);render();return}
   if(t.dataset.act==="admDayTog"||t.dataset.act==="admMonTog"){
     if(!(ME&&ME.admin)) return;
-    if(t.dataset.act==="admMonTog"){const m=t.dataset.m;if(S.closed.months[m])delete S.closed.months[m];else S.closed.months[m]=true;toast(S.closed.months[m]?"Monat ist zu – sieht keiner":"Monat ist offen");}
+    if(t.dataset.act==="admMonTog"){const m=t.dataset.m;if(S.closed.months[m])delete S.closed.months[m];else S.closed.months[m]=true;Object.keys(S.days).forEach(x=>{if(x.startsWith(m)&&!S.closed.days[x])newsAll(S.days[x],S.closed.months[m]?"Dieser Abend findet nicht statt.":"Dieser Abend findet doch statt.")});toast(S.closed.months[m]?"Monat ist zu – sieht keiner":"Monat ist offen");}
     else{const k=t.dataset.k;if(S.closed.months[k.slice(0,7)]){toast("Erst den Monat öffnen");return}
-      if(S.closed.days[k])delete S.closed.days[k];else{S.closed.days[k]=true;const n=players(S.days[k]||{hosts:[],players:[]}).length;if(n)toast(`Achtung: an diesem Tag sind schon ${n} angemeldet`)}}
+      if(S.closed.days[k]){delete S.closed.days[k];newsAll(S.days[k],"Dieser Abend findet doch statt.")}else{S.closed.days[k]=true;newsAll(S.days[k],"Dieser Abend findet nicht statt.");const n=players(S.days[k]||{hosts:[],players:[]}).length;if(n)toast(`Achtung: an diesem Tag sind schon ${n} angemeldet`)}}
     pushNow();render();return;
   }
   if(t.dataset.act==="admActAs"){if(!(ME&&ME.admin))return;OV_M=null;const nr=+t.dataset.nr;if(!MEM[nr-1]){toast("Dieses Konto gibt es noch nicht");return}ACT_AS=nr===ME.nr?null:nr;S.me=nr-1;S.tab="kalender";openForm=null;render();window.scrollTo(0,0);if(ACT_AS)toast(`Du handelst jetzt als ${String(nr).padStart(3,"0")}`);return}
@@ -2055,12 +2097,12 @@ document.addEventListener("click",e=>{
     return;
   }
   if(t.dataset.act==="admHist"){
-    rpc("m2r_admin_history",{p_token:TOKEN}).then(r=>{if(!r.ok){toast(r.msg||"Hat nicht geklappt");return}HIST=r.list;render()}).catch(()=>toast("Keine Verbindung"));
+    rpc("m2r_admin_history",{p_token:TOKEN}).then(r=>{if(!r.ok){toast(r.msg||"Das hat nicht geklappt.");return}HIST=r.list;render()}).catch(()=>toast("Keine Verbindung"));
     return;
   }
   if(t.dataset.act==="admRestore"){
     if(!confirm("Diesen früheren Stand zurückholen? Der jetzige Stand wird vorher auch gesichert.")) return;
-    rpc("m2r_admin_restore",{p_token:TOKEN,p_id:+t.dataset.id}).then(r=>{if(!r.ok){toast(r.msg||"Hat nicht geklappt");return}HIST=null;VERSION=-1;toast("Früherer Stand ist zurück");return pull(true)}).catch(()=>toast("Keine Verbindung"));
+    rpc("m2r_admin_restore",{p_token:TOKEN,p_id:+t.dataset.id}).then(r=>{if(!r.ok){toast(r.msg||"Das hat nicht geklappt.");return}HIST=null;VERSION=-1;toast("Früherer Stand ist zurück");return pull(true)}).catch(()=>toast("Keine Verbindung"));
     return;
   }
   if(t.dataset.act==="admMore"){const nr=+t.dataset.nr;ADM_ROW=ADM_ROW===nr?0:nr;render();return}
@@ -2068,28 +2110,37 @@ document.addEventListener("click",e=>{
   if(t.dataset.act==="admRename"){
     const nr=+t.dataset.nr, x=ADMIN.find(y=>y.nr===nr), v=prompt(`Echter Name für Nummer ${String(nr).padStart(3,"0")}:`,x?x.real_name:"");
     if(v==null) return;
-    rpc("m2r_admin_rename",{p_token:TOKEN,p_nr:nr,p_real:v}).then(r=>{toast(r.ok?"Gespeichert":(r.msg||"Hat nicht geklappt"));return pull(true)}).catch(()=>toast("Keine Verbindung"));
+    rpc("m2r_admin_rename",{p_token:TOKEN,p_nr:nr,p_real:v}).then(r=>{toast(r.ok?"Gespeichert":(r.msg||"Das hat nicht geklappt."));return pull(true)}).catch(()=>toast("Keine Verbindung"));
     return;
   }
   if(t.dataset.act==="admSetPin"){
     const nr=+t.dataset.nr,N=String(nr).padStart(3,"0"),v=prompt(`Neue PIN für ${N} (4 Ziffern, nicht 0000):`,"");
     if(v==null) return; if(!/^[0-9]{4}$/.test(v)||v==="0000"){toast("Die PIN muss aus 4 Ziffern bestehen und darf nicht 0000 sein.");return}
-    rpc("m2r_admin_setpin",{p_token:TOKEN,p_nr:nr,p_pin:v}).then(r=>{toast(r.ok?`Neue PIN für ${N} gespeichert`:(r.msg||"Hat nicht geklappt"));return pull(true)}).catch(()=>toast("Keine Verbindung"));
+    rpc("m2r_admin_setpin",{p_token:TOKEN,p_nr:nr,p_pin:v}).then(r=>{toast(r.ok?`Neue PIN für ${N} gespeichert`:(r.msg||"Das hat nicht geklappt."));return pull(true)}).catch(()=>toast("Keine Verbindung"));
     return;
   }
   if(t.dataset.act==="admReset"){
-    const nr=+t.dataset.nr; if(!confirm(`PIN von Nummer ${String(nr).padStart(3,"0")} auf 0000 zurücksetzen? Er muss sich dann eine neue PIN aussuchen.`)) return;
-    rpc("m2r_admin_reset",{p_token:TOKEN,p_nr:nr}).then(r=>{toast(r.ok?"PIN ist jetzt 0000":(r.msg||"Hat nicht geklappt"));return pull(true)}).catch(()=>toast("Keine Verbindung"));
+    const nr=+t.dataset.nr; if(!confirm(`PIN von Nummer ${String(nr).padStart(3,"0")} auf 0000 zurücksetzen? Das Mitglied sucht sich dann beim Anmelden eine neue PIN aus.`)) return;
+    rpc("m2r_admin_reset",{p_token:TOKEN,p_nr:nr}).then(r=>{toast(r.ok?"PIN ist jetzt 0000":(r.msg||"Das hat nicht geklappt."));return pull(true)}).catch(()=>toast("Keine Verbindung"));
     return;
   }
   if(t.dataset.rank){rankTab=t.dataset.rank;render();return}
   if(t.dataset.rmon){rankMon=t.dataset.rmon;render();return}
+  if(t.dataset.act==="newsOk"){Object.values(S.days).forEach(d=>{if(d.news)d.news=d.news.filter(n=>n.m!==S.me)});render();return}
+  if(t.dataset.act==="nickOpen"){NICK_OPEN=!NICK_OPEN;render();return}
+  if(t.dataset.act==="nickSave"){
+    const v=((document.getElementById("nicknew")||{}).value||"").trim().replace(/\s+/g," ");
+    if(v.length<2||v.length>20){toast("Der Spitzname braucht 2 bis 20 Zeichen.");return}
+    rpc("m2r_set_nick",{p_token:TOKEN,p_nick:v}).then(r=>{if(!r||!r.ok){toast((r&&r.msg)||"Das hat nicht geklappt.");return}NICK_OPEN=false;toast("Spitzname gespeichert");return pull(true)}).catch(()=>toast("Das geht gerade noch nicht. Sag bitte dem Vorstand Bescheid."));
+    return;
+  }
+  if(t.dataset.act==="przFill"){DEF_PRIZES.forEach((x,i)=>{const el=document.getElementById("prz"+i);if(el&&!el.value)el.value=x});toast("Beispiele eingesetzt – anpassen, dann speichern");return}
   if(t.dataset.act==="savePrizes"){
     if(!ME||!ME.admin) return;
     const p=S.prizes[curMon]||(S.prizes[curMon]={s:[],p:[]});
     p[t.dataset.pl==="1"?"p":"s"]=Array.from({length:PRIZE_PLACES},(_,i)=>{const el=document.getElementById("prz"+i);return el?(el.value||"").trim().slice(0,60):""});
     log(`Sachpreise für ${monLabel(curMon)} (${t.dataset.pl==="1"?"Gastgeber":"Spieler"}) eingetragen`);
-    toast("Preise gespeichert");render();return;
+    toast("Sachprämien gespeichert");render();return;
   }
   if(t.dataset.cal){calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+(+t.dataset.cal),1);render();return}
   if(t.dataset.day){OV_M=null;S.sel=t.dataset.day;{const dd=new Date(t.dataset.day+"T00:00");calMonth=new Date(dd.getFullYear(),dd.getMonth(),1)}openForm=null;if(t.dataset.goto)S.tab="kalender";render();if(t.dataset.goto)window.scrollTo(0,0);else if(t.classList.contains("cal-d")){const ev=document.getElementById("event");if(ev)ev.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}return}
@@ -2101,12 +2152,12 @@ document.addEventListener("click",e=>{
     if(pick.mine==null||pick.guest==null){toast("Bitte zuerst zwei rote Plätze am Tisch wählen");return}
     if(takenSeats(d).includes(pick.mine)||takenSeats(d).includes(pick.guest)){toast("Einer der Plätze ist schon vergeben");pick={mine:null,guest:null};render();return}
     const gIn=document.getElementById("fguest"), gv=gIn?gIn.value.trim():GNUM_VAL, gn=gv?byNum(+gv):null;
-    if(gv&&(gn==null||gn===S.me||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait"))){toast("Diese Nummer ist nicht verfügbar");return}
+    if(gv&&(gn==null||gn===S.me||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait"))){toast(gn==null?"Diese Nummer gibt es nicht.":gn===S.me?"Das ist deine eigene Nummer.":`${nm(gn)} hat an diesem Abend schon einen Platz.`);return}
     const first=!active(d);
     
     d.hosts.push({m:S.me,seat:pick.mine,gseat:pick.guest,guests:gn!=null?[gn]:[-(S.me+1)],release:false});
     pick={mine:null,guest:null}; GNUM_OPEN=false; GNUM_VAL="";
-    if(gn!=null){d.wait=d.wait.filter(x=>x!==gn);log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`)}
+    if(gn!=null){news(d,gn,`${nm(S.me)} hat dich als +1 eingetragen.`);d.wait=d.wait.filter(x=>x!==gn);log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`)}
     if(first&&d.interest.length) log(`${d.interest.length} Vorgemerkte automatisch benachrichtigt: Am ${dateLabel(k)} läuft ein Turnier`);
     d.interest=d.interest.filter(x=>x!==S.me);
     log(`${nm(S.me)} ist Gastgeber am ${dateLabel(k)}`);
@@ -2120,7 +2171,7 @@ document.addEventListener("click",e=>{
   if(a==="interest"){const i=d.interest.indexOf(S.me);i<0?d.interest.push(S.me):d.interest.splice(i,1);toast(i<0?"Vorgemerkt – keine feste Zusage":"Vormerkung entfernt");render();return}
   if(a==="leave"){
     const r=roleOf(d,S.me); if(!r) return;
-    if(r.r!=="wait"&&!confirm(r.r==="wait"?`Von der Warteliste am ${dateLabel(k)} austragen?`:`Wirklich für ${dateLabel(k)} absagen?${r.r==="host"?" Dein Gast kommt dann ganz oben auf die Warteliste.":""}`)) return;
+    if(r.r!=="wait"&&!confirm(r.r==="wait"?`Von der Warteliste am ${dateLabel(k)} austragen?`:`Wirklich für ${dateLabel(k)} absagen?${r.r==="host"?" Dein +1 kommt dann ganz oben auf die Warteliste.":""}`)) return;
     if(r.r==="host"){d.hosts=d.hosts.filter(x=>x!==r.h);d.wait.unshift(...r.h.guests.filter(x=>!isNewG(x)));log(`${nm(S.me)} hat den Gastgeber-Platz abgegeben`)}
     else if(r.r==="guest"){r.h.guests=r.h.guests.filter(x=>x!==S.me);log(`${nm(S.me)} hat abgesagt`)}
     else if(r.r==="player"){d.players=solo(d).filter(x=>x!==r.p);log(`${nm(S.me)} hat Platz ${r.p.seat+1} freigegeben`)}
@@ -2129,15 +2180,15 @@ document.addEventListener("click",e=>{
     if(d.votes) delete d.votes[S.me];
     promote(k); toast("Abgesagt"); render(); return;
   }
-  if(a==="addGuest"){if(!(document.getElementById("myguest")||{}).value?.trim()){GE_OPEN=null;render();return}const H=d.hosts.find(x=>x.m===+(t.dataset.hm??S.me)), r={h:H},v=document.getElementById("myguest").value.trim(),gn=byNum(+v);if(gn==null||!H||gn===H.m||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait")){toast("Diese Nummer ist nicht verfügbar");return}d.wait=d.wait.filter(x=>x!==gn);r.h.guests=[gn];GE_OPEN=null;log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`);toast("Gast eingetragen");render();return}
-  if(a==="release"){const r=roleOf(d,S.me);r.h.guests=r.h.guests.filter(x=>!isNewG(x));r.h.release=true;log(`${nm(S.me)} gibt den Gastplatz an die Warteliste frei`);promote(k);toast("Gastplatz freigegeben");render();return}
+  if(a==="addGuest"){if(!(document.getElementById("myguest")||{}).value?.trim()){GE_OPEN=null;render();return}const H=d.hosts.find(x=>x.m===+(t.dataset.hm??S.me)), r={h:H},v=document.getElementById("myguest").value.trim(),gn=byNum(+v);if(gn==null||!H||gn===H.m||(roleOf(d,gn)&&roleOf(d,gn).r!=="wait")){toast(gn==null?"Diese Nummer gibt es nicht.":gn===S.me?"Das ist deine eigene Nummer.":`${nm(gn)} hat an diesem Abend schon einen Platz.`);return}d.wait=d.wait.filter(x=>x!==gn);r.h.guests=[gn];news(d,gn,`${nm(S.me)} hat dich als +1 eingetragen.`);GE_OPEN=null;log(`${no(gn)} ${nm(gn)} ist als Gast von ${nm(S.me)} reserviert`);toast("+1 eingetragen");render();return}
+  if(a==="release"){const r=roleOf(d,S.me);r.h.guests=r.h.guests.filter(x=>!isNewG(x));r.h.release=true;log(`${nm(S.me)} gibt den Gastplatz an die Warteliste frei`);promote(k);toast("Platz von deinem +1 freigegeben");render();return}
   if(a==="setDealer"){
     if(!(ME&&ME.admin)){toast("Den Kartengeber legt der Vorstand fest");return}
     const c=dealerCheck(document.getElementById("dealerin").value.trim(),d);
     if(!c.ok){toast(c.msg);return}
     d.wait=d.wait.filter(x=>x!==c.g); d.interest=d.interest.filter(x=>x!==c.g); d.dealer=c.g;
     log(`${no(c.g)} ${nm(c.g)} ist Geber am ${dateLabel(k)} – eingetragen von ${nm(S.me)}`);
-    toast(`Geber: ${no(c.g)} ${nm(c.g)}`); render(); return;
+    toast(`Kartengeber: ${no(c.g)} ${nm(c.g)}`); render(); return;
   }
   if(a==="tourSet"||a==="tourSugg"){
     if(startedDay(k,d)) return;
@@ -2147,13 +2198,13 @@ document.addEventListener("click",e=>{
     if(a==="tourSet"){
       if(!canDecide(d)) return;
       d.variant=x.v; d.start=x.st; d.blind=x.bl; d.sugg={};
-      if(admin){d.tlock={by:"admin",at:Date.now()};log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt und gesperrt")}
+      if(admin){d.tlock={by:"admin",at:Date.now()};newsAll(d,`Es wird ${VARIANTS[d.variant]} gespielt · Beginn ${d.start} Uhr.`);log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt und gesperrt")}
       else{log(`Turnier am ${dateLabel(k)} von ${nm(S.me)} festgelegt: ${turnierTxt(d)}`);toast("Festgelegt")}
       openForm=null;
     } else {
       (d.sugg||(d.sugg={}))[S.me]=x;
       const kk=sugKey(x), n=Object.values(d.sugg).filter(y=>sugKey(y)===kk).length;
-      if(n>=VOTE_WIN){d.variant=x.v;d.start=x.st;d.blind=x.bl;d.tlock={by:"vote",at:Date.now()};log(`Abstimmung am ${dateLabel(k)} entschieden (${n} Stimmen): ${turnierTxt(d)}`);toast(`Abstimmung entschieden: ${VARIANTS[x.v]}!`)}
+      if(n>=VOTE_WIN){d.variant=x.v;d.start=x.st;d.blind=x.bl;d.tlock={by:"vote",at:Date.now()};newsAll(d,`Abstimmung entschieden: Es wird ${VARIANTS[x.v]} gespielt.`);log(`Abstimmung am ${dateLabel(k)} entschieden (${n} Stimmen): ${turnierTxt(d)}`);toast(`Abstimmung entschieden: ${VARIANTS[x.v]}!`)}
       else toast(`Stimme gezählt – ${n} von ${VOTE_WIN}`);
     }
     render(); return;
@@ -2166,8 +2217,8 @@ document.addEventListener("click",e=>{
     if(d.votes) delete d.votes[S.me];
     if(r.r==="host"){
       const h=r.h, g=h.guests[0];
-      if(a==="cxGuest"){ d.hosts=d.hosts.filter(x=>x!==h); solo(d).push({m:S.me,seat:h.seat}); log(`${nm(S.me)} hat für den Gast abgesagt und spielt als Gast`); toast("Dein Gast ist abgesagt – du bist jetzt Gast"); }
-      else if(a==="cxSelf"){ d.hosts=d.hosts.filter(x=>x!==h); if(g!=null) solo(d).push({m:g,seat:h.gseat,by:S.me}); log(`${nm(S.me)} hat abgesagt, Gast bleibt`); toast("Abgesagt – dein Gast bleibt"); }
+      if(a==="cxGuest"){ d.hosts=d.hosts.filter(x=>x!==h); solo(d).push({m:S.me,seat:h.seat}); log(`${nm(S.me)} hat für den Gast abgesagt und spielt als Gast`); toast("Dein +1 ist abgesagt – du sitzt jetzt allein"); }
+      else if(a==="cxSelf"){ d.hosts=d.hosts.filter(x=>x!==h); if(g!=null) solo(d).push({m:g,seat:h.gseat,by:S.me}); log(`${nm(S.me)} hat abgesagt, Gast bleibt`); toast("Abgesagt – dein +1 behält den Platz"); }
       else { d.hosts=d.hosts.filter(x=>x!==h); log(`${nm(S.me)} und Gast haben abgesagt`); toast("Ihr beide seid abgesagt"); }
     } else if(r.r==="guest"){ r.h.guests=r.h.guests.filter(x=>x!==S.me); log(`${nm(S.me)} hat abgesagt`); toast("Abgesagt"); }
     else if(r.r==="player"){ d.players=solo(d).filter(x=>x!==r.p); log(`${nm(S.me)} hat Platz ${r.p.seat+1} freigegeben`); toast("Abgesagt"); }
@@ -2177,30 +2228,41 @@ document.addEventListener("click",e=>{
   if(a==="dayOff"){
     const r=roleOf(d,S.me); if(r&&r.r!=="wait"){toast("Du hast an diesem Tag einen Platz. Erst absagen.");return}
     (d.off||(d.off=[])).includes(S.me)||d.off.push(S.me); d.interest=d.interest.filter(x=>x!==S.me); d.wait=d.wait.filter(x=>x!==S.me);
-    if(d.dreq) d.dreq=dreq(d).filter(x=>x.m!==S.me); toast("Off – dieser Tag ist ausgeblendet"); render(); return;
+    if(d.dreq) d.dreq=dreq(d).filter(x=>x.m!==S.me); toast("Off – Tag ausgeblendet. „On“ holt ihn zurück."); render(); return;
   }
-  if(a==="dayOn"){ d.off=(d.off||[]).filter(x=>x!==S.me); toast("On"); render(); return; }
+  if(a==="dayOn"){ d.off=(d.off||[]).filter(x=>x!==S.me); toast("On – der Tag ist wieder da"); render(); return; }
   if(a==="admDaySel"){ADM_DAY=k;ADM_MV=null;render();return}
-  if(a==="admTour"){if(!(ME&&ME.admin))return;d.variant=+document.getElementById("avar").value;d.start=document.getElementById("astart").value;d.blind=+document.getElementById("ablind").value;d.tlock={by:"admin",at:Date.now()};d.sugg={};log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt");render();return}
+  if(a==="admTour"){if(!(ME&&ME.admin))return;d.variant=+document.getElementById("avar").value;d.start=document.getElementById("astart").value;d.blind=+document.getElementById("ablind").value;d.tlock={by:"admin",at:Date.now()};d.sugg={};newsAll(d,`Es wird ${VARIANTS[d.variant]} gespielt · Beginn ${d.start} Uhr.`);log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt");render();return}
   if(a==="admMove"){const i=+t.dataset.s;ADM_MV=ADM_MV===i?null:i;render();return}
-  if(a==="admWaitSeat"){if(!(ME&&ME.admin)||!d||d.result)return;const m=+t.dataset.m,i=seatMap(d).findIndex(x=>!x);if(i<0){toast("Kein Platz mehr frei");return}d.wait=d.wait.filter(x=>x!==m);solo(d).push({m,seat:i});log(`${no(m)} ${nm(m)} wurde vom Vorstand auf Platz ${i+1} gesetzt (${dateLabel(k)})`);toast(`${nm(m)} sitzt auf Platz ${i+1}`);render();return}
+  if(a==="admWaitSeat"){if(!(ME&&ME.admin)||!d||d.result)return;const m=+t.dataset.m,i=seatMap(d).findIndex(x=>!x);if(i<0){toast("Kein Platz mehr frei");return}d.wait=d.wait.filter(x=>x!==m);solo(d).push({m,seat:i});news(d,m,`Der Vorstand hat dich von der Warteliste auf Platz ${i+1} gesetzt.`);log(`${no(m)} ${nm(m)} wurde vom Vorstand auf Platz ${i+1} gesetzt (${dateLabel(k)})`);toast(`${nm(m)} sitzt auf Platz ${i+1}`);render();return}
   if(a==="admMoveTo"||a==="admSeatDel"||a==="admSeatAdd"){
     if(!(ME&&ME.admin)||!d||d.result) return; const M=seatMap(d);
     if(a==="admMoveTo"){const o=M[ADM_MV],to=+t.dataset.s;if(!o||M[to]){ADM_MV=null;render();return}
-      if(o.w==="p")o.p.seat=to;else if(o.w==="h")o.h.seat=to;else o.h.gseat=to;
+      if(o.w==="p")o.p.seat=to;else if(o.w==="h")o.h.seat=to;else o.h.gseat=to;news(d,o.m,`Der Vorstand hat dich auf Platz ${to+1} umgesetzt.`);
       log(`${nm(o.m)} wurde von Platz ${ADM_MV+1} auf Platz ${to+1} gesetzt`);toast(`Auf Platz ${to+1} umgesetzt`);ADM_MV=null;render();return}
     if(a==="admSeatDel"){const o=M[+t.dataset.s];if(!o)return;if(!confirm(`${nm(o.m)} vom Tisch nehmen (Platz ${+t.dataset.s+1})?`))return;
       if(o.w==="p")d.players=solo(d).filter(x=>x!==o.p);
       else if(o.w==="h"){d.hosts=d.hosts.filter(x=>x!==o.h);const g=o.h.guests[0];if(g!=null&&!isNewG(g)&&o.h.gseat!=null)solo(d).push({m:g,seat:o.h.gseat})}
       else{d.hosts=d.hosts.filter(x=>x!==o.h);solo(d).push({m:o.h.m,seat:o.h.seat})}
-      if(d.votes)delete d.votes[o.m];
+      if(d.votes)delete d.votes[o.m];news(d,o.m,"Der Vorstand hat dich vom Tisch genommen.");
       log(`${nm(o.m)} wurde vom Vorstand vom Tisch genommen (${dateLabel(k)})`);ADM_MV=null;promote(k);toast("Vom Tisch genommen");render();return}
     const i=+t.dataset.s,el=document.getElementById("ads"+i),n=byNum(parseInt((el&&el.value)||"",10));
     if(n==null){toast("Diese Nummer gibt es nicht");return}
     const r=roleOf(d,n);if(r&&r.r!=="wait"){toast(`${nm(n)} sitzt schon am Tisch`);return}
     if(M[i]){toast("Der Platz ist schon besetzt");return}
-    d.wait=d.wait.filter(x=>x!==n);d.interest=d.interest.filter(x=>x!==n);solo(d).push({m:n,seat:i});
+    d.wait=d.wait.filter(x=>x!==n);d.interest=d.interest.filter(x=>x!==n);solo(d).push({m:n,seat:i});news(d,n,`Der Vorstand hat dich auf Platz ${i+1} gesetzt.`);
     log(`${no(n)} ${nm(n)} wurde vom Vorstand auf Platz ${i+1} gesetzt (${dateLabel(k)})`);toast(`${nm(n)} sitzt auf Platz ${i+1}`);render();return}
+  if(a==="mvNo"){MOVE_TO=null;render();return}
+  if(a==="mvMe"||a==="mvPlus"){
+    const r=roleOf(d,S.me), mv=MOVE_TO; MOVE_TO=null;
+    if(!mv||mv.k!==k||!r||d.result||startedDay(k,d)||takenSeats(d).includes(mv.i)){toast("Der Platz ist nicht mehr frei");render();return}
+    let from;
+    if(a==="mvPlus"){if(r.r!=="host"||r.h.gseat==null){render();return}from=r.h.gseat;r.h.gseat=mv.i}
+    else if(r.r==="player"){from=r.p.seat;r.p.seat=mv.i}
+    else if(r.r==="host"){from=r.h.seat;r.h.seat=mv.i}
+    else if(r.r==="guest"){from=r.h.gseat;r.h.gseat=mv.i}
+    else{render();return}
+    log(`${nm(S.me)} wechselt am ${dateLabel(k)} von Platz ${from+1} auf Platz ${mv.i+1}`);toast(`Gewechselt auf Platz ${mv.i+1}`);render();return}
   if(a==="tourUnsugg"){ if(d.tlock) return; if(d.sugg) delete d.sugg[S.me]; toast("Stimme zurückgezogen"); render(); return; }
   if(a==="tourUnlock"){ if(!(ME&&ME.admin)) return; d.tlock=null; d.sugg={}; log(`Abstimmung am ${dateLabel(k)} wieder geöffnet`); toast("Abstimmung ist wieder offen"); render(); return; }
   if(a==="tourTake"){
@@ -2267,18 +2329,18 @@ document.addEventListener("click",e=>{
     if(!(ME&&ME.admin)) return;
     const kk=document.getElementById("admgday").value, dd=S.days[kk]; if(!dd) return;
     const c=dealerCheck(document.getElementById("dealerin").value.trim(),dd);
-    if(!c.ok){toast(c.msg||"Bitte eine Kartengeber-Nummer eingeben (901–999)");return}
+    if(!c.ok){toast(c.msg||"Bitte eine Kartengeber-Nummer eingeben (901–930)");return}
     dd.wait=dd.wait.filter(x=>x!==c.g); dd.interest=dd.interest.filter(x=>x!==c.g); dd.dealer=c.g;
     log(`${no(c.g)} ${nm(c.g)} ist Kartengeber am ${dateLabel(kk)} – eingetragen vom Vorstand`);
     toast(`${dateLabel(kk)}: ${no(c.g)} ${nm(c.g)}`); render(); return;
   }
-  if(a==="clearDealer"){if(!(ME&&ME.admin))return;log(`Geber am ${dateLabel(k)} ausgetragen`);d.dealer=null;toast("Geber ausgetragen");render();return}
+  if(a==="clearDealer"){if(!(ME&&ME.admin))return;log(`Geber am ${dateLabel(k)} ausgetragen`);d.dealer=null;toast("Kartengeber ausgetragen");render();return}
   if(a==="newLead"){
     const f=t.dataset.field,inp=document.getElementById(f+"new"),name=inp.value.trim().replace(/\s+/g," ");
     if(name.length<2){toast("Bitte einen Namen eintragen");inp.focus();return}
     t.disabled=true;
     rpc("m2r_new_lead",{p_token:TOKEN,p_name:name}).then(async r=>{
-      if(!r.ok){toast(r.msg||"Hat nicht geklappt");t.disabled=false;return}
+      if(!r.ok){toast(r.msg||"Das hat nicht geklappt.");t.disabled=false;return}
       const id=r.nr-1; MEM[id]={id,name:"Neu "+String(r.nr).padStart(3,"0"),since:today.getFullYear(),lead:true}; members.push(MEM[id]);
       log(`Neuer Interessent ${no(id)} angelegt – nächste freie Nummer automatisch vergeben`); pushNow();
       const el=document.getElementById(f); if(el){el.value=String(r.nr);el.dispatchEvent(new Event("input"))}
@@ -2287,16 +2349,16 @@ document.addEventListener("click",e=>{
     return;
   }
   if(a&&a.startsWith("att")||a==="closeEve"){
-    if(!canManage(d)){toast("Das tragen die Gastgeber des Abends ein");return}
+    if(!canManage(d)){toast("Das trägt der Vorstand oder ein Spieler mit +1 ein");return}
     const A=att(d), m=+t.dataset.m;
     if(a==="attIn"){A[m]={in:Date.now()};log(`${no(m)} ${nm(m)} ist da`);render();return}
     if(a==="attOut"){A[m].out=Date.now();log(`${no(m)} ${nm(m)} ist gegangen – Bonus +${bonusFor(A[m])}`);render();return}
     if(a==="attBack"){delete A[m].out;render();return}
-    if(a==="attAdd"){const g=byNum(+document.getElementById("attadd").value.trim());if(g==null){toast("Keine gültige Mitgliedsnummer");return}if(A[g]&&A[g].in){toast(`${no(g)} ist schon eingetragen`);return}A[g]={in:Date.now()};log(`${no(g)} ${nm(g)} ist da`);toast(`${no(g)} ${nm(g)} ist eingetragen`);render();return}
+    if(a==="attAdd"){const g=byNum(+document.getElementById("attadd").value.trim());if(g==null){toast("Diese Nummer gibt es nicht");return}if(A[g]&&A[g].in){toast(`${no(g)} ist schon eingetragen`);return}A[g]={in:Date.now()};log(`${no(g)} ${nm(g)} ist da`);toast(`${no(g)} ${nm(g)} ist eingetragen`);render();return}
     if(a==="closeEve"){if(!confirm("Abend abschließen? Wer noch da ist, wird jetzt ausgetragen, und der Anwesenheits-Bonus wird vergeben."))return;closeEvening(k);toast("Abend abgeschlossen, Bonus vergeben");render();return}
   }
   if(a==="closeSeat"){openForm=null;pick={mine:null,guest:null};render();return}
-  if(a==="plusone"){if(solo(d).some(p=>p.by===S.me)){toast("Dein Gast ist schon an diesem Abend dabei");return}openForm="host";pick={mine:pick.mine,guest:null};render();return}
+  if(a==="plusone"){if(solo(d).some(p=>p.by===S.me)){toast("Dein +1 ist an diesem Abend schon dabei");return}openForm="host";pick={mine:pick.mine,guest:null};render();return}
   if(a==="solo"){
     const i=pick.mine; if(i==null||takenSeats(d).includes(i)){toast("Der Platz ist nicht mehr frei");openForm=null;render();return}
     const first=!active(d);
@@ -2306,7 +2368,10 @@ document.addEventListener("click",e=>{
     log(`${no(S.me)} ${nm(S.me)} sitzt als Gast auf Platz ${i+1}`);
     openForm=null;pick={mine:null,guest:null};toast(`Platz ${i+1} reserviert`);render();return;
   }
-  if(a==="startT"){d.result={out:[],done:false};log(`Turnier am ${dateLabel(k)} gestartet – Zusagen geschlossen`);render();return}
+  if(a==="unstartT"){if(!(ME&&ME.admin)||!d.result||d.result.done||d.result.out.length)return;d.result=null;log(`Turnier-Start am ${dateLabel(k)} zurückgenommen`);toast("Start zurückgenommen – Anmelden geht wieder");render();return}
+  if(a==="startT"){if(!confirm(`Turnier am ${dateLabel(k)} jetzt starten?
+
+Danach kann sich niemand mehr anmelden oder absagen.`))return;d.result={out:[],done:false};log(`Turnier am ${dateLabel(k)} gestartet – Zusagen geschlossen`);render();return}
   if(a==="bust"){
     const m=+t.dataset.m; d.result.out.push(m);
     const left=players(d).filter(x=>!d.result.out.includes(x));
@@ -2318,9 +2383,9 @@ document.addEventListener("click",e=>{
 
 /* ================= Gemeinsamer Speicher: laden, speichern, aktuell halten ================= */
 let snap=null, pushing=false, pending=false;
-document.addEventListener("click",()=>{snap=ME?sharedJSON():null},true);
+document.addEventListener("click",()=>{snap=ME?sharedJSON():null;U0=ME?Object.fromEntries(Object.entries(S.days).map(([k,d])=>[k,used(d)])):null},true);
 document.addEventListener("keydown",()=>{snap=ME?sharedJSON():null},true);
-function afterAction(){ if(snap!=null&&sharedJSON()!==snap){snap=null;pushNow()} else snap=null }
+function afterAction(){ runCheck(); if(snap!=null&&sharedJSON()!==snap){snap=null;pushNow()} else snap=null }
 document.addEventListener("click",()=>setTimeout(afterAction,0));
 document.addEventListener("keydown",()=>setTimeout(afterAction,0));
 function syncDot(ok){const s=document.getElementById("sync");if(s){s.classList.toggle("off",!ok);s.title=ok?"Verbunden":"Keine Verbindung"}}
@@ -2367,7 +2432,7 @@ function showLogin(msg){
   L().innerHTML=`<h2>Anmelden</h2>
   <form class="form" id="lf" autocomplete="off"><input id="lnr" class="search big" inputmode="numeric" maxlength="3" placeholder="Deine Nummer" aria-label="Deine Nummer" autocomplete="off" name="m2r-nr-x" required>
   <input id="lpin" class="search big" type="password" inputmode="numeric" maxlength="4" placeholder="PIN" aria-label="PIN, 4 Ziffern" autocomplete="one-time-code" required>
-  <p class="err" id="lerr">${msg||""}</p><button class="btn btn-host" id="lbtn">Anmelden</button></form>`;
+  <p class="err" id="lerr">${msg||""}</p><button class="btn btn-host" id="lbtn">Anmelden</button></form><p class="lg-hint">PIN vergessen? Sag dem Vorstand Bescheid.<br>Erste Anmeldung? Die PIN steht in deiner Einladung.</p>`;
   document.getElementById("lnr").focus();
   document.getElementById("lf").onsubmit=async e=>{
     e.preventDefault();
@@ -2689,14 +2754,14 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
   document.head.append(st);
   const N3=n=>typeof n==="string"?n:String(n).padStart(3,"0"), who=n=>{const m=MEM[n-1];return m&&m.reg?m.name:""};
   const hm=d=>{d=new Date(d);return String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
-  const VAR={holdem:"Texas Hold'em",omaha:"Omaha"},VARK={holdem:"Hold'em",omaha:"Omaha"};
+  const VAR={holdem:"Texas Hold’em",omaha:"Omaha"},VARK={holdem:"Hold’em",omaha:"Omaha"};
   const fab=document.createElement("button"); fab.type="button"; fab.id="onl"; fab.className="chatbtn"; fab.setAttribute("aria-label","Live-Chat"); fab.innerHTML='<i></i><b>CHAT</b><span id="onlN" hidden></span>'; document.querySelector(".hd-row").append(fab); const live=document.getElementById("live");
   const box=document.createElement("section"); box.className="chat-box"; box.setAttribute("aria-label","Live-Chat"); box.dataset.tab="all";
   box.innerHTML=`<div class="ct-tabs" role="tablist"><button type="button" data-tab="all" class="on">Alle</button><button type="button" data-tab="pm">Privat<em id="ctPm" hidden></em></button><button type="button" data-tab="hu">♠ Duell<em id="ctHu" hidden></em></button></div>
 <div class="cp" data-p="all"><div class="chat-list" id="chatList"></div><p class="chat-note">Bleibt 12 Std.</p><form class="chat-in" id="chatForm"><input id="chatTxt" maxlength="300" autocomplete="off" placeholder="Nachricht schreiben …" enterkeyhint="send"><button>Senden</button></form></div>
 <div class="cp" data-p="pm"><div class="pm-start"><form class="pm-find" id="pmFind"><input id="pmNr" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="Nummer, z. B. 004" aria-label="Mitgliedsnummer"><button>Schreiben</button></form><p class="pm-hint">🔒 Nur ihr zwei seht das · 12 Std.</p><div class="pm-convs" id="pmConvs"></div></div>
 <div class="pm-thread"><div class="pm-hd"><button type="button" class="pm-back" id="pmBack" aria-label="Zurück">‹</button><div class="pm-who" id="pmWho"></div><button type="button" class="pm-duel" id="pmDuel">♠ Herausfordern</button></div><div class="chat-list" id="pmList"></div><p class="chat-note">🔒 Nur ihr zwei · 12 Std.</p><form class="chat-in" id="pmForm"><input id="pmTxt" maxlength="300" autocomplete="off" placeholder="Privat schreiben …" enterkeyhint="send"><button>Senden</button></form></div></div>
-<div class="cp" data-p="hu"><div id="huInv" style="display:flex;flex-direction:column;gap:8px;padding:0 8px 6px"></div><div class="hu-lobby" id="huLobby"><div class="hu-var" id="huVar"><button type="button" data-v="holdem" class="on">${miniCards(0)}<span>Hold'em</span></button><button type="button" data-v="omaha">${miniCards(1)}<span>Omaha</span></button></div><div class="hu-var hu-mode" id="huMode"><button type="button" data-m="0" class="on">Klassisch<small id="huChipsLab">1.000 Chips</small></button><button type="button" data-m="1">🥊 me2room-Ring<small>2.000 Chips · Punkte</small></button></div><div class="hu-chips" id="huChips">${[500,1000,2000,5000,10000].map(c=>`<button type="button" data-c="${c}"${c===1000?' class="on"':""}>${c.toLocaleString("de-DE")}</button>`).join("")}</div><p class="pm-hint hu-ringinfo" id="huRingInfo" hidden>🥊 Blind 100 · jede Hand <b>100 in den Topf</b> · was übrig bleibt = <b>Punkte</b><span id="huRingMe"></span></p><div class="hu-card hu-bots"><div class="hu-bh"><span class="hu-lab"><span class="hu-chip s"><span>2</span></span> Gegen me2room</span><small id="huLvSum"></small></div><div class="hu-lv" id="huLv"></div><small>Gewinnen = nächstes Level frei.</small></div><form class="hu-card" id="huNew"><span class="hu-lab"># Gegen eine Nummer</span><div class="hu-row"><input id="huNr" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="z. B. 004" aria-label="Nummer des Gegners"><button class="hu-go">♠ Fordern</button></div></form><p class="pm-hint">Nur Spielchips, kein Geld · 30 Sek. pro Zug</p><div id="huRingTop"></div></div><div id="huTable"></div></div>`;
+<div class="cp" data-p="hu"><div id="huInv" style="display:flex;flex-direction:column;gap:8px;padding:0 8px 6px"></div><div class="hu-lobby" id="huLobby"><div class="hu-var" id="huVar"><button type="button" data-v="holdem" class="on">${miniCards(0)}<span>Hold’em</span></button><button type="button" data-v="omaha">${miniCards(1)}<span>Omaha</span></button></div><div class="hu-var hu-mode" id="huMode"><button type="button" data-m="0" class="on">Klassisch<small id="huChipsLab">1.000 Chips</small></button><button type="button" data-m="1">🥊 me2room-Ring<small>2.000 Chips · Punkte</small></button></div><div class="hu-chips" id="huChips">${[500,1000,2000,5000,10000].map(c=>`<button type="button" data-c="${c}"${c===1000?' class="on"':""}>${c.toLocaleString("de-DE")}</button>`).join("")}</div><p class="pm-hint hu-ringinfo" id="huRingInfo" hidden>🥊 Blind 100 · jede Hand <b>100 in den Topf</b> · was übrig bleibt = <b>Punkte</b><span id="huRingMe"></span></p><div class="hu-card hu-bots"><div class="hu-bh"><span class="hu-lab"><span class="hu-chip s"><span>2</span></span> Gegen me2room</span><small id="huLvSum"></small></div><div class="hu-lv" id="huLv"></div><small>Gewinnen = nächstes Level frei.</small></div><form class="hu-card" id="huNew"><span class="hu-lab"># Gegen eine Nummer</span><div class="hu-row"><input id="huNr" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" placeholder="z. B. 004" aria-label="Nummer des Gegners"><button class="hu-go">♠ Fordern</button></div></form><p class="pm-hint">Nur Spielchips, kein Geld · 30 Sek. pro Zug</p><div id="huRingTop"></div></div><div id="huTable"></div></div>`;
   const $=s=>box.querySelector(s);
   window.chatPlace=function(){ if(CHAT.open){ if(!live.contains(box)){live.innerHTML="";live.append(box)} }
     live.classList.toggle("chat-on",CHAT.open); fab.classList.toggle("on",CHAT.open); fab.hidden=!ME; };
@@ -2715,7 +2780,7 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
   $("#pmFind").onsubmit=async e=>{e.preventDefault();const i=$("#pmNr"),n=nrOf(i.value);if(!n){toast("Bitte eine Nummer eingeben, z. B. 004.");return}
     if(ME&&n===ME.nr){toast("Das ist deine eigene Nummer.");return}
     if(CHAT.pms.some(m=>m.nr===n||m.to===n)){i.value="";openPm(n);return}
-    try{const r=await rpc("m2r_pm_who",{p_token:TOKEN,p_nr:n});if(r&&r.ok){i.value="";openPm(r.nr,r.name)}else toast((r&&r.msg)||"Nicht gefunden.")}catch(e){toast("Keine Verbindung.")}};
+    try{const r=await rpc("m2r_pm_who",{p_token:TOKEN,p_nr:n});if(r&&r.ok){i.value="";openPm(r.nr,r.name)}else toast((r&&r.msg)||"Diese Nummer gibt es nicht.")}catch(e){toast("Keine Verbindung.")}};
   $("#pmBack").onclick=()=>{CHAT.pmWith=null;$(".cp[data-p=pm]").classList.remove("in-thread");chatDraw()};
   $("#pmDuel").onclick=()=>{$("#huNr").value=N3(CHAT.pmWith);setTab("hu")};
   $("#pmForm").onsubmit=e=>{e.preventDefault();const i=$("#pmTxt"),t=i.value.trim();if(!t||!CHAT.pmWith)return;i.value="";chatSync(t,CHAT.pmWith)};
@@ -2726,12 +2791,12 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
   $("#huMode").onclick=e=>{const b=e.target.closest("button");if(!b)return;CHAT.ring=b.dataset.m==="1";$("#huMode").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));$("#huRingInfo").hidden=!CHAT.ring;$("#huChips").hidden=CHAT.ring;chatDraw()};
   CHAT.chips=1000;$("#huChips").onclick=e=>{const b=e.target.closest("button");if(!b)return;CHAT.chips=+b.dataset.c;$("#huChips").querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));$("#huChipsLab").textContent=CHAT.chips.toLocaleString("de-DE")+" Chips"};
   $("#huNew").onsubmit=async e=>{e.preventDefault();const n=nrOf($("#huNr").value);if(!n){toast("Bitte die Nummer deines Gegners eingeben.");return}
-    try{let r;if(CHAT.ring){try{r=await rpc("m2r_hu_invite2",{p_token:TOKEN,p_to:n,p_variant:CHAT.variant,p_ring:true})}catch(e){if(/ 404/.test(e.message)){toast("Ring gegen Nummern ist noch nicht eingerichtet.");return}throw e}}
-      else if(CHAT.chips!==1000){try{r=await rpc("m2r_hu_invite3",{p_token:TOKEN,p_to:n,p_variant:CHAT.variant,p_chips:CHAT.chips})}catch(e){if(/ 404/.test(e.message)){toast("Andere Chip-Mengen gegen Nummern sind noch nicht eingerichtet – 1.000 geht.");return}throw e}}
-      else r=await rpc("m2r_hu_invite",{p_token:TOKEN,p_to:n,p_variant:CHAT.variant});if(r&&r.ok){$("#huNr").value="";toast("Herausforderung an "+N3(n)+" geschickt.");chatSync()}else toast((r&&r.msg)||"Ging nicht.")}catch(e){toast("Keine Verbindung.")}};
+    try{let r;if(CHAT.ring){try{r=await rpc("m2r_hu_invite2",{p_token:TOKEN,p_to:n,p_variant:CHAT.variant,p_ring:true})}catch(e){if(/ 404/.test(e.message)){toast("Das geht gerade noch nicht. Sag bitte dem Vorstand Bescheid.");return}throw e}}
+      else if(CHAT.chips!==1000){try{r=await rpc("m2r_hu_invite3",{p_token:TOKEN,p_to:n,p_variant:CHAT.variant,p_chips:CHAT.chips})}catch(e){if(/ 404/.test(e.message)){toast("Diese Chip-Menge geht gegen Nummern gerade noch nicht – 1.000 geht.");return}throw e}}
+      else r=await rpc("m2r_hu_invite",{p_token:TOKEN,p_to:n,p_variant:CHAT.variant});if(r&&r.ok){$("#huNr").value="";toast("Herausforderung an "+N3(n)+" geschickt.");chatSync()}else toast((r&&r.msg)||"Das hat nicht geklappt.")}catch(e){toast("Keine Verbindung.")}};
   $("#huInv").onclick=async e=>{const b=e.target.closest("button[data-a]");if(!b)return;const id=+b.dataset.id,a=b.dataset.a;b.disabled=true;
     try{let r;if(a==="yes"||a==="no")r=await rpc("m2r_hu_answer",{p_token:TOKEN,p_id:id,p_yes:a==="yes"});else if(a==="back")r=await rpc("m2r_hu_quit",{p_token:TOKEN,p_id:id});else if(a==="look"){CHAT.gameId=id;await huSync();return}
-      if(r&&r.ok&&r.status==="play"){clearTimeout(CHAT.botT);CHAT.gameId=r.id;huSet(r)}else if(r&&!r.ok)toast(r.msg||"Ging nicht.");chatSync()}catch(e){toast("Keine Verbindung.")}};
+      if(r&&r.ok&&r.status==="play"){clearTimeout(CHAT.botT);CHAT.gameId=r.id;huSet(r)}else if(r&&!r.ok)toast(r.msg||"Das hat nicht geklappt.");chatSync()}catch(e){toast("Keine Verbindung.")}};
   const pc=(c,cls)=>{if(c==null)return `<span class="pc slot ${cls||""}"></span>`;const r=c>>2,s=c&3,R=["2","3","4","5","6","7","8","9","10","B","D","K","A"][r],S=["♣","♦","♥","♠"][s],RN=["Zwei","Drei","Vier","Fünf","Sechs","Sieben","Acht","Neun","Zehn","Bube","Dame","König","Ass"][r],SN=["Kreuz","Karo","Herz","Pik"][s];return `<span class="pc ${s===1||s===2?"r ":""}${cls||""}" role="img" aria-label="${RN} ${SN}">${R}<s>${S}</s></span>`};
   const back=(n,cls)=>Array.from({length:n},()=>`<span class="pc bk ${cls||""}" aria-label="verdeckte Karte"></span>`).join("");
   function huSet(g){if(!g||!g.id)return;CHAT.game=g;CHAT.gameId=g.id;CHAT.gameDl=g.left!=null?Date.now()+g.left*1000:0;CHAT.gameLast=Date.now();
@@ -2741,7 +2806,7 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
     CHAT.huBusy=false;CHAT.gameLast=Date.now()};
   async function huAct(act,amt){const g=CHAT.game;if(!g||CHAT.huBusy)return;
     if(g.bot){try{HUBOT.apply(g,1,act,amt)}catch(e){toast(e.message);return}g.say=null;CHAT.raise=null;botNext();return}CHAT.huBusy=true;box.querySelectorAll(".hu-acts button,.hu-ok").forEach(b=>b.disabled=true);
-    try{const r=await rpc("m2r_hu_act",{p_token:TOKEN,p_id:g.id,p_act:act,p_amt:amt==null?null:Math.round(amt)});CHAT.huBusy=false;if(r&&r.ok){CHAT.raise=null;huSet(r)}else{toast((r&&r.msg)||"Ging nicht.");if(r&&r.state){CHAT.gameSig="";huSet(r.state)}else huDraw()}}
+    try{const r=await rpc("m2r_hu_act",{p_token:TOKEN,p_id:g.id,p_act:act,p_amt:amt==null?null:Math.round(amt)});CHAT.huBusy=false;if(r&&r.ok){CHAT.raise=null;huSet(r)}else{toast((r&&r.msg)||"Das hat nicht geklappt.");if(r&&r.state){CHAT.gameSig="";huSet(r.state)}else huDraw()}}
     catch(e){CHAT.huBusy=false;toast("Keine Verbindung.");huDraw()}}
   function raiseRange(g){const i=g.me-1,o=1-i,mx=Math.max(g.bet[0],g.bet[1]),mine=g.bet[i]+g.stack[i],cap=Math.min(mine,g.bet[o]+g.stack[o]);
     if(g.stack[o]===0||cap<=mx)return null;return {min:Math.min(mx+g.minr,cap),max:cap,mx,allin:cap===mine,pot:g.pot+g.bet[0]+g.bet[1]+(mx-g.bet[i])}}
@@ -2768,12 +2833,12 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
     else if(g.status==="done"){const won=g.winner===me;bottom=`<div class="hu-end"><b>${!g.winner?"Unentschieden":won?"🏆 Du hast gewonnen!":"Verloren – "+N3(g.p[g.winner-1])+" gewinnt."}</b>${g.ring&&g.winner?`<div class="hu-pts">${won?"+":""}${(2*HUBOT.RING.stack-(g.topf||0)).toLocaleString("de-DE")} Ring-Punkte${won?"":" für "+N3(g.p[g.winner-1])}</div>`:""}<p>${escH(g.endmsg||"")}</p><button type="button" class="hu-ok" data-h="close" style="padding:0 26px">Fertig</button></div>`}
     else if(g.street===9){bottom=`<div class="hu-wait">Gleich geht's weiter mit der nächsten Hand …</div>`}
     else if(g.turn===me){const tc=mxb-g.bet[i],rr=raiseRange(g),R=CHAT.raise;
-      if(R&&rr){const v=Math.max(rr.min,Math.min(rr.max,R.v));const lab=v===rr.max&&rr.allin?`All-in ${v}`:(rr.mx===0?`Bieten ${v}`:`Erhöhen auf ${v}`);
-        bottom=`<div class="hu-timer"><i></i></div><div class="hu-raise"><div class="hu-rv"><span>${rr.mx===0?"Bieten":"Erhöhen auf"}</span><b id="huRv">${v}</b></div><input type="range" id="huRg" min="${rr.min}" max="${rr.max}" step="${Math.max(1,Math.min(g.sb,rr.max-rr.min))}" value="${v}" aria-label="Einsatz"><div class="hu-rq"><button type="button" data-q="min">Min</button><button type="button" data-q="half">½ Pot</button><button type="button" data-q="pot">Pot</button><button type="button" data-q="max">All-in</button></div><div class="hu-acts" style="grid-template-columns:1fr 2fr"><button type="button" class="hu-fold" data-h="rx" style="background:rgba(255,255,255,.1);color:var(--on-felt);box-shadow:inset 0 0 0 1px var(--line)">Zurück</button><button type="button" class="hu-ok" data-h="go" id="huGo">${lab}</button></div></div>`}
-      else bottom=`<div class="hu-timer"><i></i></div><div class="hu-acts">${tc>0?`<button type="button" class="hu-fold" data-h="fold">Passen</button>`:`<button type="button" class="hu-fold" disabled>Passen</button>`}<button type="button" class="hu-call" data-h="${tc>0?"call":"check"}">${tc>0?(tc>=g.stack[i]?`All-in ${g.stack[i]}`:`Mitgehen ${tc}`):"Check"}</button><button type="button" class="hu-rz" data-h="raise" ${rr?"":"disabled"}>${mxb===0?"Bieten":"Erhöhen"}</button></div>`}
+      if(R&&rr){const v=Math.max(rr.min,Math.min(rr.max,R.v));const lab=v===rr.max&&rr.allin?`All-in ${v}`:(rr.mx===0?`Setzen ${v}`:`Erhöhen auf ${v}`);
+        bottom=`<div class="hu-timer"><i></i></div><div class="hu-raise"><div class="hu-rv"><span>${rr.mx===0?"Setzen":"Erhöhen auf"}</span><b id="huRv">${v}</b></div><input type="range" id="huRg" min="${rr.min}" max="${rr.max}" step="${Math.max(1,Math.min(g.sb,rr.max-rr.min))}" value="${v}" aria-label="Einsatz"><div class="hu-rq"><button type="button" data-q="min">Min</button><button type="button" data-q="half">½ Pot</button><button type="button" data-q="pot">Pot</button><button type="button" data-q="max">All-in</button></div><div class="hu-acts" style="grid-template-columns:1fr 2fr"><button type="button" class="hu-fold" data-h="rx" style="background:rgba(255,255,255,.1);color:var(--on-felt);box-shadow:inset 0 0 0 1px var(--line)">Zurück</button><button type="button" class="hu-ok" data-h="go" id="huGo">${lab}</button></div></div>`}
+      else bottom=`<div class="hu-timer"><i></i></div><div class="hu-acts">${tc>0?`<button type="button" class="hu-fold" data-h="fold">Passen</button>`:`<button type="button" class="hu-fold" disabled>Passen</button>`}<button type="button" class="hu-call" data-h="${tc>0?"call":"check"}">${tc>0?(tc>=g.stack[i]?`All-in ${g.stack[i]}`:`Mitgehen ${tc}`):"Check"}</button><button type="button" class="hu-rz" data-h="raise" ${rr?"":"disabled"}>${mxb===0?"Setzen":"Erhöhen"}</button></div>`}
     else bottom=g.bot?`<div class="hu-wait">${N3(op)} überlegt <span class="hu-dots"><i></i><i></i><i></i></span></div>`:`<div class="hu-timer"><i></i></div><div class="hu-wait">${N3(op)} ist dran …</div>`;
     if(g.bot)bottom=bottom.replace('<div class="hu-timer"><i></i></div>',"");T.innerHTML=`<div class="hu${g.bot?" bot":""}">${head}${felt}${bottom}</div>`;
-    const rg=T.querySelector("#huRg");if(rg)rg.oninput=()=>{CHAT.raise={v:+rg.value};const rr=raiseRange(g),v=+rg.value;T.querySelector("#huRv").textContent=v;T.querySelector("#huGo").textContent=v===rr.max&&rr.allin?`All-in ${v}`:(rr.mx===0?`Bieten ${v}`:`Erhöhen auf ${v}`)};
+    const rg=T.querySelector("#huRg");if(rg)rg.oninput=()=>{CHAT.raise={v:+rg.value};const rr=raiseRange(g),v=+rg.value;T.querySelector("#huRv").textContent=v;T.querySelector("#huGo").textContent=v===rr.max&&rr.allin?`All-in ${v}`:(rr.mx===0?`Setzen ${v}`:`Erhöhen auf ${v}`)};
     huTimer()}
   $("#huTable").onclick=async e=>{const b=e.target.closest("button");if(!b||b.disabled)return;const g=CHAT.game;if(!g)return;const h=b.dataset.h,q=b.dataset.q;
     if(q){const rr=raiseRange(g);if(!rr)return;const v=q==="min"?rr.min:q==="max"?rr.max:rr.mx+(q==="pot"?rr.pot:Math.round(rr.pot/2));CHAT.raise={v:Math.max(rr.min,Math.min(rr.max,v))};huDraw();return}
@@ -2823,7 +2888,7 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
     const bub=(m,priv)=>{const o=on.has(m.nr)||m.nr===me;return `<div class="cm${m.nr===me?" me":""}${o||priv?"":" off"}${priv?" priv":""}"><div class="cm-h"><i class="${o?"on":""}" title="${o?"online":"offline"}"></i>${!priv&&m.nr!==me&&CHAT.v2?`<button type="button" class="cm-pm" data-nr="${m.nr}" title="Privat schreiben">${N3(m.nr)}</button>`:N3(m.nr)}<time>${hm(m.at)}</time></div><div class="cm-t">${escH(m.txt)}</div></div>`};
     const cut=Date.now()-12*3600000;
     if(CHAT.tab==="all"){const L=$("#chatList"),atEnd=L.scrollHeight-L.scrollTop-L.clientHeight<40,ms=CHAT.msgs.filter(m=>new Date(m.at).getTime()>cut);
-      L.innerHTML=CHAT.ok===false?`<p class="chat-empty">Der Chat ist noch nicht eingerichtet.</p>`:ms.length?ms.map(m=>bub(m,false)).join(""):`<p class="chat-empty">Noch ist es ruhig hier.<br>Schreib die erste Nachricht!</p>`;
+      L.innerHTML=CHAT.ok===false?`<p class="chat-empty">Der Chat geht gerade nicht. Sag bitte dem Vorstand Bescheid.</p>`:ms.length?ms.map(m=>bub(m,false)).join(""):`<p class="chat-empty">Noch ist es ruhig hier.<br>Schreib die erste Nachricht!</p>`;
       if(scroll||atEnd) L.scrollTop=L.scrollHeight}
     if(CHAT.tab==="pm"){const pms=CHAT.pms.filter(m=>new Date(m.at).getTime()>cut);
       if(CHAT.pmWith){const w=CHAT.pmWith,L=$("#pmList"),atEnd=L.scrollHeight-L.scrollTop-L.clientHeight<40,ms=pms.filter(m=>(m.nr===w&&m.to===me)||(m.nr===me&&m.to===w)),nm2=CHAT.pmName||who(w);
@@ -2866,7 +2931,7 @@ const CHAT={open:false,msgs:[],online:[],ok:null,busy:false,last:0,tab:"all",pms
     const read=CHAT.open&&CHAT.tab==="pm"&&CHAT.pmWith&&CHAT.pms.some(m=>m.nr===CHAT.pmWith&&m.to===me&&!m.seen)?CHAT.pmWith:null;
     try{let r=null;
       if(CHAT.v2!==false){try{r=await rpc("m2r_chat2",{p_token:TOKEN,p_txt:txt||null,p_to:to||null,p_read:read});CHAT.v2=true}catch(e){if(CHAT.v2===null&&/ 40[04]/.test(e.message))CHAT.v2=false;else throw e}}
-      if(CHAT.v2===false){if(to){toast("Privat schreiben ist noch nicht eingerichtet.");r=null}else r=await rpc("m2r_chat",{p_token:TOKEN,p_txt:txt||null})}
+      if(CHAT.v2===false){if(to){toast("Privat schreiben geht gerade nicht. Sag bitte dem Vorstand Bescheid.");r=null}else r=await rpc("m2r_chat",{p_token:TOKEN,p_txt:txt||null})}
       if(r&&r.ok){CHAT.ok=true;const skew=Date.now()-new Date(r.now).getTime(),fix=a=>(a||[]).map(m=>({...m,at:new Date(new Date(m.at).getTime()+skew).toISOString()}));CHAT.msgs=fix(r.msgs);CHAT.online=r.online||[];
         if(r.pms){CHAT.pms=fix(r.pms);if(read)CHAT.pms.forEach(m=>{if(m.nr===read&&m.to===me)m.seen=true})}CHAT.hu=r.hu||[];if(r.ring)CHAT.ringTop=r.ring;CHAT.first=CHAT.first==null;huNotes();CHAT.first=false}
       else if(r&&r.msg) toast(r.msg);
