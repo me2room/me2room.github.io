@@ -761,6 +761,10 @@ header.hd .lv-n{font-size:14px}
 @keyframes myW{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}50%{box-shadow:0 0 22px 7px rgba(255,255,255,.9)}}
 .cal-d.sel.my-h{animation:myG 1.8s ease-in-out infinite!important}.cal-d.sel.my-g{animation:myO 1.8s ease-in-out infinite!important}.cal-d.sel.my-w{animation:myW 1.8s ease-in-out infinite!important}
 .chatbtn{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;background:transparent;border:0;padding:2px 0;cursor:pointer}.chatbtn b{font:700 24px/1 "Zilla Slab",Georgia,serif;letter-spacing:.2px;color:#1E9E50;text-shadow:0 0 2px #7CF0A6,0 0 8px #0E6B36,0 0 16px rgba(14,107,54,.8),0 3px 0 #053d1d;animation:neonOn 1.6s ease-out 1 both,neonHum 6s ease-in-out 1.6s infinite}.chatbtn i{display:none;width:8px;height:8px;border-radius:50%;background:#FF2D4A;box-shadow:0 0 8px #FF2D4A}.chatbtn.new i{display:block;animation:chatNew 1.2s ease-in-out infinite}@keyframes chatNew{0%,100%{opacity:1}50%{opacity:.15}}.chatbtn.on b{color:#7CF0A6}
+@keyframes playB{0%,100%{opacity:.45}50%{opacity:1}}.cal-d.c-play,.cal-d.c-plan{isolation:isolate}.cal-d.c-play.c-go,.cal-d.c-play.c-warm,.cal-d.c-plan.c-go,.cal-d.c-plan.c-warm{box-shadow:none}.cal-d.c-play::before,.cal-d.c-plan::before{content:"";position:absolute;inset:-1px;border-radius:inherit;z-index:-1;pointer-events:none;border:1.5px solid #DCFFE5;background:rgba(59,234,98,.14);box-shadow:0 0 2px #fff,0 0 6px #3BEA62,0 0 13px rgba(59,234,98,.8),inset 0 0 6px rgba(59,234,98,.6)}.cal-d.c-play::before{animation:playB 1.3s ease-in-out infinite}.cal-d.c-plan::before{border-color:#DCE9FF;background:none;box-shadow:0 0 2px #fff,0 0 6px #3B7BFF,0 0 13px rgba(59,123,255,.8),inset 0 0 6px rgba(59,123,255,.55)}.cal-d.c-play .cal-n{text-shadow:0 1px 2px #000,0 0 3px #000}@media (prefers-reduced-motion:reduce){.cal-d.c-play::before{animation:none}}.lg-play,.lg-plan{box-sizing:border-box;border-radius:5px;background:rgba(59,234,98,.14);border:1.5px solid #DCFFE5;box-shadow:0 0 6px #3BEA62}.lg-plan{background:none;border-color:#DCE9FF;box-shadow:0 0 6px #3B7BFF}.need .need-play{color:#3BEA62}.ac-mode{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px;font-size:12.5px;color:var(--muted)}.ac-mode .chip{padding:6px 10px;font-size:12.5px}.ad-play{display:flex;align-items:center;gap:10px;width:100%;margin:6px 0 12px;padding:9px 12px;border-radius:12px;border:1.5px solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);color:inherit;font:inherit;text-align:left;cursor:pointer}.ad-play i{flex:0 0 12px;height:12px;border-radius:50%;background:rgba(255,255,255,.25)}.ad-play span{flex:1;display:grid;line-height:1.25}.ad-play small{color:var(--muted);font-size:12px}.ad-play em{font:800 12px Figtree,sans-serif;font-style:normal;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.12)}.ad-play.on{border-color:#3BEA62}.ad-play.on i{background:#3BEA62;box-shadow:0 0 8px #3BEA62;animation:chipB 1.3s ease-in-out infinite}.ad-play.on em{background:#3BEA62;color:#06240f}
+.bl[data-n="0"] .bl-v{display:none}.bl[data-n="1"] .bl-2{display:none}.bl[data-n="1"] .bl-v{grid-template-columns:minmax(0,1fr)}.ad-card .tf+.tf,.ad-card .tf+label.tf,.ad-card label.tf+.tf{margin-top:10px}.ad-card .tf-2>label.tf{margin-top:0}.ad-card .tf.bl{margin-bottom:12px}
+.ad-seat.free.pk{grid-template-columns:24px minmax(0,1fr) 50px auto auto;gap:5px}.ad-seat.pk .btn{padding:6px 7px}.ad-seat .ad-in{box-sizing:border-box;width:100%;min-width:0}.pk-open{width:100%;margin-top:8px}.pk-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}.ask-box .pk-h p{margin:0;line-height:1.25}.pk-h small{display:block;color:var(--muted);font-size:12.5px;font-weight:500}.pk-h .ar-eye{flex:0 0 auto;padding:7px 10px!important;font-size:12px!important}.pk-l{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;max-height:min(52vh,420px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:0 -4px 14px;padding:2px 4px}.pk-l.nr{grid-template-columns:repeat(4,minmax(0,1fr))}.pk-i{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:inherit;font:600 15px Figtree,system-ui,sans-serif;text-align:left;cursor:pointer}.pk-i:active{background:rgba(217,169,84,.22)}.pk-i b{flex:0 0 auto;font:700 17px "Zilla Slab",serif;color:var(--brass)}.pk-i span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pk-i small{color:var(--muted);font-weight:500;margin-left:8px}.pk-i em{flex:0 0 auto;font:700 11px Figtree,system-ui,sans-serif;font-style:normal;color:var(--host)}.pk-i.w{border-color:var(--host)}.pk-l.nr .pk-i{justify-content:center;padding:8px 4px}.pk-l.nr .pk-i em{display:none}.pk-l .empty{margin:6px 0}.pk-x{width:100%;margin:0;min-height:48px}
+.tneon{display:flex;align-items:baseline;justify-content:center;gap:5px;width:max-content;max-width:100%;box-sizing:border-box;margin:2px auto 3px;padding:2px 5px 3px;border-radius:7px;border:1.5px solid #DCFFE5;background:rgba(3,18,8,.6);box-shadow:0 0 2px #fff,0 0 6px #3BEA62,0 0 13px rgba(59,234,98,.8),0 0 22px rgba(59,234,98,.4),inset 0 0 5px rgba(59,234,98,.6);animation:neonHum 6s ease-in-out infinite}.tn-l{font:700 9px/1 Figtree,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#C4FFD2;text-shadow:0 0 6px #3BEA62,0 0 12px rgba(59,234,98,.7);white-space:nowrap}.tn-v{font:700 17px/1 "Zilla Slab",Georgia,serif;letter-spacing:0;color:#EFFFF3;white-space:nowrap;text-shadow:0 0 1px #fff,0 0 4px #5CFF85,0 0 9px #3BEA62,0 0 18px #3BEA62,0 0 30px rgba(59,234,98,.7),0 2px 0 #0E5A22}.tn-v i{display:inline-block;width:.56em;text-align:center;font-style:normal}.tn-t{letter-spacing:.08em;padding:0 1px}.kt-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 0 4px}.ar-btns .ar-clear{border-color:#FF4545;color:#ff9a9a}.adm-fix>summary{pointer-events:none;cursor:default}.bd-num.bd-plan{box-shadow:inset 0 0 0 1.5px #DCE9FF,inset 0 0 7px rgba(59,123,255,.75),0 0 2px #fff,0 0 6px #3B7BFF,0 0 13px rgba(59,123,255,.8)!important}.bd-num.bd-play{box-shadow:inset 0 0 0 1.5px #DCFFE5,inset 0 0 7px rgba(59,234,98,.75),0 0 2px #fff,0 0 6px #3BEA62,0 0 13px rgba(59,234,98,.8)!important}.tneon.blau{border-color:#DCE9FF;background:rgba(3,8,22,.6);box-shadow:0 0 2px #fff,0 0 6px #3B7BFF,0 0 13px rgba(59,123,255,.85),0 0 22px rgba(59,123,255,.45),inset 0 0 5px rgba(59,123,255,.65)}.tneon.blau .tn-l{color:#C9DDFF;text-shadow:0 0 6px #3B7BFF,0 0 12px rgba(59,123,255,.7)}.tneon.blau .tn-v{color:#F0F6FF;text-shadow:0 0 1px #fff,0 0 4px #7FB0FF,0 0 9px #3B7BFF,0 0 18px #3B7BFF,0 0 30px rgba(59,123,255,.7),0 2px 0 #0E2A66}@media (prefers-reduced-motion:reduce){.tneon{animation:none}}
 .ac-d{cursor:pointer}.ac-auf{background:rgba(59,234,98,.18)!important;border-color:#3BEA62!important}.ac-zu{background:rgba(229,40,63,.25)!important;border-color:#E5283F!important}.ac-zu .cal-n{color:#ffb3bd!important}
 .rules-me{margin:0 0 14px}.rules-me>summary{list-style:none;width:60%;margin:0 auto;box-sizing:border-box;text-align:center;padding:10px 12px;border:1.5px solid var(--brass,#D9A954);border-radius:12px;color:var(--brass,#D9A954);font:700 16px "Zilla Slab",serif;cursor:pointer;background:rgba(0,0,0,.35)}.rules-me>summary::-webkit-details-marker{display:none}.rules-me>.prose{margin-top:12px;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
 .hd .hd-row{padding-left:60px}
@@ -844,7 +848,8 @@ const HOST_MAX=5, SEATS=10, GUESTS_PER_HOST=1, DAYS=14;
 const VARIANTS=["Texas Hold’em","Omaha"];
 const BLINDS=["1er Blind","2er Blind","4er Blind","5er Blind","10er Blind","25er Blind","50er Blind","100er Blind"];   // Start-Blind
 const LEVELS=[10,15,20,30];                                    // Blinds steigen alle … Minuten
-const blindOf=d=>BLINDS[d.blind??1], lvlOf=d=>d.lvl||20;
+const numDE=n=>String(n).replace(".",","), bvOk=d=>Array.isArray(d.bv)&&d.bv.length>0&&d.bv.every(x=>typeof x==="number"&&x>0);
+const blindOf=d=>bvOk(d)?(d.bv.length>1?`Blinds ${numDE(d.bv[0])} / ${numDE(d.bv[1])}`:`Blind ${numDE(d.bv[0])}`):d.blind!=null?BLINDS[d.blind]:"Blinds noch offen", lvlOf=d=>d.lvl||20;
 const turnierTxt=d=>`${VARIANTS[d.variant]} · ${d.start} Uhr · ${blindOf(d)}`;
 const SUMMER_START=SOMMER_START;
 const STARTS=[...new Set([WINTER_START,SUMMER_START,"18:00","19:00","20:00","21:00"])].sort();
@@ -913,11 +918,11 @@ function monthCal(sel){
     if(!d||isClosed(k)){h+=`<span class="cal-d off"><span class="cal-n">${n}</span></span>`;continue}
     const ps=d.hosts.length, gs=takenSeats(d).length-ps, u=used(d);
     let dots="";for(let i=0;i<SEATS;i++)dots+=`<i class="${i<ps?"h":i<ps+gs?"g":""}"></i>`;
-    const run=u>=7, done=d.result&&d.result.done, myr=roleOf(d,S.me);
+    const run=u>=7, done=d.result&&d.result.done, myr=roleOf(d,S.me), fut=k>=key(dates[0])||isLive(k,d), rah=done||!fut?"":(d.play||d.result)?" c-play":" c-plan";
     const my=(myr||(d.interest||[]).includes(S.me))?(u>=7?" my my-h":u>=3?" my my-g":" my my-w"):"";
-    h+=`<button class="cal-d${my}${run?" run":""}${isOff(d,S.me)?" nope":""}${u>=7?" c-go":u>=3?" c-warm":""}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
+    h+=`<button class="cal-d${my}${run?" run":""}${isOff(d,S.me)?" nope":""}${u>=7?" c-go":u>=3?" c-warm":""}${rah}${k===sel?" sel":""}${k===key(today)?" today":""}" data-day="${k}" aria-pressed="${k===sel}" aria-label="${dateLabel(k)}: ${u} von ${SEATS} Plätzen belegt${rah===" c-play"?", Spieltag":rah?", in Planung":""}${run?", Runde findet statt":""}${done?", beendet":""}"><span class="cal-n">${n}</span><span class="cal-dots">${dots}</span>${d.interest.length?`<span class="cal-mk" title="${d.interest.length} vorgemerkt">${d.interest.length}</span>`:""}</button>`;
   }
-  h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span><span><i class="lg lg-my"></i>dein Abend</span></p></div>`;
+  h+=`</div><p class="cal-lg"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-o"></i>frei</span><span><i class="lg" style="background:var(--mark)"></i>vorgemerkt</span><span><i class="lg lg-my"></i>dein Abend</span><span><i class="lg lg-plan"></i>in Planung</span><span><i class="lg lg-play"></i>Spieltag</span></p></div>`;
   return h;
 }
 // Ranglisten laufen pro Monat (Schlüssel "JJJJ-MM")
@@ -1202,13 +1207,25 @@ function dealerCheck(v,d){
 
 // Kartengeber-Ansicht: anfragen statt Platz nehmen
 // Turnier-Felder (Spiel, Beginn, Start-Blind) – modern und kompakt
-function tourFields(px,v,st,bl){
+function tourFields(px,v,st,bv){
+  const n=Array.isArray(bv)?Math.min(bv.length,2):0, val=i=>n>i?numDE(bv[i]):"";
   return `<input type="hidden" id="${px}var" value="${v}">
   <div class="tf"><span class="tf-l">Spiel</span><div class="seg">${VARIANTS.map((x,i)=>`<button type="button" data-fv="${i}" data-fvt="${px}" aria-pressed="${i===+v}">${x}</button>`).join("")}</div></div>
-  <div class="tf-2">
-    <label class="tf"><span class="tf-l">Beginn</span><select id="${px}start">${STARTS.map(t=>`<option value="${t}" ${t===st?"selected":""}>${t} Uhr</option>`).join("")}</select></label>
-    <label class="tf"><span class="tf-l">Start-Blind</span><select id="${px}blind">${BLINDS.map((b,i)=>`<option value="${i}" ${i===+bl?"selected":""}>${b}</option>`).join("")}</select></label>
+  <label class="tf"><span class="tf-l">Beginn</span><select id="${px}start">${STARTS.map(t=>`<option value="${t}" ${t===st?"selected":""}>${t} Uhr</option>`).join("")}</select></label>
+  <div class="tf bl" id="${px}bl" data-n="${n}"><span class="tf-l">Ein Blind oder zwei Blinds?</span>
+    <div class="seg"><button type="button" data-fb="1" data-fbt="${px}" aria-pressed="${n===1}">Ein Blind</button><button type="button" data-fb="2" data-fbt="${px}" aria-pressed="${n===2}">Zwei Blinds</button></div>
+    <div class="tf-2 bl-v"><label class="tf"><span class="tf-l" id="${px}bl1l">${n===2?"Kleiner Blind":"Blind"}</span><input id="${px}b1" inputmode="decimal" maxlength="9" autocomplete="off" placeholder="Wert" value="${val(0)}"></label><label class="tf bl-2"><span class="tf-l">Großer Blind</span><input id="${px}b2" inputmode="decimal" maxlength="9" autocomplete="off" placeholder="Wert" value="${val(1)}"></label></div>
   </div>`;
+}
+// liest die eingetippten Blinds: null = noch nichts gewählt, false = Eingabe fehlt oder ist falsch
+function readBlinds(px){
+  const box=document.getElementById(px+"bl"); if(!box) return null;
+  const n=+box.dataset.n; if(!n) return null;
+  const g=i=>{const x=(document.getElementById(px+"b"+i).value||"").trim().replace(",",".");return /^\d{1,6}(\.\d{1,2})?$/.test(x)&&+x>0?+x:NaN};
+  const a=g(1), b=n===2?g(2):0;
+  if(isNaN(a)||isNaN(b)){toast(n===2?"Bitte beide Blinds als Zahl eintragen":"Bitte den Blind als Zahl eintragen");return false}
+  if(n===2&&b<a){toast("Der große Blind darf nicht kleiner sein als der kleine");return false}
+  return n===2?[a,b]:[a];
 }
 const canDecide=d=>!!(ME&&ME.admin);   // nur der Vorstand legt fest
 const VOTE_WIN=6;   // ab so vielen gleichen Stimmen wird das Spiel automatisch festgelegt
@@ -1220,16 +1237,16 @@ function tourCard(d,k){
   const groups={}; Object.entries(d.sugg||{}).forEach(([m,x])=>{const kk=sugKey(x);(groups[kk]=groups[kk]||{x,ms:[]}).ms.push(+m)});
   const list=Object.values(groups).sort((a,b)=>b.ms.length-a.ms.length);
   const lab=x=>`${VARIANTS[x.v]} · ${x.st} Uhr · ${BLINDS[x.bl]}`;
-  const now=lab({v:d.variant,st:d.start,bl:d.blind??1});
+  const now=turnierTxt(d);
   let h=`<section class="panel hostcard tourcard" id="tourcard"><div class="hc-head"><h3>♠ Turnier</h3><span class="hc-date glow-g">${dateLabel(k)}</span></div>`;
   if(lock){
     h+=`<div class="hc-info lockinfo">🔒 ${now}<span class="hc-sub">${lock.by==="vote"?"Entschieden durch Abstimmung":"Festgelegt vom Vorstand"} – steht fest.</span></div>`;
-    if(admin) h+=`${tourFields("t",d.variant,d.start,d.blind??1)}<button class="btn btn-brass" data-act="tourSet">Ändern und sperren</button><button class="btn btn-line" data-act="tourUnlock">Abstimmung wieder öffnen</button>`;
+    if(admin) h+=`${tourFields("t",d.variant,d.start,d.bv)}<button class="btn btn-brass" data-act="tourSet">Ändern und sperren</button><button class="btn btn-line" data-act="tourUnlock">Abstimmung wieder öffnen</button>`;
     return h+`</section>`;
   }
   h+=`<div class="hc-info">${now}</div>`;
-  h+=tourFields("t",cur.v,cur.st,cur.bl);
-  h+=my?`<div class="btn-pair"><button class="btn btn-host" data-act="tourSugg">Vorschlag ändern</button><button class="btn btn-line" data-act="tourUnsugg">Zurückziehen</button></div>`:`<button class="btn btn-host" data-act="tourSugg">Vorschlag abgeben</button>`;
+  h+=tourFields("t",cur.v,cur.st,d.bv);
+  
   if(dec) h+=`<button class="btn btn-brass" data-act="tourSet">Festlegen und sperren</button>`;
   h+=list.length?`<p class="tf-l" style="margin:4px 0 0">Vorschläge</p>${list.map(g=>{const n=g.ms.length,pct=Math.min(100,Math.round(n/VOTE_WIN*100));return `<div class="sg-row"><div class="grow"><b>${lab(g.x)}</b><div class="vbar"><i style="width:${pct}%"></i></div><span>${n} von ${VOTE_WIN} Stimmen${admin?" · "+g.ms.map(m=>no(m)).join(", "):""}</span></div>${dec?`<button class="btn btn-host sg-take" data-act="tourTake" data-key="${sugKey(g.x)}">Übernehmen</button>`:""}</div>`}).join("")}`:"";
   return h+`</section>`;
@@ -1303,7 +1320,7 @@ function adminActivity(){
       ${row('<i class="wt-star">★</i>',"vorgemerkt",L(inter),inter.length)}
       ${row('<i class="wt-wait">⏳</i>',"Warteliste",L(wait),wait.length)}
       ${row('<i class="wt-geber">Geber</i>',"",reqBtns,cand.length)}
-      <tr class="wt-vote"><td colspan="3"><div class="wt-vg"><table class="tk"><tr><th></th><th><i class="tk-c" style="--c:#4D8DFF">${c.n}</i>ALLE</th><th><i class="tk-c" style="--c:#3BEA62">${c.ns}</i>AM TISCH</th></tr><tr><td>Hold’em</td><td class="tk-b">${pc(c.h,c.n)}</td><td class="tk-g">${pc(c.hs,c.ns)}</td></tr><tr><td>Omaha</td><td class="tk-b">${pc(c.o,c.n)}</td><td class="tk-g">${pc(c.os,c.ns)}</td></tr></table></div></td></tr>
+      <tr><th><span>Spiel</span></th><td class="wt-n"></td><td>${VARIANTS[d.variant===1?1:0]}${d.tlock?" · steht fest":""}</td></tr>
       ${d.tlock?row("✔","Spiel fest",VARIANTS[d.variant]):""}
     </tbody></table>`});
   return `<section class="panel act-admin"><details class="adm-x" data-sec="act"${ADM_OPEN.act?" open":""}><summary><h3>Überblick</h3><span class="adm-arr" aria-hidden="true">⌄</span></summary><div class="adm-b">${out||`<p class="empty" style="margin:0">Noch keine Aktivitäten.</p>`}</div></details></section>`;
@@ -1312,18 +1329,18 @@ function viewKalender(){
   if(isClosed(S.sel)){const f=dates.find(dt=>!isClosed(key(dt)));if(f)S.sel=key(f)}
   const k=S.sel, d=S.days[k], st=status(d), mine=roleOf(d,S.me), full=used(d)>=SEATS, locked=d.result;
   let h="";
-  if(isOff(d,S.me)) return h+`<section class="panel cdbar offbar"><span class="cd-lbl">Off</span><b class="off-day">${shortDay(k)}</b><button type="button" class="onbtn" data-act="dayOn">On</button></section>`+monthCal(k);
+  if(isOff(d,S.me)) return h+`<section class="panel cdbar offbar"><span class="cd-lbl">Off</span><b class="off-day">${shortDay(k)}</b><button type="button" class="onbtn" data-act="dayOn">On</button></section>`+monthCal(k)+admTisch();
   if(GSEAT!=null&&ME&&ME.admin) h+=`<div class="gseat-bar"><span>Platz für <b>${escH(nm(GSEAT))}</b>: Tag wählen, dann freien Platz antippen</span><button class="btn btn-line" data-act="gSeatStop">Abbrechen</button></div>`;
   h+=newsBox()+`<section class="panel${used(d)>=7?" go":used(d)>=3?" warm":""}" id="event"><div class="ptitle"><h2>${shortDay(k)} <span class="ev-time">${d.start} Uhr</span></h2>${markBtn(k,d,mine)}${mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done)?`<button type="button" class="btn-cancel hd-cancel" data-act="cxOpen">Absagen</button>`:""}</div>${cancelSheet(d,k,mine)}${ME&&ME.admin&&(d.off||[]).length?`<p class="offlist">Off: ${d.off.map(m=>pName(m)).join(", ")}</p>`:""}`;
   if(active(d)){
-    h+=`<div class="tablewrap">${tableSVG(d)}</div>`;
+    h+=`<div class="tablewrap">${tableNeon(k,d)}${tableSVG(d)}</div>`;
     h+=`<div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>${needLine(d)}`;
     if(hasDealer(d)&&(isGeber(S.me)||(ME&&ME.admin))) h+=`<p class="dealerline">Kartengeber: <b>${no(d.dealer)} ${nm(d.dealer)}</b></p>`;
     h+=seatSheet(d)+moveSheet(d,k);
     const wc=`<div class="waitcount" aria-label="${d.wait.length} auf der Warteliste"><span>Warteliste</span><b>${d.wait.length}</b></div>`;
     const smallCancel=mine&&mine.r!=="wait"&&!startedDay(k,d)&&!(locked&&locked.done);
   }else{
-    h+=`<div class="tablewrap">${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>${needLine(d)}`;
+    h+=`<div class="tablewrap">${tableNeon(k,d)}${tableSVG(d)}</div><div class="count" style="margin-bottom:6px;font-size:13px"><span><i class="lg lg-h"></i>ICH +1</span><span><i class="lg lg-g"></i>ICH</span><span><i class="lg lg-f"></i>Frei</span></div>${needLine(d)}`;
     h+=seatSheet(d)+moveSheet(d,k);
   }
   h+=`<div class="actions">`;
@@ -1362,6 +1379,7 @@ function viewKalender(){
   h+=monthCal(k);
   if(ME&&ME.admin) h+=adminActivity();
   if(ME&&ME.admin&&DCH_OPEN===k) h+=adminDealerPanel(d,k);
+  h+=admTisch();
 
   return h;
 }
@@ -1532,7 +1550,7 @@ function viewRegeln(){
     <li>Nach dem Turnier wird eingetragen, wer wann ausgeschieden ist. Die ersten 10 bekommen sofort Punkte in der Rangliste.</li>
     <li>Wer da ist, bekommt 1 Punkt – auch wer im Wartebereich Super Nintendo, PlayStation, VR-Brille oder Gesellschaftsspiele spielt.</li>
     <li>Ein Abend findet statt, sobald 7 Spieler am Tisch sitzen. Das Chipfach in der Tischmitte zeigt, wie viele noch fehlen.</li>
-    <li>Hold’em oder Omaha: Tippe in der Tischmitte auf die Karten und stimm ab. Die Prozente zeigen die Stimmung. Wer nicht abstimmt, zählt für beides.</li>
+    <li>Hold’em oder Omaha: Welches Spiel läuft, legt der Vorstand fest. Du siehst es in der Tischmitte: 2 Karten = Hold’em, 4 Karten = Omaha.</li><li>Blau umrandet heißt im Kalender und am Tisch: Der Tag ist in Planung. Grün umrandet und blinkend heißt: Der Vorstand hat ihn als Spieltag angesetzt, an dem Tag soll gespielt werden.</li>
     <li>Du kannst doch nicht? Tippe auf „Absagen“, dann wird dein Platz sofort frei.</li>  </ol>
   <h3>Verpflegung</h3>
   <p>Verpflegungspauschale 30 € pro Abend für alle Anwesenden, Essen und Trinken inklusive. Kein Einsatz, kein Geldgewinn. Es gibt Punkte und am Monatsende Sachprämien vom Verein.</p>
@@ -1558,9 +1576,29 @@ let QRSVG=null;
 // Übersicht für den Chef: Abende, Spieler, beliebte Tage
 let ADM_OPEN={}, WIPE_ASK=false;
 const admSec=(id,title,badge,body)=>`<section class="panel"><details class="adm-x" data-sec="${id}"${ADM_OPEN[id]?" open":""}><summary><h3>${title}</h3>${badge?`<span class="badge b-plan">${badge}</span>`:""}<span class="adm-arr" aria-hidden="true">⌄</span></summary><div class="adm-b">${body}</div></details></section>`;
+const admFix=(id,title,body)=>`<section class="panel"><details class="adm-x adm-fix" data-sec="${id}" open><summary tabindex="-1"><h3>${title}</h3></summary><div class="adm-b">${body}</div></details></section>`;   // immer offen, ohne Aufklappen
 document.addEventListener("toggle",e=>{const el=e.target;if(el&&el.dataset&&el.dataset.sec)ADM_OPEN[el.dataset.sec]=el.open},true);
 (function(){const st=document.createElement("style");st.textContent=`.adm-x>summary{list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer}.adm-x>summary::-webkit-details-marker{display:none}.adm-x>summary h3{margin:0;flex:1}.adm-arr{font-size:22px;line-height:1;color:var(--brass,#D9A954);transition:transform .2s}.adm-x[open] .adm-arr{transform:rotate(180deg)}.adm-b{margin-top:10px}.adm-act{display:flex;align-items:baseline;gap:6px;min-width:0;background:none;border:0;padding:0;color:inherit;text-align:left;font:inherit;cursor:pointer;white-space:nowrap;overflow:hidden}.adm-act .s{overflow:hidden;text-overflow:ellipsis}.adm-row .adm-btns .btn{padding:6px 8px!important;font-size:12px!important;min-height:0!important}.adm-row .adm-btns{gap:4px!important}.actas{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid #FFAA2E!important;color:#FFC46B}.act-n{margin-left:6px;min-width:20px;padding:1px 6px;border-radius:999px;background:#FFAA2E;color:#1a0f05;font:800 12px Figtree,system-ui;text-align:center}.act-list{display:flex;flex-wrap:wrap;gap:4px 10px;margin:-4px 0 6px 48px;font:600 12px Figtree,system-ui;color:#FFC46B}.adm-lose{border:0;border-radius:10px;padding:8px 10px;background:#FF4545;color:#fff;font:700 13px Figtree,system-ui;cursor:pointer}.g-row{grid-template-columns:24px minmax(0,1fr) auto auto auto!important}.g-row .g-del{padding:6px 8px!important;font-size:12.5px!important;min-width:0!important;flex:0 0 auto}.g-row .g-txt{min-width:0;flex:1 1 auto}.adm-btn{flex:0 0 auto;border:0;border-radius:12px;padding:11px 14px;background:#3BEA62;color:#fff;font:700 14px Figtree,system-ui;cursor:pointer}.adm-ok,.adm-no{border:0;border-radius:10px;padding:8px 11px;font:700 13px Figtree,system-ui;color:#fff;cursor:pointer}.adm-ok{background:#3BEA62}.adm-no{background:#FF4545}.adm-line{display:flex;gap:6px;align-items:center}.adm-in{flex:1 1 0;min-width:0;height:38px;padding:0 8px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--on-felt,#f3e3c3);font:600 16px Figtree,system-ui}.adm-line .adm-sm{margin-top:0;flex:0 0 auto;height:38px}.adm-sm{margin-top:8px;border:1.5px solid var(--brass,#D9A954);background:transparent;color:var(--brass,#D9A954);border-radius:10px;padding:7px 16px;font:700 13px Figtree,system-ui;cursor:pointer}.adm-box{margin-top:14px;padding:12px;border:1.5px solid rgba(217,169,84,0.6);border-radius:14px}`;document.head.append(st)})();
-let ADM_CAL=null;
+// Auswahlliste für den Vorstand: Spieler auf einen Platz setzen oder Kartengeber eintragen. Namen lassen sich aus- und einblenden.
+let PICK=null, PICK_NAMES=true;
+function pickClose(){PICK=null;askHide()}
+function pickShow(){
+  const P=PICK; if(!P) return; const d=S.days[P.k]; if(!d||!ADMIN){pickClose();return}
+  const seat=P.kind==="seat", N3=x=>String(x.nr).padStart(3,"0"), unu=x=>!x.pin&&!x.real_name&&!x.nickname&&!x.admin;
+  const rq=seat?new Set(d.wait||[]):new Set(dreqSorted(d).map(x=>x.m)), sitzt=new Set(players(d));
+  const list=ADMIN.filter(x=>MEM[x.nr-1]&&(seat?x.nr<GEBER_MIN&&!unu(x):x.nr>=GEBER_MIN&&x.nr<=GEBER_MAX)&&!sitzt.has(x.nr-1)&&!(seat&&hasDealer(d)&&d.dealer===x.nr-1))
+    .sort((a,b)=>(rq.has(b.nr-1)-rq.has(a.nr-1))||a.nr-b.nr);
+  const item=x=>{const m=x.nr-1,nick=x.nickname?escH(x.nickname):"",real=x.real_name&&!ADM_HIDE?escH(x.real_name):"",w=rq.has(m);   // echte Namen nur, wenn der Schalter „Namen“ in den Listen auf ON steht
+    return `<button type="button" class="pk-i${w?" w":""}" ${seat?`data-act="admSeatAdd" data-k="${P.k}" data-s="${P.s}" data-m="${m}"`:`data-act="admDayDealer" data-k="${P.k}" data-nr="${x.nr}"`}><b>${N3(x)}</b>${PICK_NAMES?`<span>${nick||real}${nick&&real?`<small>${real}</small>`:""}</span>`:""}${w?`<em>${seat?"Warteliste":"möchte geben"}</em>`:""}</button>`};
+  askShow(`<div class="pk-h"><p>${seat?`Platz ${P.s+1} – wen setzen?`:"Kartengeber wählen"}<small>${bdDay(P.k)}</small></p><button type="button" class="chip ar-eye" data-act="pickNames" aria-pressed="${PICK_NAMES}">Namen<b class="ar-sw${PICK_NAMES?" y":""}"><i></i></b>${PICK_NAMES?"ON":"OFF"}</button></div>
+  <div class="pk-l${PICK_NAMES?"":" nr"}">${list.map(item).join("")||`<p class="empty">Niemand zur Auswahl.</p>`}</div>
+  <button type="button" class="btn btn-line pk-x" data-ask="no">Schließen</button>`);
+}
+let ADM_CAL=null, ADM_TAP="zu";
+function setPlay(k,on){const d=S.days[k];if(!d)return;
+  if(on){d.play=true;newsAll(d,"Der Vorstand hat diesen Tag als Spieltag angesetzt.")}else delete d.play;
+  log(`${dateLabel(k)}: ${on?"als Spieltag angesetzt":"kein Spieltag mehr"} (Vorstand)`);
+  toast(on?`${dateLabel(k)} ist Spieltag – blinkt grün`:`${dateLabel(k)}: kein Spieltag mehr`)}
 function admCal(){
   const m0=new Date(today.getFullYear(),today.getMonth(),1), mx=new Date(today.getFullYear(),today.getMonth()+2,1);
   if(!ADM_CAL||ADM_CAL<m0||ADM_CAL>mx) ADM_CAL=m0;
@@ -1569,10 +1607,11 @@ function admCal(){
   let g=["Mo","Di","Mi","Do","Fr","Sa","So"].map(w=>`<span class="cal-wd">${w}</span>`).join("");
   for(let i=0;i<lead;i++) g+=`<span></span>`;
   for(let n=1;n<=days;n++){const k=`${mk}-${pad(n)}`, past=!S.days[k]||k<key(today), cl=isClosed(k);
-    g+=past?`<span class="cal-d off"><span class="cal-n">${n}</span></span>`:`<button class="cal-d ac-d ${cl?"ac-zu":"ac-auf"}" data-act="admDayTog" data-k="${k}"><span class="cal-n">${n}</span></button>`}
+    g+=past?`<span class="cal-d off"><span class="cal-n">${n}</span></span>`:`<button class="cal-d ac-d ${cl?"ac-zu":"ac-auf"}${cl?"":S.days[k].play?" c-play":" c-plan"}" data-act="admDayTog" data-k="${k}"><span class="cal-n">${n}</span></button>`}
   return admSec("acal","Tisch &amp; Spiele",mClosed?"Monat zu":"",`<div class="cal-h"><button class="cal-nav" data-act="admCalNav" data-d="-1" ${ADM_CAL<=m0?"disabled":""} aria-label="Voriger Monat">‹</button><b>${MONL[mo]} ${y}</b><button class="cal-nav" data-act="admCalNav" data-d="1" ${ADM_CAL>=mx?"disabled":""} aria-label="Nächster Monat">›</button></div>
+  <div class="ac-mode"><span>Antippen heißt:</span><button class="chip" data-act="admTap" data-m="zu" aria-pressed="${ADM_TAP==="zu"}">Tag auf / zu</button><button class="chip" data-act="admTap" data-m="play" aria-pressed="${ADM_TAP==="play"}">Spieltag an / aus</button></div>
   <div class="cal-g">${g}</div>
-  <p class="cal-lg"><span><i class="lg" style="background:#3BEA62"></i>offen</span><span><i class="lg" style="background:#E5283F"></i>zu – sieht keiner</span></p>
+  <p class="cal-lg"><span><i class="lg lg-plan"></i>offen · in Planung</span><span><i class="lg lg-play"></i>Spieltag – blinkt bei allen</span><span><i class="lg" style="background:#E5283F"></i>zu – sieht keiner</span></p>
   <div style="text-align:right"><button class="adm-sm" data-act="admMonTog" data-m="${mk}">${mClosed?"Monat öffnen":"Monat schließen"}</button></div>${admDay()}${admStats()}`);
 }
 
@@ -1584,22 +1623,24 @@ function seatMap(d){const M=Array(SEATS).fill(null);
 function admDay(){
   const ks=dates.map(key).filter(k=>S.days[k]&&!isClosed(k)&&!(S.days[k].result&&S.days[k].result.done));
   if(!ks.length) return "";
-  if(ks.includes(S.sel)) ADM_DAY=S.sel; else if(!ks.includes(ADM_DAY)) ADM_DAY=ks[0];
-  S.sel=ADM_DAY;
-  const k=ADM_DAY,d=S.days[k],M=seatMap(d),started=!!d.result;
+  const hier=ks.includes(S.sel), k=hier?S.sel:null;
+  if(!hier) return `<div class="ad-box"><p class="tf-l sp-sub">Abend steuern</p><div class="chips ad-days">${ks.slice(0,21).map(x=>`<button class="chip ad-chip" data-act="admDaySel" data-k="${x}" aria-pressed="false">${bdDay(x)}</button>`).join("")}</div><p class="hc-hint">Tippe einen Abend an, um ihn zu steuern.</p></div>`;
+  ADM_DAY=k;
+  const d=S.days[k],M=seatMap(d),started=!!d.result;
   const chips=ks.slice(0,21).map(x=>{const n=used(S.days[x]);return `<button class="chip ad-chip" data-act="admDaySel" data-k="${x}" aria-pressed="${x===k}">${bdDay(x)}${n?` <b>${n}</b>`:""}</button>`}).join("");
   const rows=M.map((o,i)=>{const mv=ADM_MV!=null;
-    if(!o) return `<div class="ad-seat free"><span class="ad-p">${i+1}</span><span class="ad-n">frei</span>${mv?`<button class="btn btn-host" data-act="admMoveTo" data-k="${k}" data-s="${i}">Hierher</button>`:`<input class="search ad-in" id="ads${i}" inputmode="numeric" placeholder="Nr." maxlength="3"><button class="btn btn-line" data-act="admSeatAdd" data-k="${k}" data-s="${i}">Setzen</button>`}</div>`;
+    if(!o) return `<div class="ad-seat free${mv?"":" pk"}"><span class="ad-p">${i+1}</span><span class="ad-n">frei</span>${mv?`<button class="btn btn-host" data-act="admMoveTo" data-k="${k}" data-s="${i}">Hierher</button>`:`<input class="search ad-in" id="ads${i}" inputmode="numeric" placeholder="Nr." maxlength="3"><button class="btn btn-line" data-act="admSeatAdd" data-k="${k}" data-s="${i}">Setzen</button><button class="btn btn-brass" data-act="pickOpen" data-kind="seat" data-k="${k}" data-s="${i}">Wählen</button>`}</div>`;
     const me=ADM_MV===i;
     return `<div class="ad-seat${me?" mv":""}"><span class="ad-p">${i+1}</span><span class="ad-n"><b>${isNewG(o.m)?"Gast":no(o.m).slice(1)}</b> ${escH(nm(o.m))}<small>${escH(o.t)}</small></span>${started?"":`<button class="btn btn-line" data-act="admMove" data-s="${i}">${me?"Abbrechen":"Umsetzen"}</button><button class="btn btn-line ad-x" data-act="admSeatDel" data-k="${k}" data-s="${i}" aria-label="Vom Tisch nehmen">✕</button>`}</div>`}).join("");
   const w=(d.wait||[]).map(m=>`<button class="ad-w" data-act="admWaitSeat" data-k="${k}" data-m="${m}">${no(m).slice(1)} ${escH(nm(m))} <b>＋</b></button>`).join("");
   const live=isLive(k,d);
   const dl=hasDealer(d)?`<div class="ad-seat"><span class="ad-p">🃏</span><span class="ad-n"><b>${no(d.dealer).slice(1)}</b> ${escH(nm(d.dealer))}</span><button class="btn btn-line" data-act="clearDealer" data-k="${k}">Austragen</button></div>`
-    :`<div class="ad-seat free"><span class="ad-p">🃏</span><span class="ad-n">noch keiner</span><input class="search ad-in" id="addealer" inputmode="numeric" placeholder="Nr." maxlength="3" aria-label="Nummer des Kartengebers"><button class="btn btn-line" data-act="admDayDealer" data-k="${k}">Setzen</button></div>`;
+    :`<div class="ad-seat free pk"><span class="ad-p">🃏</span><span class="ad-n">noch keiner</span><input class="search ad-in" id="addealer" inputmode="numeric" placeholder="Nr." maxlength="3" aria-label="Nummer des Kartengebers"><button class="btn btn-line" data-act="admDayDealer" data-k="${k}">Setzen</button><button class="btn btn-brass" data-act="pickOpen" data-kind="dealer" data-k="${k}">Wählen</button></div>`;
   const rq=hasDealer(d)?"":dreqSorted(d).map(x=>`<div class="ad-seat"><span class="ad-p"></span><span class="ad-n">${escH(pName(x.m))}<small>möchte Karten geben</small></span><button class="adm-ok" data-act="geberOk" data-k="${k}" data-m="${x.m}">Annehmen</button></div>`).join("");
   return `<div class="ad-box"><p class="tf-l sp-sub">Abend steuern</p><div class="chips ad-days">${chips}</div>
   <div class="ad-card"><div class="ad-h"><b>${dateLabel(k)}</b><span>${used(d)} / ${SEATS}</span></div>${needLine(d)}
-  ${tourFields("a",d.variant,d.start,d.blind??1)}<button class="btn btn-brass" data-act="admTour" data-k="${k}">${d.tlock?"Ändern":"Festlegen"}</button>
+  <button class="ad-play${d.play?" on":""}" data-act="admPlay" data-k="${k}" aria-pressed="${!!d.play}"><i></i><span><b>Spieltag</b><small>${d.play?"blinkt bei allen grün im Kalender":"bisher nur ein möglicher Tag"}</small></span><em>${d.play?"AN":"AUS"}</em></button>
+  ${tourFields("a",d.variant,d.start,d.bv)}<button class="btn btn-brass" data-act="admTour" data-k="${k}">${d.tlock?"Ändern":"Festlegen"}</button>
   <p class="tf-l" style="margin:14px 0 4px">Kartengeber</p>${dl}${rq}
   <p class="tf-l" style="margin:14px 0 4px">Plätze${ADM_MV!=null?` · <span style="color:var(--host)">Neuen Platz wählen</span>`:""}</p>${rows}
   ${w?`<p class="tf-l" style="margin:12px 0 4px">Warteliste · antippen = auf freien Platz</p><div class="ad-wl">${w}</div>`:""}
@@ -1632,18 +1673,18 @@ function admDealerReqs(){
   <p class="tf-l" style="margin:14px 0 0">Eingeteilt</p>
   ${set.length?set.map(r=>row(dateLabel(r.k),`${pName(r.m)}`,`<button class="btn btn-line sg-take" data-act="clearDealer" data-k="${r.k}">Austragen</button>`)).join(""):`<p class="empty" style="margin:6px 0 0">Noch niemand eingeteilt.</p>`}
   <div class="adm-box"><p class="tf-l" style="margin:0 0 6px">Eintragen</p>
-  <div class="adm-line"><select id="admgday" class="adm-in" aria-label="Abend">${open.map(k=>`<option value="${k}">${bdDay(k)}</option>`).join("")}</select><input id="dealerin" class="adm-in" inputmode="numeric" placeholder="Nr. 901" aria-label="Nummer des Kartengebers" autocomplete="off"><button class="adm-sm" data-act="admSetDealer">Eintragen</button></div></div>
+  <div class="adm-line"><select id="admgday" class="adm-in" aria-label="Abend">${open.map(k=>`<option value="${k}">${bdDay(k)}</option>`).join("")}</select><input id="dealerin" class="adm-in" inputmode="numeric" placeholder="Nr. 901" aria-label="Nummer des Kartengebers" autocomplete="off"><button class="adm-sm" data-act="admSetDealer">Eintragen</button></div><button class="adm-sm pk-open" data-act="pickOpen" data-kind="dealerSec">Aus der Liste wählen</button></div>
   <div class="adm-box"><p class="tf-l" style="margin:0 0 6px">Anfragen</p>
   ${(()=>{const inv=[];dates.forEach(dt=>{const k=key(dt),d=S.days[k];if(d&&!hasDealer(d)&&!(d.result&&d.result.done))(d.dinv||[]).forEach(x=>inv.push({k,m:x.m}))});
     const geb=(ADMIN||[]).filter(x=>x.nr>=GEBER_MIN&&x.nr<=GEBER_MAX).sort((a,b)=>a.nr-b.nr);
     return (inv.length?inv.map(r=>row(dateLabel(r.k),`${pName(r.m)} · wartet auf Antwort`,`<button class="btn btn-line sg-take" data-act="admAskCancel" data-k="${r.k}" data-m="${r.m}">Zurückziehen</button>`)).join(""):"")+
-    `<div class="adm-line"><select id="admaskday" class="adm-in" aria-label="Abend">${open.filter(k=>!hasDealer(S.days[k])).map(k=>`<option value="${k}">${bdDay(k)}</option>`).join("")}</select><select id="admaskm" class="adm-in" aria-label="Kartengeber">${geb.map(x=>`<option value="${x.nr-1}">${String(x.nr).padStart(3,"0")}${x.nickname?" "+escH(x.nickname):x.real_name?" "+escH(x.real_name):""}</option>`).join("")}</select><button class="adm-sm" data-act="admAskDealer">Anfragen</button></div>`})()}
+    `<div class="adm-line"><select id="admaskday" class="adm-in" aria-label="Abend">${open.filter(k=>!hasDealer(S.days[k])).map(k=>`<option value="${k}">${bdDay(k)}</option>`).join("")}</select><select id="admaskm" class="adm-in" aria-label="Kartengeber">${geb.map(x=>`<option value="${x.nr-1}">${String(x.nr).padStart(3,"0")}${PICK_NAMES?(x.nickname?" "+escH(x.nickname):x.real_name&&!ADM_HIDE?" "+escH(x.real_name):""):""}</option>`).join("")}</select><button class="adm-sm" data-act="admAskDealer">Anfragen</button></div>`})()}
 </div>
-  <p class="tf-l" style="margin:14px 0 4px">Konten</p>${admGeberList()}`);
+  <div class="kt-h"><p class="tf-l" style="margin:0">Konten</p><button type="button" class="chip ar-eye" data-act="admHide" aria-pressed="${!ADM_HIDE}" aria-label="Echte Namen zeigen"><b class="ar-sw${ADM_HIDE?"":" y"}"><i></i></b>${ADM_HIDE?"OFF":"ON"}</button></div>${admGeberList()}`);
 }
 const guestSeats=id=>dates.map(dt=>{const k=key(dt),d=S.days[k];if(!d||(d.result&&d.result.done))return null;const p=solo(d).find(p=>p.m===id);return p?{k,seat:p.seat}:null}).filter(Boolean);
 const admRow=(x,lose,badge)=>{const esc=escH;if(lose)return `<div class="adm-row"><div class="nrb">${String(x.nr).padStart(3,"0")}</div><div class="adm-info"><div class="adm-n" style="white-space:nowrap">${x.real_name?esc(x.real_name):String(x.nr).padStart(3,"0")} · Admin <span class="s" style="display:inline">✅ ${esc(x.nickname||"")}</span></div></div><div class="adm-btns"><button class="adm-lose" data-act="admToggle" data-on="0">Admin lösen</button></div></div>`;const N3=String(x.nr).padStart(3,"0"),unu=!x.pin&&!x.real_name&&!x.nickname&&!x.admin,op=ADM_ROW===x.nr,on=(CHAT.online||[]).includes(x.nr);
-  const btns=`${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button><button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.nr!==(ME&&ME.nr)?`<button class="btn btn-line" data-act="admSetPin" data-nr="${x.nr}">Neue PIN festlegen</button><button class="btn btn-line" data-act="admReset" data-nr="${x.nr}">PIN zurücksetzen</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}`;
+  const btns=`${!isFree(x)?`<button class="btn btn-brass" data-act="admFree" data-nr="${x.nr}" data-on="1">Freigeben</button>`:""}<button class="btn btn-host" data-act="admInvite" data-nr="${x.nr}">Einladen</button><button class="btn btn-line" data-act="admRename" data-nr="${x.nr}">Name</button>${x.nr!==(ME&&ME.nr)?`<button class="btn btn-line" data-act="admSetPin" data-nr="${x.nr}">Neue PIN festlegen</button><button class="btn btn-line" data-act="admReset" data-nr="${x.nr}">PIN zurücksetzen</button>`:""}${isFree(x)&&!x.admin&&x.free===true?`<button class="btn btn-line" data-act="admFree" data-nr="${x.nr}" data-on="0">Sperren</button>`:""}${!unu&&!x.admin&&x.nr!==1&&x.nr!==(ME&&ME.nr)?`<button class="btn btn-line ar-clear" data-act="admClear" data-nr="${x.nr}">Auf frei stellen</button>`:""}`;
   return `<div class="ar${op?" open":""}"><span class="ar-c">${unu&&x.nr<GEBER_MIN?"✅":""}</span>${x.nr!==(ME&&ME.nr)?`<button type="button" class="ar-nr nrb-go" data-act="admActAs" data-nr="${x.nr}" title="Als dieses Konto handeln">${N3}</button>`:`<span class="ar-nr">${N3}</span>`}<span class="ar-c">${!isFree(x)?"🔒":x.pin?`<b class="ar-chip${on?" y":""}">2</b>`:unu?"":`<svg class="ar-cl" viewBox="0 0 24 16" aria-hidden="true"><path d="M6 15a5 5 0 0 1-.6-10A6.5 6.5 0 0 1 18 4.6 5.2 5.2 0 0 1 18.5 15z" fill="#2f8cff"/></svg>`}</span><span class="ar-t${unu?" ar-frei":""}">${x.nickname?esc(x.nickname):unu?"frei":"–"}${x.admin?` <small>★</small>`:""}</span><span class="ar-t ar-r">${x.real_name?(ADM_HIDE?"•••••":esc(x.real_name)):""}</span>${badge||""}<button type="button" class="ar-more" data-act="admMore" data-nr="${x.nr}" aria-expanded="${op}" aria-label="Optionen">⋯</button></div>${op?`<div class="ar-btns">${btns}</div>`:""}`};
 let G_HOST=null, G_DONE=null, ADM_Q="", ADM_ROW=0, ADM_HIDE=false;
 const freeNrs=()=>(ADMIN||[]).filter(x=>x.nr>1&&x.nr<GEBER_MIN&&!x.pin&&!x.real_name&&!x.nickname).sort((a,b)=>a.nr-b.nr);
@@ -1675,31 +1716,68 @@ function newMemberBox(){
 document.addEventListener("input",e=>{if(e.target&&e.target.id==="admsq"){ADM_SQ=e.target.value;const el=document.getElementById("admrows");if(el){const tmp=document.createElement("div");tmp.innerHTML=admPlayers();const n=tmp.querySelector("#admrows");if(n)el.innerHTML=n.innerHTML}}});
 function admPlayers(){
   const all=(ADMIN||[]).filter(x=>x.nr<GEBER_MIN).sort((a,b)=>a.nr-b.nr);
-  const act=x=>myGames(x.nr-1), open=x=>isFree(x)&&!x.pin&&!x.admin;
-  const nAct=all.filter(x=>act(x).length).length, nOpen=all.filter(open).length;
+  if(ADM_PF==="offen") ADM_PF="alle";   // den Knopf „Eingeladen“ gibt es nicht mehr
+  const act=x=>myGames(x.nr-1);
+  const nAct=all.filter(x=>act(x).length).length;
   const unu=x=>!x.pin&&!x.real_name&&!x.nickname&&!x.admin,onl=x=>(CHAT.online||[]).includes(x.nr);
   const LF={frei:x=>x.nr>1&&unu(x),eingeladen:x=>isFree(x)&&!x.pin&&!unu(x),mitglied:x=>isFree(x)&&!!x.pin,online:x=>isFree(x)&&!!x.pin&&onl(x),gesperrt:x=>!isFree(x)&&!unu(x)};
-  const list0=ADM_PF==="aktiv"?all.filter(x=>act(x).length):ADM_PF==="offen"?all.filter(open):LF[ADM_PF]?all.filter(LF[ADM_PF]):all;
+  const list0=ADM_PF==="aktiv"?all.filter(x=>act(x).length):LF[ADM_PF]?all.filter(LF[ADM_PF]):all;
   const sq=ADM_SQ.trim().toLowerCase(), sqn=sq.replace(/^#?0+/,""), list=!sq?list0:list0.filter(x=>String(x.nr).padStart(3,"0").includes(sq)||(sqn&&String(x.nr)===sqn)||(x.real_name||"").toLowerCase().includes(sq)||(x.nickname||"").toLowerCase().includes(sq));
   const lf=(k,ic,l)=>`<button type="button" class="ar-lf" data-act="admPF" data-f="${k}" aria-pressed="${ADM_PF===k}">${ic} ${l} <em>${all.filter(LF[k]).length}</em></button>`;
-  const chips=[["alle",`Alle ${all.length}`],["aktiv",`Aktiv ${nAct}`],["offen",`Eingeladen ${nOpen}`]].map(([k,l])=>`<button class="chip" data-act="admPF" data-f="${k}" aria-pressed="${ADM_PF===k}">${l}</button>`).join("");
+  const chips=[["alle",`Alle ${all.length}`],["aktiv",`Aktiv ${nAct}`]].map(([k,l])=>`<button class="chip" data-act="admPF" data-f="${k}" aria-pressed="${ADM_PF===k}">${l}</button>`).join("");
   const rows=list.map(x=>{const g=act(x);
     if(ADM_PF!=="aktiv") return admRow(x);
     return admRow(x,false,`<b class="act-n">${g.length}</b>`)+`<div class="act-list">${g.map(z=>{const r=roleOf(z.d,x.nr-1),lab=r?({host:"ICH +1",guest:"+1",player:"ICH",dealer:"Kartengeber",wait:"Warteliste"}[r.r]||""):(z.st||"");return `<span>${bdDay(z.k)} ${z.d.start} Uhr · ${escH(lab)}</span>`}).join("")}</div>`}).join("");
   return admSec("spieler",`Spieler`,`${all.length}`,`${viewPoker()}<p class="tf-l sp-sub">Spieler</p>${newMemberBox()}<input id="admsq" class="search" style="margin:0 0 8px;width:100%;box-sizing:border-box" placeholder="Suchen: Nummer oder Name" value="${escH(ADM_SQ)}" autocomplete="off" aria-label="Spieler suchen"><div class="chips" style="margin:0 0 6px">${chips}<button class="chip ar-eye" data-act="admHide" aria-pressed="${!ADM_HIDE}"><b class="ar-sw${ADM_HIDE?"":" y"}"><i></i></b>${ADM_HIDE?"OFF":"ON"}</button></div><div class="ar-leg">${lf("frei","✅","frei")}${lf("eingeladen",`<svg class="ar-cl" viewBox="0 0 24 16" aria-hidden="true"><path d="M6 15a5 5 0 0 1-.6-10A6.5 6.5 0 0 1 18 4.6 5.2 5.2 0 0 1 18.5 15z" fill="#2f8cff"/></svg>`,"eingeladen")}${lf("mitglied",`<b class="ar-chip">2</b>`,"Mitglied")}${lf("online",`<b class="ar-chip y">2</b>`,"online")}${lf("gesperrt","🔒","gesperrt")}</div><div id="admrows">${rows||`<p class="empty" style="margin:6px 0 0">Niemand.</p>`}</div>`);
 }
+// Spieler, Kartengeber und Tisch & Spiele stehen für den Vorstand auf der Tisch-Seite unter dem Überblick
+// Nummer wieder frei machen: nimmt sie von allen offenen Tischen, aus Wartelisten und aus der Rangliste, damit sie neu vergeben werden kann.
+// Abgeschlossene Abende bleiben, wie sie waren. Gibt zurück, wie viel geändert wurde.
+function clearMember(m){
+  let n=0; const ohne=a=>{const b=a.filter(x=>(x&&typeof x==="object"?x.m:x)!==m);n+=a.length-b.length;return b};
+  Object.keys(S.days).forEach(k=>{const d=S.days[k]; if(!d||(d.result&&d.result.done)) return;
+    const vor=n;
+    d.players=ohne(solo(d));
+    d.hosts=(d.hosts||[]).filter(h=>{
+      if(h.m===m){const g=(h.guests||[])[0]; if(g!=null&&!isNewG(g)&&h.gseat!=null)solo(d).push({m:g,seat:h.gseat}); n++; return false}
+      if((h.guests||[]).includes(m)){solo(d).push({m:h.m,seat:h.seat}); n++; return false}
+      return true});
+    const sass=n>vor;
+    ["wait","interest","off","remind","dreq","dinv","news"].forEach(f=>{if(Array.isArray(d[f]))d[f]=ohne(d[f])});
+    ["votes","sugg","att"].forEach(f=>{if(d[f]&&m in d[f]){delete d[f][m];n++}});
+    if(hasDealer(d)&&d.dealer===m){d.dealer=null;n++}
+    if(d.result&&Array.isArray(d.result.out)) d.result.out=ohne(d.result.out);
+    if(sass) promote(k);
+  });
+  if(S.stats&&S.stats[m]){delete S.stats[m];n++}
+  [S.points,S.ppoints].forEach(o=>Object.keys(o||{}).forEach(mon=>{if(o[mon]&&typeof o[mon]==="object"&&m in o[mon]){delete o[mon][m];n++}}));
+  return n;
+}
+function admTisch(){return ME&&ME.admin&&ADMIN?admPlayers()+admDealerReqs()+admCal():""}
 function viewVerwaltung(){
   if(!ME||!ME.admin||!ADMIN) return `<section class="panel"><p class="empty">Nur für den Vorstand.</p></section>`;
   const admins=(ADMIN||[]).filter(x=>x.admin).sort((a,b)=>a.nr-b.nr);
-  const boss=admSec("admins","Admin","",`<div style="display:flex;gap:12px;align-items:center"><input id="admnr" class="search" style="flex:1;min-width:0;margin:0" inputmode="numeric" placeholder="Nummer, z. B. 23" autocomplete="off" value="${escH(ADM_Q)}">${ME.nr===1?`<button class="adm-btn" data-act="admToggle" data-on="1">Zum Admin machen</button>`:""}</div>
-  <div id="admres">${admLookup()}</div>`);
-  return `${admPlayers()}
-  ${admDealerReqs()}
-  ${admCal()}
-  ${boss}
+  const boss=admFix("admins","Admin",`<div style="display:flex;gap:12px;align-items:center"><input id="admnr" class="search" style="flex:1;min-width:0;margin:0" inputmode="numeric" placeholder="Nummer, z. B. 23" autocomplete="off" value="${escH(ADM_Q)}">${ME.nr===1?`<button class="adm-btn" data-act="admToggle" data-on="1">Zum Admin machen</button>`:""}</div>
+  <div id="admres">${admLookup()}</div>
+  <p class="tf-l" style="margin:16px 0 2px">Admins zurzeit</p>
+  ${admins.map(x=>{const n3=String(x.nr).padStart(3,"0");return `<div class="adm-row"><div class="nrb">${n3}</div><div class="adm-info"><div class="adm-n" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${x.nickname?escH(x.nickname):n3}</div></div><div class="adm-btns">${x.nr===1?`<span style="font-size:12.5px;color:var(--muted)">bleibt immer</span>`:ME.nr===1?`<button class="adm-lose" data-act="admToggle" data-on="0" data-nr="${x.nr}">Entfernen</button>`:""}</div></div>`}).join("")}`);
+  return `${boss}
   ${ME.nr===1?`<section class="panel"><button class="btn btn-stop" style="width:100%;font-size:18px;padding:14px" data-act="admWipe">${WIPE_ASK?"Wirklich alles löschen? Nochmal tippen":"Werkseinstellungen"}</button></section>`:""}`;
 }
 
+// Leucht-Timer über dem Geberstuhl: nur an Spieltagen, die der Vorstand von Hand angesetzt hat
+function cdTxt(ms){const s=Math.floor(ms/1000),dd=Math.floor(s/86400);return (dd?`${dd} ${dd===1?"Tag":"Tage"} `:"")+`${pad(Math.floor(s%86400/3600))}:${pad(Math.floor(s%3600/60))}:${pad(s%60)}`}
+const tnDigits=x=>x.replace(/\d/g,c=>`<i>${c}</i>`);
+function tableNeon(k,d){
+  if(!d||(d.result&&d.result.done)) return "";
+  const t=startTs(k,d), ms=t-Date.now(), run=ms<=0, spiel=!!(d.play||d.result);   // grün = Spieltag, blau = nur ein möglicher Tag
+  if(run&&!spiel) return "";
+  if(!spiel) return `<div class="tneon blau" aria-label="In Planung"><span class="tn-v tn-t">IN PLANUNG</span></div>`;
+  return `<div class="tneon" role="timer" aria-label="${run?"Das Spiel läuft":"Zeit bis zum Start des Spiels"}"><span class="tn-l">${run?"Spiel":"Start in"}</span><span class="tn-v" data-t="${t}">${run?"läuft":tnDigits(cdTxt(ms))}</span></div>`;
+}
+setInterval(()=>document.querySelectorAll(".tn-v[data-t]").forEach(el=>{const ms=+el.dataset.t-Date.now();
+  if(ms>0){el.innerHTML=tnDigits(cdTxt(ms));return}
+  if(el.textContent!=="läuft"){el.textContent="läuft";const l=el.previousElementSibling;if(l)l.textContent="Spiel"}}),1000);
 function tickCD(){
   const el=document.getElementById("cd"); if(!el) return;
   const v=document.getElementById("cdv");
@@ -1711,7 +1789,7 @@ function tickCD(){
 }
 setInterval(tickCD,1000);
 setInterval(()=>{if(ME&&remindTick()){pushNow();const f=document.activeElement;if(!(f&&(f.tagName==="INPUT"||f.tagName==="SELECT")))render()}},5000);
-const needLine=d=>{if(d.result)return "";const u=used(d);return `<p class="need${u>=7?" ok":""}">${u>=7?`Findet statt · ${u} am Tisch`:u?`Noch <b>${7-u}</b> bis zum Start · ${u} von 7 da`:"Ab 7 Spielern findet der Abend statt"}</p>`};
+const needLine=d=>{if(d.result)return "";const u=used(d);return `<p class="need${u>=7?" ok":""}">${d.play&&u<7?`<b class="need-play">Spieltag</b> · `:""}${u>=7?`Findet statt · ${u} am Tisch`:u?`Noch <b>${7-u}</b> bis zum Start · ${u} von 7 da`:"Ab 7 Spielern findet der Abend statt"}</p>`};
 // Platz wechseln: freien Platz antippen, wenn man schon sitzt
 let MOVE_TO=null;
 function moveSheet(d,k){
@@ -1764,30 +1842,19 @@ const voteCount=d=>{const V=d.votes||{}, seat=players(d), extra=[];
   const t=add(0,sv), a=add(0,sv.concat(ev));
   return {h:a.h,o:a.o,n:a.n,hs:t.h,os:t.o,ns:t.n}};
 function voteSVG(d,cx,cy){
-  const {h,o,n,hs,os,ns}=voteCount(d), dec=!!d.tlock, my=myVote(d,S.me), hx=cx-51, ox=cx+39, y=cy-11;
-  const frame=(x,v,side)=>{const cw=v===1?47:25, win=dec&&d.variant===v, col=win?"#3BEA62":"#4D8DFF";
-    let f=(!dec||win)?`<rect x="${x-cw/2-6}" y="${y-5}" width="${cw+12}" height="31" rx="7" fill="none" stroke="${col}" stroke-width="${win?2.2:1.6}" filter="url(#gl)">${dec?"":`<animate attributeName="opacity" values="1;.25;1" dur="1.8s" repeatCount="indefinite"/>`}</rect>`:"";
-    const pa=n?Math.round((side==="h"?h:o)/n*100):0, ps=ns?Math.round((side==="h"?hs:os)/ns*100):0;
-    if(ns) f+=`<text x="${x}" y="${y+33}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#3BEA62">${ps} %</text>`;
-    if(n) f+=`<text x="${x}" y="${y-8}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#4D8DFF">${pa} %</text>`;
-    const mine=my===side||(my==="b"&&(d.votes||{})[S.me]==="b"); if(mine) f+=`<circle cx="${x+cw/2+5}" cy="${y-4}" r="5" fill="#4D8DFF" stroke="#fff" stroke-width="1"/><text x="${x+cw/2+5}" y="${y-1.5}" text-anchor="middle" font-size="7" font-weight="800" fill="#fff">✓</text>`;
-    return `<g data-vote="${side}" style="cursor:pointer" role="button" aria-label="${side==="h"?"Für Hold’em stimmen":"Für Omaha stimmen"}"><rect x="${x-cw/2-7}" y="${y-8}" width="${cw+14}" height="36" fill="transparent"/>${f}${svgCards(x,y-1,v)}</g>`};
-  const x1=hx+19, x2=ox-30, mx=(x1+x2)/2, by=y+10, half=(x2-x1)/2, tot=n, ns0=ns, px=mx+(tot?(o-h)/tot:0)*half;
-  let bar=`<g opacity="${dec?.35:1}"><rect x="${x1}" y="${by-2}" width="${x2-x1}" height="4" rx="2" fill="rgba(255,255,255,.12)"/>`;
-  if(px!==mx) bar+=`<rect x="${Math.min(mx,px)}" y="${by-2}" width="${Math.abs(px-mx)}" height="4" rx="2" fill="#4D8DFF" filter="url(#gl)"/>`;
-  bar+=`<circle cx="${px.toFixed(1)}" cy="${by}" r="3.4" fill="${tot?"#4D8DFF":"#fff"}" stroke="#1a0f05" stroke-width="1" filter="url(#gl)"/><g><circle cx="${mx}" cy="${by-11}" r="6.5" fill="#0b0b0b" stroke="#4D8DFF" stroke-width="1"/><text x="${mx}" y="${by-8.2}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#fff">${tot}</text></g><line x1="${mx}" y1="${by-4.5}" x2="${mx}" y2="${by+4.5}" stroke="rgba(255,255,255,.55)" stroke-width="1"/><g><circle cx="${mx}" cy="${by+11}" r="6.5" fill="#0b0b0b" stroke="#3BEA62" stroke-width="1"/><text x="${mx}" y="${by+13.8}" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="800" font-size="8" fill="#fff">${ns}</text></g></g>`;
-  return bar+frame(hx,0,"h")+frame(ox,1,"o");
+  const v=d.variant===1?1:0, y=cy-11;
+  return `<g aria-label="Gespielt wird ${VARIANTS[v]}" style="pointer-events:none"><g transform="translate(${cx} ${y+9}) scale(1.5) translate(${-cx} ${-(y+9)})">${svgCards(cx,y-1,v)}</g></g>`;
 }
 function svgCards(cx,y,v){const cs=CARDS(v),w=14,h=20,step=11,x0=cx-((cs.length-1)*step+w)/2,rot=[-10,-3,4,11];
   return `<g aria-label="${VARIANTS[v]}">`+cs.map(([r,su,c],i)=>{const x=x0+i*step, ro=cs.length===2?(i?6:-6):rot[i];return `<g transform="rotate(${ro} ${x+w/2} ${y+h/2})"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2.5" fill="#fff" stroke="#bbb" stroke-width=".6"/><text x="${x+w/2}" y="${y+9}" text-anchor="middle" font-size="8" font-weight="800" fill="${c}">${r}</text><text x="${x+w/2}" y="${y+17}" text-anchor="middle" font-size="8" fill="${c}">${su}</text></g>`}).join("")+`</g>`;}
 const miniCards=v=>{const cs=v===1?[["A","♥","r"],["A","♠","b"],["8","♥","r"],["8","♠","b"]]:[["A","♦","r"],["A","♣","b"]];
   return `<span class="mcards" aria-label="${VARIANTS[v]}">${cs.map(([r,su,c])=>`<span class="mc ${c}"><b>${r}</b><i>${su}</i></span>`).join("")}</span>`};
-const vtBadge=d=>{if(d.tlock)return `<span class="vt-fix" title="Spiel steht fest">${miniCards(d.variant)}</span>`;
-  const c=voteCount(d),n=c.n||0,ph=n?Math.round(c.h/n*100):0,po=n?Math.round(c.o/n*100):0,lead=c.h===c.o?-1:(c.h>c.o?0:1);
-  return `<span class="vt-live" title="Noch offen – Tendenz live" aria-label="Noch offen: Hold’em ${ph} %, Omaha ${po} %"><span class="vt-s${lead===0?" on":""}">${miniCards(0)}<small>${ph}%</small></span><span class="vt-s${lead===1?" on":""}">${miniCards(1)}<small>${po}%</small></span></span>`};
+const vtBadge=d=>miniCards(d.variant===1?1:0);   // nur die Karten, ohne Rahmen
+// Farbe für die Leiste oben: "play" = Spieltag (grün), "plan" = in Planung (blau), "" = nichts
+const tagArt=(k,d)=>!d||(d.result&&d.result.done)?"":(d.play||d.result)?"play":Date.now()<startTs(k,d)?"plan":"";
 function bdRow(g,first){
-  const nr=(g.seat||"").replace("Platz ","");
-  return `<button type="button" class="bd-row${first?" first":""}" data-day="${g.k}" data-goto="1" aria-label="${dateLabel(g.k)}, ${g.d.start} Uhr${nr?", Platz "+nr:""}${g.st?", "+g.st:""}"><span class="bd-num${used(g.d)>=SEATS?" bd-full":""}"><b class="lv-n">${bdDay(g.k)} <span class="bd-tm">${g.d.start} Uhr</span></b></span><span class="bd-info">${vtBadge(g.d)}${g.c==="mk"?`<span class="seat-star" aria-label="vorgemerkt">★</span>`:""}${g.st&&g.c!=="mk"?`<span class="bd-st ${g.c}">${g.st}</span>`:""}</span></button>`;
+  const nr=(g.seat||"").replace("Platz ",""), art=tagArt(g.k,g.d);
+  return `<button type="button" class="bd-row${first?" first":""}" data-day="${g.k}" data-goto="1" aria-label="${dateLabel(g.k)}, ${g.d.start} Uhr${nr?", Platz "+nr:""}${g.st?", "+g.st:""}${art==="play"?", Spieltag":art==="plan"?", in Planung":""}"><span class="bd-num${used(g.d)>=SEATS?" bd-full":""}${art?" bd-"+art:""}"><b class="lv-n">${bdDay(g.k)} <span class="bd-tm">${g.d.start} Uhr</span></b></span><span class="bd-info">${vtBadge(g.d)}${g.c==="mk"?`<span class="seat-star" aria-label="vorgemerkt">★</span>`:""}${g.st&&g.c!=="mk"?`<span class="bd-st ${g.c}">${g.st}</span>`:""}</span></button>`;
 }
 function boardNext(){
   const el=document.getElementById("live"); if(!el) return;
@@ -1843,6 +1910,7 @@ document.addEventListener("click",e=>{
   if(tc&&S.tab==="kalender"&&ME){
     const d=S.days[S.sel];
     if((d.result&&d.result.done)||startedDay(S.sel,d)){toast("Dieser Abend hat schon begonnen.");return}
+    if(!ME.admin){toast(`Gespielt wird ${VARIANTS[d.variant===1?1:0]} · ${d.start} Uhr · ${blindOf(d)}. Das legt der Vorstand fest.`);return}
     openForm=openForm==="tour"?null:"tour"; render();
     if(openForm==="tour"){const c=document.getElementById("tourcard");if(c)c.scrollIntoView({behavior:"smooth",block:"start"})}
     return;
@@ -1902,6 +1970,9 @@ document.addEventListener("click",e=>{
     return;
   }
   const t=e.target.closest("button"); if(!t||t.disabled) return;
+  if(t.dataset.fb!=null){const px=t.dataset.fbt,box=document.getElementById(px+"bl");
+    if(box){box.dataset.n=t.dataset.fb;const l=document.getElementById(px+"bl1l");if(l)l.textContent=t.dataset.fb==="2"?"Kleiner Blind":"Blind";const f=document.getElementById(px+"b1");if(f)f.focus()}
+    t.parentNode.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===t));return}
   if(t.dataset.fv!=null){const hid=document.getElementById(t.dataset.fvt+"var");if(hid)hid.value=t.dataset.fv;t.parentNode.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b===t));return}
   if(t.dataset.act==="bdTog"){BD_OPEN=!BD_OPEN;boardNext();return}
   if(t.dataset.tab){S.tab=t.dataset.tab;openForm=null;render();window.scrollTo(0,0);return}
@@ -1996,6 +2067,13 @@ document.addEventListener("click",e=>{
     return;
   }
   if(t.dataset.act==="admCalNav"){const d=+t.dataset.d;ADM_CAL=new Date(ADM_CAL.getFullYear(),ADM_CAL.getMonth()+d,1);render();return}
+  if(t.dataset.act==="admTap"){ADM_TAP=t.dataset.m;render();return}
+  if(t.dataset.act==="admPlay"||(t.dataset.act==="admDayTog"&&ADM_TAP==="play")){
+    if(!(ME&&ME.admin)) return;
+    const k=t.dataset.k;if(!S.days[k])return;
+    if(isClosed(k)){toast("Dieser Tag ist zu – erst wieder öffnen");return}
+    setPlay(k,!S.days[k].play);pushNow();render();return;
+  }
   if(t.dataset.act==="admDayTog"||t.dataset.act==="admMonTog"){
     if(!(ME&&ME.admin)) return;
     if(t.dataset.act==="admMonTog"){const m=t.dataset.m;if(S.closed.months[m])delete S.closed.months[m];else S.closed.months[m]=true;Object.keys(S.days).forEach(x=>{if(x.startsWith(m)&&!S.closed.days[x])newsAll(S.days[x],S.closed.months[m]?"Dieser Abend findet nicht statt.":"Dieser Abend findet doch statt.")});toast(S.closed.months[m]?"Monat ist zu – sieht keiner":"Monat ist offen");}
@@ -2004,7 +2082,7 @@ document.addEventListener("click",e=>{
     pushNow();render();return;
   }
   if(t.dataset.act==="admActAs"){if(!(ME&&ME.admin))return;OV_M=null;const nr=+t.dataset.nr;if(!MEM[nr-1]){toast("Dieses Konto gibt es noch nicht");return}ACT_AS=nr===ME.nr?null:nr;S.me=nr-1;S.tab="kalender";openForm=null;render();window.scrollTo(0,0);if(ACT_AS)toast(`Du handelst jetzt als ${String(nr).padStart(3,"0")}`);return}
-  if(t.dataset.act==="actBack"){ACT_AS=null;S.me=ME.nr-1;S.tab="verwaltung";openForm=null;render();window.scrollTo(0,0);return}
+  if(t.dataset.act==="actBack"){ACT_AS=null;S.me=ME.nr-1;S.tab="kalender";openForm=null;render();{const sp=document.querySelector('details[data-sec="spieler"]');window.scrollTo(0,sp?sp.getBoundingClientRect().top+window.scrollY-150:0)}return}
   if(t.dataset.act==="admPF"){ADM_PF=t.classList.contains("ar-lf")&&ADM_PF===t.dataset.f?"alle":t.dataset.f;render();return}
   if(t.dataset.act==="ovMember"){OV_M=+t.dataset.m;render();return}
   if(t.dataset.act==="ovClose"){OV_M=null;render();return}
@@ -2034,6 +2112,19 @@ document.addEventListener("click",e=>{
   }
   if(t.dataset.act==="admMore"){const nr=+t.dataset.nr;ADM_ROW=ADM_ROW===nr?0:nr;render();return}
   if(t.dataset.act==="admHide"){ADM_HIDE=!ADM_HIDE;render();return}
+  if(t.dataset.act==="admClear"){
+    if(!(ME&&ME.admin)) return;
+    const nr=+t.dataset.nr, n3=String(nr).padStart(3,"0"), x=(ADMIN||[]).find(y=>y.nr===nr), wer=x&&(x.nickname||x.real_name)?` (${x.nickname||x.real_name})`:"";
+    if(!sure(t,`Nummer ${n3}${wer} auf frei stellen?\nName, Spitzname und PIN werden gelöscht. Die Nummer kommt von allen Tischen und aus der Rangliste, ihre Chat-Nachrichten werden gelöscht.\nDas lässt sich nicht zurückholen.`,"Ja, frei stellen")) return;
+    t.disabled=true;
+    rpc("m2r_admin_clear",{p_token:TOKEN,p_nr:nr}).then(async r=>{
+      if(!r||!r.ok){toast((r&&r.msg)||"Das hat nicht geklappt.");t.disabled=false;return}
+      clearMember(nr-1); log(`Nummer ${n3} ist wieder frei (Vorstand)`); await pushNow();
+      for(let i=0;i<2&&clearMember(nr-1);i++) await pushNow();   // falls gleichzeitig jemand anderes gespeichert hat
+      ADM_ROW=0; toast(`${n3} ist wieder frei`); return pull(true);
+    }).catch(e=>{t.disabled=false;toast(/404/.test((e&&e.message)||"")?"Geht erst, wenn der Speicher-Befehl 17 ausgeführt ist":"Keine Verbindung")});
+    return;
+  }
   if(t.dataset.act==="admRename"){
     const nr=+t.dataset.nr, x=ADMIN.find(y=>y.nr===nr), v=askVal(t,`Echter Name für Nummer ${String(nr).padStart(3,"0")}:`,x?x.real_name:"",'maxlength="40" autocomplete="off"');
     if(v==null) return;
@@ -2086,7 +2177,7 @@ document.addEventListener("click",e=>{
     toast("Sachprämien gespeichert");render();return;
   }
   if(t.dataset.cal){calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+(+t.dataset.cal),1);render();return}
-  if(t.dataset.day){OV_M=null;S.sel=t.dataset.day;{const dd=new Date(t.dataset.day+"T00:00");calMonth=new Date(dd.getFullYear(),dd.getMonth(),1)}openForm=null;if(t.dataset.goto)S.tab="kalender";render();if(t.dataset.goto)window.scrollTo(0,0);else if(t.classList.contains("cal-d")){const ev=document.getElementById("event");if(ev)ev.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}return}
+  if(t.dataset.day){OV_M=null;ADM_MV=null;S.sel=t.dataset.day;{const dd=new Date(t.dataset.day+"T00:00");calMonth=new Date(dd.getFullYear(),dd.getMonth(),1)}openForm=null;if(t.dataset.goto)S.tab="kalender";render();if(t.dataset.goto)window.scrollTo(0,0);else if(t.classList.contains("cal-d")){const ev=document.getElementById("event");if(ev)ev.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})}return}
   const k=t.dataset.k||S.sel,d=S.days[k],a=t.dataset.act;
   if(a==="hostform"){openForm=openForm==="host"?null:"host";pick={mine:null,guest:null};render();return}
   if(a==="guestform"){openForm=openForm==="guest"?null:"guest";render();return}
@@ -2137,11 +2228,12 @@ document.addEventListener("click",e=>{
     if(startedDay(k,d)) return;
     const admin=!!(ME&&ME.admin);
     if(d.tlock&&!admin){toast("Das Turnier steht schon fest.");return}
-    const x={v:+document.getElementById("tvar").value,st:document.getElementById("tstart").value,bl:+document.getElementById("tblind").value};
+    const bv=readBlinds("t"); if(bv===false) return;
+    const x={v:+document.getElementById("tvar").value,st:document.getElementById("tstart").value,bl:d.blind??1};
     if(a==="tourSet"){
       if(!canDecide(d)) return;
-      d.variant=x.v; d.start=x.st; d.blind=x.bl; d.sugg={};
-      if(admin){d.tlock={by:"admin",at:Date.now()};newsAll(d,`Es wird ${VARIANTS[d.variant]} gespielt · Beginn ${d.start} Uhr.`);log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt und gesperrt")}
+      d.variant=x.v; d.start=x.st; if(bv){d.bv=bv;delete d.blind} d.sugg={};
+      if(admin){d.tlock={by:"admin",at:Date.now()};newsAll(d,`Es wird ${VARIANTS[d.variant]} gespielt · Beginn ${d.start} Uhr${bvOk(d)?" · "+blindOf(d):""}.`);log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt und gesperrt")}
       else{log(`Turnier am ${dateLabel(k)} von ${nm(S.me)} festgelegt: ${turnierTxt(d)}`);toast("Festgelegt")}
       openForm=null;
     } else {
@@ -2174,8 +2266,13 @@ document.addEventListener("click",e=>{
     if(d.dreq) d.dreq=dreq(d).filter(x=>x.m!==S.me); toast("Off – Tag ausgeblendet. „On“ holt ihn zurück."); render(); return;
   }
   if(a==="dayOn"){ d.off=(d.off||[]).filter(x=>x!==S.me); toast("On – der Tag ist wieder da"); render(); return; }
-  if(a==="admDaySel"){ADM_DAY=k;S.sel=k;ADM_MV=null;render();return}
-  if(a==="admTour"){if(!(ME&&ME.admin))return;d.variant=+document.getElementById("avar").value;d.start=document.getElementById("astart").value;d.blind=+document.getElementById("ablind").value;d.tlock={by:"admin",at:Date.now()};d.sugg={};newsAll(d,`Es wird ${VARIANTS[d.variant]} gespielt · Beginn ${d.start} Uhr.`);log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt");render();return}
+  if(a==="pickOpen"){if(!(ME&&ME.admin))return;const sec=t.dataset.kind==="dealerSec",kk=sec?((document.getElementById("admgday")||{}).value||""):k,dd=S.days[kk];
+    if(!dd){toast("Bitte erst einen Abend wählen");return}
+    if(t.dataset.kind==="seat"&&dd.result){toast("Das Turnier läuft – Plätze sind gesperrt");return}
+    PICK={kind:t.dataset.kind==="seat"?"seat":"dealer",k:kk,s:+t.dataset.s||0};pickShow();return}
+  if(a==="pickNames"){PICK_NAMES=!PICK_NAMES;pickShow();render();return}
+  if(a==="admDaySel"){ADM_DAY=k;S.sel=k;ADM_MV=null;{const dd=new Date(k+"T00:00");calMonth=new Date(dd.getFullYear(),dd.getMonth(),1)}render();return}
+  if(a==="admTour"){if(!(ME&&ME.admin))return;const bv=readBlinds("a");if(bv===false)return;d.variant=+document.getElementById("avar").value;d.start=document.getElementById("astart").value;if(bv){d.bv=bv;delete d.blind}d.tlock={by:"admin",at:Date.now()};d.sugg={};newsAll(d,`Es wird ${VARIANTS[d.variant]} gespielt · Beginn ${d.start} Uhr${bvOk(d)?" · "+blindOf(d):""}.`);log(`Turnier am ${dateLabel(k)} vom Vorstand festgelegt: ${turnierTxt(d)}`);toast("Festgelegt");render();return}
   if(a==="admMove"){const i=+t.dataset.s;ADM_MV=ADM_MV===i?null:i;render();return}
   if(a==="admWaitSeat"){if(!(ME&&ME.admin)||!d||d.result)return;const m=+t.dataset.m,i=seatMap(d).findIndex(x=>!x);if(i<0){toast("Kein Platz mehr frei");return}d.wait=d.wait.filter(x=>x!==m);solo(d).push({m,seat:i});news(d,m,`Der Vorstand hat dich von der Warteliste auf Platz ${i+1} gesetzt.`);log(`${no(m)} ${nm(m)} wurde vom Vorstand auf Platz ${i+1} gesetzt (${dateLabel(k)})`);toast(`${nm(m)} sitzt auf Platz ${i+1}`);render();return}
   if(a==="admMoveTo"||a==="admSeatDel"||a==="admSeatAdd"){
@@ -2189,7 +2286,8 @@ document.addEventListener("click",e=>{
       else{d.hosts=d.hosts.filter(x=>x!==o.h);solo(d).push({m:o.h.m,seat:o.h.seat})}
       if(d.votes)delete d.votes[o.m];news(d,o.m,"Der Vorstand hat dich vom Tisch genommen.");
       log(`${nm(o.m)} wurde vom Vorstand vom Tisch genommen (${dateLabel(k)})`);ADM_MV=null;promote(k);toast("Vom Tisch genommen");render();return}
-    const i=+t.dataset.s,el=document.getElementById("ads"+i),n=byNum(parseInt((el&&el.value)||"",10));
+    const i=+t.dataset.s,el=document.getElementById("ads"+i),pm=t.dataset.m!=null,n=pm?byNum(+t.dataset.m+1):byNum(parseInt((el&&el.value)||"",10));
+    if(pm)pickClose();
     if(n==null){toast("Diese Nummer gibt es nicht");return}
     const r=roleOf(d,n);if(r&&r.r!=="wait"){toast(`${nm(n)} sitzt schon am Tisch`);return}
     if(M[i]){toast("Der Platz ist schon besetzt");return}
@@ -2197,7 +2295,8 @@ document.addEventListener("click",e=>{
     log(`${no(n)} ${nm(n)} wurde vom Vorstand auf Platz ${i+1} gesetzt (${dateLabel(k)})`);toast(`${nm(n)} sitzt auf Platz ${i+1}`);render();return}
   if(a==="admDayDealer"){
     if(!(ME&&ME.admin)||!d) return;
-    const c=dealerCheck(((document.getElementById("addealer")||{}).value||"").trim(),d);
+    const pn=t.dataset.nr; if(pn!=null)pickClose();
+    const c=dealerCheck(pn!=null?pn:((document.getElementById("addealer")||{}).value||"").trim(),d);
     if(!c.ok){toast(c.msg||"Bitte eine Kartengeber-Nummer eingeben (901–930)");return}
     d.wait=d.wait.filter(x=>x!==c.g); d.interest=d.interest.filter(x=>x!==c.g); d.dealer=c.g;
     news(d,c.g,"Du bist als Kartengeber eingetragen.");
@@ -2209,7 +2308,7 @@ document.addEventListener("click",e=>{
     const why=askVal(t,`Abend am ${dateLabel(k)} absagen? Grund (kann leer bleiben):`,"",'maxlength="80" autocomplete="off" placeholder="z. B. zu wenig Spieler"',"Abend absagen");
     if(why==null) return;
     keepUndo(); const x=why.trim().slice(0,80);
-    S.closed.days[k]=true; newsAll(d,x?`Dieser Abend fällt aus: ${x}`:"Dieser Abend fällt aus.");
+    S.closed.days[k]=true; delete d.play; newsAll(d,x?`Dieser Abend fällt aus: ${x}`:"Dieser Abend fällt aus.");
     log(`Abend am ${dateLabel(k)} abgesagt${x?": "+x:""}`); ADM_DAY=null; ADM_MV=null;
     toast("Abend abgesagt – alle Angemeldeten sehen einen Hinweis"); render(); return;
   }
@@ -2228,7 +2327,7 @@ document.addEventListener("click",e=>{
   if(a==="tourUnlock"){ if(!(ME&&ME.admin)) return; d.tlock=null; d.sugg={}; log(`Abstimmung am ${dateLabel(k)} wieder geöffnet`); toast("Abstimmung ist wieder offen"); render(); return; }
   if(a==="tourTake"){
     if(!canDecide(d)||startedDay(k,d)||(d.tlock&&!(ME&&ME.admin))) return;
-    const [v,st,bl]=t.dataset.key.split("|"); d.variant=+v; d.start=st; d.blind=+bl; d.sugg={};
+    const [v,st,bl]=t.dataset.key.split("|"); d.variant=+v; d.start=st; d.blind=+bl; delete d.bv; d.sugg={};
     if(ME&&ME.admin) d.tlock={by:"admin",at:Date.now()};
     log(`Turnier am ${dateLabel(k)} festgelegt: ${turnierTxt(d)}`); toast(ME&&ME.admin?"Übernommen und gesperrt":"Übernommen"); openForm=null; render(); return;
   }
@@ -2261,10 +2360,11 @@ document.addEventListener("click",e=>{
   }
   if(a==="admToggle"){
     if(!(ME&&ME.nr===1)) return;
-    const nr=parseInt((document.getElementById("admnr").value||"").replace(/\D/g,""),10);
+    const nr=t.dataset.nr?+t.dataset.nr:parseInt(((document.getElementById("admnr")||{}).value||"").replace(/\D/g,""),10);   // data-nr = aus der Liste „Admins zurzeit“
     if(!nr||nr===1){toast(nr===1?"001 bleibt immer Admin":"Bitte eine Nummer eingeben");return}
     const x=(ADMIN||[]).find(y=>y.nr===nr); if(!x){toast("Diese Nummer gibt es nicht");return}
     const on=t.dataset.on?t.dataset.on==="1":!x.admin; if(on===!!x.admin){toast(on?"Ist schon Admin":"Ist kein Admin");return}
+    if(!on&&t.dataset.nr&&!sure(t,`${String(nr).padStart(3,"0")}${x.nickname?" "+x.nickname:""} ist dann kein Admin mehr.`,"Ja, entfernen")) return;
     rpc("m2r_admin_set",{p_token:TOKEN,p_nr:nr,p_on:on}).then(r=>{if(!r||!r.ok){toast((r&&r.msg)||"Geht erst, wenn der Supabase-Befehl ausgeführt ist");return}x.admin=on;toast(on?`${String(nr).padStart(3,"0")} ist jetzt Admin`:`${String(nr).padStart(3,"0")} ist kein Admin mehr`);render()}).catch(e=>toast(/404/.test(e&&e.message)?"Der Supabase-Befehl für Admins fehlt noch":"Keine Verbindung"));
     return;
   }
